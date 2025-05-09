@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    xmlns:permcostr="http://www.agid.gov.it/MODULI_PA/SUE/modulo_permesso_costruire"
+    xmlns:suecommon="http://www.agid.gov.it/MODULI_PA/SUE/sue_common_components"
+    xmlns:moduli="http://www.agid.gov.it/MODULI_PA/moduli_common_components"
+    xmlns:aggregate="http://www.agid.gov.it/AgID_aggregate_components"
+    xmlns:basic="http://www.agid.gov.it/AgID_basic_components"
+    xmlns:enumeration="http://www.agid.gov.it/AgID_enumeration"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    
+    targetNamespace="http://www.agid.gov.it/MODULI_PA/SUE/modulo_permesso_costruire"
+
+    elementFormDefault="qualified" attributeFormDefault="qualified" version="1.3.0">
+
+    
+    
+    
+    <xs:import namespace="http://www.agid.gov.it/MODULI_PA/SUE/sue_common_components" schemaLocation="SUE_common_components.xsd"/>    
+    <xs:import namespace="http://www.agid.gov.it/MODULI_PA/moduli_common_components" schemaLocation="../MODULI_common_components.xsd"/>
+    <xs:import namespace="http://www.agid.gov.it/AgID_basic_components" schemaLocation="../../AgID_Vocabularies/AgID_basic_components.xsd"/>
+    <xs:import namespace="http://www.agid.gov.it/AgID_aggregate_components" schemaLocation="../../AgID_Vocabularies/AgID_aggregate_components.xsd"/>
+    <xs:import namespace="http://www.agid.gov.it/AgID_enumeration" schemaLocation="../../AgID_Vocabularies/AgID_enumeration.xsd"/>
+    
+    <!-- ROOT ELEMENT -->
+    <xs:element name="ModuloPermessoCostruire" type="permcostr:ModuloPermessoCostruireType" />
+    
+    <xs:complexType name="ModuloPermessoCostruireType">
+        <xs:annotation>
+            <xs:documentation>
+                RICHIESTA DI PERMESSO DI COSTRUIRE
+                (art. 20, d.P.R. 6 giugno 2001, n. 380 – artt. 7, d.P.R. 7 settembre 2010, n. 160)
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            
+            <!-- SOGGETTI -->
+            <xs:element name="schedaTitolare" type="aggregate:PersonaAnagraficaType">
+                <xs:annotation>
+                    <xs:documentation>
+                        schedaTitolare: in caso di più titolari, la sezione è ripetibile nell’allegato “SOGGETTI COINVOLTI”
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="schedaDitta" type="suecommon:SchedaDittaType" minOccurs="0"/>
+            <xs:element name="schedaDelegato" type="aggregate:PersonaAnagraficaType" minOccurs="0"/>
+            
+            <!-- DICHIARAZIONI -->
+            <xs:element name="qualificazioneIntervento" type="suecommon:QualificazioneInterventoBaseType"/>
+            <!-- TODO: Matthia YYE7284 -->
+            <xs:element name="sanatoriaInCorso" type="suecommon:SanatoriaInCorsoBaseType" minOccurs="0" />
+            <!-- TODO: Matthia YYE7284 -->
+            <xs:element name="titoloPossesso" type="suecommon:TitoloPossessoType"/>
+            <xs:element name="localizzazioneIntervento" type="suecommon:LocalizzazioneInterventoType"/>
+            <xs:element name="operePreviste" type="suecommon:OperePrevisteType"/>
+
+            <!-- TODO: Damiano YYE7283 -->
+            <xs:element name="newRegolaritaUrbanistica" type="suecommon:NewRegolaritaUrbanisticaBaseType" minOccurs="0"/>
+            <!-- TODO: Damiano YYE7283 -->
+
+            <xs:element name="calcoloContributoCostruzione" type="suecommon:CalcoloContributoBaseType"/>
+            <xs:element name="tecniciIncaricati" type="permcostr:TecniciIncaricatiDeiLavoriType"/>
+            <xs:element name="impreseEsecutrici" type="permcostr:ImpreseEsecutriciDeiLavoriType"/>           
+            <xs:element name="obblighiSaluteSicurezza" type="permcostr:ObblighiSaluteSicurezzaType"/>
+            <xs:element name="dichiarazionePresaVisioneInformativaPrivacy" type="xs:boolean" />
+            
+            <!-- RELAZIONE TECNICA DI ASSEVERAZIONE -->
+            <!-- TODO: Matthia YYE7284 -->
+            <xs:element name="relazioneTecnicaAsseverazione" type="suecommon:RelazioneTecnicaAsseverazioneType" minOccurs="0" />
+            <!-- TODO: Matthia YYE7284 -->
+            
+            <!-- ALLEGATI  -->
+            <!-- TODO: Damiano YYE7283 -->
+            <xs:element name="tabellaAllegati" type="permcostr:TabellaAllegatiType" minOccurs="0"/>
+            <!-- TODO: Damiano YYE7283 -->
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- BASE TYPE -->
+    <xs:complexType name="QualificazioneInterventoType">
+        <xs:complexContent>
+            <xs:extension base="suecommon:QualificazioneInterventoBaseType">
+                <xs:sequence>
+                    <xs:choice>
+
+                        <!-- TODO: Matthia YYE7284 -->
+                        <xs:element name="newArticolo10" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:choice>
+                                        <xs:element name="noMutamento" type="xs:boolean" />
+                                        <xs:element name="mutamentoCategoriaSingolaUnita" type="xs:boolean" />
+                                        <xs:element name="mutamentoTraCategorieSingolaUnita" type="xs:boolean" />
+                                        <xs:element name="mutamentoCategoriaInteroImmobile" type="xs:boolean" />
+                                    </xs:choice>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <!-- TODO: Matthia YYE7284 -->
+
+                        <xs:element name="assoggettatoSCIA" type="xs:string"/>
+                        <xs:element name="conformeDisciplinaUrbanistica" type="basic:EmptyType"/>
+                        <xs:element name="derogaPianificazioneUrbanistica">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="densitaEdilizia" minOccurs="0" type="xs:string"/>
+                                    <xs:element name="altezza" minOccurs="0" type="xs:string"/>
+                                    <xs:element name="distanzaFabbricati" minOccurs="0" type="xs:string"/>
+                                    <xs:element name="destinazioneDUso" minOccurs="0" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="variazioneSostanziale">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:choice>
+                                        <xs:element name="titoloUnico" type="aggregate:AttoBaseType"/>
+                                        <xs:element name="permessoCostruire" type="aggregate:AttoBaseType"/>
+                                        <xs:element name="segnalazioneCertificata" type="aggregate:AttoBaseType"/>
+                                     </xs:choice>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:choice>
+                    <xs:element name="procedimentoOrdinario" type="basic:EmptyType"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+
+    <!-- TODO: Matthia YYE7284 -->
+    <xs:complexType name="SanatoriaInCorsoType">
+        <xs:complexContent>
+            <xs:extension base="suecommon:SanatoriaInCorsoBaseType">
+                <xs:sequence>
+
+                        <!-- X.1 -->
+                        <xs:element name="sanatoriaSoggetto">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="interventoData" type="xs:date" />
+                                    <xs:element name="rilascioPermessoCostruire" type="xs:boolean"/>
+<!--                                        <xs:complexType>-->
+<!--                                            <xs:sequence>-->
+<!--                                                <xs:element name="rilascioPermessoCostruireCheck" type="xs:boolean" />-->
+<!--                                            </xs:sequence>-->
+<!--                                        </xs:complexType>-->
+<!--                                    </xs:element>-->
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+
+                        <!-- X.2 -->
+                        <xs:element name="interventoPermessoSanatoria">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="interventoData" type="xs:date" />
+                                    <!-- X.2.1 -->
+                                    <xs:element name="conformitaPresentazioneRealizzazione">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <!-- X.2.1.x -->
+                                                <xs:choice>
+                                                    <xs:element name="oblazioneDoppioContributoParziale"
+                                                                type="xs:boolean"/>
+                                                    <xs:element name="condizioneSicurezzaRimozione" type="xs:boolean"/>
+                                                </xs:choice>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <!-- X.2.2 -->
+                                    <xs:element name="conformitaUrbanisticaEdiliziaPresentazioneRealizzazione">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <!-- X.2.2.x -->
+                                                <xs:choice>
+                                                    <xs:element name="oblazioneDoppioContributoTotale"
+                                                                type="xs:boolean"/>
+                                                    <xs:element name="condizioneSicurezzaRimozioneDoppia"
+                                                                type="xs:boolean"/>
+                                                </xs:choice>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+
+
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- TODO: Matthia YYE7284 -->
+
+
+
+    <!-- TODO: Damiano YYE7283 -->
+    <xs:complexType name="newRegolaritaUrbanisticaType">
+        <xs:complexContent>
+            <xs:extension base="suecommon:NewRegolaritaUrbanisticaBaseType">
+                <xs:sequence>
+                    <xs:choice>
+                        <xs:element name="nuovaCostruzioneAreaLiberaCheck" type="xs:boolean"/>
+                        <xs:group ref="suecommon:NewRegolaritaUrbanisticaPdCOptionGroup"/>
+                    </xs:choice>
+                    <xs:choice>
+                        <xs:element name="pienamenteConforme" type="xs:boolean" />
+                        <xs:element name="conformeDocumentazione" type="xs:boolean" />
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- TODO: Damiano YYE7283 -->
+
+
+
+    <xs:complexType name="CalcoloContributoType">
+        <xs:complexContent>
+            <xs:extension base="suecommon:CalcoloContributoBaseType">
+            <xs:choice>
+                <xs:element name="titoloGratuito" type="xs:string"/>
+                <xs:element name="titoloOneroso">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:choice>
+                                <xs:element name="calcoloSportello" type="basic:EmptyType"/>
+                                <xs:element name="calcoloPreventivo" type="basic:EmptyType"/>                                                    
+                            </xs:choice>
+                            <xs:element name="versamento" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:choice>
+                                        <xs:element name="momentoRitiro" type="basic:EmptyType"/>
+                                        <xs:element name="chiedeRateizzazione">   
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="corrispondeInCorso" minOccurs="0" type="basic:EmptyType"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:choice>                              
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="oneriUrbanizzazione" minOccurs="0" type="basic:EmptyType"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:choice>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType> 
+    
+
+    <xs:complexType name="ObblighiSaluteSicurezzaType">
+        <xs:choice>
+            <xs:element name="nonRicade" type="basic:EmptyType"/>
+            <xs:element name="ricade">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:group ref="suecommon:ObblighiSaluteSicurezzaEntitaCantiereGroup"/>
+                        <xs:choice>
+                            <xs:element name="noNotifica" type="basic:EmptyType"/>
+                            <xs:element name="notifica">
+                                <xs:complexType>
+                                    <xs:choice>
+                                        <xs:element name="allega" type="basic:AbstractBaseType"/> 
+                                        <xs:element name="invioPrimaInizioLavori" type="basic:EmptyType"/> 
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ricadeRiservaPresentaPrimaInizioLavori" type="basic:AbstractBaseType"/>
+        </xs:choice>        
+    </xs:complexType>
+
+
+    <!-- TODO: Matthia YYE7284 -->
+    <xs:complexType name="TipoInterventiOpere">
+        <xs:complexContent>
+            <xs:extension base="suecommon:TipoInterventiOpereBaseType">
+                <xs:sequence>
+                    <xs:element name="nuovaCostruzione" minOccurs="0">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="manufattiEdilizi" type="basic:EmptyType" minOccurs="0"/>
+                                <xs:element name="urbanizzazione" type="basic:EmptyType" minOccurs="0"/>
+                                <xs:element name="impianti" type="basic:EmptyType" minOccurs="0"/>
+                                <xs:element name="tralicci" type="basic:EmptyType" minOccurs="0"/>
+                                <xs:element name="manufattiLeggeri" type="basic:EmptyType" minOccurs="0"/>
+                                <xs:element name="nuovaCostruzionePregioAmbientale" type="basic:EmptyType" minOccurs="0"/>
+                                <xs:element name="depositi" type="basic:EmptyType" minOccurs="0"/>
+                                <xs:element name="trasformazioneUrbanistica" type="xs:string" minOccurs="0"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ristrutturazioneUrbanistica" minOccurs="0" type="basic:EmptyType"/>
+                    <xs:element name="ristrutturazioneEdilizia" minOccurs="0" type="basic:EmptyType"/>
+                    <xs:element name="assoggettatiSCIA" minOccurs="0" type="xs:string"/>
+                    <xs:element name="variantiEssenziali" minOccurs="0" type="basic:EmptyType"/>
+                    <xs:element name="variantiCentroStorico" minOccurs="0" type="basic:EmptyType"/>
+
+                    <!-- v2 -->
+                    <xs:element name="opereInProgetto" minOccurs="0">
+                        <xs:complexType>
+                            <xs:choice>
+                                <xs:sequence>
+                                    <!-- v2.1 -->
+                                    <xs:element name="noMutamentoDestinazioneUso" minOccurs="0" type="xs:boolean"/>
+                                    <!-- v2.2 -->
+                                    <xs:element name="siMutamentoDestinazioneUsoStessaCategoria" minOccurs="0" type="xs:boolean"/>
+                                    <!-- v2.3 -->
+                                    <xs:element name="siMutamentoDestinazioneUsoTraCategorie" minOccurs="0" type="xs:boolean"/>
+                                    <!-- v2.4 -->
+                                    <xs:element name="siMutamentoDestinazioneUsoInteroImmobileStessaCategoria" minOccurs="0" type="xs:boolean"/>
+                                </xs:sequence>
+                            </xs:choice>
+                        </xs:complexType>
+                    </xs:element>
+
+                    <!-- v3 -->
+                    <xs:element name="permessoDiCostruireInSanatoria" minOccurs="0" type="xs:boolean"/>
+
+                    <xs:element name="dettagliOpere" minOccurs="0" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- TODO: Matthia YYE7284 -->
+
+
+
+<!--    <xs:complexType name="TipoInterventiOpere">-->
+<!--        <xs:complexContent>-->
+<!--            <xs:extension base="suecommon:TipoInterventiOpereBaseType">-->
+<!--                <xs:sequence>-->
+<!--                    <xs:element name="nuovaCostruzione" minOccurs="0">-->
+<!--                        <xs:complexType>-->
+<!--                            <xs:sequence>-->
+<!--                                <xs:element name="manufattiEdilizi" type="basic:EmptyType"/>-->
+<!--                                <xs:element name="urbanizzazione" type="basic:EmptyType"/>-->
+<!--                                <xs:element name="impianti" type="basic:EmptyType"/>-->
+<!--                                <xs:element name="tralicci" type="basic:EmptyType"/>-->
+<!--                                <xs:element name="manufattiLeggeri" type="basic:EmptyType"/>-->
+<!--                                <xs:element name="nuovaCostruzionePregioAmbientale" type="basic:EmptyType"/>-->
+<!--                                <xs:element name="depositi" type="basic:EmptyType"/>-->
+<!--                                <xs:element name="trasformazioneUrbanistica" type="xs:string"/>-->
+<!--                            </xs:sequence>-->
+<!--                        </xs:complexType>-->
+<!--                    </xs:element>                    -->
+<!--                    <xs:element name="ristrutturazioneUrbanistica" minOccurs="0" type="basic:EmptyType"/>                                    -->
+<!--                    <xs:element name="ristrutturazioneEdilizia" minOccurs="0" type="basic:EmptyType"/>    -->
+<!--                    <xs:element name="assoggettatiSCIA" minOccurs="0" type="xs:string"/>-->
+<!--                    <xs:element name="variantiEssenziali" minOccurs="0" type="basic:EmptyType"/>                    -->
+<!--                    <xs:element name="variantiCentroStorico" minOccurs="0" type="basic:EmptyType"/> -->
+<!--                    <xs:element name="mutamentoDestinazioneDUso" minOccurs="0" type="basic:EmptyType"/>                     -->
+<!--                    <xs:element name="assenzaDifformitaPermessoCostruire" minOccurs="0" type="basic:EmptyType"/>-->
+<!--                    <xs:element name="dettagliOpere" minOccurs="0" type="xs:string"/>-->
+<!--                </xs:sequence>        -->
+<!--            </xs:extension>-->
+<!--        </xs:complexContent>-->
+<!--    </xs:complexType>-->
+
+
+    <!-- TODO: Matthia YYE7284 -->
+    <xs:complexType name="NewStatoLegittimoType">
+        <xs:complexContent>
+            <xs:extension base="suecommon:StatoLegittimoBaseType">
+                <xs:sequence>
+                    <!-- X.1 -->
+                    <xs:element name="statoLegittimoRisultante">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <!-- X.1.1 -->
+                                <xs:element name="pagamentoSanzione" minOccurs="0" type="xs:boolean"/>
+                                <!-- X.1.2 -->
+                                <xs:element name="tolleranzeAccertate" minOccurs="0" type="xs:boolean"/>
+                                <!-- X.1.3 -->
+                                <xs:element name="sanatoria" minOccurs="0" type="xs:boolean"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- TODO: Matthia YYE7284 -->
+
+
+    <!-- TODO: Matthia YYE7284 -->
+    <xs:complexType name="SanatoriaAsseverazioneType">
+        <xs:complexContent>
+            <xs:extension base="suecommon:SanatoriaAsseverazioneBaseType">
+                <xs:sequence>
+
+                    <!-- X.1 -->
+                    <xs:element name="interventoInTotaleDifformita" minOccurs="0">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="interventoData" type="xs:date"/>
+                                <!-- X.1.1 -->
+                                <xs:element name="allegaDocumentazione">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element name="allegaDocumentazioneCheck" type="xs:boolean"/>
+                                        </xs:sequence>
+                                    </xs:complexType>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+
+                    <!-- X.2 -->
+                    <xs:element name="interventoInParzialeDifformita" minOccurs="0">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="interventoData" type="xs:date"/>
+                                <xs:choice>
+                                    <!-- X.2.1 -->
+                                    <xs:element name="disciplinaUrbanistica" minOccurs="0">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:choice>
+                                                    <!-- X.2.1.1 -->
+                                                    <xs:element name="allegaDocumentazioneNecessaria"
+                                                                type="xs:boolean"/>
+                                                    <!-- X.2.1.2 -->
+                                                    <xs:element name="realizzazioneInterventoAtto" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="realizzazioneInterventoAttoData"
+                                                                            type="xs:string"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <!-- X.2.1.3 -->
+                                                    <xs:element name="realizzazioneInterventoAttesta" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="realizzazioneInterventoAttestaData"
+                                                                            type="xs:string" minOccurs="0"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <!-- X.2.1.4 -->
+                                                    <xs:element name="permessoCostruireInSanatoria" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <!-- X.2.1.4.x -->
+                                                                <xs:element name="noInterventi" type="xs:boolean"
+                                                                            minOccurs="0"/>
+                                                                <xs:element name="siInterventi" type="xs:boolean"
+                                                                            minOccurs="0"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:choice>
+                                                <!-- X.2.1.5 -->
+                                                <xs:element name="rilevanzaSismica">
+                                                    <xs:complexType>
+                                                        <xs:choice>
+                                                            <!-- X.2.1.5.1 -->
+                                                            <xs:element name="bassaSismicita" type="xs:boolean"/>
+
+                                                            <!-- X.2.1.5.2 -->
+                                                            <xs:element name="mediaAltaSismicita">
+                                                                <xs:complexType>
+                                                                    <xs:sequence>
+                                                                        <!-- X.2.1.5.2.x -->
+                                                                        <xs:choice>
+                                                                            <xs:element name="noRilevanzaStrutturale"
+                                                                                        type="xs:boolean"/>
+                                                                            <xs:element name="haRilevanzaStrutturale"
+                                                                                        type="xs:boolean"/>
+                                                                        </xs:choice>
+                                                                        <!-- X.2.1.5.2.2.1 -->
+                                                                        <xs:element name="pubblicaIncolumita" minOccurs="0">
+                                                                            <xs:complexType>
+                                                                                <xs:sequence>
+                                                                                    <!-- X.2.1.5.2.2.1.x -->
+                                                                                    <xs:element
+                                                                                            name="autorizzazioneSismica"
+                                                                                            type="aggregate:AttoBaseType"/>
+                                                                                    <xs:element
+                                                                                            name="istanzaAutorizzazione"
+                                                                                            type="aggregate:AttoBaseType"/>
+                                                                                </xs:sequence>
+                                                                            </xs:complexType>
+                                                                        </xs:element>
+
+                                                                        <!-- X.2.1.5.2.2.2 -->
+                                                                        <xs:element name="minorePubblicaIncolumita" minOccurs="0">
+                                                                            <xs:complexType>
+                                                                                <xs:sequence>
+                                                                                    <!-- X.2.1.5.2.2.2.1 -->
+                                                                                    <xs:element name="decorsoTermine"
+                                                                                                type="xs:boolean"/>
+                                                                                    </xs:sequence>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+
+                                                                        <!-- X.2.1.5.2.2.3 -->
+                                                                        <xs:element name="assenzaPubblicaIncolumita" minOccurs="0">
+                                                                            <xs:complexType>
+                                                                                <xs:sequence>
+                                                                                    <!-- X.2.1.5.2.2.3.1 -->
+                                                                                    <xs:element
+                                                                                            name="decorsoTermineAssenza"
+                                                                                            type="xs:boolean"/>
+                                                                                </xs:sequence>
+                                                                            </xs:complexType>
+                                                                        </xs:element>
+
+                                                                    </xs:sequence>
+                                                                </xs:complexType>
+                                                            </xs:element>
+
+                                                        </xs:choice>
+                                                    </xs:complexType>
+                                                </xs:element>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+
+
+                                    <!-- X.2.2 -->
+                                    <xs:element name="disciplinaUrbanisticaEdilizia" minOccurs="0">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:choice>
+                                                    <!-- X.2.2.1 -->
+                                                    <xs:element name="allegaDocumentazioneNecessaria"
+                                                                type="xs:boolean"/>
+                                                    <!-- X.2.2.2 -->
+                                                    <xs:element name="realizzazioneInterventoAtto">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="realizzazioneInterventoAttoData"
+                                                                            type="xs:string"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+
+                                                    <!-- X.2.2.3 -->
+                                                    <xs:element name="realizzazioneInterventoAttesta" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="realizzazioneInterventoAttestaData"
+                                                                            type="xs:string" minOccurs="0"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <!-- X.2.2.4 -->
+                                                    <xs:element name="permessoCostruireInSanatoria" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <!-- X.2.2.4.x -->
+                                                                <xs:element name="noInterventi" type="xs:boolean"
+                                                                            minOccurs="0"/>
+                                                                <xs:element name="siInterventi" type="xs:boolean"
+                                                                            minOccurs="0"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:choice>
+                                                <!-- X.2.2.5 -->
+                                                <xs:element name="rilevanzaSismica">
+                                                    <xs:complexType>
+                                                        <xs:choice>
+
+
+                                                            <!-- X.2.2.5.1 -->
+                                                            <xs:element name="bassaSismicita" type="xs:boolean"/>
+
+                                                            <!-- X.2.2.5.2 -->
+                                                            <xs:element name="mediaAltaSismicita">
+                                                                <xs:complexType>
+                                                                    <xs:sequence>
+                                                                        <!-- X.2.2.5.2.x -->
+                                                                        <xs:choice>
+                                                                            <xs:element
+                                                                                    name="noRilevanzaStrutturale"
+                                                                                    type="xs:boolean"/>
+                                                                            <xs:element
+                                                                                    name="haRilevanzaStrutturale"
+                                                                                    type="xs:boolean"/>
+                                                                        </xs:choice>
+
+                                                                        <!-- X.2.2.5.2.2.1 -->
+
+                                                                            <xs:element name="pubblicaIncolumita" minOccurs="0" >
+                                                                                <xs:complexType>
+                                                                                    <xs:choice>
+                                                                                        <!-- x.2.2.5.2.2.1.x -->
+                                                                                        <xs:element
+                                                                                                name="autorizzazioneSismica"
+                                                                                                type="aggregate:AttoBaseType"/>
+                                                                                        <xs:element
+                                                                                                name="istanzaAutorizzazione"
+                                                                                                type="aggregate:AttoBaseType"/>
+                                                                                    </xs:choice>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+
+                                                                            <!-- X.2.2.5.2.2.2 -->
+                                                                            <xs:element
+                                                                                    name="minorePubblicaIncolumita" minOccurs="0">
+                                                                                <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                        <!-- x.2.2.5.2.2.2.1 -->
+                                                                                        <xs:element
+                                                                                                name="decorsoTermine"
+                                                                                                type="xs:boolean"/>
+                                                                                    </xs:sequence>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+
+                                                                            <!-- X.2.2.5.2.2.3 -->
+                                                                            <xs:element
+                                                                                    name="assenzaPubblicaIncolumita" minOccurs="0">
+                                                                                <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                        <!-- X.2.2.5.2.2.3.1 -->
+                                                                                        <xs:element
+                                                                                                name="decorsoTermineAssenza"
+                                                                                                type="xs:boolean"/>
+                                                                                    </xs:sequence>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+
+                                                                    </xs:sequence>
+                                                                </xs:complexType>
+                                                            </xs:element>
+                                                        </xs:choice>
+                                                    </xs:complexType>
+                                                </xs:element>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:choice>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+
+                    <!-- X.3 -->
+                    <xs:element name="iscrizioneCatastale">
+                        <xs:complexType>
+                            <xs:choice>
+                                <xs:element name="dichiara" type="xs:boolean" />
+                                <xs:element name="comunica" type="aggregate:AttoBaseType" />
+                                <xs:element name="siImpegna" type="xs:boolean" />
+                            </xs:choice>
+                        </xs:complexType>
+                    </xs:element>
+
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- TODO: Matthia YYE7284 -->
+
+
+
+    <xs:complexType name="TecniciIncaricatiDeiLavoriType">
+        <xs:sequence>
+            <xs:element name="altriTecniciDaSoggettiCoinvolti" minOccurs="0" type="basic:EmptyType"/>
+            <xs:element name="altriTecniciIndividuatiPrimaInizioLavori" minOccurs="0"  type="basic:EmptyType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+
+    <xs:complexType name="ImpreseEsecutriciDeiLavoriType">
+        <xs:complexContent>
+            <xs:extension base="suecommon:ImpreseEsecutriciDeiLavoriBaseType">
+                <xs:choice>
+                    <xs:element name="daSoggettiCoinvolti" type="basic:EmptyType"/>
+                    <xs:element name="primaInizioLavori" type="basic:EmptyType"/>
+                </xs:choice>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+
+
+
+    <!-- TODO: Damiano YYE7283 -->
+    <xs:complexType name="TabellaAllegatiType">
+        <xs:sequence>
+            <xs:element name="allegatiPermessoCostruire" type="permcostr:AllegatiPermessoCostruireType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+    <xs:complexType name="AllegatiPermessoCostruireType">
+        <xs:sequence>
+            <xs:element name="allegatoProcuraDelega" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoSoggettiCoinvolti" type="suecommon:AllegatoSoggettiCoinvoltiType" minOccurs="0"/>
+            <xs:element name="allegatoVersamentoDirittiSegreteria" type="moduli:AllegatoType" minOccurs="0" />
+            <xs:element name="allegatoDocumentoIdentita" type="moduli:AllegatoType" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="allegatoAssensoTerzi" type="moduli:AllegatoType" minOccurs="0" />
+            <xs:element name="allegatoModelloISTAT"   type="moduli:AllegatoType" minOccurs="0"/>
+            <!-- TODO: Damiano YYE7283 -->
+            <xs:element name="allegatoAccatastamentoPrimoImpianto"   type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoDocumentiProbantiRegolaritaEdiliziaImmobile"   type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoRicevutaPagamentoSanzione"   type="moduli:AllegatoType" minOccurs="0"/>
+            <!-- TODO: Damiano YYE7283 -->
+            <xs:element name="allegatoDeterminazioneContributoCostruzione"   type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoPreventivoContributoCostruzione" type="moduli:AllegatoType" minOccurs="0" />
+            <xs:element name="allegatoProgettoUrbanizzazione" type="moduli:AllegatoType" minOccurs="0" />
+            <xs:element name="allegatoNotificaPreliminare" type="moduli:AllegatoType" minOccurs="0" />
+            <xs:element name="allegatoVersamentoImpostaBollo" type="moduli:AllegatoType" minOccurs="0" />
+            <xs:element name="allegatoElaboratiGraficiStatoDiFatto" type="moduli:AllegatoType" minOccurs="0" />
+            <xs:element name="allegatoDocumentazioneFotograficaStatoDiFatto" type="moduli:AllegatoBaseType" minOccurs="0" />
+            <!-- TODO: Damiano YYE7283 -->
+            <xs:element name="allegatoDocumentazioneStatoLegittimo" type="moduli:AllegatoBaseType" minOccurs="0" />
+            <xs:element name="allegatoElaboratiTolleranze" type="moduli:AllegatoBaseType" minOccurs="0" />
+            <xs:element name="allegatoAutorizzazioneSismicaTolleranze" type="moduli:AllegatoBaseType" minOccurs="0" />
+            <xs:element name="allegatoElaboratiSanatoria" type="moduli:AllegatoBaseType" minOccurs="0" />
+            <xs:element name="allegatoDocumentoProbanteInterventoAbusivo" type="moduli:AllegatoBaseType" minOccurs="0" />
+            <!-- Non trovato sul Front Office -->
+            <xs:element name="allegatoRimozioneOpereNonSanate" type="moduli:AllegatoBaseType" minOccurs="0" />
+<!--            <xs:element name="allegatoDocumentoProbanteVariante" type="moduli:AllegatoBaseType" minOccurs="0" />-->
+<!--            <xs:element name="allegatoAutorizzazioneSismicaSanatoria" type="moduli:AllegatoBaseType" minOccurs="0" />-->
+            <!-- TODO: Damiano YYE7283 -->
+            <xs:element name="allegatoElaboratiSuperamentoBarriereArchitettoniche" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoDerogaBarriereArchitettoniche" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoProgettoImpianti" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoRelazioneConsumiEnergetici" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoDocImpattoAcustico" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoValitazionePrevisionaleClimaAcustico" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoDichiarazioneSostitutiva" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoDocImpattoAcusticoPerNullaOsta" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoDocRilascioParereVigiliFuoco" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoDerogaPrevenzioneIncendi" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoPianoDemolizioneAmianto" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoDerogaConformitaRequisitiIgienicoSanitari" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoDenunciaLavori" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoDenunciaLavoriZonaSismica" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoAutorizzazioneSismica" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoRelazioneGeologica" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoRisultatiQualitaTerreni" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoAutorizzazioniScarichiIdrici" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoRelazionePaesaggistica" type="moduli:AllegatoType" minOccurs="0"/>
+            <!-- TODO: Damiano YYE7283 -->
+            <xs:element name="allegatoDocumentazioneParereVincolante" type="moduli:AllegatoType" minOccurs="0"/>
+            <!-- TODO: Damiano YYE7283 -->
+            <xs:element name="allegatoRilascioParereSoprintendenza" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoRilascioNullaOstaAreaProtetta" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoRilascioAutorizzazioneVincoloIdrogeologico" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoRilascioAutorizzazioneVincoloIdraulico" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoApprovazioneProgettoVINCA" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoDerogaFasciaRispettoCimiteriale" type="moduli:AllegatoType" minOccurs="0"/>
+            <xs:element name="allegatoValutazioneComitatoTecnicoRegionaleIncidenteRilevante" type="moduli:AllegatoType" minOccurs="0"/>
+
+            <xs:element name="allegatoConformitaVincoliEcologica" type="suecommon:AllegatoConformitaVincoliEcologicaType" minOccurs="0"/>
+            <xs:element name="allegatoAssensoTutelaEcologica" type="suecommon:AllegatoAssensoTutelaEcologicaType" minOccurs="0"/>
+            <xs:element name="allegatoConformitaVincoliFunzionale" type="suecommon:AllegatoConformitaVincoliFunzionaleType" minOccurs="0"/>
+            <xs:element name="allegatoAssensoTutelaFunzionale" type="suecommon:AllegatoAssensoTutelaFunzionaleType" minOccurs="0"/>
+
+            <xs:element name="allegatoAttestazioneVersamentoOneriDiritti" type="moduli:AllegatoType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- TODO: Damiano YYE7283 -->
+    
+</xs:schema>
