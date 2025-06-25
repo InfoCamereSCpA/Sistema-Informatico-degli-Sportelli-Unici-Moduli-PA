@@ -70,7 +70,7 @@
             
             <!-- RELAZIONE TECNICA DI ASSEVERAZIONE -->
             <!-- TODO: Matthia YYE7284 -->
-            <xs:element name="relazioneTecnicaAsseverazione" type="suecommon:RelazioneTecnicaAsseverazioneConSanatoriaType"/>
+            <xs:element name="relazioneTecnicaAsseverazione" type="suecommon:RelazioneTecnicaAsseverazioneType"/>
             <!-- TODO: Matthia YYE7284 -->
 
             <!-- ALLEGATI  -->
@@ -438,7 +438,7 @@
     <!-- TODO: Matthia YYE7284 -->
     <xs:complexType name="newStatoLegittimoType">
         <xs:complexContent>
-            <xs:extension base="suecommon:newStatoLegittimoBaseType">
+            <xs:extension base="suecommon:StatoLegittimoBaseType">
                 <xs:sequence>
                     <!-- X.1 -->
                     <xs:element name="statoLegittimoRisultante">
@@ -464,7 +464,7 @@
     <!-- X) Sanatoria e regolarizzazioni per interventi già realizzati e in corso di esecuzione (*)	-->
     <xs:complexType name="SanatoriaAsseverazioneType">
         <xs:complexContent>
-            <xs:extension base="suecommon:SanatoriaBaseType">
+            <xs:extension base="suecommon:SanatoriaAsseverazioneBaseType">
                 <xs:sequence>
                     <xs:choice>
                         <!-- X.1 -->
