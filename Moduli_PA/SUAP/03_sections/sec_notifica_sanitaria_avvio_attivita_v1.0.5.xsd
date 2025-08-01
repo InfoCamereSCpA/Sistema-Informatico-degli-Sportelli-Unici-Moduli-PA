@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:snsavvio="../03_sections/notifica_sanitaria_avvio_attivita"
+            xmlns:ensapeid="../02_entities/notifica_sanitaria_apertura_identificazione"
+            xmlns:enstipoatt="../02_entities/notifica_sanitaria_tipologia_attivita"
+            xmlns:ensapeini="../02_entities/notifica_sanitaria_apertura_inizio" targetNamespace="../03_sections/notifica_sanitaria_avvio_attivita" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/notifica_sanitaria_apertura_identificazione" schemaLocation="../02_entities/ent_notifica_sanitaria_apertura_identificazione_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/notifica_sanitaria_tipologia_attivita" schemaLocation="../02_entities/ent_notifica_sanitaria_tipologia_attivita_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/notifica_sanitaria_apertura_inizio" schemaLocation="../02_entities/ent_notifica_sanitaria_apertura_inizio_v1.0.5.xsd"/>
+    <xsd:complexType name="sezione_notifica_sanitaria_avvio_ctype">
+        <xsd:sequence>
+            <xsd:element name="identificazione" type="ensapeid:notifica_sanitaria_apertura_identificazione_type" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="tipologia_attivita" type="enstipoatt:notifica_sanitaria_tipologia_attivita_ctype" minOccurs="1" maxOccurs="1" />
+            <xsd:element name="inizio_attivita" type="ensapeini:inizio_attivita_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="altre_dichiarazioni" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="sezione_notifica_sanitaria_avvio" type="snsavvio:sezione_notifica_sanitaria_avvio_ctype"/>
+</xsd:schema>

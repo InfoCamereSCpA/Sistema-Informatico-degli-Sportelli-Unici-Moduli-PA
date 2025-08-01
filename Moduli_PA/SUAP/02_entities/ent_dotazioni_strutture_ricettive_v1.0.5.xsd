@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:edotaralb="../02_entities/dotazioni_strutture_ricettive" targetNamespace="../02_entities/dotazioni_strutture_ricettive" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <!-- AS-IS: ServiziStrutturaBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="dotazioni_strutture_ricettive_base_type" abstract="true"/>
+
+    <xsd:complexType name="dotazioni_strutture_ricettive_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="edotaralb:dotazioni_strutture_ricettive_base_type">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Tipo che rappresenta le dotazioni delle strutture ricettive.
+                        Include informazioni su servizi, piscine, palestre e altro.
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="no_alimenti_bevande" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="somministrazione_allogiati" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="somministrazione_pubblica" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="no_piscina" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+                    <xsd:element name="piscina_allogiati" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="nr_impianti_piscina_allogiati" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="misura_impianti_piscina_allogiati" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+
+                    <xsd:element name="piscina_pubblica" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="nr_impianti_piscina_pubblica" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="misura_impianti_piscina_pubblica" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="centro_estetico" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="centro_estetico_alloggiati" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="centro_estetico_pubblico" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+                    <xsd:element name="palestra" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="palestra_alloggiati" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="palestra_pubblico" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+                    <xsd:element name="servizio_1" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="servizio_gestore_1" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="servizio_2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="servizio_gestore_2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="servizio_3" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="servizio_gestore_3" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:element name="dotazioni_strutture_ricettive" type="edotaralb:dotazioni_strutture_ricettive_ctype"/>
+
+</xsd:schema>

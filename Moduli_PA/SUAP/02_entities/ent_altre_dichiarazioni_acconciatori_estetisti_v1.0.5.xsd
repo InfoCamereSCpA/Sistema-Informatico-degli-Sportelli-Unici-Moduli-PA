@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:ealtdicaccest="../02_entities/altre_dichiarazioni_acconciatori_estetisti"
+
+            targetNamespace="../02_entities/altre_dichiarazioni_acconciatori_estetisti"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:complexType name="altre_dichiarazioni_acconciatori_estetisti_ctype">
+        <xsd:sequence>
+            <xsd:element name="igiene_sanita_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="regolamento_comunale_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altre_dichiarazioni_acconciatori_estetisti_altro_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altre_dichiarazioni_acconciatori_estetisti_altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="altre_dichiarazioni_acconciatori_estetisti" type="ealtdicaccest:altre_dichiarazioni_acconciatori_estetisti_ctype"/>
+</xsd:schema>

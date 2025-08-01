@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:eautorimesseape="../02_entities/autorimesse_apertura" targetNamespace="../02_entities/autorimesse_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <!-- AS-IS: TipoEsercizioTypeAltroBaseType su SUAP_modulo_autorimesse.xsd -->
+    <xsd:complexType name="tipo_esercizio_type_altro_base_type" abstract="true"/>
+
+    <xsd:complexType name="tipo_esercizio_type_altro_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eautorimesseape:tipo_esercizio_type_altro_base_type">
+                <xsd:sequence>
+                    <xsd:element name="altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="autorimesse_apertura_ctype">
+        <xsd:sequence>
+            <xsd:element name="senza_lavaggio" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="con_lavaggio" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="tipo_esercizio_type_altro" type="eautorimesseape:tipo_esercizio_type_altro_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--
+            <xsd:element name="altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            -->
+
+            <xsd:element name="superficie" type="xsd:double" default="0.0" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="autorimesse_apertura" type="eautorimesseape:autorimesse_apertura_ctype"/>
+</xsd:schema>

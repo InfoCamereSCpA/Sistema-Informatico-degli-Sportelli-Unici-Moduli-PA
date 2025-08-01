@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sreqprotec="../03_sections/requisiti_professionali_tecnici"
+            xmlns:ereqprotec="../02_entities/requisiti_professionali_tecnici"
+            targetNamespace="../03_sections/requisiti_professionali_tecnici" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/requisiti_professionali_tecnici" schemaLocation="../02_entities/ent_requisiti_professionali_tecnici_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_requisiti_professionali_tecnici_ctype">
+        <xsd:sequence>
+            <xsd:element name="requisiti_professionali_tecnici" type="ereqprotec:requisiti_professionali_tecnici_ctype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_requisiti_professionali_tecnici" type="sreqprotec:sezione_requisiti_professionali_tecnici_ctype"/>
+</xsd:schema>

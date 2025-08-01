@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:ecomces="../02_entities/comunicazione_cessazione"
+            xmlns:ctipi="../commons/tipi"
+            xmlns:eproto="../02_entities/protocollo"
+            targetNamespace="../02_entities/comunicazione_cessazione"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="../02_entities/ent_protocollo_v1.0.5.xsd"/>
+
+
+    <xsd:complexType name="comunicazione_cessazione_ctype">
+        <xsd:sequence>
+            <xsd:element name="cessazione_attivita_scelta" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="cessazione_attivita" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="cessazione_contestuale_comunicazione" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="cessazione_decorrenza" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_decorrenza_cessazione" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="sospensione_temporanea_attivita_scelta" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="sospensione_temporanea_attivita" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="sospensione_contestuale_comunicazione" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="sospensione_decorrrenza" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_decorrenza_sospensione_da" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_decorrenza_sospensione_a" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="nr_protocollo" type="eproto:numero_registrazione_stype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="data_protocollo" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="comunicazione_cessazione" type="ecomces:comunicazione_cessazione_ctype"/>
+</xsd:schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ssomareseramp="../03_sections/somministrazione_aree_servizio_ampliamento"
+    xmlns:esomarsera="../02_entities/aree_servizio_ampliamento" targetNamespace="../03_sections/somministrazione_aree_servizio_ampliamento" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/aree_servizio_ampliamento" schemaLocation="../02_entities/ent_aree_servizio_ampliamento_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_somministrazione_aree_servizio_ampliamento_ctype">
+        <xsd:sequence>
+            <xsd:element name="aree_servizio_ampliamento" type="esomarsera:aree_servizio_ampliamento_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_somministrazione_aree_servizio_ampliamento" type="ssomareseramp:sezione_somministrazione_aree_servizio_ampliamento_ctype"/>
+</xsd:schema>

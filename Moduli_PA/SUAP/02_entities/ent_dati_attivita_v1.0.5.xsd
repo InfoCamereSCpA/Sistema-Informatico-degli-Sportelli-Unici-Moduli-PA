@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:edatiatt="../02_entities/dati_attivita" targetNamespace="../02_entities/dati_attivita" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+
+    <xsd:complexType name="dati_attivita_base_type" abstract="true"/>
+
+    <xsd:complexType name="dati_attivita_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="edatiatt:dati_attivita_base_type">
+                <xsd:sequence>
+                    <xsd:element name="tipologia_attivita" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                    <xsd:element name="nr_documentazione" type="xsd:positiveInteger" minOccurs="1" maxOccurs="1" />
+                    <xsd:element name="data_documentazione" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="dati_attivita" type="edatiatt:dati_attivita_ctype"/>
+</xsd:schema>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eapeextraalb="../02_entities/apertura_attivita_extra_alberghiera"
+            xmlns:ctipi="../commons/tipi"
+        targetNamespace="../02_entities/apertura_attivita_extra_alberghiera" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <!-- AS-IS: StruttureRicettiveCarattereEsercizioBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="strutture_ricettive_carattere_esercizio_base_type" abstract="true"/>
+
+    <!-- AS-IS: ClassificazioneBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="classificazione_base_type" abstract="true"/>
+
+    <xsd:complexType name="strutture_ricettive_carattere_esercizio_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eapeextraalb:strutture_ricettive_carattere_esercizio_base_type">
+                <xsd:sequence>
+                    <xsd:element name="carattere_annuale" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="carattere_stragionale_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="classificazione_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eapeextraalb:classificazione_base_type">
+                <xsd:sequence>
+                    <xsd:element name="classificazione_richiesta" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="data_planimetria" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="nr_protocollo" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+
+    <!-- AS-IS: StruttureRicettiveAlberghiereTipologiaEsercizioBaseType su SUAP_modulo_strutture_ricettive_alberghiere.xsd -->
+    <xsd:complexType name="tipologia_esercizio_base_type" abstract="true"/>
+
+
+    <xsd:complexType name="tipologia_esercizio_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eapeextraalb:tipologia_esercizio_base_type">
+                <xsd:sequence>
+                    <xsd:choice>
+                        <xsd:element name="tipologia_affittacamere" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="tipologia_casa_vacanze" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="tipologia_casa_ferie" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="tipologia_casa_gioventu" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="tipologia_beb" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="tipologia_rifugio_escusionistico" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="tipologia_rifugio_alpino" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    </xsd:choice>
+<!--                    <xsd:element name="classificazione" type="eapeextraalb:classificazione_base_type" minOccurs="0" maxOccurs="1"/>-->
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+
+
+    <xsd:complexType name="apertura_extra_alberghiera_ctype">
+        <xsd:sequence>
+            <xsd:element name="denominazione_struttura" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:choice>
+                <xsd:sequence>
+                    <xsd:element name="strutture_ricettive_carattere_esercizio" type="eapeextraalb:strutture_ricettive_carattere_esercizio_base_type" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="sitoWeb" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <!--
+                    <xsd:element name="carattere_annuale" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="carattere_stragionale_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    -->
+
+                    <xsd:element name="data_da" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="data_a" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:choice>
+            <xsd:element name="tipologia_esercizio" type="eapeextraalb:tipologia_esercizio_ctype" minOccurs="0" maxOccurs="1"/>
+
+
+            <!--            <xsd:choice>-->
+<!--                <xsd:sequence>-->
+<!--                    <xsd:element name="tipologia_affittacamere" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>-->
+<!--                    <xsd:element name="tipologia_casa_vacanze" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>-->
+<!--                    <xsd:element name="tipologia_casa_ferie" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>-->
+<!--                    <xsd:element name="tipologia_casa_gioventu" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>-->
+<!--                    <xsd:element name="tipologia_beb" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>-->
+<!--                    <xsd:element name="tipologia_rifugio_escusionistico" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>-->
+<!--                    <xsd:element name="tipologia_rifugio_alpino" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>-->
+<!--                    <xsd:element name="altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>-->
+<!--                </xsd:sequence>-->
+<!--            </xsd:choice>-->
+
+            <xsd:element name="classificazione" type="eapeextraalb:classificazione_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--
+            <xsd:element name="classificazione_richiesta" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="data_planimetria" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="nr_protocollo" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            -->
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    
+    <xsd:element name="apertura_extra_alberghiera" type="eapeextraalb:apertura_extra_alberghiera_ctype"/>
+</xsd:schema>

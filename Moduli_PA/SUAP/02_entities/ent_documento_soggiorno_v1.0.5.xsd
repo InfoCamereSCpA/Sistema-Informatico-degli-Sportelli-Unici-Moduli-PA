@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:edocsogg="../02_entities/documento_soggiorno" 
+            targetNamespace="../02_entities/documento_soggiorno" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    <xsd:complexType name="documento_soggiorno_ctype">
+        <xsd:sequence>
+            <xsd:element name="estremo_documento" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="ente_rilascio" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="data_rilascio" type="xsd:date" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="data_scadenza" type="xsd:date" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="documento_soggiorno" type="edocsogg:documento_soggiorno_ctype"></xsd:element>
+</xsd:schema>

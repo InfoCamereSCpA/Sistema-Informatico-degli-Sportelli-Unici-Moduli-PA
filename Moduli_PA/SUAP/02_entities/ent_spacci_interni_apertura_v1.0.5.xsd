@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:espaintape="../02_entities/spacci_interni_apertura"
+            targetNamespace="../02_entities/spacci_interni_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:complexType name="spacci_interni_apertura_ctype">
+        <xsd:sequence>
+            <xsd:element name="denominazione_presso" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="alimentare" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="superficie_alimentare" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="non_alimentare" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="superficie_non_alimentare" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="spacci_interni_apertura" type="espaintape:spacci_interni_apertura_ctype"/>
+</xsd:schema>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:eist="../02_entities/istituto"
+    xmlns:eindita="../02_entities/indirizzo_italiano"
+    xmlns:ctipi="../commons/tipi"
+    xmlns:ccodelist="../commons/codelist"
+    xmlns:canncl="../commons/xsdAnnotations"
+    targetNamespace="../02_entities/istituto"
+    elementFormDefault="qualified" attributeFormDefault="qualified"
+    version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/indirizzo_italiano" schemaLocation="../02_entities/ent_indirizzo_italiano_v1.0.5.xsd" /> 
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd" />
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd" />
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd" />
+
+
+          <xsd:complexType name="istituto_ctype">
+            <xsd:sequence>
+                <xsd:element name="nome_istituto" type="xsd:string"/>
+                <xsd:element name="indirizzo" type="xsd:string"/>
+                <xsd:element name="oggetto_corso" type="xsd:string"/>
+                <xsd:element name="anno_conclusione" type="xsd:integer"/>
+            </xsd:sequence>
+    </xsd:complexType>  
+
+    <xsd:element name="istituto" type="eist:istituto_ctype" />
+</xsd:schema>

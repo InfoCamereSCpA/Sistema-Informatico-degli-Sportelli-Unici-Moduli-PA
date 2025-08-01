@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:erapp="../02_entities/rappresentanza"
+            xmlns:vruoric="../01_vocabularies/ruolo_rappresentante" targetNamespace="../02_entities/rappresentanza" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../01_vocabularies/ruolo_rappresentante" schemaLocation="../01_vocabularies/voc_ruolo_rappresentante_v1.0.5.xsd"/>
+    
+    <xsd:element name="rappresentanza" type="erapp:rappresentanza_ctype"/>
+    
+    <xsd:simpleType name="ruolo_rappresentanza_stype">
+        <xsd:restriction base="vruoric:ruolo_rappresentante_voc"/>
+    </xsd:simpleType>
+    
+    <xsd:complexType name="rappresentanza_ctype">
+        <xsd:sequence>
+            <xsd:element name="data_inizio" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_fine" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="estremi_atto" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="ruolo" type="erapp:ruolo_rappresentanza_stype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+</xsd:schema>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eeleprosot="../02_entities/elenco_prodotti_sottocosto"
+
+            targetNamespace="../02_entities/elenco_prodotti_sottocosto"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:complexType name="elenco_prodotti_sottocosto_base_type" abstract="true"/>
+
+    <xsd:complexType name="elenco_prodotti_sottocosto_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eeleprosot:elenco_prodotti_sottocosto_base_type">
+                <xsd:sequence>
+                    <xsd:element name="allega_elenco_prodotti_vendita_sottocosto_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="compila_elenco_prodotti_vendita_sottocosto_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="compila_elenco_prodotti_vendita_sottocosto_testo" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="elenco_prodotti_sottocosto" type="eeleprosot:elenco_prodotti_sottocosto_ctype"/>
+</xsd:schema>

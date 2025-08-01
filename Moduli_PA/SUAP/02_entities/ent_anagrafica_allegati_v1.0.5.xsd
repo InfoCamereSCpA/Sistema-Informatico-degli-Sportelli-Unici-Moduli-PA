@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                        xmlns:eanagallegati="../02_entities/anagrafica_allegati"
+            xmlns:ccodelist="../commons/codelist"
+            xmlns:canncl="../commons/xsdAnnotations"
+            xmlns:ctipi="../commons/tipi"
+            xmlns:vpergen="../01_vocabularies/persona_genere"
+            xmlns:ecitt="../02_entities/cittadinanza" targetNamespace="../02_entities/anagrafica_allegati" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../01_vocabularies/persona_genere" schemaLocation="../01_vocabularies/voc_persona_genere_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/cittadinanza" schemaLocation="../02_entities/ent_cittadinanza_v1.0.5.xsd"/>
+    <xsd:complexType name="anagrafica_allegati_ctype">
+        <xsd:sequence>
+            <xsd:element name="cognome" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="nome" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="codice_fiscale" type="ctipi:codice_fiscale_stype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="data_nascita" type="xsd:date"/>
+            <xsd:element name="cittadinanza" type="ecitt:cittadinanza_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="sesso" type="vpergen:sesso_voc" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="stato_nascita" type="ccodelist:CodeType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:Stati</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="provincia_nascita" type="ccodelist:CodeType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ProvinceItaliane</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="comune_nascita" type="ccodelist:CodeType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ComuniItaliani</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="provincia_residenza" type="ccodelist:CodeType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ProvinceItaliane</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="comune_residenza" type="ccodelist:CodeType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ComuniItaliani</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            
+            <xsd:element name="indirizzo_residenza" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="nr_civico_residenza" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="cap_residenza" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="anagrafica_allegati" type="eanagallegati:anagrafica_allegati_ctype"></xsd:element>
+</xsd:schema>

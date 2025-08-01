@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+    xmlns:sallegati="../03_sections/allegati"
+    xmlns:efile="../02_entities/files"
+    xmlns:eallposreqaltsoc="../02_entities/allegato_possesso_requisiti_altri_soci"
+    xmlns:eallposreqaltsog="../02_entities/allegato_possesso_requisiti_altri_soggetti"
+    xmlns:eallposreqraptul="../02_entities/allegato_possesso_requisiti_rappresentante_tulps"
+    xmlns:eallposreqresdid="../02_entities/allegato_possesso_requisiti_responsabile_didattico"
+    xmlns:eallposreqperdoc="../02_entities/allegato_possesso_requisiti_personale_docente"
+    xmlns:eallsemappaut="../02_entities/allegato_semestrale_apparecchi_automatici"
+    xmlns:eallcomnomincven="../02_entities/allegato_comunicazione_nomina_incaricati_vendita"
+    xmlns:eallnotsan="../02_entities/allegato_allegato_notifica_sanitaria"
+
+    xmlns:ccts-cct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2"
+    xmlns:ccts="urn:un:unece:uncefact:documentation:2"
+
+    xmlns:ealldicreqpro="../02_entities/allegato_dichiarazioni_requisiti_professionali"
+    xmlns:eallprereqpro="../02_entities/allegato_preposto_requisiti_professionali"
+    xmlns:eallrestecaccreqpro="../02_entities/allegato_responsabile_tecnico_acconciatori_requisiti_professionali"
+    xmlns:eallrestecestreqpro="../02_entities/allegato_responsabile_tecnico_estetisti_requisiti_professionali"
+    xmlns:eallresattproreqant="../02_entities/allegato_responsabile_attivita_produttive_requisiti_antimafia"
+
+
+    targetNamespace="../03_sections/allegati"
+    elementFormDefault="qualified" attributeFormDefault="qualified"
+    version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/files" schemaLocation="../02_entities/ent_files_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_possesso_requisiti_altri_soci" schemaLocation="../02_entities/ent_allegato_possesso_requisiti_altri_soci_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_possesso_requisiti_altri_soggetti" schemaLocation="../02_entities/ent_allegato_possesso_requisiti_altri_soggetti_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_possesso_requisiti_rappresentante_tulps" schemaLocation="../02_entities/ent_allegato_possesso_requisiti_rappresentante_tulps_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_possesso_requisiti_responsabile_didattico" schemaLocation="../02_entities/ent_allegato_possesso_requisiti_responsabile_didattico_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_possesso_requisiti_personale_docente" schemaLocation="../02_entities/ent_allegato_possesso_requisiti_personale_docente_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_semestrale_apparecchi_automatici" schemaLocation="../02_entities/ent_allegato_semestrale_apparecchi_automatici_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_comunicazione_nomina_incaricati_vendita" schemaLocation="../02_entities/ent_allegato_comunicazione_nomina_incaricati_vendita_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_allegato_notifica_sanitaria" schemaLocation="../02_entities/ent_allegato_notifica_sanitaria_v1.0.5.xsd"/>
+
+
+    <!-- Dichiarazioni -->
+    <xsd:import namespace="../02_entities/allegato_dichiarazioni_requisiti_professionali" schemaLocation="../02_entities/ent_allegato_dichiarazioni_requisiti_professionali_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_preposto_requisiti_professionali" schemaLocation="../02_entities/ent_allegato_preposto_requisiti_professionali_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_responsabile_tecnico_acconciatori_requisiti_professionali" schemaLocation="../02_entities/ent_allegato_responsabile_tecnico_acconciatori_requisiti_professionali_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_responsabile_tecnico_estetisti_requisiti_professionali" schemaLocation="../02_entities/ent_allegato_responsabile_tecnico_estetisti_requisiti_professionali_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_responsabile_attivita_produttive_requisiti_antimafia" schemaLocation="../02_entities/ent_allegato_responsabile_attivita_produttive_requisiti_antimafia_v1.0.5.xsd"/>
+
+    <xsd:complexType name="allegati_ctype">
+        <!-- vecchia struttura semplice -->
+        <!--
+        <xsd:sequence>
+            <xsd:element name="procura_delega" type="efile:file_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dichiarazione_requisiti_soci" type="efile:file_ctype" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="dichiarazione_requisiti_preposto" type="efile:file_ctype" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="planimetria_locali" type="efile:file_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="attestazione_versamenti" type="efile:file_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="assolvimento_imposta_bollo" type="efile:file_ctype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+        -->
+
+        <!-- nuova struttura prevista: mail del 26/05/2025 -->
+        <xsd:sequence>
+            <xsd:element name="allegatiSCIA" type="sallegati:AllegatiSCIAType" minOccurs="0" />
+            <xsd:element name="allegatiSCIAUnica" type="sallegati:AllegatiSCIAUnicaType" minOccurs="0" />
+            <xsd:element name="allegatiSCIACondizionata" type="sallegati:AllegatiSCIACondizionataType" minOccurs="0" />
+            <xsd:element name="allegatiAltri" type="sallegati:AllegatiAltriType" minOccurs="0" />
+            <!-- <xsd:element name="allegatiDichiarazioni" type="sallegati:AllegatiDichiarazioniType" minOccurs="0" /> -->
+        </xsd:sequence>
+
+    </xsd:complexType>
+
+    <xsd:complexType name="AllegatiSCIAType">
+        <xsd:sequence>
+            <xsd:element name="allegatoProcuraDelega" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoDocumentoIdentitaTitolare" type="efile:file_ctype"  minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="allegatoPlanimetrieStruttura"  type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoRelazioneCaratteristicheLocali" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoTabellaTariffePrestazioni" type="efile:file_ctype"  minOccurs="0" />
+            <xsd:element name="allegatoTimbroSocieta" type="efile:file_ctype" minOccurs="0" />
+
+            <!-- Commentato da richiesta perventuta il 14/07/2025 relativi al modulo Ingrosso da foglio Excel Errori Moduli mail 08/07/2025 -->
+            <!-- <xsd:element name="allegatoPossessoRequisitiAltriSoci" type="eallposreqaltsoc:allegato_possesso_requisiti_altri_soci_ctype" minOccurs="0" maxOccurs="unbounded" /> -->
+            <!-- <xsd:element name="allegatoPossessoRequisitiAltriSoggetti" type="eallposreqaltsog:allegato_possesso_requisiti_altri_soggetti_ctype" minOccurs="0" maxOccurs="unbounded" /> -->
+
+            <!-- Elementi aggiuntivi richiesti al 11-07-2025 -->
+            <xsd:element name="allegatoPossessoRequistiRappresentante" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoElencoProdottiVenditaSottocosto" type="efile:file_ctype" minOccurs="0"/>
+
+            <xsd:element name="allegatoPossessoRequisitiRappresentanteTulpsArt93" type="eallposreqraptul:allegato_possesso_requisiti_rappresentante_tulps_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoDichiarazioneClassificazioneStruttura" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoAltraDocumentazioneNormeRegionali" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoAttoCostitutivo" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoComunicazioneDenunciaVenditaAlcolici" type="efile:file_ctype" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="AllegatiSCIAUnicaType">
+        <xsd:sequence>
+            <xsd:element name="allegatoSCIAClassificazioneStruttura" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoSCIAPrevenzioniIncendi" type="efile:file_ctype" minOccurs="0"/>
+<!--            <xsd:element name="allegatoNotificaSanitaria" type="eallnotsan:allegato_allegato_notifica_sanitaria_ctype" minOccurs="0"/>-->
+            <xsd:element name="allegatoSemestraleApparecchiAutomatici" type="eallsemappaut:allegato_semestrale_apparecchi_automatici_ctype" minOccurs="0" />
+            <xsd:element name="allegatoSCIASomministrazione" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoSCIAInsegnaEsercizio" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoSCIAVenditaProdottiAlimentazioneAnimale" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoComunicazioneVenditaGPL" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoComunicazioneVenditaGASInfiammabile" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoComunicazioneVenditaAlcolici" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoComunicazioneVenditaIngrosso" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoAutorizzazioneInsegnaEsercizio" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoSCIAAltreSpecificheAttivita" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoAltreComunicazioniNormeRegionale" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoComunicazioneImpattoAcustico" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoComunicazioneIndustriaInsalubre" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoPossessoRequisitiResponsabileDidattico" type="eallposreqresdid:allegato_possesso_requisiti_responsabile_didattico_ctype" minOccurs="0" />
+            <xsd:element name="allegatoPossessoRequisitiPersonaleDocente" type="eallposreqperdoc:allegato_possesso_requisiti_personale_docente_ctype" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="allegatoComunicazioneNominaIncaricatiVendita" type="eallcomnomincven:allegato_comunicazione_nomina_incaricati_vendita_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoProprietaImmobili" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoDichiarazioneAccettazioneConsorzio"  type="efile:file_ctype" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="AllegatiSCIACondizionataType">
+        <xsd:sequence>
+            <xsd:element name="allegatoScaricoAcqueAUA" type="efile:file_ctype"  minOccurs="0"/>
+            <xsd:element name="allegatoScarichiAcqueReflueAUA" type="efile:file_ctype"  minOccurs="0"/>
+            <xsd:element name="allegatoEmissioneAtmosferaGeneraleAUA" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoAutorizzazioneInsegnaEsercizio" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoDomandaClassificazioneStruttura" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoAltreDomandeNormeRegionali" type="efile:file_ctype"  minOccurs="0"/>
+            <xsd:element name="allegatoAutorizzazioneInDeroga" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoNullaOstaImpattoAcustico" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoEmissioneAtmosferaAUA" type="efile:file_ctype"  minOccurs="0"/>
+            <xsd:element name="allegatoProdottiOrigineAnimale" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoAutorizzazioneVenditaFitosanitari" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoAutorizzazioneVenditaPreziosi"  type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoAutorizzazioneVenditaIngrossoFarmaciBanco" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoAutorizzazioneVenditaOnlineFarmaciBanco" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoVenditaArmiNoGuerra" type="efile:file_ctype" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="AllegatiAltriType">
+        <xsd:sequence>
+            <xsd:element name="allegatoVersamentoOneri"  type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoImpostaDiBollo"  type="efile:file_ctype" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="AllegatiDichiarazioniType">
+        <xsd:sequence>
+            <xsd:element name="dichiarazioniRequisitiProfessionali" type="ealldicreqpro:allegato_dichiarazioni_requisiti_professionali_ctype" minOccurs="0" />
+            <!--
+            <xsd:element name="allegatoPrepostoRequisitiProfessionali" type="eallprereqpro:allegato_preposto_requisiti_professionali_ctype" minOccurs="0" />
+            <xsd:element name="allegatoResposabileTecnicoAcconciatoriRequisitiProfessionali" type="eallrestecaccreqpro:allegato_responsabile_tecnico_acconciatori_requisiti_professionali_ctype" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="allegatoResposabileTecnicoEstetistiRequisitiProfessionali" type="eallrestecestreqpro:allegato_responsabile_tecnico_estetisti_requisiti_professionali_ctype" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="allegatoResponsabileAttivitàProduttiveRequisitiAntimafia" type="eallresattproreqant:allegato_responsabile_attivita_produttive_requisiti_antimafia_ctype" minOccurs="0" />
+            -->
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+
+    <xsd:element name="allegati" type="sallegati:allegati_ctype"/>
+
+</xsd:schema>

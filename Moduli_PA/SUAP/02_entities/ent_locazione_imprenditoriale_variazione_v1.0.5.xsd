@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:elocimpvar="../02_entities/locazione_imprenditoriale_variazione"
+            xmlns:ctipi="../commons/tipi" targetNamespace="../02_entities/locazione_imprenditoriale_variazione"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:simpleType name="cin_stype">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="IT\d{3}\d{3}[A-Z]\d{1}[A-Z]{1}\d{5}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- AS-IS: astrazione pdf -->
+    <xsd:complexType name="locazione_imprenditoriale_variazione_base_type" abstract="true"/>
+
+    <!-- AS-IS: astrazione pdf -->
+    <xsd:complexType name="altre_variazioni_base_type" abstract="true"/>
+
+    <xsd:complexType name="altre_variazioni_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="elocimpvar:altre_variazioni_base_type">
+                <xsd:sequence>
+                    <xsd:element name="altre_variazioni" type="xsd:boolean" default="false" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="locazione_imprenditoriale_variazione_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="elocimpvar:locazione_imprenditoriale_variazione_base_type">
+                <xsd:sequence>
+                    <xsd:element name="cin" type="elocimpvar:cin_stype" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="cir" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="nrProtocollo" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="data_avvio_scia" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="variazione_capacita_ricettiva" type="xsd:boolean" default="false" minOccurs="0"
+                                 maxOccurs="1"/>
+                    <xsd:element name="posti_letto_ante" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="posti_letto_post" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="camere_ante" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="camere_post" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="altre_variazioni" type="elocimpvar:altre_variazioni_base_type"  minOccurs="0"
+                                 maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!--    <xsd:complexType name="locazione_imprenditoriale_variazione_ctype">-->
+    <!--        <xsd:sequence>-->
+    <!--            <xsd:element name="cin" type="elocimpvar:cin_stype" minOccurs="1" maxOccurs="1" />-->
+    <!--            <xsd:element name="cir" type="xsd:string" minOccurs="0" maxOccurs="1" />-->
+    <!--            <xsd:element name="nrProtocollo" type="xsd:integer" minOccurs="1" maxOccurs="1" />-->
+    <!--            <xsd:element name="data_avvio_scia" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1" />-->
+    <!--            <xsd:element name="variazione_capacita_ricettiva" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>-->
+    <!--            <xsd:element name="posti_letto_ante" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>-->
+    <!--            <xsd:element name="posti_letto_post" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>-->
+    <!--            <xsd:element name="camere_ante" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>-->
+    <!--            <xsd:element name="camere_post" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>-->
+    <!--            <xsd:element name="altre_variazioni" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>-->
+    <!--        </xsd:sequence>-->
+    <!--    </xsd:complexType>-->
+
+    <xsd:element name="locazione_imprenditoriale_variazione"
+                 type="elocimpvar:locazione_imprenditoriale_variazione_ctype"/>
+</xsd:schema>

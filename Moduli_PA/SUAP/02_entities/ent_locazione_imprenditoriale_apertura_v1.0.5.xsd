@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:elocimpape="../02_entities/locazione_imprenditoriale_apertura"
+            xmlns:ctipi="../commons/tipi" targetNamespace="../02_entities/locazione_imprenditoriale_apertura"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:simpleType name="gg_mm_stype">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-3][0-9]+/[0-1][0-9]"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+    <!-- AS-IS: astrazione pdf -->
+    <xsd:complexType name="locazione_imprenditoriale_apertura_base_type" abstract="true"/>
+
+    <!-- AS-IS: astrazione pdf -->
+    <xsd:complexType name="locazione_carattere_esercizio_base_type" abstract="true"/>
+
+    <xsd:complexType name="locazione_carattere_esercizio_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="elocimpape:locazione_carattere_esercizio_base_type">
+                <xsd:sequence>
+                    <xsd:element name="annuale" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="stagionale" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="da_stagionale_1" type="elocimpape:gg_mm_stype" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="a_stagionale_1" type="elocimpape:gg_mm_stype" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="da_stagionale_2" type="elocimpape:gg_mm_stype" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="a_stagionale_2" type="elocimpape:gg_mm_stype" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="locazione_imprenditoriale_apertura_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="elocimpape:locazione_imprenditoriale_apertura_base_type">
+                <xsd:sequence>
+                    <xsd:element name="decorrenza" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="data_decorrenza" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="locazione_carattere_esercizio" type="elocimpape:locazione_carattere_esercizio_base_type" minOccurs="0" maxOccurs="1"/>
+<!--                    <xsd:element name="stagionale" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>-->
+<!--                    <xsd:element name="da_stagionale_1" type="elocimpape:gg_mm_stype" minOccurs="0" maxOccurs="1"/>-->
+<!--                    <xsd:element name="a_stagionale_1" type="elocimpape:gg_mm_stype" minOccurs="0" maxOccurs="1"/>-->
+<!--                    <xsd:element name="da_stagionale_2" type="elocimpape:gg_mm_stype" minOccurs="0" maxOccurs="1"/>-->
+<!--                    <xsd:element name="a_stagionale_2" type="elocimpape:gg_mm_stype" minOccurs="0" maxOccurs="1"/>-->
+                    <xsd:element name="denominazione_attivita" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="email_attivita" type="ctipi:email_stype" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="telefono_attivita" type="ctipi:telefono_mobile_stype" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="data_planimetria" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="nrProtocollo" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <!--    <xsd:complexType name="locazione_imprenditoriale_apertura_ctype">-->
+    <!--        <xsd:sequence>-->
+    <!--            <xsd:element name="decorrenza" type="xsd:boolean" minOccurs="0" maxOccurs="1" />-->
+    <!--            <xsd:element name="data_decorrenza" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1" />-->
+    <!--            <xsd:element name="annuale" type="xsd:boolean" minOccurs="0" maxOccurs="1" />-->
+    <!--            <xsd:element name="stagionale" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>-->
+    <!--            <xsd:element name="da_stagionale_1" type="elocimpape:gg_mm_stype" minOccurs="0" maxOccurs="1"/>-->
+    <!--            <xsd:element name="a_stagionale_1" type="elocimpape:gg_mm_stype" minOccurs="0" maxOccurs="1"/>-->
+    <!--            <xsd:element name="da_stagionale_2" type="elocimpape:gg_mm_stype" minOccurs="0" maxOccurs="1"/>-->
+    <!--            <xsd:element name="a_stagionale_2" type="elocimpape:gg_mm_stype" minOccurs="0" maxOccurs="1"/>-->
+    <!--            <xsd:element name="denominazione_attivita" type="xsd:string" minOccurs="0" maxOccurs="1" />-->
+    <!--            <xsd:element name="email_attivita" type="ctipi:email_stype" minOccurs="0" maxOccurs="1" />-->
+    <!--            <xsd:element name="telefono_attivita" type="ctipi:telefono_mobile_stype" minOccurs="0" maxOccurs="1" />-->
+    <!--            <xsd:element name="data_planimetria" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1" />-->
+    <!--            <xsd:element name="nrProtocollo" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1" />-->
+    <!--        </xsd:sequence>-->
+    <!--    </xsd:complexType>-->
+
+        <xsd:element name="locazione_imprenditoriale_apertura" type="elocimpape:locazione_imprenditoriale_apertura_ctype"/>
+</xsd:schema>

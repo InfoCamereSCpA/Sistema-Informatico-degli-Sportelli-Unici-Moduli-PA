@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:eallperana="../02_entities/allegato_persona_anagrafica"
+
+            targetNamespace="../02_entities/allegato_persona_anagrafica"
+
+            xmlns:vagidenum="../01_vocabularies/agid_enumeration"
+            
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../01_vocabularies/agid_enumeration" schemaLocation="../01_vocabularies/voc_agid_enumeration_v1.0.5.xsd"/>
+
+
+    <xsd:complexType name="allegato_persona_anagrafica_ctype">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare tutti i dati anagrafici di una persona</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="eallperana:PersonaAnagraficaNascitaType">
+                <xsd:sequence>
+                    <xsd:element name="cittadinanza" type="vagidenum:CountryISO31661Alpha2Enum" default="IT" minOccurs="0"/>
+                    <xsd:element name="documentoSoggiorno" type="eallperana:DocumentoSoggiornoType" minOccurs="0"/>
+                    <xsd:element name="residente" type="eallperana:IndirizzoType" minOccurs="0"/>
+                    <xsd:element name="contatti" type="eallperana:ContattiType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="ContattiType">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare i contatti</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:group ref="eallperana:ContattiGroup"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:group name="ContattiGroup">
+        <xsd:annotation>
+            <xsd:documentation>Gruppo di proprietà associate ai contatti</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:group ref="eallperana:ContattiDatiGroup"/>
+            <xsd:group ref="eallperana:ContattiFoniaGroup"/>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:group name="ContattiDatiGroup">
+        <xsd:annotation>
+            <xsd:documentation>Gruppo di proprietà associate ai contatti mail</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="PEC" type="eallperana:EMailIndirizzoType" minOccurs="0"/>
+            <xsd:element name="email" type="eallperana:EMailIndirizzoType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:simpleType name="EMailIndirizzoType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern
+                    value="[\-!#$%&amp;'*+/0-9=?A-Z^_a-z{|}~](\.?[\-!#$%&amp;'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z0-9](-?[a-zA-Z0-9])*(\.[a-zA-Z0-9](-?[a-zA-Z0-9])*)+"
+            />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:group name="ContattiFoniaGroup">
+        <xsd:annotation>
+            <xsd:documentation>Gruppo di proprietà associate ai contatti fonia</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="telefono" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="cellulare" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="fax" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:complexType name="DocumentoSoggiornoType">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare tutti i dati di un documento di soggiorno</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="tipo" type="vagidenum:TipoDocumentoSoggiornoEnum"/>
+            <xsd:element name="estremi" type="xsd:string"/>
+            <xsd:element name="rilasciatoDa" type="xsd:string"/>
+            <xsd:element name="dataRilascio" type="xsd:date"/>
+            <xsd:element name="dataScadenza" type="xsd:date" minOccurs="0"/>
+        </xsd:sequence>
+
+    </xsd:complexType>
+
+    <xsd:complexType name="IndirizzoType">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare un indirizzo</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:group ref="eallperana:IndirizzoGroup"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:group name="IndirizzoGroup">
+        <xsd:annotation>
+            <xsd:documentation>Gruppo di proprietà associate ad un indirizzo</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:group ref="eallperana:LuogoGroup"/>
+            <xsd:element name="localita" type="eallperana:AddressAddressAreaType" minOccurs="0"/>
+            <xsd:element name="toponimo" type="eallperana:ToponimoType" minOccurs="0"/>
+            <xsd:element name="civico" type="eallperana:AddressLocatorDesignatorType" minOccurs="0"/>
+            <xsd:element name="CAP" type="eallperana:CAPType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:group name="LuogoGroup">
+        <xsd:annotation>
+            <xsd:documentation>Gruppo di proprietà associate al luogo</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="stato" type="vagidenum:CountryISO31661Alpha2Enum" default="IT" />
+            <xsd:element name="regione" type="eallperana:RegioneType" minOccurs="0"/>
+            <xsd:element name="provincia" type="eallperana:ProvinciaType" minOccurs="0"/>
+            <xsd:choice>
+                <xsd:element name="comune" type="eallperana:ComuneType"/>
+                <xsd:element name="localitaEstera" type="xsd:string"/>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:complexType name="CAPType">
+        <xsd:simpleContent>
+            <xsd:restriction base="eallperana:AddressPostCodeType">
+                <xsd:pattern value="\d{5}"/>
+            </xsd:restriction>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="ToponimoType">
+        <xsd:sequence>
+            <xsd:element name="specie" type="vagidenum:DUGEnum"/>
+            <xsd:element name="indirizzo" type="eallperana:AddressLocatorNameType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="PersonaAnagraficaNascitaType">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare i dati di nascita di una persona</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:group ref="eallperana:PersonaBaseGroup"/>
+            <xsd:element name="nato" type="eallperana:PersonaNascitaType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="PersonaNascitaType">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare la nascita di una persona</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:group ref="eallperana:PersonaNascitaGroup"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:group name="PersonaNascitaGroup">
+        <xsd:annotation>
+            <xsd:documentation>Gruppo di proprietà associate alla nascita di una persona</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="a" type="eallperana:LuogoType"/>
+            <xsd:element name="data" type="eallperana:PersonBirthDateType"/>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:complexType name="LuogoType">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare tutti i dati di un luogo</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:group ref="eallperana:LuogoGroup"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ComuneType">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare i dati di un Comune</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="eallperana:AddressPostNameType">
+                <xsd:attribute name="codiceIstat" type="eallperana:CodiceIstatComuneType" use="required"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:simpleType name="CodiceIstatComuneType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9]{6}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="RegioneType">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare i dati di una Regione</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="eallperana:AddressAdminUnitLocationTwoType">
+                <xsd:attribute name="codiceIstat" type="eallperana:CodiceIstatRegioneType" use="required"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="ProvinciaType">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare i dati di una Provincia</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="codiceIstat" type="eallperana:CodiceIstatProvinciaType" use="required"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:simpleType name="CodiceIstatProvinciaType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9]{3}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="CodiceIstatRegioneType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9]{2}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:group name="PersonaBaseGroup">
+        <xsd:annotation>
+            <xsd:documentation>Gruppo di proprietà associate alla persona</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:group ref="eallperana:PersonaCoreGroup" />
+            <xsd:element name="codiceFiscale" type="eallperana:CodiceFiscaleType"/>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:simpleType name="CodiceFiscaleType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST][0-9LMNPQRSTUV]{2}[A-Z][0-9LMNPQRSTUV]{3}[A-Z]"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:group name="PersonaCoreGroup">
+        <xsd:annotation>
+            <xsd:documentation>Gruppo di proprietà core associate alla persona</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="cognome" type="eallperana:PersonFamilyNameType"/>
+            <xsd:element name="nome" type="eallperana:PersonGivenNameType"/>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:complexType name="IstitutoType">
+        <xsd:sequence>
+            <xsd:element name="istituto" type="xsd:string"/>
+            <xsd:element name="indirizzo" type="eallperana:IndirizzoType"/>
+            <xsd:element name="oggettoCorso" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="annoConclusione" type="xsd:integer"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+
+
+    <!-- vari includes -->
+    <xsd:complexType name="AddressAddressAreaType">
+        <xsd:simpleContent>
+            <xsd:extension base="eallperana:TextType"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="AddressLocatorDesignatorType">
+        <xsd:simpleContent>
+            <xsd:extension base="eallperana:TextType"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="AddressLocatorNameType">
+        <xsd:simpleContent>
+            <xsd:extension base="eallperana:TextType"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="AddressPostCodeType">
+        <xsd:simpleContent>
+            <xsd:extension base="eallperana:TextType"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="AddressAdminUnitLocationTwoType">
+        <xsd:simpleContent>
+            <xsd:extension base="eallperana:TextType"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="AddressPostNameType">
+        <xsd:simpleContent>
+            <xsd:extension base="eallperana:DateType"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="PersonBirthDateType">
+        <xsd:simpleContent>
+            <xsd:extension base="eallperana:DateType"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="PersonFamilyNameType">
+        <xsd:simpleContent>
+            <xsd:extension base="eallperana:NameType"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="PersonGivenNameType">
+        <xsd:simpleContent>
+            <xsd:extension base="eallperana:NameType"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="NameType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+                <eallperana:UniqueID>UBLUDT0000020</eallperana:UniqueID>
+                <eallperana:CategoryCode>UDT</eallperana:CategoryCode>
+                <eallperana:DictionaryEntryName>Name. Type</eallperana:DictionaryEntryName>
+                <eallperana:VersionID>1.0</eallperana:VersionID>
+                <eallperana:Definition>A character string that constitutes the distinctive designation of a person, place, thing or concept.</eallperana:Definition>
+                <eallperana:RepresentationTermName>Name</eallperana:RepresentationTermName>
+                <eallperana:PrimitiveType>string</eallperana:PrimitiveType>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="eallperana:TextTypeBase"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="DateType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+                <eallperana:UniqueID>UBLUDT000009</eallperana:UniqueID>
+                <eallperana:CategoryCode>UDT</eallperana:CategoryCode>
+                <eallperana:DictionaryEntryName>Date. Type</eallperana:DictionaryEntryName>
+                <eallperana:VersionID>1.0</eallperana:VersionID>
+                <eallperana:Definition>One calendar day according the Gregorian calendar.</eallperana:Definition>
+                <eallperana:RepresentationTermName>Date</eallperana:RepresentationTermName>
+                <eallperana:PrimitiveType>string</eallperana:PrimitiveType>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:date"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="TextType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+                <eallperana:UniqueID>UBLUDT0000019</eallperana:UniqueID>
+                <eallperana:CategoryCode>UDT</eallperana:CategoryCode>
+                <eallperana:DictionaryEntryName>Text. Type</eallperana:DictionaryEntryName>
+                <eallperana:VersionID>1.0</eallperana:VersionID>
+                <eallperana:Definition>A character string (i.e. a finite set of characters), generally in the form of words of a language.</eallperana:Definition>
+                <eallperana:RepresentationTermName>Text</eallperana:RepresentationTermName>
+                <eallperana:PrimitiveType>string</eallperana:PrimitiveType>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="eallperana:TextTypeBase"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="TextTypeBase">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+                <eallperana:UniqueID>UNDT000019</eallperana:UniqueID>
+                <eallperana:CategoryCode>CCT</eallperana:CategoryCode>
+                <eallperana:DictionaryEntryName>Text. Type</eallperana:DictionaryEntryName>
+                <eallperana:VersionID>1.0</eallperana:VersionID>
+                <eallperana:Definition>A character string (i.e. a finite set of characters) generally in the form of words of a language.</eallperana:Definition>
+                <eallperana:RepresentationTermName>Text</eallperana:RepresentationTermName>
+                <eallperana:PrimitiveType>string</eallperana:PrimitiveType>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="languageID" type="xsd:language" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">
+                            <eallperana:UniqueID>UNDT000019-SC2</eallperana:UniqueID>
+                            <eallperana:CategoryCode>SC</eallperana:CategoryCode>
+                            <eallperana:DictionaryEntryName>Language. Identifier</eallperana:DictionaryEntryName>
+                            <eallperana:Definition>The identifier of the language used in the content component.</eallperana:Definition>
+                            <eallperana:ObjectClass>Language</eallperana:ObjectClass>
+                            <eallperana:PropertyTermName>Identification</eallperana:PropertyTermName>
+                            <eallperana:RepresentationTermName>Identifier</eallperana:RepresentationTermName>
+                            <eallperana:PrimitiveType>string</eallperana:PrimitiveType>
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="languageLocaleID" type="xsd:normalizedString" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">
+                            <eallperana:UniqueID>UNDT000019-SC3</eallperana:UniqueID>
+                            <eallperana:CategoryCode>SC</eallperana:CategoryCode>
+                            <eallperana:DictionaryEntryName> Language. Locale. Identifier</eallperana:DictionaryEntryName>
+                            <eallperana:Definition>The identification of the locale of the language.</eallperana:Definition>
+                            <eallperana:ObjectClass>Language</eallperana:ObjectClass>
+                            <eallperana:PropertyTermName>Locale</eallperana:PropertyTermName>
+                            <eallperana:RepresentationTermName>Identifier</eallperana:RepresentationTermName>
+                            <eallperana:PrimitiveType>string</eallperana:PrimitiveType>
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="PeriodoType">
+        <xsd:annotation>
+            <xsd:documentation>Definisce un intervallo temporale</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="da" type="xsd:date"/>
+            <xsd:element name="a" type="xsd:date"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+
+    <xsd:complexType name="AbstractBaseType" abstract="true"/>
+
+    <xsd:complexType name="EmptyType">
+        <xsd:complexContent>
+            <xsd:extension base="eallperana:AbstractBaseType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="AttoBaseType">
+        <xsd:sequence>
+            <xsd:element name="numero" type="xsd:string"/>
+            <xsd:element name="data" type="xsd:date"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="AttoRilasciatoDaType">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare i dati di un Atto</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="eallperana:AttoBaseType">
+                <xsd:sequence>
+                    <xsd:element name="rilasciataDa" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="CCIAAType">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare i dati Impresa relativi all'iscrizione alla Camera Commercio Industria Artigianato Agricoltura</xsd:documentation>
+        </xsd:annotation>
+        <xsd:choice>
+            <xsd:sequence>
+                <xsd:element name="CCIAA" type="vagidenum:CCIAAEnum"/>
+                <xsd:element name="numeroREA" type="eallperana:NumeroREAType"/>
+            </xsd:sequence>
+            <xsd:sequence>
+                <xsd:element name="registroDi" type="xsd:string"/>
+                <xsd:element name="estremi" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:complexType name="NumeroREAType">
+        <xsd:annotation>
+            <xsd:documentation>Numero REA (Repertorio Economico Amministrativo) Sigla provincia, Progressivo, Data</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="eallperana:NumeroREA">
+                <xsd:attribute name="provincia">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                            <xsd:pattern value="[A-Z]{2}"/>
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:attribute>
+                <xsd:attribute name="dataIscrizione" type="xsd:date"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:simpleType name="NumeroREA">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="\d{1,10}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="ImpresaREAType">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare il numero REA (Repertorio economico e amministrativo) di un Impresa</xsd:documentation>
+        </xsd:annotation>
+        <xsd:choice>
+            <xsd:sequence>
+                <xsd:element name="impresa" type="xsd:string"/>
+                <xsd:element name="numeroREA" type="eallperana:NumeroREAType"/>
+            </xsd:sequence>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:complexType name="PeriodoDateType">
+        <xsd:sequence>
+            <xsd:element name="dal" type="xsd:date"/>
+            <xsd:element name="al" type="xsd:date"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="ContattiFoniaType">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare i contatti fonia</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:group ref="eallperana:ContattiFoniaGroup"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+
+    <xsd:complexType name="PIVA">
+        <xsd:simpleContent>
+            <xsd:restriction base="eallperana:LegalEntityIDType">
+                <xsd:pattern value="[0-9]{11}"/>
+            </xsd:restriction>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="LegalEntityIDType">
+        <xsd:simpleContent>
+            <xsd:extension base="eallperana:IdentifierType"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="IdentifierType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+                <eallperana:UniqueID>UBLUDT0000011</eallperana:UniqueID>
+                <eallperana:CategoryCode>UDT</eallperana:CategoryCode>
+                <eallperana:DictionaryEntryName>Identifier. Type</eallperana:DictionaryEntryName>
+                <eallperana:VersionID>1.0</eallperana:VersionID>
+                <eallperana:Definition>A character string to identify and uniquely distinguish one instance of an object in an identification scheme from all other objects in the same scheme, together with relevant supplementary information.</eallperana:Definition>
+                <eallperana:RepresentationTermName>Identifier</eallperana:RepresentationTermName>
+                <eallperana:PrimitiveType>string</eallperana:PrimitiveType>
+                <eallperana:UsageRule>Other supplementary components in the CCT are captured as part of the token and name for the schema module containing the identifier list and thus, are not declared as attributes. </eallperana:UsageRule>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="eallperana:IdentifierTypeBase"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="IdentifierTypeBase">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+                <eallperana:UniqueID>UNDT000011</eallperana:UniqueID>
+                <eallperana:CategoryCode>CCT</eallperana:CategoryCode>
+                <eallperana:DictionaryEntryName>Identifier. Type</eallperana:DictionaryEntryName>
+                <eallperana:VersionID>1.0</eallperana:VersionID>
+                <eallperana:Definition>A character string to identify and distinguish uniquely, one instance of an object in an identification scheme from all other objects in the same scheme together with relevant supplementary information.</eallperana:Definition>
+                <eallperana:RepresentationTermName>Identifier</eallperana:RepresentationTermName>
+                <eallperana:PrimitiveType>string</eallperana:PrimitiveType>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:normalizedString">
+                <xsd:attribute name="schemeID" type="xsd:normalizedString" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">
+                            <eallperana:UniqueID>UNDT000011-SC2</eallperana:UniqueID>
+                            <eallperana:CategoryCode>SC</eallperana:CategoryCode>
+                            <eallperana:DictionaryEntryName>Identification Scheme. Identifier</eallperana:DictionaryEntryName>
+                            <eallperana:Definition>The identification of the identification scheme.</eallperana:Definition>
+                            <eallperana:ObjectClass>Identification Scheme</eallperana:ObjectClass>
+                            <eallperana:PropertyTermName>Identification</eallperana:PropertyTermName>
+                            <eallperana:RepresentationTermName>Identifier</eallperana:RepresentationTermName>
+                            <eallperana:PrimitiveType>string</eallperana:PrimitiveType>
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="schemeName" type="xsd:string" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">
+                            <eallperana:UniqueID>UNDT000011-SC3</eallperana:UniqueID>
+                            <eallperana:CategoryCode>SC</eallperana:CategoryCode>
+                            <eallperana:DictionaryEntryName>Identification Scheme. Name. Text</eallperana:DictionaryEntryName>
+                            <eallperana:Definition>The name of the identification scheme.</eallperana:Definition>
+                            <eallperana:ObjectClass>Identification Scheme</eallperana:ObjectClass>
+                            <eallperana:PropertyTermName>Name</eallperana:PropertyTermName>
+                            <eallperana:RepresentationTermName>Text</eallperana:RepresentationTermName>
+                            <eallperana:PrimitiveType>string</eallperana:PrimitiveType>
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="schemeAgencyID" type="xsd:normalizedString" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">
+                            <eallperana:UniqueID>UNDT000011-SC4</eallperana:UniqueID>
+                            <eallperana:CategoryCode>SC</eallperana:CategoryCode>
+                            <eallperana:DictionaryEntryName>Identification Scheme Agency. Identifier</eallperana:DictionaryEntryName>
+                            <eallperana:Definition>The identification of the agency that maintains the identification scheme.</eallperana:Definition>
+                            <eallperana:ObjectClass>Identification Scheme Agency</eallperana:ObjectClass>
+                            <eallperana:PropertyTermName>Identification</eallperana:PropertyTermName>
+                            <eallperana:RepresentationTermName>Identifier</eallperana:RepresentationTermName>
+                            <eallperana:PrimitiveType>string</eallperana:PrimitiveType>
+                            <eallperana:UsageRule>Defaults to the UN/EDIFACT data element 3055 code list.</eallperana:UsageRule>
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="schemeAgencyName" type="xsd:string" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">
+                            <eallperana:UniqueID>UNDT000011-SC5</eallperana:UniqueID>
+                            <eallperana:CategoryCode>SC</eallperana:CategoryCode>
+                            <eallperana:DictionaryEntryName>Identification Scheme Agency. Name. Text</eallperana:DictionaryEntryName>
+                            <eallperana:Definition>The name of the agency that maintains the identification scheme.</eallperana:Definition>
+                            <eallperana:ObjectClass>Identification Scheme Agency</eallperana:ObjectClass>
+                            <eallperana:PropertyTermName>Agency Name</eallperana:PropertyTermName>
+                            <eallperana:RepresentationTermName>Text</eallperana:RepresentationTermName>
+                            <eallperana:PrimitiveType>string</eallperana:PrimitiveType>
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="schemeVersionID" type="xsd:normalizedString" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">
+                            <eallperana:UniqueID>UNDT000011-SC6</eallperana:UniqueID>
+                            <eallperana:CategoryCode>SC</eallperana:CategoryCode>
+                            <eallperana:DictionaryEntryName>Identification Scheme. Version. Identifier</eallperana:DictionaryEntryName>
+                            <eallperana:Definition>The version of the identification scheme.</eallperana:Definition>
+                            <eallperana:ObjectClass>Identification Scheme</eallperana:ObjectClass>
+                            <eallperana:PropertyTermName>Version</eallperana:PropertyTermName>
+                            <eallperana:RepresentationTermName>Identifier</eallperana:RepresentationTermName>
+                            <eallperana:PrimitiveType>string</eallperana:PrimitiveType>
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="schemeDataURI" type="xsd:anyURI" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">
+                            <eallperana:UniqueID>UNDT000011-SC7</eallperana:UniqueID>
+                            <eallperana:CategoryCode>SC</eallperana:CategoryCode>
+                            <eallperana:DictionaryEntryName>Identification Scheme Data. Uniform Resource. Identifier</eallperana:DictionaryEntryName>
+                            <eallperana:Definition>The Uniform Resource Identifier that identifies where the identification scheme data is located.</eallperana:Definition>
+                            <eallperana:ObjectClass>Identification Scheme Data</eallperana:ObjectClass>
+                            <eallperana:PropertyTermName>Uniform Resource Identifier</eallperana:PropertyTermName>
+                            <eallperana:RepresentationTermName>Identifier</eallperana:RepresentationTermName>
+                            <eallperana:PrimitiveType>string</eallperana:PrimitiveType>
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+                <xsd:attribute name="schemeURI" type="xsd:anyURI" use="optional">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">
+                            <eallperana:UniqueID>UNDT000011-SC8</eallperana:UniqueID>
+                            <eallperana:CategoryCode>SC</eallperana:CategoryCode>
+                            <eallperana:DictionaryEntryName>Identification Scheme. Uniform Resource. Identifier</eallperana:DictionaryEntryName>
+                            <eallperana:Definition>The Uniform Resource Identifier that identifies where the identification scheme is located.</eallperana:Definition>
+                            <eallperana:ObjectClass>Identification Scheme</eallperana:ObjectClass>
+                            <eallperana:PropertyTermName>Uniform Resource Identifier</eallperana:PropertyTermName>
+                            <eallperana:RepresentationTermName>Identifier</eallperana:RepresentationTermName>
+                            <eallperana:PrimitiveType>string</eallperana:PrimitiveType>
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:simpleType name="CodiceAmministrazione">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[A-Za-z0-9\-_]{1,16}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="CodiceAOO">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[A-Za-z0-9\-_]{1,16}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+
+    <xsd:element name="allegato_persona_anagrafica" type="eallperana:allegato_persona_anagrafica_ctype"/>
+
+</xsd:schema>

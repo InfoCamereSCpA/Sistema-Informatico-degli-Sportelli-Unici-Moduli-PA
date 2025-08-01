@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eimppul="../02_entities/imprese_pulizie_apertura"
+
+            xmlns:ctipi="../commons/tipi"
+            xmlns:ccodelist="../commons/codelist"
+            xmlns:canncl="../commons/xsdAnnotations"
+
+            targetNamespace="../02_entities/imprese_pulizie_apertura"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+
+    <xsd:complexType name="imprese_pulizie_apertura_ctype">
+        <xsd:sequence>
+            <!-- 1.1 – DATI SULL’ATTIVITÀ: -->
+            <xsd:element name="pulizia" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="disinfezione" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="disinfestazione" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="derattizzazione" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="sanificazione" type="xsd:boolean" minOccurs="0"/>
+
+            <xsd:element name="superficie" type="xsd:double" minOccurs="0"/>
+
+            <!-- 1.2 – DICHIARAZIONI SUL POSSESSO DEI REQUISITI: -->
+            <xsd:element name="requisito_onorabilita" type="xsd:boolean" default="false" minOccurs="0"/>
+            <xsd:element name="requisito_cause_divieto" type="xsd:boolean" default="false" minOccurs="0"/>
+            <xsd:element name="requisito_capacita_economica" type="xsd:boolean" default="false" minOccurs="0"/>
+            <xsd:element name="altri_requisiti_descrizione" type="xsd:string" minOccurs="0"/>
+            <!-- Unico Preposto tecnico -->
+            <xsd:element name="preposto_tecnico_check" type="xsd:boolean" default="false" minOccurs="0"/>
+            <xsd:element name="dichiarante_requisiti" type="xsd:string" default="false" minOccurs="0"/>
+
+
+            <!-- Check 1: obbligo scolastico ed esperienza professionale -->
+                <xsd:element name="titolo_studio_check" type="xsd:boolean" default="false" minOccurs="0" />
+                <xsd:element name="titolo_studio_in_qualita_di" type="xsd:string" minOccurs="0" />
+                <xsd:element name="titolo_studio_istituto" type="xsd:string" minOccurs="0" />
+                <xsd:element name="titolo_studio_sede" type="xsd:string" minOccurs="0" />
+                <xsd:element name="titolo_studio_anno" type="xsd:string" minOccurs="0" />
+                <!-- Blocco "attivita_titolo_studio" ripetibile: START -->
+
+                <xsd:element name="titolo_studio_attivita" minOccurs="0" maxOccurs="unbounded">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="tipo" type="xsd:string" minOccurs="0" />
+                            <xsd:element name="dal" type="ctipi:ggmmaaaa_stype" minOccurs="0"
+                                         />
+                            <xsd:element name="al" type="ctipi:ggmmaaaa_stype" minOccurs="0"
+                                         />
+                            <xsd:element name="comune_cciaa" type="ccodelist:CodeType" minOccurs="0"
+                                         >
+                                <xsd:annotation>
+                                    <xsd:appinfo>
+                                        <canncl:codeListReference>
+                                            <canncl:ShortName>IT:SUAP:CL:ComuniItaliani</canncl:ShortName>
+                                        </canncl:codeListReference>
+                                    </xsd:appinfo>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element name="nr_REA" type="xsd:positiveInteger" minOccurs="0"
+                                         />
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            <!-- Blocco "attivita" ripetibile: END -->
+
+            <!-- Check 2: aver conseguito un attestato di qualifica -->
+            <xsd:element name="attestato_check" type="xsd:boolean" default="false" minOccurs="0" />
+            <xsd:element name="attestato_istituto" type="xsd:string" minOccurs="0" />
+            <xsd:element name="attestato_sede" type="xsd:string" minOccurs="0" />
+            <xsd:element name="oggetto_corso" type="xsd:string" minOccurs="0" />
+            <xsd:element name="attestato_anno" type="xsd:string" minOccurs="0" />
+            
+            <!-- Check 3: aver conseguito un diploma di istruzione secondaria -->
+            <xsd:element name="diploma_check" type="xsd:boolean" default="false" minOccurs="0" />
+            <xsd:element name="diploma_istituto" type="xsd:string" minOccurs="0" />
+            <xsd:element name="diploma_sede" type="xsd:string" minOccurs="0" />
+            <xsd:element name="diploma_anno" type="xsd:string" minOccurs="0" />
+
+            <!-- Check 4: aver conseguito una laurea-->
+            <xsd:element name="laurea_check" type="xsd:boolean" default="false" minOccurs="0" />
+            <xsd:element name="laurea_istituto" type="xsd:string" minOccurs="0" />
+            <xsd:element name="laurea_sede" type="xsd:string" minOccurs="0" />
+            <xsd:element name="laurea_anno" type="xsd:string" minOccurs="0" />
+
+            <!-- Check 5: titolo riconosciuto-->
+            <xsd:element name="titolo_professionale_riconosciuto_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_riconoscimento" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+
+            <!-- Check 6: che il/la responsabile tecnico/a preposto è  -->
+            <xsd:element name="resposabile_tecnico_preposto_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="nome_resposabile_tecnico_preposto" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+   
+
+    <xsd:element name="imprese_pulizie_apertura" type="eimppul:imprese_pulizie_apertura_ctype"/>
+</xsd:schema>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mavdeft="../04_forms/agenzie_viaggio_definitivo_tras_sede"
+            xmlns:sintav="../03_sections/intestazione_agenzie_viaggio"
+            xmlns:strased="../03_sections/agenzie_viaggio_trasferimento_sede"
+            xmlns:spolav="../03_sections/polizze_agenzie_viaggio"
+            xmlns:srdocav="../03_sections/riepilogo_documentazione_agenzie_viaggio"
+            xmlns:ealtdic="../02_entities/altre_dichiarazioni"
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica" targetNamespace="../04_forms/agenzie_viaggio_definitivo_tras_sede" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/intestazione_agenzie_viaggio" schemaLocation="../03_sections/sec_intestazione_agenzie_viaggio_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/agenzie_viaggio_trasferimento_sede" schemaLocation="../03_sections/sec_agenzie_viaggio_trasferimento_sede_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/polizze_agenzie_viaggio" schemaLocation="../03_sections/sec_polizze_agenzie_viaggio_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/riepilogo_documentazione_agenzie_viaggio" schemaLocation="../03_sections/sec_riepilogo_documentazione_agenzie_viaggio_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/scheda_anagrafica" schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/altre_dichiarazioni" schemaLocation="../02_entities/ent_altre_dichiarazioni_v1.0.5.xsd"/>
+
+    <xsd:complexType name="agenzie_viaggio_definitivo_tras_sede_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype"/>
+            <xsd:element name="sezione_intestazione_av" type="sintav:sezione_intestazione_agenzie_viaggio_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="sezione_av_trasferimento_sede" type="strased:sezione_av_trasferimento_sede_ctype" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="sezione_polizze_assicurative" type="spolav:sezione_polizze_assicurative_ctype" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="altre_dichiarazioni" type="ealtdic:altre_dichiarazioni_base_type" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="note" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="sezione_riepilogo_doc_av" type="srdocav:sezione_riepilogo_documentazione_agenzie_viaggio_ctype" minOccurs="0" maxOccurs="1"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="agenzie_viaggio_definitivo_tras_sede" type="mavdeft:agenzie_viaggio_definitivo_tras_sede_ctype"/>
+</xsd:schema>

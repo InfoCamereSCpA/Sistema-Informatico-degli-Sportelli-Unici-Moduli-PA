@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:simppul="../03_sections/imprese_pulizie_apertura"
+            xmlns:eimppul="../02_entities/imprese_pulizie_apertura"
+
+            targetNamespace="../03_sections/imprese_pulizie_apertura" elementFormDefault="qualified"
+            attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/imprese_pulizie_apertura" schemaLocation="../02_entities/ent_imprese_pulizie_apertura_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_imprese_pulizie_ctype">
+        <xsd:sequence>
+            <xsd:element name="imprese_pulizie_apertura" type="eimppul:imprese_pulizie_apertura_ctype"/>
+        </xsd:sequence>
+
+    </xsd:complexType>
+
+    <xsd:element name="sezione_imprese_pulizie" type="simppul:sezione_imprese_pulizie_ctype"/>
+
+</xsd:schema>

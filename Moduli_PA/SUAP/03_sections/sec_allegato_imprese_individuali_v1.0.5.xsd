@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:sallimpind="../03_sections/allegato_imprese_individuali"
+            xmlns:eallimpind="../02_entities/allegato_imprese_individuali"
+            targetNamespace="../03_sections/allegato_imprese_individuali" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.2" xml:lang="it">
+
+    
+    <xsd:import namespace="../02_entities/allegato_imprese_individuali" schemaLocation="../02_entities/ent_allegato_imprese_individuali_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/files" schemaLocation="../02_entities/ent_files_v1.0.5.xsd"/>
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>  
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+
+    <xsd:complexType name="sezione_allegato_imprese_individuali_ctype">
+        <xsd:sequence>
+            <xsd:element name="allegato_imprese_individuali" type="eallimpind:allegato_imprese_individuali_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_allegato_imprese_individuali" type="sallimpind:sezione_allegato_imprese_individuali_ctype"/>
+</xsd:schema>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:scomins="../03_sections/comunicazioni_installazioni"
+            xmlns:ecomins="../02_entities/comunicazioni_installazioni"
+            targetNamespace="../03_sections/comunicazioni_installazioni" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/comunicazioni_installazioni" schemaLocation="../02_entities/ent_comunicazioni_installazioni_v1.0.5.xsd"/>
+
+    <xsd:complexType name="comunicazioni_installazioni_ctype">
+        <xsd:sequence>
+            <xsd:element name="comunicazione_inst_disint" type="ecomins:comunicazioni_installazioni_ctype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="comunicazioni_installazioni" type="scomins:comunicazioni_installazioni_ctype"/>
+</xsd:schema>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+                
+        xmlns:edreq="../02_entities/dichiarazione_requisiti"
+                
+        targetNamespace="../02_entities/dichiarazione_requisiti"
+            elementFormDefault="qualified" attributeFormDefault="qualified"    
+            version="1.0.5" xml:lang="it">
+    
+    
+    <xsd:complexType name="dichiarazione_requisiti_ctype" >
+        <xsd:sequence> 
+                <xsd:element name="direttore_tecnico" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="possesso_abilitazione" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="iscrizione_registro" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="regione" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="numero_regione" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="direttore_tecnico_designato" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="nome_direttore_designato" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>     
+    </xsd:complexType>
+    
+    <xsd:element name="dichiarazione_requisiti" type="edreq:dichiarazione_requisiti_ctype"/>
+</xsd:schema>

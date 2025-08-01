@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ssomciradenoncomamp="../03_sections/somministrazione_circoli_aderenti_enti_non_commerciali_ampliamento"
+
+            xmlns:esomciradenoncomamp="../02_entities/somministrazione_circoli_aderenti_enti_non_commerciali_ampliamento"
+            xmlns:emodges="../02_entities/modalita_gestione"
+            xmlns:edicono="../02_entities/dichiarazioni_onorabilita"
+            xmlns:ealtdicsom="../02_entities/altre_dichiarazioni_somministrazione"
+
+            targetNamespace="../03_sections/somministrazione_circoli_aderenti_enti_non_commerciali_ampliamento" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/somministrazione_circoli_aderenti_enti_non_commerciali_ampliamento" schemaLocation="../02_entities/ent_somministrazione_circoli_aderenti_enti_non_commerciali_ampliamento_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/modalita_gestione" schemaLocation="../02_entities/ent_modalita_gestione_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/dichiarazioni_onorabilita" schemaLocation="../02_entities/ent_dichiarazioni_onorabilita_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/altre_dichiarazioni_somministrazione" schemaLocation="../02_entities/ent_altre_dichiarazioni_somministrazione_v1.0.5.xsd"/>
+
+
+    <xsd:complexType name="sezione_somministrazione_circoli_aderenti_enti_non_commerciali_ampliamento_ctype">
+        <xsd:sequence>
+            <xsd:element name="somministrazione_circoli_aderenti_enti_non_commerciali_ampliamento" type="esomciradenoncomamp:somministrazione_circoli_aderenti_enti_non_commerciali_ampliamento_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="modalita_gestione" type="emodges:modalita_gestione_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="dichiarazioni_onorabilita" type="edicono:dichiarazioni_onorabilita_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altre_dichiarazioni_somministrazione" type="ealtdicsom:altre_dichiarazioni_somministrazione_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_somministrazione_circoli_aderenti_enti_non_commerciali_ampliamento" type="ssomciradenoncomamp:sezione_somministrazione_circoli_aderenti_enti_non_commerciali_ampliamento_ctype"/>
+
+</xsd:schema>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ereqpropan="../02_entities/requisiti_professionali_panifici"
+
+            targetNamespace="../02_entities/requisiti_professionali_panifici" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+
+    <xsd:complexType name="requisiti_professionali_panifici_ctype">
+        <xsd:sequence>
+            <xsd:element name="responsabile_attivita_produttiva" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="altro" type="xsd:string" minOccurs="0"/>
+
+            <xsd:element name="altro_responsabile" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="nome_responsabile" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="requisiti_professionali_panifici" type="ereqpropan:requisiti_professionali_panifici_ctype"/>
+
+</xsd:schema>

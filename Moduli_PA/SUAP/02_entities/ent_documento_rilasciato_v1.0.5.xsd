@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:edocril="../02_entities/documento_rilasciato"
+            xmlns:ccodelist="../commons/codelist"
+            xmlns:ctipi="../commons/tipi"
+            xmlns:canncl="../commons/xsdAnnotations" targetNamespace="../02_entities/documento_rilasciato" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+    
+    <xsd:complexType name="documento_rilasciato_ctype">
+        <xsd:sequence>
+            <xsd:element name="tipo" type="ccodelist:CodeType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:TipiDocumentoIdentita</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="numero" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="ente_rilascio" type="ctipi:stringa_standard_stype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="data_rilascio" type="xsd:date" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="data_scadenza" type="xsd:date" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="documento_rilasciato" type="edocril:documento_rilasciato_ctype"/>
+</xsd:schema>

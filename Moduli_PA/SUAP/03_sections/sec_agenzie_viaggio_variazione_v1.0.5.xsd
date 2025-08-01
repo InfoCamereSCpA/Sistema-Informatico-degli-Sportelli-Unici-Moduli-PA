@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sesciav="../03_sections/agenzie_viaggio_variazione"
+            xmlns:esciav="../02_entities/scia_variazione_agenzie_viaggio"
+            targetNamespace="../03_sections/agenzie_viaggio_variazione" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/scia_variazione_agenzie_viaggio" schemaLocation="../02_entities/ent_scia_variazione_agenzie_viaggio_v1.0.5.xsd"/>
+    
+    <xsd:complexType name="sezione_scia_variazione_agenzie_viaggio_ctype">
+        <xsd:sequence>
+            <xsd:element name="scia_variazione_agenzie_viaggio" type="esciav:scia_variazione_agenzie_viaggio_base_type" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>   
+    </xsd:complexType>
+    
+    <xsd:element name="sezione_scia_variazione_agenzie_viaggio" type="sesciav:sezione_scia_variazione_agenzie_viaggio_ctype"/>
+</xsd:schema>

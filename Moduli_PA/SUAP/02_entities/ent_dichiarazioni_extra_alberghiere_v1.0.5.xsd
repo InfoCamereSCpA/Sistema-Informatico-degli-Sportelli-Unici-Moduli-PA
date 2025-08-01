@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:edichextraalb="../02_entities/dichiarazioni_extra_alberghiere"
+
+            targetNamespace="../02_entities/dichiarazioni_extra_alberghiere"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <!-- AS-IS: dichiarazioni_extra_alberghiere_base_type-->
+    <xsd:complexType name="dichiarazioni_extra_alberghiere_base_type" abstract="true"/>
+
+
+    <xsd:complexType name="dichiarazioni_extra_alberghiere_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="edichextraalb:dichiarazioni_extra_alberghiere_base_type">
+                <xsd:sequence>
+                    <xsd:choice>
+                        <xsd:element name="forma_imprenditoriale" type="xsd:boolean" default="false" minOccurs="0"
+                                     maxOccurs="1"/>
+                        <xsd:element name="forma_non_imprenditoriale" type="xsd:boolean" default="false" minOccurs="0"
+                                     maxOccurs="1"/>
+                    </xsd:choice>
+                    <xsd:choice>
+                        <xsd:element name="prevalenza_persone" type="xsd:boolean" default="false" minOccurs="0"
+                                     maxOccurs="1"/>
+                        <xsd:element name="prevalenza_dipendenti_societa" type="xsd:boolean" default="false"
+                                     minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="prevalenza_associazioni" type="xsd:boolean" default="false" minOccurs="0"
+                                     maxOccurs="1"/>
+                    </xsd:choice>
+                    <xsd:element name="nome_societa" type="xsd:string" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="nome_associazione" type="xsd:string" default="false" minOccurs="0"
+                                 maxOccurs="1"/>
+                    <xsd:element name="altre_dichiarazioni" type="xsd:string" default="false" minOccurs="0"
+                                 maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="dichiarazioni_extra_alberghiere" type="edichextraalb:dichiarazioni_extra_alberghiere_ctype"/>
+</xsd:schema>

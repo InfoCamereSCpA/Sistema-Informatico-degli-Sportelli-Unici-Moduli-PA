@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:eapeaa="../02_entities/apertura_strutture_aria_aperta" xmlns:ctipi="../commons/tipi"
+    targetNamespace="../02_entities/apertura_strutture_aria_aperta" elementFormDefault="qualified"
+    attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:simpleType name="gg_mm_stype">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-3][0-9]+/[0-1][0-9]"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- AS-IS: StruttureRicettiveCarattereEsercizioBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="strutture_ricettive_carattere_esercizio_base_type" abstract="true"/>
+
+    <!-- AS-IS: ClassificazioneBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="classificazione_base_type" abstract="true"/>
+
+    <!-- AS-IS: TipologiaEsercizioBaseType su SUAP_modulo_strutture_ricettive_aria_aperta.xsd -->
+    <xsd:complexType name="tipologia_esercizio_base_type" abstract="true"/>
+
+    <xsd:complexType name="strutture_ricettive_carattere_esercizio_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eapeaa:strutture_ricettive_carattere_esercizio_base_type">
+                <xsd:sequence>
+                    <xsd:element name="carattere_annuale" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="carattere_stragionale_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="data_da" type="eapeaa:gg_mm_stype" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="data_a" type="eapeaa:gg_mm_stype" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="classificazione_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eapeaa:classificazione_base_type">
+                <xsd:sequence>
+                    <xsd:element name="classificazione_richiesta" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="data_planimetria" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="nr_protocollo" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+
+
+    <xsd:complexType name="tipologia_esercizio_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eapeaa:tipologia_esercizio_base_type">
+                <xsd:sequence>
+                    <xsd:element name="campeggio" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="villaggio_turistico" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="apertura_strutture_aria_aperta_ctype">
+        <xsd:sequence>
+            <xsd:element name="denominazione_struttura" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="sitoWeb" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="strutture_ricettive_carattere_esercizio" type="eapeaa:strutture_ricettive_carattere_esercizio_base_type" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="tipologia_esercizio" type="eapeaa:tipologia_esercizio_base_type" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="superficie" type="xsd:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="classificazione" type="eapeaa:classificazione_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--
+            <xsd:element name="classificazione_richiesta" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="data_planimetria" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="nr_protocollo" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            -->
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="apertura_strutture_aria_aperta"
+        type="eapeaa:apertura_strutture_aria_aperta_ctype"/>
+</xsd:schema>

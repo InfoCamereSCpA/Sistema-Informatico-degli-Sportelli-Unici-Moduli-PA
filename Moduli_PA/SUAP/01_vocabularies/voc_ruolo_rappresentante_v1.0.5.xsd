@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:vruolo="../01_vocabularies/ruolo_rappresentante" targetNamespace="../01_vocabularies/ruolo_rappresentante" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:simpleType name="ruolo_rappresentante_voc">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Legale rappresentante"/>
+            <xsd:enumeration value="Procuratore/Delegato interno ad Organizzazione"/>
+            <xsd:enumeration value="Titolare di impresa individuale"/>
+            <xsd:enumeration value="PRESIDENTE CONSIGLIO AMMINISTRAZIONE"/>
+            <xsd:enumeration value="Proprietario"/>
+            <xsd:enumeration value="Comproprietario"/>
+            <xsd:enumeration value="Usufruttuario"/>
+            <xsd:enumeration value="Amministratore di condominio"/>
+            <xsd:enumeration value="Amministratore unico"/>
+            <xsd:enumeration value="Procuratore"/>
+            <xsd:enumeration value="AFFITTUARIO"/>
+            <xsd:enumeration value="AFFITTUARIO O CONDUTTORE"/>
+            <xsd:enumeration value="Altro"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

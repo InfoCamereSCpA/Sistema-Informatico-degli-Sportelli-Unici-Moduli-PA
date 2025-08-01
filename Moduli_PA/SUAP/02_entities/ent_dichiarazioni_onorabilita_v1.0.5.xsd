@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:edicono="../02_entities/dichiarazioni_onorabilita"
+
+            targetNamespace="../02_entities/dichiarazioni_onorabilita"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:complexType name="dichiarazioni_onorabilita_ctype">
+        <xsd:sequence>
+            <xsd:element name="dichiarazioni_onorabilita_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dichiarazioni_onorabilita_nominativo" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="dichiarazioni_onorabilita" type="edicono:dichiarazioni_onorabilita_ctype"/>
+</xsd:schema>

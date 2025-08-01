@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mampsomscuosp="../04_forms/somministrazione_scuole_ospedali_ampliamento_ecc"
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica"
+            xmlns:sallegati="../03_sections/allegati"
+            xmlns:srifatt="../03_sections/riferimento_attivita"
+            xmlns:sampsomscuosp="../03_sections/somministrazione_scuole_ospedali_ampliamento"
+            targetNamespace="../04_forms/somministrazione_scuole_ospedali_ampliamento_ecc"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/scheda_anagrafica" schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/riferimento_attivita" schemaLocation="../03_sections/sec_riferimento_attivita_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/somministrazione_scuole_ospedali_ampliamento" schemaLocation="../03_sections/sec_somministrazione_scuole_ospedali_ampliamento_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/allegati" schemaLocation="../03_sections/sec_allegati_v1.0.5.xsd"/>
+
+
+    <xsd:complexType name="somministrazione_scuole_ospedali_ampliamento_ecc_type">
+        <xsd:sequence>
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="riferimento_attivita" type="srifatt:riferimento_attivita_type" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="ampliamento_somminitrazione_scuole_ospedali" type="sampsomscuosp:ampliamento_somministrazione_scuole_ospedali_ctype" minOccurs="1" maxOccurs="1" />
+            <xsd:element name="tabellaAllegati" type="sallegati:allegati_ctype" minOccurs="1" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="somministrazione_scuole_ospedali_ampliamento_ecc" type="mampsomscuosp:somministrazione_scuole_ospedali_ampliamento_ecc_type"/>
+</xsd:schema>

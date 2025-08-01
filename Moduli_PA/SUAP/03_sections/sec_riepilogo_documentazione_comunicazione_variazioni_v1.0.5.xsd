@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sdoccomvar="../03_sections/riepilogo_documentazione_comunicazione_variazioni"
+            xmlns:edoccomvar="../02_entities/riepilogo_documentazione_comunicazione_variazioni"
+            targetNamespace="../03_sections/riepilogo_documentazione_comunicazione_variazioni" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/riepilogo_documentazione_comunicazione_variazioni" schemaLocation="../02_entities/ent_riepilogo_documentazione_comunicazione_variazioni_v1.0.5.xsd"/>
+    
+<!--    <xsd:complexType name="sezione_riepilogo_documentazione_comunicazione_variazione_ctype" abstract="true">-->
+    <xsd:complexType name="sezione_riepilogo_documentazione_comunicazione_variazione_ctype">
+        <xsd:sequence>
+            <xsd:element name="riepilogo_documentazione" type="edoccomvar:riepilogo_documentazione_comunicazione_variazione_base_type" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>   
+    </xsd:complexType>
+    
+    <xsd:element name="sezione_riepilogo_documentazione_comunicazione_variazione" type="sdoccomvar:sezione_riepilogo_documentazione_comunicazione_variazione_ctype"/>
+</xsd:schema>

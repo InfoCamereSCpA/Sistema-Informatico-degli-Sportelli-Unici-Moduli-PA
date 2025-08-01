@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:ctipi="../commons/tipi"
+            xmlns:eproto="../02_entities/protocollo"
+
+            xmlns:espaintamp="../02_entities/spacci_interni_ampliamento"
+            targetNamespace="../02_entities/spacci_interni_ampliamento" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="../02_entities/ent_protocollo_v1.0.5.xsd"/>
+
+    <xsd:complexType name="spacci_interni_ampliamento_ctype">
+        <xsd:sequence>
+            <xsd:element name="nr_protocollo" type="eproto:numero_registrazione_stype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="data_protocollo" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="superficie_vendita_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="superficie_aumentata_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="superficie_aumentata_da" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="superficie_aumentata_a" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="settori_vendita_variazione_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="aggiunta_settori_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="eliminazione_settori_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="sostituzione_settore_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="alimentare" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="superficie_alimentare_da" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="superficie_alimentare_a" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="non_alimentare" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="superficie_non_alimentare_da" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="superficie_non_alimentare_a" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="spacci_interni_ampliamento" type="espaintamp:spacci_interni_ampliamento_ctype"/>
+</xsd:schema>

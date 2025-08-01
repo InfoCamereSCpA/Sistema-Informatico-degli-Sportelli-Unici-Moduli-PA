@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    
+    xmlns:vpergen="../01_vocabularies/persona_genere"
+    
+    targetNamespace="../01_vocabularies/persona_genere" elementFormDefault="qualified"
+    attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:simpleType name="sesso_voc">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="M"/>
+            <xsd:enumeration value="F"/>
+            <xsd:enumeration value="N"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

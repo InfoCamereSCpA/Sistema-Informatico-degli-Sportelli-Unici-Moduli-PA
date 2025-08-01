@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sscstruape="../03_sections/scia_strutture_ricettive_apertura"
+            xmlns:eanagatt="../02_entities/anagrafica_attivita"
+            xmlns:edaca="../02_entities/dati_catastali"
+            xmlns:eaasralb="../02_entities/avvio_attivita_strutture_ricettive_alberghiere"
+            xmlns:enomrap="../02_entities/nomina_rappresentante"
+            xmlns:edotaralb="../02_entities/dotazioni_strutture_ricettive"
+            xmlns:ecapric="../02_entities/scia_capacita_ricettiva"
+            targetNamespace="../03_sections/scia_strutture_ricettive_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    
+    <xsd:import namespace="../02_entities/anagrafica_attivita" schemaLocation="../02_entities/ent_anagrafica_attivita_v1.0.5.xsd"/> 
+    <xsd:import namespace="../02_entities/dati_catastali" schemaLocation="../02_entities/ent_dati_catastali_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/avvio_attivita_strutture_ricettive_alberghiere" schemaLocation="../02_entities/ent_avvio_attivita_strutture_ricettive_alberghiere_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/nomina_rappresentante" schemaLocation="../02_entities/ent_nomina_rappresentante_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/dotazioni_strutture_ricettive" schemaLocation="../02_entities/ent_dotazioni_strutture_ricettive_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/scia_capacita_ricettiva" schemaLocation="../02_entities/ent_scia_capacita_ricettiva_v1.0.5.xsd"/>
+
+
+    <xsd:element name="sezione_scia_strutture_ricettive_apertura" type="sscstruape:sezione_scia_strutture_ricettive_apertura_ctype"/>
+
+    <xsd:complexType name="sezione_scia_strutture_ricettive_apertura_ctype">
+        <xsd:sequence>
+            <xsd:element name="inizio_attivita" type="eanagatt:anagrafica_attivita_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="dati_catastali" type="edaca:coordinate_catastali_base_type" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="apertura" type="eaasralb:avvio_attivita_strutture_ricettive_alberghiere_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="nomina_rappresentante" type="enomrap:nomina_rappresentante_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dotazione_struttura" type="edotaralb:dotazioni_strutture_ricettive_base_type" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="capacita_ricettive" type="ecapric:scia_capacita_ricettiva_base_type" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

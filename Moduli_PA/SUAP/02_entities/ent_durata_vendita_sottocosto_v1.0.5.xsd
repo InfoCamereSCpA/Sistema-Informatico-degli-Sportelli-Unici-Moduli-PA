@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:edurvensot="../02_entities/durata_vendita_sottocosto"
+
+            xmlns:ctipi="../commons/tipi"
+
+            targetNamespace="../02_entities/durata_vendita_sottocosto"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:simpleType name="vendita_durata_giorni_stype">
+        <xsd:restriction base="xsd:integer">
+            <xsd:minInclusive value="1"/>
+            <xsd:maxInclusive value="10"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="durata_vendita_sottocosto_ctype">
+        <xsd:sequence>
+            <xsd:element name="vendita_giorno_dal" type="ctipi:ggmmaaaa_stype" minOccurs="0" />
+            <xsd:element name="vendita_giorno_al" type="ctipi:ggmmaaaa_stype" minOccurs="0" />
+            <xsd:element name="vendita_durata_giorni" type="edurvensot:vendita_durata_giorni_stype" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="durata_vendita_sottocosto" type="edurvensot:durata_vendita_sottocosto_ctype"/>
+</xsd:schema>

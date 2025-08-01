@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:evarav="../02_entities/variazioni_attivita_agenzia_viaggio"
+            xmlns:ctipi="../commons/tipi" targetNamespace="../02_entities/variazioni_attivita_agenzia_viaggio" 
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:complexType name="variazione_attivita_ag_viaggio_base_type" abstract="true"/>
+
+    <xsd:complexType name="variazione_attivita_ag_viaggio_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="evarav:variazione_attivita_ag_viaggio_base_type">
+                <xsd:sequence>
+                    <xsd:element name="intestatario" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="nrPratica" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="data_pratica" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="ente" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:choice>
+                        <xsd:sequence>
+                            <xsd:element name="insegna" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element name="altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                        </xsd:sequence>
+                    </xsd:choice>
+                    <xsd:element name="variazioneDa" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="variazioneA" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:element name="variazione_attivita_ag_viaggio" type="evarav:variazione_attivita_ag_viaggio_ctype"/>
+</xsd:schema>

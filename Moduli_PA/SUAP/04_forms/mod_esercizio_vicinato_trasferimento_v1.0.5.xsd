@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mesvitr="../04_forms/esercizio_vicinato_trasferimento"
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica"
+            xmlns:srifatt="../03_sections/riferimento_attivita"
+            xmlns:stresvi="../03_sections/mod_esercizio_vicinato_trasferimento"
+            xmlns:sreqono="../03_sections/requisiti_onorabilita"
+            xmlns:sreqpro="../03_sections/requisiti_professionali"
+            xmlns:saltdic="../03_sections/altre_dichiarazioni"
+            xmlns:sallegati="../03_sections/allegati"
+            xmlns:saltdicalt="../03_sections/altre_dichiarazioni_altro"
+            targetNamespace="../04_forms/esercizio_vicinato_trasferimento"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/scheda_anagrafica"
+                schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/riferimento_attivita"
+                schemaLocation="../03_sections/sec_riferimento_attivita_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/mod_esercizio_vicinato_trasferimento"
+                schemaLocation="../03_sections/sec_mod_esercizio_vicinato_trasferimento_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/requisiti_onorabilita"
+                schemaLocation="../03_sections/sec_requisiti_onorabilita_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/requisiti_professionali"
+                schemaLocation="../03_sections/sec_requisiti_professionali_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/altre_dichiarazioni"
+                schemaLocation="../03_sections/sec_altre_dichiarazioni_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/allegati" schemaLocation="../03_sections/sec_allegati_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/altre_dichiarazioni_altro" schemaLocation="../03_sections/sec_altre_dichiarazioni_altro_v1.0.5.xsd"/>
+
+    <xsd:complexType name="esercizio_vicinato_trasferimento_type">
+        <xsd:sequence>
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype"
+                         minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="riferimento_attivita" type="srifatt:riferimento_attivita_type"
+                         minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="trasferimento_esercizio_vicinato"
+                         type="stresvi:trasferimento_esercizio_vicinato_type" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="requisiti_onorabilita" type="sreqono:sezione_requisiti_onorabilita_ctype" minOccurs="0"
+                         maxOccurs="1"/>
+            <xsd:element name="requisiti_professionali"
+                         type="sreqpro:sezione_requisiti_professionali_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altre_dichiarazioni" type="saltdicalt:sezione_altre_dichiarazioni_altro_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="tabellaAllegati" type="sallegati:allegati_ctype"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="esercizio_vicinato_trasferimento"
+                 type="mesvitr:esercizio_vicinato_trasferimento_type"/>
+</xsd:schema>

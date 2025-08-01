@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mstruttric="../04_forms/scia_strutture_ricettive_variazione"
+            xmlns:sstralb="../03_sections/intestazione_strutture_ricettive"
+            xmlns:svarstruttric="../03_sections/scia_strutture_ricettive_variazione"
+            xmlns:srdocasralb="../03_sections/riepilogo_documentazione_scia_strutture_ricettive"
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica" targetNamespace="../04_forms/scia_strutture_ricettive_variazione" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/intestazione_strutture_ricettive" schemaLocation="../03_sections/sec_intestazione_strutture_ricettive_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/scia_strutture_ricettive_variazione" schemaLocation="../03_sections/sec_scia_strutture_ricettive_variazione_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/riepilogo_documentazione_scia_strutture_ricettive" schemaLocation="../03_sections/sec_riepilogo_documentazione_scia_strutture_ricettive_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/scheda_anagrafica" schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+
+    <xsd:complexType name="modulo_scia_strutture_ricettive_variazione_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype"/>
+            <xsd:element name="intestazione_strutture_ricettive" type="sstralb:sezione_intestazione_strutture_ricettive_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="sezione_variazione" type="svarstruttric:sezione_scia_strutture_ricettive_variazione_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altre_dichiarazioni" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="riepilogo_documentazione" type="srdocasralb:sezione_riepilogo_documentazione_scia_strutture_ricettive_ctype" minOccurs="0" maxOccurs="1"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_scia_strutture_ricettive_variazione" type="mstruttric:modulo_scia_strutture_ricettive_variazione_ctype"/>
+</xsd:schema>

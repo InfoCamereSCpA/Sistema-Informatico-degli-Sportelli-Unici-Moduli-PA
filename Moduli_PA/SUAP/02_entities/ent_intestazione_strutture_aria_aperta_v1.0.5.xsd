@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eintaa="../02_entities/intestazione_strutture_aria_aperta"
+                
+        targetNamespace="../02_entities/intestazione_strutture_aria_aperta" elementFormDefault="qualified" 
+            attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:complexType name="intestazione_strutture_aria_aperta_ctype">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:sequence>
+                    <xsd:element name="scia_apertura" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="scia_variazione" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="scia_ampliamento" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:choice>
+            <xsd:choice>
+                <xsd:sequence>
+                    <xsd:element name="scia_unica_apertura" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="scia_unica_variazione" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="scia_unica_ampliamento" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:choice>
+            <xsd:choice>
+                <xsd:sequence>
+                    <xsd:element name="scia_condizionata_apertura" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="scia_condizionata_variazione" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="scia_condizionata_ampliamento" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="intestazione_strutture_aria_aperta" type="eintaa:intestazione_strutture_aria_aperta_ctype"/>
+</xsd:schema>

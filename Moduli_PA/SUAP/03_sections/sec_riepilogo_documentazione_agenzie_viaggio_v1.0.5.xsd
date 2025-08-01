@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:srdocav="../03_sections/riepilogo_documentazione_agenzie_viaggio"
+    xmlns:erdocav="../02_entities/riepilogo_documentazione_agenzie_viaggio" targetNamespace="../03_sections/riepilogo_documentazione_agenzie_viaggio" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/informativa_privacy" schemaLocation="../02_entities/ent_informativa_privacy_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/riepilogo_documentazione_agenzie_viaggio" schemaLocation="../02_entities/ent_riepilogo_documentazione_agenzie_viaggio_v1.0.5.xsd"/>
+
+
+
+    <xsd:complexType name="sezione_riepilogo_documentazione_agenzie_viaggio_ctype">
+
+        <xsd:sequence>
+            <xsd:element name="riepilogo_documentazione_agenzie_viaggio" type="erdocav:riepilogo_documentazione_agenzie_viaggio_base_type" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+
+    </xsd:complexType>
+
+    <xsd:element name="sezione_riepilogo_documentazione_agenzie_viaggio" type="srdocav:sezione_riepilogo_documentazione_agenzie_viaggio_ctype"/>
+</xsd:schema>

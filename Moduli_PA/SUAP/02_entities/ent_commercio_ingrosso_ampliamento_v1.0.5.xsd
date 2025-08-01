@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ecommingamp="../02_entities/commercio_ingrosso_ampliamento"
+            xmlns:esetmeramp="../02_entities/settori_merceologici_ampliamento"
+            xmlns:eproto="../02_entities/protocollo"
+            targetNamespace="../02_entities/commercio_ingrosso_ampliamento"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/settori_merceologici_ampliamento"
+                schemaLocation="./ent_settori_merceologici_ampliamento_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="./ent_protocollo_v1.0.5.xsd"/>
+    <xsd:complexType name="vendita_ampliamento_ctype">
+        <xsd:sequence>
+            <xsd:element name="check" type="xsd:boolean"/>
+            <xsd:element name="superficie_da" type="xsd:double" default="0.0"/>
+            <xsd:element name="superficie_a" type="xsd:double" default="0.0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="commercio_ingrosso_ampliamento_ctype">
+        <xsd:sequence>
+            <xsd:element name="comunicazione_ampliamento" type="eproto:protocollo_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="variazione_superficie_vendita" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="superficie_vendita_check" type="xsd:boolean"/>
+                        <xsd:element name="vendita_ingrosso" type="ecommingamp:vendita_ampliamento_ctype"
+                                     minOccurs="0"/>
+                        <xsd:element name="vendita_congiunta" type="ecommingamp:vendita_ampliamento_ctype"
+                                     minOccurs="0"/>
+                        <xsd:element name="vendita_congiunta_ingrosso" type="ecommingamp:vendita_ampliamento_ctype"
+                                     minOccurs="0"/>
+                        <xsd:element name="vendita_congiunta_dettaglio" type="ecommingamp:vendita_ampliamento_ctype"
+                                     minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="variazione_superficie_settori" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="settori_merceologici_check" type="xsd:boolean"/>
+                        <xsd:element name="settori_merceologici"
+                                     type="esetmeramp:settori_merceologici_ampliamento_base_type" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="commercio_ingrosso_ampliamento" type="ecommingamp:commercio_ingrosso_ampliamento_ctype"/>
+</xsd:schema>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:epolass="../02_entities/polizze_assicurative"
+    xmlns:ctipi="../commons/tipi" targetNamespace="../02_entities/polizze_assicurative" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:complexType name="polizze_assicurative_base_type" abstract="true"/>
+
+    <xsd:complexType name="polizze_assicurative_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="epolass:polizze_assicurative_base_type">
+                <xsd:sequence>
+                    <xsd:element name="data_polizza" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="nome_compagnia" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="scadenza" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="data_polizza2" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="nome_compagnia2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="scadenza2" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="forma_associativa" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="polizze_assicurative" type="epolass:polizze_assicurative_ctype"/>
+</xsd:schema>

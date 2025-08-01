@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:eallresattproreqant="../02_entities/allegato_responsabile_attivita_produttive_requisiti_antimafia"
+            xmlns:eallperana="../02_entities/allegato_persona_anagrafica"
+
+            xmlns:efile="../02_entities/files"
+
+            targetNamespace="../02_entities/allegato_responsabile_attivita_produttive_requisiti_antimafia"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/files" schemaLocation="../02_entities/ent_files_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_persona_anagrafica" schemaLocation="../02_entities/ent_allegato_persona_anagrafica_v1.0.5.xsd"/>
+
+
+    <xsd:complexType name="allegato_responsabile_attivita_produttive_requisiti_antimafia_ctype">
+        <xsd:sequence>
+            <xsd:element name="responsabile" type="eallperana:allegato_persona_anagrafica_ctype"/>
+            <xsd:element name="inQualita">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:choice>
+                            <xsd:element name="societa" type="xsd:string"/>
+                            <xsd:element name="dittaindividuale" type="xsd:string"/>
+                        </xsd:choice>
+                        <xsd:element name="data" type="xsd:date"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="dichiarazione" type="eallresattproreqant:AltreDichiarazioniAltroBaseType"/>
+            <xsd:element name="allegatoDocumentoIdentitaResposabileeAttivitàProduttive" type="efile:file_ctype" />
+            <xsd:element name="dichiarazionePresaVisioneInformativaPrivacy" type="xsd:boolean" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="AltreDichiarazioniAltroBaseType" abstract="true"/>
+    <xsd:complexType name="AltreDichiarazioniAltroType">
+        <xsd:complexContent>
+            <xsd:extension base="eallresattproreqant:AltreDichiarazioniAltroBaseType">
+                <xsd:sequence>
+                    <xsd:element name="descrizione" type="xsd:string" maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="allegato_responsabile_attivita_produttive_requisiti_antimafia" type="eallresattproreqant:allegato_responsabile_attivita_produttive_requisiti_antimafia_ctype"/>
+
+</xsd:schema>

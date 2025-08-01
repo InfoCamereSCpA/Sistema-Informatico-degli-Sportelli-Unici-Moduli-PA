@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:eallposreqresdid="../02_entities/allegato_possesso_requisiti_responsabile_didattico"
+            xmlns:eallperana="../02_entities/allegato_persona_anagrafica"
+
+            xmlns:efile="../02_entities/files"
+
+            targetNamespace="../02_entities/allegato_possesso_requisiti_responsabile_didattico"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/files" schemaLocation="../02_entities/ent_files_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_persona_anagrafica" schemaLocation="../02_entities/ent_allegato_persona_anagrafica_v1.0.5.xsd"/>
+
+
+    <xsd:complexType name="allegato_possesso_requisiti_responsabile_didattico_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="efile:file_ctype">
+                <xsd:sequence>
+                    <xsd:element name="soggetto" type="eallperana:allegato_persona_anagrafica_ctype"  />
+                    <xsd:element name="resposabileDella">
+                        <xsd:complexType>
+                            <xsd:choice>
+                                <xsd:element name="dittaIndividuale" >
+                                    <xsd:complexType>
+                                        <xsd:sequence>
+                                            <xsd:element name="denomiazione" type="xsd:string"/>
+                                            <xsd:element name="inOrganicoCome">
+                                                <xsd:complexType>
+                                                    <xsd:sequence>
+                                                        <xsd:element name="dipendente" type="eallperana:EmptyType" minOccurs="0"/>
+                                                        <xsd:element name="collaboratoreFamiliare" type="eallperana:EmptyType" minOccurs="0"/>
+                                                    </xsd:sequence>
+                                                </xsd:complexType>
+                                            </xsd:element>
+                                        </xsd:sequence>
+                                    </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="societa" >
+                                    <xsd:complexType>
+                                        <xsd:sequence>
+                                            <xsd:element name="denomiazione" type="xsd:string"/>
+                                            <xsd:element name="organico">
+                                                <xsd:complexType>
+                                                    <xsd:sequence>
+                                                        <xsd:element name="dipendente" type="eallperana:EmptyType" minOccurs="0"/>
+                                                        <xsd:element name="collaboratoreFamiliare" type="eallperana:EmptyType" minOccurs="0"/>
+                                                        <xsd:element name="socio" type="eallperana:EmptyType" minOccurs="0"/>
+                                                        <xsd:element name="amministratore" type="eallperana:EmptyType" minOccurs="0"/>
+                                                    </xsd:sequence>
+                                                </xsd:complexType>
+                                            </xsd:element>
+                                        </xsd:sequence>
+                                    </xsd:complexType>
+                                </xsd:element>
+                            </xsd:choice>
+                        </xsd:complexType>
+                    </xsd:element>
+
+                    <xsd:element name="dichiarazioniRequisitiProfessionali" type="eallposreqresdid:DichiarazioniRequisitiProfessionaliType"  />
+
+                    <xsd:element name="dichiarazionePresaVisioneInformativaPrivacy" type="xsd:boolean" />
+                    <xsd:element name="documentoIdentitaSoggetto" type="efile:file_ctype"  />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="DichiarazioniRequisitiProfessionaliType">
+        <xsd:sequence>
+            <xsd:element name="sedePrincipale" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="possessoDiplomaIstruzioneSecondoGrado" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="in" type="xsd:string"/>
+                                    <xsd:element name="luogo" type="xsd:string"/>
+                                    <xsd:element name="annoScolasticoDa" >
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:integer">
+                                                <xsd:minInclusive value="1"/>
+                                                <xsd:maxInclusive value="9999"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element name="annoScolasticoA" >
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:integer">
+                                                <xsd:minInclusive value="1"/>
+                                                <xsd:maxInclusive value="9999"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+
+                        <xsd:group ref="eallposreqresdid:possessoRequistiInsegnateGroup"/>
+
+                        <xsd:element name="esperienzaBiennaleInsegnante" type="eallposreqresdid:TabellaEsperienzaInsegnanteType" minOccurs="0" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="sedeUlteriore" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="nominativo" type="xsd:string"/>
+                        <xsd:element name="inOrganicoCome">
+                            <xsd:complexType>
+                                <xsd:choice>
+                                    <xsd:element name="dipendente" type="eallperana:EmptyType"/>
+                                    <xsd:element name="collaboratoreFamiliare" type="eallperana:EmptyType"/>
+                                    <xsd:element name="socio" type="eallperana:EmptyType"/>
+                                    <xsd:element name="amministratore" type="eallperana:EmptyType"/>
+                                </xsd:choice>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="TabellaEsperienzaInsegnanteType">
+        <xsd:sequence>
+            <xsd:element name="esperienza" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="denominazione" type="xsd:string"/>
+                        <xsd:element name="provincia" type="xsd:string"/>
+                        <xsd:element name="periodo" type="eallperana:PeriodoType"/>
+                        <xsd:element name="inQualitaDi">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="eallperana" type="eallperana:EmptyType"/>
+                                    <xsd:element name="istruttore" type="eallperana:EmptyType"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:group name="possessoRequistiInsegnateGroup">
+        <xsd:sequence>
+            <xsd:element name="possessoAbilitazioneInsegnanteTeoria" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="attoRilascio" type="eallperana:AttoRilasciatoDaType"/>
+                        <xsd:element name="dataRinnovo" type="xsd:date"/>
+                        <xsd:element name="luogoRinnovo" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="possessoAbilitazioneInsegnanteGuida" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="attoRilascio" type="eallperana:AttoRilasciatoDaType"/>
+                        <xsd:element name="dataRinnovo" type="xsd:date"/>
+                        <xsd:element name="luogoRinnovo" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:group>
+
+
+
+    <xsd:element name="allegato_possesso_requisiti_responsabile_didattico" type="eallposreqresdid:allegato_possesso_requisiti_responsabile_didattico_ctype"/>
+
+</xsd:schema>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:saut="../03_sections/autoriparatori"
+            xmlns:eaut="../02_entities/autoriparatori"
+
+            targetNamespace="../03_sections/autoriparatori" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/autoriparatori" schemaLocation="../02_entities/ent_autoriparatori_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_autoriparatori_ctype">
+        <xsd:sequence>
+            <xsd:element name="autoriparatori" type="eaut:autoriparatori_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_autoriparatori" type="saut:sezione_autoriparatori_ctype"/>
+
+</xsd:schema>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sampsomscuosp="../03_sections/somministrazione_scuole_ospedali_ampliamento"
+            xmlns:eampsomscuosp="../02_entities/somministrazione_scuole_ospedali_ampliamento"
+            targetNamespace="../03_sections/somministrazione_scuole_ospedali_ampliamento" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/somministrazione_scuole_ospedali_ampliamento" schemaLocation="../02_entities/ent_somministrazione_scuole_ospedali_ampliamento_v1.0.5.xsd"/>
+
+    <xsd:complexType name="ampliamento_somministrazione_scuole_ospedali_ctype">
+        <xsd:sequence>
+            <xsd:element name="ampliamento" type="eampsomscuosp:ampliamento_somministrazione_scuole_ospedali_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="ampliamento_somministrazione_scuole_ospedali" type="sampsomscuosp:ampliamento_somministrazione_scuole_ospedali_ctype"/>
+</xsd:schema>

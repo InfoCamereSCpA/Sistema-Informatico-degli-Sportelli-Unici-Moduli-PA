@@ -1,0 +1,14 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:scomces="../03_sections/comunicazione_cessazione"
+    xmlns:ecomces="../02_entities/comunicazione_cessazione" targetNamespace="../03_sections/comunicazione_cessazione" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/comunicazione_cessazione" schemaLocation="../02_entities/ent_comunicazione_cessazione_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_comunicazione_cessazione_ctype">
+        <xsd:sequence>
+            <xsd:element name="sezione_comunicazione_cessazione" type="ecomces:comunicazione_cessazione_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_comunicazione_cessazione" type="scomces:sezione_comunicazione_cessazione_ctype"/>
+</xsd:schema>

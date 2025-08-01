@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ecapricstruttaa="../02_entities/capacita_ricettiva_strutt_aria_aperta" 
+            targetNamespace="../02_entities/capacita_ricettiva_strutt_aria_aperta" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <!-- AS-IS: TipologiaUnitaAbitativeFisseBaseType su SUAP_common_components.xsd -->
+    <xsd:complexType name="tipologia_unita_abitative_fisse_base_type" abstract="true"/>
+
+    <xsd:complexType name="tipologia_unita_abitative_fisse_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="ecapricstruttaa:tipologia_unita_abitative_fisse_base_type">
+                <xsd:sequence>
+                    <xsd:element name="unita_abitative_fisse" type="xsd:integer" default="0"  minOccurs="0"  maxOccurs="1"/>
+                    <xsd:element name="posti_letto" type="xsd:integer" default="0"  minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="nr_stessa_unita" type="xsd:integer" default="0"  minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="monolocali" type="xsd:string" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="multilocali" type="xsd:string" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="camere_pernottamento" type="xsd:integer" default="0"  minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="soggiorno_vano_pernottamento" type="xsd:string" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="soggiorno_separato" type="xsd:string" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="cucina_vano_separato" type="xsd:string" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="bagni_privati" type="xsd:integer" default="0"  minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="nr_posti_letto" type="xsd:integer" default="0"  minOccurs="0" maxOccurs="1" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="capacita_ricettiva_strutt_aria_aperta_ctype">
+        <xsd:sequence>
+            <xsd:element name="capacita_ricettiva_max" type="xsd:integer" default="0"  minOccurs="0" maxOccurs="1"  />
+            <xsd:element name="piazzole_libere" type="xsd:integer" default="0"  minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="piazzole_attrezzate" type="xsd:integer" default="0"  minOccurs="0"  maxOccurs="1"/>
+
+            <xsd:element name="tipologia_unita_abitative_fisse" type="ecapricstruttaa:tipologia_unita_abitative_fisse_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--
+            <xsd:element name="unita_abitative_fisse" type="xsd:integer" default="0"  minOccurs="0"  maxOccurs="1"/>
+            <xsd:element name="posti_letto" type="xsd:integer" default="0"  minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="nr_stessa_unita" type="xsd:integer" default="0"  minOccurs="0" maxOccurs="1" />
+            <xsd:element name="monolocali" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="multilocali" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="camere_pernottamento" type="xsd:integer" default="0"  minOccurs="0" maxOccurs="1" />
+            <xsd:element name="soggiorno_vano_pernottamento" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="soggiorno_separato" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="cucina_vano_separato" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="bagni_privati" type="xsd:integer" default="0"  minOccurs="0" maxOccurs="1" />
+            <xsd:element name="nr_posti_letto" type="xsd:integer" default="0"  minOccurs="0" maxOccurs="1" />
+            -->
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="capacita_ricettiva_strutt_aria_aperta" type="ecapricstruttaa:capacita_ricettiva_strutt_aria_aperta_ctype" />
+</xsd:schema>

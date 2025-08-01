@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mvarsr="../04_forms/var_strutt_ricettive"
+            xmlns:svarsr="../03_sections/var_strutt_ricettive"
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica" targetNamespace="../04_forms/var_strutt_ricettive" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/var_strutt_ricettive" schemaLocation="../03_sections/sec_var_strutt_ricettive_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/scheda_anagrafica" schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+
+    <xsd:complexType name="comunicazione_variazione_strutture_ricettive_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype"/>
+            <xsd:element name="comunicazione_variazione" type="svarsr:sezione_comunicazione_variazione_strutture_ricettive_ctype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="comunicazione_variazione_strutture_ricettive" type="mvarsr:comunicazione_variazione_strutture_ricettive_ctype"/>
+</xsd:schema>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ealtdic="../02_entities/altre_dichiarazioni" targetNamespace="../02_entities/altre_dichiarazioni" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <!-- AS-IS: AltreDichiarazioniAltroBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="altre_dichiarazioni_base_type" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation>
+                Base astratto per il tipo altre_dichiarazioni. Estendere per specificare dettagli aggiuntivi.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="altre_dichiarazioni_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="ealtdic:altre_dichiarazioni_base_type">
+                <xsd:sequence>
+                    <xsd:element name="descrizione" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="altre_dichiarazioni" type="ealtdic:altre_dichiarazioni_ctype"/>
+</xsd:schema>

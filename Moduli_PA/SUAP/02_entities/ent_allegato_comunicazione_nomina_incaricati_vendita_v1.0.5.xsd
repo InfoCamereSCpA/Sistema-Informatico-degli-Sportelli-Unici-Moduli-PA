@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:eallcomnomincven="../02_entities/allegato_comunicazione_nomina_incaricati_vendita"
+            xmlns:eallperana="../02_entities/allegato_persona_anagrafica"
+
+            xmlns:efile="../02_entities/files"
+
+            targetNamespace="../02_entities/allegato_comunicazione_nomina_incaricati_vendita"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/files" schemaLocation="../02_entities/ent_files_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_persona_anagrafica" schemaLocation="../02_entities/ent_allegato_persona_anagrafica_v1.0.5.xsd"/>
+
+
+    <xsd:complexType name="allegato_comunicazione_nomina_incaricati_vendita_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="efile:file_ctype">
+                <xsd:sequence>
+                    <xsd:element name="nuovi" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="incaricato" type="eallperana:allegato_persona_anagrafica_ctype" maxOccurs="unbounded"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="cessati" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="incaricato" type="eallperana:allegato_persona_anagrafica_ctype" maxOccurs="unbounded"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="dichiarazionePresaVisioneInformativaPrivacy" type="xsd:boolean" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+
+    <xsd:element name="allegato_comunicazione_nomina_incaricati_vendita" type="eallcomnomincven:allegato_comunicazione_nomina_incaricati_vendita_ctype"/>
+
+</xsd:schema>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:eageaffape="../02_entities/agenzia_affari_apertura"
+    xmlns:ccodelist="../commons/codelist"
+    xmlns:canncl="../commons/xsdAnnotations"
+    xmlns:ctipi="../commons/tipi" targetNamespace="../02_entities/agenzia_affari_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:complexType name="agenzia_affari_apertura_ctype">
+        <xsd:sequence>
+            <!--Descrizione Attività-->
+            <xsd:element name="organizzazione_eventi" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="abbonamenti_media" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="info_commerciali" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="allestimento_eventi" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="vendita_veicoli_usati" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="vendita_usato" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="vendita_usato_descrizione" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="biglietti" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="pratiche" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="pubblicita" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="assicurazioni" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="trasporti" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altro" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altro_descrizione" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+            <!--attività online-->
+            <xsd:element name="attivita_online" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:choice minOccurs="0">
+                            <xsd:element name="solo_online_indirizzo_web" type="xsd:string" />
+                            <xsd:element name="anche_online_indirizzo_web" type="xsd:string" />
+                        </xsd:choice>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="agenzia_affari_apertura" type="eageaffape:agenzia_affari_apertura_ctype"/>
+</xsd:schema>

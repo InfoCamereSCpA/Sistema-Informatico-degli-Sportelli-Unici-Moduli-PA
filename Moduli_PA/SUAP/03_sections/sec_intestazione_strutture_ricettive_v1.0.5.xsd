@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sstralb="../03_sections/intestazione_strutture_ricettive"
+            xmlns:eintstruttric="../02_entities/intestazione_strutture_ricettive" 
+            targetNamespace="../03_sections/intestazione_strutture_ricettive" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/intestazione_strutture_ricettive" schemaLocation="../02_entities/ent_intestazione_strutture_ricettive_v1.0.5.xsd"/>
+    
+    <xsd:complexType name="sezione_intestazione_strutture_ricettive_ctype">
+        <xsd:sequence>
+            <xsd:element name="intestazione_strutture_ricettive" type="eintstruttric:intestazione_strutture_ricettive_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="sezione_scia_strutture_ricettive" type="sstralb:sezione_intestazione_strutture_ricettive_ctype"/>
+</xsd:schema>

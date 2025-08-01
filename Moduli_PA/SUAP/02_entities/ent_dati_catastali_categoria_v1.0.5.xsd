@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:edacacat="../02_entities/dati_catastali_categoria"
+    xmlns:edaca="../02_entities/dati_catastali" targetNamespace="../02_entities/dati_catastali_categoria" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/dati_catastali" schemaLocation="../02_entities/ent_dati_catastali_v1.0.5.xsd"/>
+
+
+    <xsd:complexType  name="dati_catastali_categoria_base_type" abstract="true"/>
+    
+    <xsd:complexType name="dati_catastali_categoria_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="edaca:coordinate_catastali_base_type">
+                <xsd:sequence>
+                    <xsd:element name="dati_catastali" type="edaca:coordinate_catastali_base_type"/>
+                    <xsd:element name="categoria" type="xsd:string" nillable="true"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="dati_catastali_categoria" type="edacacat:dati_catastali_categoria_ctype"/>
+</xsd:schema>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:edicageaff="../02_entities/dichiarazioni_agenzia_affari"
+    xmlns:ccodelist="../commons/codelist"
+    xmlns:canncl="../commons/xsdAnnotations"
+    xmlns:ctipi="../commons/tipi" targetNamespace="../02_entities/dichiarazioni_agenzia_affari" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+
+    <xsd:complexType name="dichiarazioni_agenzia_affari_ctype">
+        <xsd:sequence>
+            <xsd:element name="registro_giornale_affari" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element name="cartaceo">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:choice>
+                                        <!--Giornale affari-->
+                                        <xsd:element name="registro_giornale_vidimazione" minOccurs="1" maxOccurs="1">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="registro_pagine" type="xsd:positiveInteger" minOccurs="0" maxOccurs="1"/>
+                                                    <xsd:element name="registro_numerate_da" type="xsd:positiveInteger" minOccurs="0" maxOccurs="1"/>
+                                                    <xsd:element name="registro_numerate_a" type="xsd:positiveInteger" minOccurs="0" maxOccurs="1"/>
+                                                    <xsd:element name="registro_numero" type="xsd:positiveInteger" minOccurs="0" maxOccurs="1"/>
+                                                    <xsd:element name="registro_anno" type="xsd:positiveInteger" minOccurs="0" maxOccurs="1"/>
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                        <xsd:element name="registro_vidimato_comune" minOccurs="1" maxOccurs="1">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="data_vidimato_comune" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                    </xsd:choice>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="informatico">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="registro_giornale_affari_si" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                                    <xsd:element name="rendere_consultabili_registrazioni_si" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="dichiarazioni_agenzia_affari" type="edicageaff:dichiarazioni_agenzia_affari_ctype"/>
+</xsd:schema>

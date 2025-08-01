@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:epantras="../02_entities/panifici_trasferimento_sede"
+            xmlns:ecarese="../02_entities/carattere_esercizio"
+            xmlns:eproto="../02_entities/protocollo"
+            xmlns:ccodelist="../commons/codelist"
+            xmlns:canncl="../commons/xsdAnnotations"
+            xmlns:eindita="../02_entities/indirizzo_italiano"
+            targetNamespace="../02_entities/panifici_trasferimento_sede"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="./ent_protocollo_v1.0.5.xsd"/>
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+    <xsd:import namespace="../02_entities/indirizzo_italiano" schemaLocation="./ent_indirizzo_italiano_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/carattere_esercizio" schemaLocation="./ent_carattere_esercizio_v1.0.5.xsd"/>
+
+    <!-- AS-IS: attivitaCongiuntaVendProdConsPostoBaseType su SUAP_modulo_panifici.xsd -->
+    <xsd:complexType name="attivita_congiunta_vend_prod_cons_posto_base_type" abstract="true"/>
+
+    <xsd:complexType name="attivita_congiunta_vend_prod_cons_posto_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="epantras:attivita_congiunta_vend_prod_cons_posto_base_type">
+                <xsd:sequence>
+                    <xsd:element name="vendita_prodotti_produzione_propria" type="xsd:boolean" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="locazione_struttura_ctype">
+        <xsd:sequence>
+            <xsd:element name="locato_in_struttura" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="denominazione_struttura" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="non_locato_in_struttura" type="xsd:boolean" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="panifici_trasferimento_sede_ctype">
+        <xsd:sequence>
+            <xsd:element name="comunicazione_trasferimento_sede" type="eproto:protocollo_ctype" minOccurs="1"
+                         maxOccurs="1"/>
+            <xsd:element name="indirizzo_precedente" type="eindita:indirizzo_italiano_ctype" minOccurs="1"/>
+            <xsd:element name="locazione_struttura_pre" type="epantras:locazione_struttura_ctype" minOccurs="1"/>
+            <xsd:element name="indirizzo_nuovo" type="eindita:indirizzo_italiano_ctype" minOccurs="1"/>
+            <xsd:element name="telefono_cellulare" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="locazione_struttura_post" type="epantras:locazione_struttura_ctype" minOccurs="1"/>
+
+            <xsd:element name="attivita_congiunta_vend_prod_cons_posto" type="epantras:attivita_congiunta_vend_prod_cons_posto_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--
+            <xsd:element name="vendita_prodotti_produzione_propria" type="xsd:boolean" minOccurs="0"/>
+            -->
+
+            <xsd:element name="non_vendita_prodotti_produzione_propria" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="carattere_esercizio" type="ecarese:carattere_esercizio_ctype" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="panifici_trasferimento_sede" type="epantras:panifici_trasferimento_sede_ctype"/>
+</xsd:schema>

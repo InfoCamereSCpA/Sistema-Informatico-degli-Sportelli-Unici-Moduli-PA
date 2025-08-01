@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:saltdiclocint="../03_sections/altre_dichiarazioni_locali_interni"
+
+            xmlns:ealtdiclocint="../02_entities/altre_dichiarazioni_locali_interni"
+
+            targetNamespace="../03_sections/altre_dichiarazioni_locali_interni" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/altre_dichiarazioni_locali_interni" schemaLocation="../02_entities/ent_altre_dichiarazioni_locali_interni_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_altre_dichiarazioni_locali_interni_ctype">
+        <xsd:sequence>
+            <xsd:element name="altre_dichiarazioni_locali_interni" type="ealtdiclocint:altre_dichiarazioni_locali_interni_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_altre_dichiarazioni_locali_interni" type="saltdiclocint:sezione_altre_dichiarazioni_locali_interni_ctype"/>
+
+</xsd:schema>

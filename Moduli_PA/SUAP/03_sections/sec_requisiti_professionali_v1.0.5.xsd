@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                
+        xmlns:sreqpro="../03_sections/requisiti_professionali"
+                
+        xmlns:ereqpro="../02_entities/requisiti_professionali"
+                
+        targetNamespace="../03_sections/requisiti_professionali"
+            elementFormDefault="qualified" attributeFormDefault="qualified"    
+            version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/requisiti_professionali" schemaLocation="../02_entities/ent_requisiti_professionali_v1.0.5.xsd"/>
+    
+    <xsd:complexType name="sezione_requisiti_professionali_ctype">
+        <xsd:sequence>
+            <xsd:element name="requisiti_professionali" type="ereqpro:requisiti_professionali_ctype"/>   
+        </xsd:sequence>
+    </xsd:complexType> 
+
+    <xsd:element name="sezione_requisiti_professionali" type="sreqpro:sezione_requisiti_professionali_ctype"/>
+</xsd:schema>

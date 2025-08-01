@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:epanape="../02_entities/panifici_apertura"
+            xmlns:ecarese="../02_entities/carattere_esercizio"
+
+            targetNamespace="../02_entities/panifici_apertura"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/carattere_esercizio" schemaLocation="./ent_carattere_esercizio_v1.0.5.xsd"/>
+
+    <!-- AS-IS: attivitaCongiuntaVendProdConsPostoBaseType su SUAP_modulo_panifici.xsd -->
+    <xsd:complexType name="attivita_congiunta_vend_prod_cons_posto_base_type" abstract="true"/>
+
+    <xsd:complexType name="attivita_congiunta_vend_prod_cons_posto_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="epanape:attivita_congiunta_vend_prod_cons_posto_base_type">
+                <xsd:sequence>
+                    <xsd:element name="vendita_prodotti_produzione_propria" type="xsd:boolean" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="panifici_apertura_ctype">
+        <xsd:sequence>
+            <xsd:element name="attivita_congiunta_vend_prod_cons_posto" type="epanape:attivita_congiunta_vend_prod_cons_posto_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--
+            <xsd:element name="vendita_prodotti_produzione_propria" type="xsd:boolean" minOccurs="0"/>
+            -->
+            <xsd:element name="non_vendita_prodotti_produzione_propria" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="locato_in_struttura" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="denominazione_struttura" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="non_locato_in_struttura" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="carattere_esercizio" type="ecarese:carattere_esercizio_ctype" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="panifici_apertura" type="epanape:panifici_apertura_ctype"/>
+</xsd:schema>

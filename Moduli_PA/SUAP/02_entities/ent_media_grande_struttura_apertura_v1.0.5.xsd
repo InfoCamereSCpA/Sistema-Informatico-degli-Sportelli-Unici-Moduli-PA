@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:emegrstruttape="../02_entities/media_grande_struttura_apertura"
+            xmlns:ecarese="../02_entities/carattere_esercizio"
+            xmlns:esetmer="../02_entities/settori_merceologici"
+            targetNamespace="../02_entities/media_grande_struttura_apertura"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/carattere_esercizio" schemaLocation="./ent_carattere_esercizio_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/settori_merceologici" schemaLocation="./ent_settori_merceologici_v1.0.5.xsd"/>
+
+    <xsd:complexType name="vendita_ctype">
+        <xsd:sequence>
+            <xsd:element name="check" type="xsd:boolean"/>
+            <xsd:element name="superficie" type="xsd:double" default="0.0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="locazione_centro_commerciale_ctype">
+        <xsd:sequence>
+            <xsd:element name="locato_in_cc" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="denominazione_cc" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="non_locato_in_cc" type="xsd:boolean" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="media_grande_struttura_apertura_ctype">
+        <xsd:sequence>
+            <xsd:element name="segnalazione_avvio" minOccurs="1" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:choice>
+                            <xsd:element name="media_struttura" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element name="grande_struttura" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        </xsd:choice>
+                        <xsd:element name="esclusiva_apparecchi_automatici" type="xsd:boolean" minOccurs="0"
+                                     maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:choice>
+                <xsd:element name="vendita_ingrosso" type="emegrstruttape:vendita_ctype" minOccurs="0"/>
+                <xsd:element name="vendita_congiunta" type="emegrstruttape:vendita_ctype" minOccurs="0"/>
+            </xsd:choice>
+
+            <xsd:element name="carattere_esercizio" type="ecarese:carattere_esercizio_ctype" minOccurs="0"/>
+            <xsd:element name="centro_commerciale" type="emegrstruttape:locazione_centro_commerciale_ctype"
+                         minOccurs="0"/>
+            <xsd:element name="settori_merceologici" type="esetmer:settori_merceologici_base_type" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="media_grande_struttura_apertura" type="emegrstruttape:media_grande_struttura_apertura_ctype"/>
+</xsd:schema>

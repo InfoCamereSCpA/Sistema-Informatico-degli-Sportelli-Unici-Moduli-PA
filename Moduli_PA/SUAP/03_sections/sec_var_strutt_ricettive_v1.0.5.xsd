@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:svarav="../03_sections/var_strutt_ricettive"
+            xmlns:eintmod="../02_entities/intestazione_moduli"
+            xmlns:eanagattist="../02_entities/anagrafica_attivita_istat"
+
+            xmlns:edacacat="../02_entities/dati_catastali_categoria"
+            xmlns:evarsr="../02_entities/variazioni_attivita_strutt_ricettive" targetNamespace="../03_sections/var_strutt_ricettive" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/intestazione_moduli" schemaLocation="../02_entities/ent_intestazione_moduli_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/anagrafica_attivita_istat" schemaLocation="../02_entities/ent_anagrafica_attivita_istat_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/dati_catastali_categoria" schemaLocation="../02_entities/ent_dati_catastali_categoria_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/variazioni_attivita_strutt_ricettive" schemaLocation="../02_entities/ent_variazioni_attivita_strutt_ricettive_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_comunicazione_variazione_strutture_ricettive_ctype">
+        <xsd:sequence>
+            <xsd:element  name="intestazione" type="eintmod:intestazione_moduli_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="anagrafica" type="eanagattist:anagrafica_attivita_istat_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="dati_catastali" type="edacacat:dati_catastali_categoria_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="variazione" type="evarsr:variazione_attivita_strutt_ricettive_base_type" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_comunicazione_variazione_strutture_ricettive" type="svarav:sezione_comunicazione_variazione_strutture_ricettive_ctype"/>
+</xsd:schema>

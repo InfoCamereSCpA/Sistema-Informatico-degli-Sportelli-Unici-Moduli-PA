@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mcomvar="../04_forms/comunicazione_variazioni"
+            xmlns:sdatiattcomvar="../03_sections/dati_anagrafici_attivita_comunicazione_variazioni"
+            xmlns:svarcomvar="../03_sections/variazioni_comunicazione_variazioni"
+            xmlns:sdichcomvar="../03_sections/dichiarazioni_comunicazione_variazioni"
+            xmlns:einfoprivacy="../02_entities/informativa_privacy"
+            xmlns:sdoccomvar="../03_sections/riepilogo_documentazione_comunicazione_variazioni"
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica" targetNamespace="../04_forms/comunicazione_variazioni" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/dati_anagrafici_attivita_comunicazione_variazioni" schemaLocation="../03_sections/sec_dati_anagrafici_attivita_comunicazione_variazioni_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/variazioni_comunicazione_variazioni" schemaLocation="../03_sections/sec_variazioni_comunicazione_variazioni_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/dichiarazioni_comunicazione_variazioni" schemaLocation="../03_sections/sec_dichiarazioni_comunicazione_variazioni_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/informativa_privacy" schemaLocation="../02_entities/ent_informativa_privacy_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/riepilogo_documentazione_comunicazione_variazioni" schemaLocation="../03_sections/sec_riepilogo_documentazione_comunicazione_variazioni_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/scheda_anagrafica" schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+
+    <xsd:complexType name="modulo_comunicazione_variazioni_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype"/>
+            <xsd:element name="dati_anagrafici_attivita" type="sdatiattcomvar:sezione_dati_anagrafici_attivita_comunicazione_variazioni_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="variazioni" type="svarcomvar:sezione_variazioni_comunicazone_variazioni_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dichiarazioni" type="sdichcomvar:sezione_dichiarazione_comunicazione_variazioni_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="informativa_privacy" type="einfoprivacy:informativa_privacy_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="informativa_privacy_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="riepilogo_documentazione" type="sdoccomvar:sezione_riepilogo_documentazione_comunicazione_variazione_ctype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_comunicazione_variazioni" type="mcomvar:modulo_comunicazione_variazioni_ctype"/>
+</xsd:schema>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:elavape="../02_entities/lavanderie_apertura"
+            xmlns:ecarese="../02_entities/carattere_esercizio"
+
+            xmlns:ctipi="../commons/tipi"
+            xmlns:ccodelist="../commons/codelist"
+            xmlns:canncl="../commons/xsdAnnotations"
+
+            targetNamespace="../02_entities/lavanderie_apertura"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+    <xsd:import namespace="../02_entities/carattere_esercizio" schemaLocation="../02_entities/ent_carattere_esercizio_v1.0.5.xsd"/>
+
+    <!-- AS-IS: InCentroCommercialeBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="in_centro_commerciale_base_type" abstract="true"/>
+
+    <xsd:complexType name="in_centro_commerciale_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="elavape:in_centro_commerciale_base_type">
+                <xsd:sequence>
+                    <xsd:choice>
+                        <xsd:element name="no" type="xsd:boolean"/>
+                        <xsd:element name="si">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="valore" type="xsd:boolean"/>
+                                    <xsd:element name="denominazione" type="xsd:string" minOccurs="0"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:choice>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="lavanderie_apertura_ctype">
+        <xsd:sequence>
+            <xsd:element name="tipo_attivita" type="elavape:tipo_attivita_ctype"/>
+            <xsd:element name="in_centro_commerciale" type="elavape:in_centro_commerciale_base_type"/>
+            <xsd:element name="superficie_esercizio" type="elavape:superficie_esercizio_attivita_base_type"/>
+            <xsd:element name="carattere_esercizio" type="ecarese:carattere_esercizio_ctype"/>
+            <xsd:element name="dichiarazione_requisiti_antimafia" type="xsd:boolean"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipo_attivita_ctype">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="tintolavanderia" type="xsd:boolean"/>
+                <xsd:element name="lavanderia_gettoni" type="xsd:boolean"/>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--
+    <xsd:complexType name="in_centro_commerciale_ctype">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="no" type="xsd:boolean"/>
+                <xsd:element name="si">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="valore" type="xsd:boolean"/>     
+                        <xsd:element name="denominazione" type="xsd:string" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+    -->
+
+    <!-- AS-IS: SuperficieEsercizioAttivitaBaseType su SUAP_modulo_lavanderie.xsd -->
+    <xsd:complexType name="superficie_esercizio_attivita_base_type" abstract="true"/>
+
+    <xsd:complexType name="superficie_esercizio_attivita_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="elavape:superficie_esercizio_attivita_base_type">
+                <xsd:sequence>
+                    <xsd:element name="tintolavanderia_lavanderia" type="xsd:double" minOccurs="0" />
+                    <xsd:element name="altri_usi" type="xsd:double" minOccurs="0"/>
+                    <xsd:element name="complessiva" type="xsd:double" minOccurs="0" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:element name="lavanderia_apertura" type="elavape:lavanderie_apertura_ctype"/>
+</xsd:schema>
+    

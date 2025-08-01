@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:enstipoatt="../02_entities/notifica_sanitaria_tipologia_attivita" 
+                
+        targetNamespace="../02_entities/notifica_sanitaria_tipologia_attivita" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:complexType name="notifica_sanitaria_tipologia_attivita_ctype">
+        <xsd:sequence>
+            <!-- Produzione primaria -->
+            <xsd:element name="produzione_primaria" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="caccia" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="pesca" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="raccolta_molluschi" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="vendita_diretta_latte" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="vendita_diretta_uova" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="vendita_diretta_miele" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="raccolta_funghi" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="raccolta_vegetali_spontanei" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="coltivazioni_permanenti" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="coltivazioni_non_permanenti" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            
+            <!--  Vegetali – produzione, trasformazione e confezionamento -->
+            <xsd:element name="vegetali" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="conserve" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="vegetali_congelati" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="prodotti_pronti" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="ortofrutticoli_precotti" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="vegetali_secchi" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="bevande_frutta" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="olio" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="grassi_vegetali" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="vini" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="alcolici" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="sidro" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="birra" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="molitura" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="lavorazione_riso" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altre_lavorazioni" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="amidi" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="zucchero" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="caffe" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="te" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="vegetal_home_food" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            
+            <!--Prodotti da forno e di pasticceria, gelati e piatti pronti – Produzione, trasformazione e congelamento-->
+            <xsd:element name="prodotti" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="pasta" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="prodotti_forno" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="prodotti_pasticceria" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="prodotti_gelateria" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="pastigliaggi" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="cibi_pronti" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="home_food_prodotti" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            
+            <!-- Altri alimenti - produzione e trasformazione -->
+            <xsd:element name="altri_alimenti" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="bibite" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="ghiaccio" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="sale" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="sale_iodato" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            
+            <!-- Immissione in commercio di alimenti a proprio nome/marchio-->
+            <xsd:element name="immisione_alimenti" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="integratori_alimentari" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="alimenti_addizionati" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="alimenti_medici" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="alimenti_medici_lattanti" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="formule_lattanti" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="alimenti_infanzia" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="alimenti_no_glutine" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="alimenti_sostitutivi" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altri_alimenti_immessi" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            
+            <!-- Alimenti di origine animale –registrazione per produzione, trasformazione e confezionamento-->
+            <xsd:element name="alimenti_origine_animale" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="prodotti_animali_pesca" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="avicoli" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="carne" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="prodotti_pesca" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="prodotti_apiario" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="prodotti_latteari" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="raccoglitore_uova" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="home_food_alimenti_origine_animale" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            
+            <!-- Ristorazione -->
+            <xsd:element name="ristorazione" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="produzione_pasti" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="somministrazione_pasti" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="ristorazione_pubblica" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="bar_no_lab" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="bar_lab" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="ristorazione_pubblica_temporanea" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="home_restaurant" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            
+            <!-- Commercio all'ingrosso di alimenti e bevande-->
+            <xsd:element name="commercio_ingrosso" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="cash_carry" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="intermediari" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="commercio_ingrosso_deposito" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            
+            <!-- Commercio al dettaglio di alimenti e bevande -->
+            <xsd:element name="commercio_dettaglio" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="esercizio_vicinato" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="media_struttura" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="grande_struttura" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="per_corrispondenza" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            
+            <!-- Commercio Ambulante -->
+            <xsd:element name="commercio_ambulante" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="fisso" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="itinerante" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            
+            <!-- Distributori -->
+            <xsd:element name="distributori" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="automatici_alimenti_confezionati" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="latte_crudo" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="acqua_potabile" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            
+            <!-- Deposito alimenti e bevande conto terzi, non soggetti a riconoscimento-->
+            <xsd:element name="deposito_conto_terzi" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="regime_temperatura_conto_terzi" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="no_regime_temperatura_conto_terzi" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            
+            <!--  Piattaforma di distribuzione alimenti-->
+            <xsd:element name="piattaforma" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            
+            <!-- Deposito alimenti e bevande funzionalmente (ma non materialmente) annesso ad esercizi di vendita fissi o ad attività di commercio ambulante -->
+            <xsd:element name="deposito_funzionale" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="regime_temperatura_funzionale" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="no_regime_temperatura_funzionale" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            
+            <!-- Trasporto alimenti e bevande conto terz-->
+            <xsd:element name="trasporto_conto_terzi" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="cisterna_temperatura_controllata" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="cisterna_temperatura_non_controllata" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="regime_temperatura_controllata" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="regime_temperatura_non_controllata" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            
+            <xsd:element name="altro" type="xsd:string" default="false" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="notifica_sanitaria_tipologia_attivita" type="enstipoatt:notifica_sanitaria_tipologia_attivita_ctype"></xsd:element>
+</xsd:schema>

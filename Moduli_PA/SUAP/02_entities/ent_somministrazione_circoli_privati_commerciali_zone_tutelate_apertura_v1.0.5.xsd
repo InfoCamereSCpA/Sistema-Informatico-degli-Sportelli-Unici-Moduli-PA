@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:vtipattsom="../01_vocabularies/tipo_attivita_somministrazione"
+
+            xmlns:esomcirzonape="../02_entities/somministrazione_circoli_privati_commerciali_zone_tutelate_apertura"
+            targetNamespace="../02_entities/somministrazione_circoli_privati_commerciali_zone_tutelate_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../01_vocabularies/tipo_attivita_somministrazione" schemaLocation="../01_vocabularies/voc_tipo_attivita_somministrazione_v1.0.5.xsd"/>
+
+    <!-- AS-IS: TipologiaAttivitaSomministrazioneBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="tipologia_attivita_somministrazione_base_type" abstract="true"/>
+
+    <xsd:complexType name="tipologia_attivita_somministrazione_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esomcirzonape:tipologia_attivita_somministrazione_base_type">
+                <xsd:sequence>
+                    <xsd:element name="somministrazione_tipologia" type="vtipattsom:attivita_somministrazione_voc" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="somministrazione_circoli_zone_tutelate_apertura_ctype">
+        <xsd:sequence>
+            <xsd:element name="denominazione_privato" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <!-- <xsd:element name="somministrazione_tipologia" type="xsd:string" minOccurs="0" maxOccurs="1"/> -->
+            <xsd:element name="tipologia_attivita_somministrazione" type="esomcirzonape:tipologia_attivita_somministrazione_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--
+            <xsd:element name="somministrazione_tipologia" type="vtipattsom:attivita_somministrazione_voc" minOccurs="0" maxOccurs="1"/>
+            -->
+            <xsd:element name="superficie" type="xsd:double" default="0.0" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="somministrazione_circoli_zone_tutelate_apertura" type="esomcirzonape:somministrazione_circoli_zone_tutelate_apertura_ctype"/>
+</xsd:schema>

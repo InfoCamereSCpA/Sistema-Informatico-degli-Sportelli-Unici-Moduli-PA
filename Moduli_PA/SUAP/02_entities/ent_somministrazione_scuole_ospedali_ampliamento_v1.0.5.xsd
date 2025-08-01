@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eampsomscuosp="../02_entities/somministrazione_scuole_ospedali_ampliamento"
+            xmlns:ctipi="../commons/tipi"
+            xmlns:eproto="../02_entities/protocollo"
+
+            targetNamespace="../02_entities/somministrazione_scuole_ospedali_ampliamento" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="../02_entities/ent_protocollo_v1.0.5.xsd"/>
+
+
+    <xsd:complexType name="ampliamento_somministrazione_scuole_ospedali_ctype">
+        <xsd:sequence>
+            <xsd:element name="nr_protocollo" type="eproto:numero_registrazione_stype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="data_protocollo" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="superficie_da" type="xsd:double" default="0.0" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="superficie_a" type="xsd:double" default="0.0" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="ampliamento_somministrazione_scuole_ospedali" type="eampsomscuosp:ampliamento_somministrazione_scuole_ospedali_ctype"/>
+</xsd:schema>

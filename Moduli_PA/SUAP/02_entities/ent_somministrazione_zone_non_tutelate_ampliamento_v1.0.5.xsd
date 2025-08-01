@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:esomzonnontutamp="../02_entities/somministrazione_zone_non_tutelate_ampliamento"
+            xmlns:ctipi="../commons/tipi"
+            xmlns:eproto="../02_entities/protocollo"
+            targetNamespace="../02_entities/somministrazione_zone_non_tutelate_ampliamento" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="../02_entities/ent_protocollo_v1.0.5.xsd"/>
+
+    <xsd:complexType name="somministrazione_zone_non_tutelate_ampliamento_ctype">
+        <xsd:sequence>
+            <xsd:element name="nr_protocollo" type="eproto:numero_registrazione_stype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="data_protocollo" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="superficie_da" type="xsd:double" default="0.0" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="superficie_a" type="xsd:double" default="0.0" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="somministrazione_zone_non_tutelate_ampliamento" type="esomzonnontutamp:somministrazione_zone_non_tutelate_ampliamento_ctype"/>
+</xsd:schema>

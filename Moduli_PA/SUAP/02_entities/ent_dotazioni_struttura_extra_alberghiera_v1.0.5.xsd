@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:edotextraalb="../02_entities/dotazioni_struttura_extra_alberghiera"
+    targetNamespace="../02_entities/dotazioni_struttura_extra_alberghiera"
+    elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:complexType name="dotazioni_extra_alberghiera_ctype">
+        <xsd:sequence>
+            <xsd:element name="no_alimenti" type="xsd:boolean" default="false" minOccurs="0"
+                maxOccurs="1"/>
+            <xsd:element name="somministrazione_allogiati" type="xsd:boolean" default="false"
+                minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="somministrazione_allogiati_ospiti" type="xsd:boolean" default="false"
+                minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="somministrazione_presenti" type="xsd:boolean" default="false"
+                minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="somministrazione_pubblica" type="xsd:boolean" default="false"
+                minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="no_pisicina" type="xsd:boolean" default="false" minOccurs="0"
+                maxOccurs="1"/>
+
+            <xsd:element name="piscina_allogiati" type="xsd:boolean" default="false" minOccurs="0"
+                maxOccurs="1"/>
+            <xsd:element name="nr_impianti_allogiati" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="misura_impianti_allogiati" type="xsd:double" default="0.0" minOccurs="0"
+                maxOccurs="1"/>
+
+            <xsd:element name="piscina_pubblica" type="xsd:boolean" default="false" minOccurs="0"
+                maxOccurs="1"/>
+            <xsd:element name="nr_impianti_pubblica" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="misura_impianti_pubblica" type="xsd:double" default="0.0" minOccurs="0"
+                maxOccurs="1"/>
+            <xsd:element name="altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="dotazioni_extra_alberghiera"
+        type="edotextraalb:dotazioni_extra_alberghiera_ctype"/>
+
+</xsd:schema>

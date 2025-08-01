@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:srdocstruttaa="../03_sections/riepilogo_documentazione_strutture_aria_aperta"
+            xmlns:einfoprivacy="../02_entities/informativa_privacy"
+            targetNamespace="../03_sections/riepilogo_documentazione_strutture_aria_aperta"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/informativa_privacy"
+                schemaLocation="../02_entities/ent_informativa_privacy_v1.0.5.xsd"/>
+
+    <xsd:complexType name="riepilogo_documentazione_ctype">
+        <xsd:sequence>
+            <xsd:element name="scia_unica_dichiarazione" type="xsd:boolean"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="scia_condizionata_dichiarazione" type="xsd:boolean"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="informativa_privacy_check" type="xsd:boolean"
+                         minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="data_dichiarazione" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="firma" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="informativa_privacy" type="einfoprivacy:informativa_privacy_ctype"
+                         minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="procura_delega" type="xsd:boolean"  minOccurs="0"
+                         maxOccurs="1"/>
+            <xsd:element name="copia_documento_identita" type="xsd:boolean"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="planimetria_struttura" type="xsd:boolean"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dichiarazioni_requisiti_a" type="xsd:boolean"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dichiarazioni_requisiti_b" type="xsd:boolean"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dichiarazioni_classificazione" type="xsd:boolean"
+                         minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="scia_unica" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="scia_classificazione" type="xsd:boolean"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="scia_prevenzione_incendi" type="xsd:boolean"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="notifica_sanitaria" type="xsd:boolean"  minOccurs="0"
+                         maxOccurs="1"/>
+            <xsd:element name="scia_somministrazione" type="xsd:boolean"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="scia_insegna" type="xsd:boolean"  minOccurs="0"
+                         maxOccurs="1"/>
+            <xsd:element name="altre_scia" type="xsd:boolean"  minOccurs="0"
+                         maxOccurs="1"/>
+            <xsd:element name="altra_comunicazioni" type="xsd:boolean"  minOccurs="0"
+                         maxOccurs="1"/>
+
+            <xsd:element name="scia_condizionata" type="xsd:boolean"  minOccurs="0"
+                         maxOccurs="1"/>
+
+            <xsd:element name="documentazione_rilascio_insegna" type="xsd:boolean"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="domanda_classificazione" type="xsd:boolean"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altre_domande" type="xsd:boolean"  minOccurs="0"
+                         maxOccurs="1"/>
+
+
+            <xsd:element name="attestazioni_versamenti" type="xsd:boolean"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="attestazioni_bollo" type="xsd:boolean"  minOccurs="0"
+                         maxOccurs="1"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="riepilogo_documentazione" type="srdocstruttaa:riepilogo_documentazione_ctype"
+    />
+</xsd:schema>

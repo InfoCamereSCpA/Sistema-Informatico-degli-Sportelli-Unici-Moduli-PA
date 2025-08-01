@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:scommingtras="../03_sections/commercio_ingrosso_trasferimento_sede"
+            xmlns:ecommingtras="../02_entities/commercio_ingrosso_trasferimento_sede"
+
+            targetNamespace="../03_sections/commercio_ingrosso_trasferimento_sede" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/commercio_ingrosso_trasferimento_sede" schemaLocation="../02_entities/ent_commercio_ingrosso_trasferimento_sede_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_commercio_ingrosso_trasferimento_sede_ctype">
+        <xsd:sequence>
+            <xsd:element name="commercio_ingrosso_trasferimento_sede" type="ecommingtras:commercio_ingrosso_trasferimento_sede_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_commercio_ingrosso_trasferimento_sede" type="scommingtras:sezione_commercio_ingrosso_trasferimento_sede_ctype"/>
+
+</xsd:schema>

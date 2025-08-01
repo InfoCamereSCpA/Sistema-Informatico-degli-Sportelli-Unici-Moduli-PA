@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:edaca="../02_entities/dati_catastali" targetNamespace="../02_entities/dati_catastali" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <!-- AS-IS: DatiCatastaliBaseType su MODULI_common_components.xsd -->
+    <xsd:complexType name="dati_catastali_base_type" abstract="true"/>
+
+    <!-- AS-IS: CoordinateCatastaliBaseType su AgID_aggregate_components.xsd -->
+    <xsd:complexType name="coordinate_catastali_base_type" abstract="true"/>
+
+    <xsd:complexType name="dati_catastali_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="edaca:coordinate_catastali_base_type">
+                <xsd:sequence>
+                    <xsd:element name="foglio" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="particella" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="subalterno" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="sezione" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="fabbricati" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>
+
+                    <!-- Elementi aggiuntivi richiesti al 11-07-2025 -->
+                    <xsd:element name="terreni" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="cod_macrocategoria_classificazione_nazionale" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="cod_categoria_classificazione_nazionale" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="cod_sottocategoria_classificazione_nazionale" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="dati_catastali" type="edaca:dati_catastali_ctype"/>
+</xsd:schema>

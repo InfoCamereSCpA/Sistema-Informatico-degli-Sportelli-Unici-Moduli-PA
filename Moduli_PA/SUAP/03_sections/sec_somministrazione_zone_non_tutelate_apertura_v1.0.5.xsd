@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ssomzonnontutape="../03_sections/somministrazione_zone_non_tutelate_apertura"
+
+            xmlns:esomzonnontutape="../02_entities/somministrazione_zone_non_tutelate_apertura"
+            xmlns:ealtdicsomlocese="../02_entities/altre_dichiarazioni_somministrazione_locali_esercizio"
+
+
+            targetNamespace="../03_sections/somministrazione_zone_non_tutelate_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/somministrazione_zone_non_tutelate_apertura" schemaLocation="../02_entities/ent_somministrazione_zone_non_tutelate_apertura_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/altre_dichiarazioni_somministrazione_locali_esercizio" schemaLocation="../02_entities/ent_altre_dichiarazioni_somministrazione_locali_esercizio_v1.0.5.xsd"/>
+
+
+    <xsd:complexType name="sezione_somministrazione_zone_non_tutelate_apertura_ctype">
+        <xsd:sequence>
+            <xsd:element name="somministrazione_zone_non_tutelate_apertura" type="esomzonnontutape:somministrazione_zone_non_tutelate_apertura_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="altre_dichiarazioni_somministrazione_locali_esercizio" type="ealtdicsomlocese:altre_dichiarazioni_somministrazione_locali_esercizio_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_somministrazione_zone_non_tutelate_apertura" type="ssomzonnontutape:sezione_somministrazione_zone_non_tutelate_apertura_ctype"/>
+
+</xsd:schema>

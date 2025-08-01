@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:sageaffces="../03_sections/agenzia_affari_cessazione"
+    xmlns:eageaffces="../02_entities/agenzia_affari_cessazione" targetNamespace="../03_sections/agenzia_affari_cessazione" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/agenzia_affari_cessazione" schemaLocation="../02_entities/ent_agenzia_affari_cessazione_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_agenzia_affari_cessazione_ctype">
+        <xsd:sequence>
+            <xsd:element name="agenzia_affari_cessazione" type="eageaffces:agenzia_affari_cessazione_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_agenzia_affari_cessazione" type="sageaffces:sezione_agenzia_affari_cessazione_ctype"/>
+
+</xsd:schema>

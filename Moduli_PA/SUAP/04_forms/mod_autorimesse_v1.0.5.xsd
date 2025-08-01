@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mautorimesse="../04_forms/autorimesse"
+            xmlns:sautorimesse="../03_sections/autorimesse"
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica"
+            xmlns:sallegati="../03_sections/allegati" targetNamespace="../04_forms/autorimesse"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/scheda_anagrafica"
+                schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/autorimesse" schemaLocation="../03_sections/sec_autorimesse_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/allegati" schemaLocation="../03_sections/sec_allegati_v1.0.5.xsd"/>
+
+
+    <xsd:complexType name="modulo_autorimesse_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype"/>
+            <xsd:element name="dati_autorimesse" type="sautorimesse:sezione_autorimesse_ctype"/>
+            <xsd:element name="tabella_allegati" type="sallegati:allegati_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_autorimesse" type="mautorimesse:modulo_autorimesse_ctype"/>
+</xsd:schema>

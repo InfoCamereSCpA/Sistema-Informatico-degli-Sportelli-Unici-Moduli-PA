@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mnotsan="../04_forms/notifica_sanitaria"
+            xmlns:snsavvio="../03_sections/notifica_sanitaria_avvio_attivita"
+            xmlns:snssubingresso="../03_sections/notifica_sanitaria_subingresso"
+            xmlns:snsmodifiche="../03_sections/notifica_sanitaria_modifiche"
+            xmlns:enscessazione="../02_entities/notifica_sanitaria_cessazione_sospensione"
+            xmlns:ccodelist="../commons/codelist"
+            xmlns:canncl="../commons/xsdAnnotations"
+            xmlns:ctipi="../commons/tipi"
+            xmlns:einfoprivacy="../02_entities/informativa_privacy" targetNamespace="../04_forms/notifica_sanitaria" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/notifica_sanitaria_avvio_attivita" schemaLocation="../03_sections/sec_notifica_sanitaria_avvio_attivita_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/notifica_sanitaria_subingresso" schemaLocation="../03_sections/sec_notifica_sanitaria_subingresso_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/notifica_sanitaria_modifiche" schemaLocation="../03_sections/sec_notifica_sanitaria_modifiche_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/notifica_sanitaria_cessazione_sospensione" schemaLocation="../02_entities/ent_notifica_sanitaria_cessazione_sospensione_v1.0.5.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/informativa_privacy" schemaLocation="../02_entities/ent_informativa_privacy_v1.0.5.xsd"/>
+
+    <xsd:complexType name="modulo_notifica_sanitaria_ctype">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="avvio_attivita" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="subingresso" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="modifica_attivita" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="cessazione_sospensione_attivita" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            </xsd:choice>
+            <xsd:element name="avvio_attivita_section" type="snsavvio:sezione_notifica_sanitaria_avvio_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="subingresso_section" type="snssubingresso:sezione_notifica_sanitaria_subingresso_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="modifiche_section" type="snsmodifiche:sezione_notifica_sanitaria_modifiche_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="cessazione_sospensione" type="enscessazione:notifica_sanitaria_cessazione_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- informativa privacy-->
+            <xsd:element name="informativa_privacy" type="einfoprivacy:informativa_privacy_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_notifica_sanitaria" type="mnotsan:modulo_notifica_sanitaria_ctype"/>
+</xsd:schema>

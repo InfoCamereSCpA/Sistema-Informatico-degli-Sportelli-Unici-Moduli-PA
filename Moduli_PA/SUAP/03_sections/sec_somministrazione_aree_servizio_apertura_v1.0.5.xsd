@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:somareserape="../03_sections/somministrazione_aree_servizio_apertura"
+    xmlns:esomarsera="../02_entities/aree_servizio_apertura" targetNamespace="../03_sections/somministrazione_aree_servizio_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/aree_servizio_apertura" schemaLocation="../02_entities/ent_aree_servizio_apertura_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_somministrazione_aree_servizio_apertura_ctype">
+        <xsd:sequence>
+                <xsd:element name="aree_servizio_apertura" type="esomarsera:aree_servizio_apertura_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_somministrazione_aree_servizio_apertura" type="somareserape:sezione_somministrazione_aree_servizio_apertura_ctype"/>
+</xsd:schema>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:saltdicaccest="../03_sections/altre_dichiarazioni_acconciatori_estetisti"
+            xmlns:ealtdicaccest="../02_entities/altre_dichiarazioni_acconciatori_estetisti"
+
+            targetNamespace="../03_sections/altre_dichiarazioni_acconciatori_estetisti" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/altre_dichiarazioni_acconciatori_estetisti" schemaLocation="../02_entities/ent_altre_dichiarazioni_acconciatori_estetisti_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_altre_dichiarazioni_acconciatori_estetisti_ctype">
+        <xsd:sequence>
+            <xsd:element name="altre_dichiarazioni_acconciatori_estetisti" type="ealtdicaccest:altre_dichiarazioni_acconciatori_estetisti_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_altre_dichiarazioni_acconciatori_estetisti" type="saltdicaccest:sezione_altre_dichiarazioni_acconciatori_estetisti_ctype"/>
+
+</xsd:schema>

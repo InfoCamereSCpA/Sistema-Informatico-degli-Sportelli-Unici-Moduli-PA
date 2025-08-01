@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:saltdiclav="../03_sections/altre_dichiarazioni_lavanderie"
+            xmlns:ealtdiclav="../02_entities/altre_dichiarazioni_lavanderie"
+            xmlns:ealtdicalt="../02_entities/altre_dichiarazioni_altro" 
+
+            targetNamespace="../03_sections/altre_dichiarazioni_lavanderie"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/altre_dichiarazioni_altro" schemaLocation="../02_entities/ent_altre_dichiarazioni_altro_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/altre_dichiarazioni_lavanderie" schemaLocation="../02_entities/ent_altre_dichiarazioni_lavanderie_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_altre_dichiarazioni_lavanderie_ctype">
+        <xsd:sequence>
+            <xsd:element name="altre_dichiarazioni_lavanderie" type="ealtdiclav:altre_dichiarazioni_lavanderie_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_altre_dichiarazioni_lavanderie" type="saltdiclav:sezione_altre_dichiarazioni_lavanderie_ctype"/>
+</xsd:schema>

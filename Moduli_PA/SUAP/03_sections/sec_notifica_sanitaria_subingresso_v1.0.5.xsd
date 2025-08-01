@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:snssubingresso="../03_sections/notifica_sanitaria_subingresso"
+            xmlns:enssub="../02_entities/notifica_sanitaria_subingresso"
+            xmlns:ensapeini="../02_entities/notifica_sanitaria_apertura_inizio" targetNamespace="../03_sections/notifica_sanitaria_subingresso" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/notifica_sanitaria_subingresso" schemaLocation="../02_entities/ent_notifica_sanitaria_subingresso_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/notifica_sanitaria_apertura_inizio" schemaLocation="../02_entities/ent_notifica_sanitaria_apertura_inizio_v1.0.5.xsd"/>
+    <xsd:complexType name="sezione_notifica_sanitaria_subingresso_ctype">
+        <xsd:sequence>
+            <xsd:element name="subingresso" type="enssub:notifica_sanitaria_subingresso_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="inizio_attivita" type="ensapeini:inizio_attivita_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="altre_dichiarazioni" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="sezione_notifica_sanitaria_subingresso" type="snssubingresso:sezione_notifica_sanitaria_subingresso_ctype"/>
+</xsd:schema>

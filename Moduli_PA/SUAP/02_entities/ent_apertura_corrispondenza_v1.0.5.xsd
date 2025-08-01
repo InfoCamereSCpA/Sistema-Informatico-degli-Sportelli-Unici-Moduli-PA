@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ecorrispondenzaape="../02_entities/apertura_corrispondenza"
+            targetNamespace="../02_entities/apertura_corrispondenza" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:complexType name="apertura_corrispondenza_ctype">
+        <xsd:sequence>
+            <xsd:element name="vendita_corrispondenza" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="vendita_radio_televisione" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="commercio_elettronico_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="commercio_elettronico_sito" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altro_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            
+            <!-- TIPO DI VENDITA -->
+            <xsd:element name="vendita_dettaglio" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="vendita_congiunta" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            
+            <!-- SETTORE MERCEOLOGICO -->
+            <xsd:element name="alimentare" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="non_alimentare" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    
+    <xsd:element name="apertura_extra_alberghiera" type="ecorrispondenzaape:apertura_corrispondenza_ctype"/>
+</xsd:schema>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:slocimpvar="../03_sections/locazione_imprenditoriale_variazione"
+    xmlns:eanagattloc="../02_entities/anagrafica_attivita_locazioni"
+    xmlns:eestremicom="../02_entities/estremi_comunicazione"
+    xmlns:edacaloc="../02_entities/dati_catastali_locazioni"
+    xmlns:elocimpvar="../02_entities/locazione_imprenditoriale_variazione"
+    xmlns:etitdisp="../02_entities/titolo_disponibilita"
+    xmlns:ecapriclocimp="../02_entities/capacita_ricettiva_locazioni_imprenditoriali" targetNamespace="../03_sections/locazione_imprenditoriale_variazione" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/anagrafica_attivita_locazioni" schemaLocation="../02_entities/ent_anagrafica_attivita_locazioni_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/estremi_comunicazione" schemaLocation="../02_entities/ent_estremi_comunicazione_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/dati_catastali_locazioni" schemaLocation="../02_entities/ent_dati_catastali_locazioni_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/locazione_imprenditoriale_variazione" schemaLocation="../02_entities/ent_locazione_imprenditoriale_variazione_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/titolo_disponibilita" schemaLocation="../02_entities/ent_titolo_disponibilita_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/capacita_ricettiva_locazioni_imprenditoriali" schemaLocation="../02_entities/ent_capacita_ricettiva_locazioni_imprenditoriali_v1.0.5.xsd"/>
+
+    <xsd:complexType name="dati_immobili_locazione">
+        <xsd:sequence>
+            <xsd:element name="anagrafica_attivita" type="eanagattloc:anagrafica_attivita_locazioni_base_type" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="dati_catastali" type="edacaloc:dati_catastali_locazioni_base_type" minOccurs="1" maxOccurs="unbounded"/>
+            <xsd:element name="variazione" type="elocimpvar:locazione_imprenditoriale_variazione_base_type" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="titolo_disponibilita" type="etitdisp:titolo_disponibilita_base_type" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="capacita_ricettiva" type="ecapriclocimp:capacita_ricettiva_locazioni_imprenditoriali_base_type" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="sezione_locazione_imprenditoriale_variazione_ctype">
+        <xsd:sequence>
+            <xsd:element name="dati_immobili" type="slocimpvar:dati_immobili_locazione" minOccurs="1" maxOccurs="unbounded"/>
+            <xsd:element name="estremi_comunicazione" type="eestremicom:estremi_comunicazione_base_type" minOccurs="0" maxOccurs="1"/>
+         </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_locazione_imprenditoriale_variazione" type="slocimpvar:sezione_locazione_imprenditoriale_variazione_ctype"/>
+
+</xsd:schema>

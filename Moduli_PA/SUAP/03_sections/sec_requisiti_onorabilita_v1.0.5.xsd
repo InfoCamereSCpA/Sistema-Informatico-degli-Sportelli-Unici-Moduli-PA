@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    
+    xmlns:sreqono="../03_sections/requisiti_onorabilita"
+    
+    xmlns:ereqono="../02_entities/requisiti_onorabilita"    
+    
+    targetNamespace="../03_sections/requisiti_onorabilita"
+    elementFormDefault="qualified" attributeFormDefault="qualified"    
+    version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/requisiti_onorabilita" schemaLocation="../02_entities/ent_requisiti_onorabilita_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_requisiti_onorabilita_ctype">
+        <xsd:sequence>
+            <xsd:element name="requisiti_onorabilita" type="ereqono:requisiti_onorabilita_ctype"/>    
+        </xsd:sequence>
+    </xsd:complexType> 
+
+    <xsd:element name="sezione_requisiti_onorabilita" type="sreqono:sezione_requisiti_onorabilita_ctype"/>
+    
+</xsd:schema>

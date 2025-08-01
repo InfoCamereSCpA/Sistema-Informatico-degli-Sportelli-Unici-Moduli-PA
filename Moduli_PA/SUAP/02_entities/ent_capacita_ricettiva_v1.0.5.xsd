@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ecapric="../02_entities/capacita_ricettiva" 
+            targetNamespace="../02_entities/capacita_ricettiva" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:complexType name="capacita_ricettiva_ctype">
+        <xsd:sequence>
+            <xsd:element name="nr_camere" type="xsd:integer" default="0"/>
+            <xsd:element name="nr_posti_letto_camere" type="xsd:integer" default="0"/>
+            <xsd:element name="nr_appartamenti" type="xsd:integer" default="0"/>
+            <xsd:element name="nr_posti_letto_appartamenti" type="xsd:integer" default="0"/>
+            <xsd:element name="nr_camerate" type="xsd:integer" default="0"/>
+            <xsd:element name="nr_posti_letto_camerate" type="xsd:integer" default="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="capacita_ricettiva" type="ecapric:capacita_ricettiva_ctype"></xsd:element>
+</xsd:schema>

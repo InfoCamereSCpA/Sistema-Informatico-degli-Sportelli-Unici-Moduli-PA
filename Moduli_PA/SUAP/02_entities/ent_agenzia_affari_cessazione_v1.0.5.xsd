@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ccodelist="../commons/codelist"
+    xmlns:canncl="../commons/xsdAnnotations"
+    xmlns:ctipi="../commons/tipi"
+    xmlns:eageaffces="../02_entities/agenzia_affari_cessazione" targetNamespace="../02_entities/agenzia_affari_cessazione" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:complexType name="agenzia_affari_cessazione_ctype">
+        <xsd:sequence>
+           <xsd:element name="protocollo_cessazione" type="xsd:positiveInteger"/>
+           <xsd:element name="data_cessazione" type="ctipi:ggmmaaaa_stype"/>
+           <xsd:element name="comune" type="ccodelist:CodeType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ComuniItaliani</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="agenzia_affari_cessazione" type="eageaffces:agenzia_affari_cessazione_ctype"/>
+</xsd:schema>

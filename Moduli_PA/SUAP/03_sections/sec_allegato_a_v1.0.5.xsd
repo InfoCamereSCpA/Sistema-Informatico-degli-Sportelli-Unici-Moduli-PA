@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sallegatoa="../03_sections/allegato_a"
+            xmlns:eanagallegati="../02_entities/anagrafica_allegati"
+            xmlns:einfoprivacy="../02_entities/informativa_privacy" targetNamespace="../03_sections/allegato_a" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/anagrafica_allegati" schemaLocation="../02_entities/ent_anagrafica_allegati_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/informativa_privacy" schemaLocation="../02_entities/ent_informativa_privacy_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_allegato_a_ctype" >
+        <xsd:sequence>
+            <xsd:element name="anagrafica" type="eanagallegati:anagrafica_allegati_ctype" minOccurs="1" maxOccurs="1"/>
+
+            <!-- sezione di dichiarazione -->
+            <xsd:element name="ruolo_dichiarante" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="nome_societa" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="informativa_privacy_check1" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_dichiarazione" type="xsd:date" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="firma" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="informativa_privacy" type="einfoprivacy:informativa_privacy_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="informativa_privacy_check2" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_allegato_a" type="sallegatoa:sezione_allegato_a_ctype"/>
+</xsd:schema>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:esetmer="../02_entities/settori_merceologici"
+    targetNamespace="../02_entities/settori_merceologici"
+    elementFormDefault="qualified" attributeFormDefault="qualified"
+    version="1.0.5" xml:lang="it">
+
+    <!-- AS-IS: SettoriMerceologiciBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="settori_merceologici_base_type" abstract="true" />
+
+    <!-- AS-IS: SettoriMerceologiciSuperficieBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="settori_merceologici_superficie_base_type" abstract="true" />
+
+    <!-- AS-IS: OccupazioniMerciIngombrantiNonAlimentariBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="occupazioni_merci_ingombranti_non_alimentari_base_type" abstract="true"/>
+
+    <!-- AS-IS: VariazioneOccupazioneSuperficiBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="variazione_occupazione_superfici_base_type" abstract="true" />
+
+    <xsd:complexType name="settori_merceologici_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esetmer:settori_merceologici_base_type">
+                <xsd:sequence>
+
+                    <!--
+                    <xsd:element name="settori_merceologici_superficie" type="esetmer:settori_merceologici_superficie_base_type" minOccurs="0" maxOccurs="1" />
+                    -->
+                    <xsd:element name="alimentare_check" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="alimentare" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="non_alimentare_check" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="non_alimentare" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="superficie_totale" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1" />
+
+                    <!--
+                    <xsd:element name="occupazioni_merci_ingombranti" type="esetmer:occupazioni_merci_ingombranti_non_alimentari_base_type" minOccurs="0" maxOccurs="1" />
+                    -->
+                    <xsd:element name="merci_ingombranti_check" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="merci_ingombranti" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="merci_ingombranti_sup_lorda" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1" />
+
+                    <!--
+                    <xsd:element name="variazione_occupazione_superfici" type="esetmer:variazione_occupazione_superfici_base_type" minOccurs="0" maxOccurs="1" />
+                    -->
+                    <xsd:element name="generi_monopolio_check" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="generi_monopolio" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="farmacie_check" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="farmacie" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="carburanti_check" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="carburanti" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!--
+    <xsd:complexType name="settori_merceologici_superficie_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esetmer:settori_merceologici_superficie_base_type">
+                <xsd:sequence>
+                    <xsd:element name="alimentare_check" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="alimentare" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="non_alimentare_check" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="non_alimentare" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="superficie_totale" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="occupazioni_merci_ingombranti_non_alimentari_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esetmer:occupazioni_merci_ingombranti_non_alimentari_base_type">
+                <xsd:sequence>
+                    <xsd:element name="merci_ingombranti_check" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="merci_ingombranti" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="merci_ingombranti_sup_lorda" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="variazione_occupazione_superfici_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esetmer:variazione_occupazione_superfici_base_type">
+                <xsd:sequence>
+                    <xsd:element name="generi_monopolio_check" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="generi_monopolio" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="farmacie_check" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="farmacie" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="carburanti_check" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="carburanti" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    -->
+
+    <xsd:element name="settori_merceologici" type="esetmer:settori_merceologici_ctype" />
+</xsd:schema>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:epantrasformazione="../02_entities/panifici_trasformazione"
+            xmlns:ecarese="../02_entities/carattere_esercizio"
+            xmlns:eproto="../02_entities/protocollo"
+
+            xmlns:eindita="../02_entities/indirizzo_italiano"
+            targetNamespace="../02_entities/panifici_trasformazione"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="./ent_protocollo_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/indirizzo_italiano" schemaLocation="./ent_indirizzo_italiano_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/carattere_esercizio" schemaLocation="./ent_carattere_esercizio_v1.0.5.xsd"/>
+
+    <!-- AS-IS: modificheCicloProduttivoBaseType su SUAP_modulo_panifici.xsd -->
+    <xsd:complexType name="modifiche_ciclo_produttivo_base_type" abstract="true"/>
+
+    <!-- AS-IS: TipoModificaBaseType su SUAP_modulo_panifici.xsd -->
+    <xsd:complexType name="tipo_modifica_base_type" abstract="true"/>
+
+    <!-- AS-IS: trasfAltroBaseType su SUAP_modulo_panifici.xsd -->
+    <xsd:complexType name="trasf_altro_base_type" abstract="true"/>
+
+    <xsd:complexType name="modifiche_ciclo_produttivo_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="epantrasformazione:modifiche_ciclo_produttivo_base_type">
+                <xsd:sequence>
+                    <xsd:element name="variazione_ciclo_produttivo" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="variazione_check" type="xsd:boolean" minOccurs="0"/>
+                                <xsd:element name="variazione" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipo_modifica_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="epantrasformazione:tipo_modifica_base_type">
+                <xsd:sequence>
+                    <xsd:element name="variazione_attivita_congiunta" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="variazione_check" type="xsd:boolean" minOccurs="0"/>
+                                <xsd:element name="aggiunta" type="xsd:boolean" minOccurs="0"/>
+                                <xsd:element name="eliminata" type="xsd:boolean" minOccurs="0"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="trasf_altro_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="epantrasformazione:trasf_altro_base_type">
+                <xsd:sequence>
+                    <xsd:element name="altra_variazione" type="xsd:boolean" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="panifici_trasformazione_ctype">
+        <xsd:sequence>
+            <xsd:element name="comunicazione_trasformazione" type="eproto:protocollo_ctype" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="modifiche_ciclo_produttivo" type="epantrasformazione:modifiche_ciclo_produttivo_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--
+            <xsd:element name="variazione_ciclo_produttivo" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="variazione_check" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="variazione" type="xsd:string" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            -->
+
+            <xsd:element name="tipo_modifica" type="epantrasformazione:tipo_modifica_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--
+            <xsd:element name="variazione_attivita_congiunta" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="variazione_check" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="aggiunta" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="eliminata" type="xsd:boolean" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            -->
+
+            <xsd:element name="trasf_altro" type="epantrasformazione:trasf_altro_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--
+            <xsd:element name="altra_variazione" type="xsd:boolean" minOccurs="0"/>
+            -->
+
+            <xsd:element name="carattere_esercizio" type="ecarese:carattere_esercizio_ctype" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="panifici_trasformazione" type="epantrasformazione:panifici_trasformazione_ctype"/>
+</xsd:schema>

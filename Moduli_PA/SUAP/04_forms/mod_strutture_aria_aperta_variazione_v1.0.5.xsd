@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mvarstruttaa="../04_forms/strutture_aria_aperta_variazione"
+            xmlns:sanagatt="../03_sections/anagrafica_attivita"
+            xmlns:svarstruttaa="../03_sections/strutt_aria_aperta_variazione"
+            xmlns:sinfostruttaa="../03_sections/info_strutture_aria_aperta"
+            xmlns:srdocstruttaa="../03_sections/riepilogo_documentazione_strutture_aria_aperta"
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica" targetNamespace="../04_forms/strutture_aria_aperta_variazione" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/intestazione_strutture_aria_aperta" schemaLocation="../03_sections/sec_intestazione_strutture_aria_aperta_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/anagrafica_attivita" schemaLocation="../03_sections/sec_anagrafica_attivita_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/strutt_aria_aperta_variazione" schemaLocation="../03_sections/sec_strutt_aria_aperta_variazione_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/info_strutture_aria_aperta" schemaLocation="../03_sections/sec_info_strutture_aria_aperta_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/riepilogo_documentazione_strutture_aria_aperta" schemaLocation="../03_sections/sec_riepilogo_documentazione_strutture_aria_aperta_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/scheda_anagrafica" schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+
+    <xsd:complexType name="modulo_variazione_strutture_aria_aperta_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype"/>
+            <xsd:element name="sezione_anagrafica_attivita" type="sanagatt:sezione_anagrafica_attivita_ctype"/>
+            <xsd:element name="sezione_variazione_strutture_aria_aperta" type="svarstruttaa:sezione_variazione_strutture_aria_aperta_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="sezione_info_strutture_aria_aperta" type="sinfostruttaa:sezione_info_strutture_aria_aperta_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altre_dichiarazioni" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="sezione_riepilogo_documentazione_strutture_aria_aperta" type="srdocstruttaa:riepilogo_documentazione_ctype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_variazione_strutture_aria_aperta" type="mvarstruttaa:modulo_variazione_strutture_aria_aperta_ctype"/>
+</xsd:schema>

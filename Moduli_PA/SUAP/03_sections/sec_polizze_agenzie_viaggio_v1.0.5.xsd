@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:epolass="../02_entities/polizze_assicurative"
+            xmlns:spolav="../03_sections/polizze_agenzie_viaggio"
+                
+        targetNamespace="../03_sections/polizze_agenzie_viaggio" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/polizze_assicurative" schemaLocation="../02_entities/ent_polizze_assicurative_v1.0.5.xsd"/>
+    
+    <xsd:complexType name="sezione_polizze_assicurative_ctype">   
+        <xsd:sequence>
+            <xsd:element name="polizza_assicurativa" type="epolass:polizze_assicurative_base_type" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>   
+    </xsd:complexType>
+    <xsd:element name="sezione_polizze_assicurative" type="spolav:sezione_polizze_assicurative_ctype"/>
+</xsd:schema>

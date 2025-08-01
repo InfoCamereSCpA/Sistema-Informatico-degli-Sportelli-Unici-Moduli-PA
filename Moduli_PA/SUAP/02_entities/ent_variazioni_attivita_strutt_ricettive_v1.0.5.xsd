@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:evarattstrutt="../02_entities/variazioni_attivita_strutt_ricettive"
+    xmlns:ctipi="../commons/tipi" targetNamespace="../02_entities/variazioni_attivita_strutt_ricettive" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:simpleType name="cin_stype">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="IT\d{3}\d{3}[A-Z]\d{1}[A-Z]{1}\d{5}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+    <xsd:complexType name="variazione_attivita_strutt_ricettive_base_type" abstract="true"/>
+
+    <xsd:complexType name="variazione_attivita_strutt_ricettive_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="evarattstrutt:variazione_attivita_strutt_ricettive_base_type">
+                <xsd:sequence>
+                    <xsd:element name="intestatario" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="cin" type="evarattstrutt:cin_stype" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="nr_pratica" type="xsd:nonNegativeInteger" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="data_pratica" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="ente" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:choice>
+                        <xsd:sequence>
+                            <xsd:element name="insegna" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1" />
+                            <xsd:element name="periodo_apertura" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element name="altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                        </xsd:sequence>
+                    </xsd:choice>
+                    <xsd:element name="variazione_da" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="variazione_a" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="variazione_attivita_strutt_ricettive" type="evarattstrutt:variazione_attivita_strutt_ricettive_ctype"/>
+</xsd:schema>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:eallrestecaccreqpro="../02_entities/allegato_responsabile_tecnico_acconciatori_requisiti_professionali"
+            xmlns:eallperana="../02_entities/allegato_persona_anagrafica"
+
+            xmlns:efile="../02_entities/files"
+
+            targetNamespace="../02_entities/allegato_responsabile_tecnico_acconciatori_requisiti_professionali"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/files" schemaLocation="../02_entities/ent_files_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_persona_anagrafica" schemaLocation="../02_entities/ent_allegato_persona_anagrafica_v1.0.5.xsd"/>
+
+
+    <xsd:complexType name="allegato_responsabile_tecnico_acconciatori_requisiti_professionali_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eallrestecaccreqpro:ResponsabileTecnicoRequisitiProfessionaliBaseType">
+                <xsd:sequence>
+                    <xsd:element name="dichiarazioni" type="eallrestecaccreqpro:DichiarazioniAcconciatoriRequisitiProfessionaliType"/>
+                    <xsd:element name="allegatoDocumentoIdentitaResposabileTecnico" type="efile:file_ctype" />
+                    <xsd:element name="allegatoAccettazioneResposabileTecnico" type="efile:file_ctype" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="ResponsabileTecnicoRequisitiProfessionaliBaseType" abstract="true">
+        <xsd:sequence>
+            <xsd:element name="responsabileTecnico" type="eallperana:allegato_persona_anagrafica_ctype"/>
+            <xsd:element name="inQualita">
+                <xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element name="dittaIndividuale" type="xsd:string"/>
+                        <xsd:element name="societa" type="xsd:string"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="dichiarazionePresaVisioneInformativaPrivacy" type="xsd:boolean" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="DichiarazioniAcconciatoriRequisitiProfessionaliType">
+        <xsd:sequence>
+            <xsd:element name="abilitazioneProfessionale" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="rilasciataDa" type="xsd:string"/>
+                        <xsd:element name="atto" type="eallperana:AttoBaseType"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="possessoQualificaProfessionale" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="rilasciataDa" type="xsd:string"/>
+                        <xsd:element name="atto" type="eallperana:AttoBaseType"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="riconoscimentoQualificaEsteraAutoritaItaliana" type="eallperana:AttoBaseType" minOccurs="0"/>
+            <xsd:element name="altro" type="eallrestecaccreqpro:AltroRequisitoProfessionaleBaseType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="AltroRequisitoProfessionaleBaseType" abstract="true"/>
+    <xsd:complexType name="AltroRequisitoProfessionaleType">
+        <xsd:complexContent>
+            <xsd:extension base="eallrestecaccreqpro:AltroRequisitoProfessionaleBaseType">
+                <xsd:sequence>
+                    <xsd:element name="descrizione" type="xsd:string" maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:element name="allegato_responsabile_tecnico_acconciatori_requisiti_professionali" type="eallrestecaccreqpro:allegato_responsabile_tecnico_acconciatori_requisiti_professionali_ctype"/>
+
+</xsd:schema>

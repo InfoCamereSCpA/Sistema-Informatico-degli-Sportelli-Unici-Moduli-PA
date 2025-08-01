@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:saltdicpan="../03_sections/altre_dichiarazioni_panifici"
+            xmlns:ealtdicpan="../02_entities/altre_dichiarazioni_panifici"
+
+            targetNamespace="../03_sections/altre_dichiarazioni_panifici" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/altre_dichiarazioni_panifici" schemaLocation="../02_entities/ent_altre_dichiarazioni_panifici_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_altre_dichiarazioni_panifici_ctype">
+        <xsd:sequence>
+            <xsd:element name="altre_dichiarazioni_panifici" type="ealtdicpan:altre_dichiarazioni_panifici_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_altre_dichiarazioni_panifici" type="saltdicpan:sezione_altre_dichiarazioni_panifici_ctype"/>
+
+</xsd:schema>

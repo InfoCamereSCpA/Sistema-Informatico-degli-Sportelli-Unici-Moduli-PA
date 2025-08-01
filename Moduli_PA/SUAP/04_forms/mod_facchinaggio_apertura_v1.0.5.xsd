@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mfacchinaggioape="../04_forms/facchinaggio_apertura"
+            xmlns:ssede="../03_sections/sede"
+            xmlns:sfacchinaggioape="../03_sections/apertura_facchinaggio"
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica"
+            xmlns:sallegati="../03_sections/allegati" targetNamespace="../04_forms/facchinaggio_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+     <xsd:import namespace="../03_sections/scheda_anagrafica" schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+     <xsd:import namespace="../03_sections/apertura_facchinaggio" schemaLocation="../03_sections/sec_apertura_facchinaggio_v1.0.5.xsd"/>
+     <xsd:import namespace="../03_sections/sede" schemaLocation="../03_sections/sec_sede_v1.0.5.xsd"/>
+     <xsd:import namespace="../03_sections/allegati" schemaLocation="../03_sections/sec_allegati_v1.0.5.xsd"/>
+
+    <xsd:complexType name="modulo_facchinaggio_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype"/>
+            <xsd:element name="sede" type="ssede:sezione_sede_ctype"/>
+            <xsd:element name="dati_apertura" type="sfacchinaggioape:apertura_facchinaggio_ctype"/>
+            <xsd:element name="tabellaAllegati" type="sallegati:allegati_ctype"/>       
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="modulo_facchinaggio" type="mfacchinaggioape:modulo_facchinaggio_ctype"/>
+</xsd:schema>

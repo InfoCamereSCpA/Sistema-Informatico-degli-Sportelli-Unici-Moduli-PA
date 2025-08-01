@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:saccesttra="../03_sections/acconciatori_estetisti_trasferimento"
+            xmlns:eaccesttra="../02_entities/acconciatori_estetisti_trasferimento"
+
+            targetNamespace="../03_sections/acconciatori_estetisti_trasferimento" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/acconciatori_estetisti_trasferimento" schemaLocation="../02_entities/ent_acconciatori_estetisti_trasferimento_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_acconciatori_estetisti_trasferimento_ctype">
+        <xsd:sequence>
+            <xsd:element name="acconciatori_estetisti_trasferimento" type="eaccesttra:acconciatori_estetisti_trasferimento_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_acconciatori_estetisti_trasferimento" type="saccesttra:sezione_acconciatori_estetisti_trasferimento_ctype"/>
+
+</xsd:schema>

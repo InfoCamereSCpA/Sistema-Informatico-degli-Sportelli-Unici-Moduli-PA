@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ssetali="../03_sections/settore_alimentare"
+            xmlns:esetali="../02_entities/settore_alimentare"
+            targetNamespace="../03_sections/settore_alimentare" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/settore_alimentare" schemaLocation="../02_entities/ent_settore_alimentare_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_settore_alimentare_ctype">
+        <xsd:sequence>
+            <xsd:element name="avvio" type="esetali:settore_alimentare_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_settore_alimentare" type="ssetali:sezione_settore_alimentare_ctype"/>
+</xsd:schema>

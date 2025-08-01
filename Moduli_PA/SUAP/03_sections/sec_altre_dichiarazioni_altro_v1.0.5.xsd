@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:saltdicalt="../03_sections/altre_dichiarazioni_altro"
+
+            xmlns:ealtdicalt="../02_entities/altre_dichiarazioni_altro"
+
+            targetNamespace="../03_sections/altre_dichiarazioni_altro" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/altre_dichiarazioni_altro" schemaLocation="../02_entities/ent_altre_dichiarazioni_altro_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_altre_dichiarazioni_altro_ctype">
+        <xsd:sequence>
+            <xsd:element name="altre_dichiarazioni_altro" type="ealtdicalt:altre_dichiarazioni_altro_base_type" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_altre_dichiarazioni_altro" type="saltdicalt:sezione_altre_dichiarazioni_altro_ctype"/>
+
+</xsd:schema>

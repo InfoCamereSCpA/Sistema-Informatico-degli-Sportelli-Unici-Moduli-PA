@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eimpresa="../02_entities/impresa"
+            xmlns:ccodelist="../commons/codelist"
+            xmlns:canncl="../commons/xsdAnnotations"
+            xmlns:ctipi="../commons/tipi"
+            xmlns:eiscrea="../02_entities/iscrizione_REA"
+            xmlns:eindita="../02_entities/indirizzo_italiano" targetNamespace="../02_entities/impresa" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/iscrizione_REA" schemaLocation="../02_entities/ent_iscrizione_REA_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/indirizzo_italiano" schemaLocation="../02_entities/ent_indirizzo_italiano_v1.0.5.xsd"/>
+    <xsd:complexType name="impresa_ctype">
+        <xsd:sequence>
+            <xsd:element name="denominazione" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="forma_giuridica" type="ccodelist:CodeType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:FormeGiuridiche</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="codice_fiscale" type="ctipi:partita_iva_stype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="partita_iva" type="ctipi:partita_iva_stype" minOccurs="1" maxOccurs="1"/>
+            <xsd:choice>
+                <xsd:sequence>
+                    <xsd:element name="iscritto_rea_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="rea" type="eiscrea:iscrizione_REA_ctype"/>
+                </xsd:sequence>
+                    <xsd:element name="non_iscritto_rea" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="solo_ri_rea" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+
+            </xsd:choice>
+            <xsd:element name="indirizzo_attivita" type="eindita:indirizzo_italiano_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="telefono_cellulare" type="ctipi:telefono_mobile_stype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="impresa" type="eimpresa:impresa_ctype"/>
+</xsd:schema>

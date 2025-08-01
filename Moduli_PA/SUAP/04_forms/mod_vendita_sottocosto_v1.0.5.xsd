@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mvensot="../04_forms/vendita_sottocosto"
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica"
+            xmlns:svensot="../03_sections/vendita_sottocosto"
+            xmlns:sallegati="../03_sections/allegati"
+            targetNamespace="../04_forms/vendita_sottocosto" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <!-- DEFAULT PRE -->
+    <xsd:import namespace="../03_sections/scheda_anagrafica" schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+
+    <!-- MODULO -->
+    <xsd:import namespace="../03_sections/vendita_sottocosto" schemaLocation="../03_sections/sec_vendita_sottocosto_v1.0.5.xsd"/>
+
+    <!-- DEFAULT POST -->
+    <xsd:import namespace="../03_sections/allegati" schemaLocation="../03_sections/sec_allegati_v1.0.5.xsd"/>
+
+    <xsd:complexType name="modulo_vendita_sottocosto_ctype">
+        <xsd:sequence>
+            <!-- DEFAULT PRE -->
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype"/>
+
+            <!-- MODULO -->
+            <xsd:element name="vendita_sottocosto" type="svensot:sezione_vendita_sottocosto_ctype"/>
+
+            <!-- DEFAULT POST -->
+            <xsd:element name="tabellaAllegati" type="sallegati:allegati_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_vendita_sottocosto" type="mvensot:modulo_vendita_sottocosto_ctype"/>
+</xsd:schema>

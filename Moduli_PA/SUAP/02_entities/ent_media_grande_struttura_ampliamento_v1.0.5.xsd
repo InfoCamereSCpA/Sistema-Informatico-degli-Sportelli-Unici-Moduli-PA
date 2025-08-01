@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:emegrstruttamp="../02_entities/media_grande_struttura_ampliamento"
+            xmlns:esetmeramp="../02_entities/settori_merceologici_ampliamento"
+            xmlns:eproto="../02_entities/protocollo"
+            targetNamespace="../02_entities/media_grande_struttura_ampliamento"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="./ent_protocollo_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/carattere_esercizio" schemaLocation="./ent_carattere_esercizio_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/settori_merceologici" schemaLocation="./ent_settori_merceologici_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/settori_merceologici_ampliamento"
+                schemaLocation="./ent_settori_merceologici_ampliamento_v1.0.5.xsd"/>
+
+    <xsd:complexType name="variazione_superficie_ctype">
+        <xsd:sequence>
+            <xsd:element name="variazione_superficie" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="ampliamento" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="mqDa" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="mqA" type="xsd:boolean" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="media_grande_struttura_ampliamento_ctype">
+        <xsd:sequence>
+            <xsd:element name="segnalazione_ampliamento" minOccurs="1" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:choice>
+                            <xsd:element name="media_struttura" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element name="grande_struttura" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        </xsd:choice>
+                        <xsd:element name="esclusiva_apparecchi_automatici" type="xsd:boolean" minOccurs="0"
+                                     maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="comunicazione_ampliamento_sede" type="eproto:protocollo_ctype" minOccurs="1"
+                         maxOccurs="1"/>
+            <xsd:element name="variazione_superficie" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="variazione_superficie_check" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="ampliamento" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="mqDa" type="xsd:double" minOccurs="0"/>
+                        <xsd:element name="mqA" type="xsd:double" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="variazione_settori_tabelle" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="variazione_settori_tabelle_check" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="aggiunta_settori_prodotti" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="eliminazione_settori_prodotti" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="sostituzione_settori_prodotti" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="settori_merceologici"
+                                     type="esetmeramp:settori_merceologici_ampliamento_base_type" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="media_grande_struttura_ampliamento"
+                 type="emegrstruttamp:media_grande_struttura_ampliamento_ctype"/>
+</xsd:schema>

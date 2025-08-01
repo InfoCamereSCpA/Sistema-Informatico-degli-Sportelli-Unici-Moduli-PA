@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns:eintcomvar="../02_entities/intestazione_comunicazione_variazioni"
+            targetNamespace="../02_entities/intestazione_comunicazione_variazioni"
+            elementFormDefault="qualified" attributeFormDefault="qualified"    
+            version="1.0.5" xml:lang="it">
+    
+    
+    <xsd:complexType name="intestazione_comunicazione_variazioni_ctype">
+        <xsd:sequence>
+            <xsd:element name="variazione_denominazione" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>       
+            <xsd:element name="variazione_ragione_sociale" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>       
+            <xsd:element name="variazione_sede_legale" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>       
+            <xsd:element name="variazione_domicilio_digitale" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>       
+            <xsd:element name="variazione_legale_rappresentante" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>       
+            <xsd:element name="variazione_compagine_sociale" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>       
+        </xsd:sequence>        
+    </xsd:complexType>      
+    
+    <xsd:element name="intestazione_comunicazione_variazioni_ctype" type="eintcomvar:intestazione_comunicazione_variazioni_ctype"/>
+</xsd:schema>

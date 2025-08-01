@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:eallposreqaltsog="../02_entities/allegato_possesso_requisiti_altri_soggetti"
+            xmlns:eallperana="../02_entities/allegato_persona_anagrafica"
+
+            xmlns:efile="../02_entities/files"
+
+            targetNamespace="../02_entities/allegato_possesso_requisiti_altri_soggetti"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/files" schemaLocation="../02_entities/ent_files_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_persona_anagrafica" schemaLocation="../02_entities/ent_allegato_persona_anagrafica_v1.0.5.xsd"/>
+
+
+    <xsd:complexType name="allegato_possesso_requisiti_altri_soggetti_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="efile:file_ctype">
+                <xsd:sequence>
+                    <xsd:element name="soggetto" type="eallperana:allegato_persona_anagrafica_ctype" minOccurs="0"  />
+                    <xsd:element name="inQualita" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="di" type="xsd:string" minOccurs="0"/>
+                                <xsd:element name="della">
+                                    <xsd:complexType>
+                                        <xsd:sequence>
+                                            <xsd:element name="societa" type="xsd:string" minOccurs="0"/>
+                                        </xsd:sequence>
+                                    </xsd:complexType>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="dichiarazionePresaVisioneInformativaPrivacy" type="xsd:boolean" minOccurs="0" />
+                    <xsd:element name="documentoIdentitaSoggetto" type="efile:file_ctype" minOccurs="0"  />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:element name="allegato_possesso_requisiti_altri_soggetti" type="eallposreqaltsog:allegato_possesso_requisiti_altri_soggetti_ctype"/>
+
+</xsd:schema>

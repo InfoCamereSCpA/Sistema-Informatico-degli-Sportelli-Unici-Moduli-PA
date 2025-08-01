@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sdicreq="../03_sections/dichiarazione_requisiti"
+            xmlns:edicreq="../02_entities/dichiarazione_requisiti"
+            targetNamespace="../03_sections/dichiarazione_requisiti" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/dichiarazione_requisiti" schemaLocation="../02_entities/ent_dichiarazione_requisiti_v1.0.5.xsd"/>
+    
+    <!-- <xsd:complexType name="sezione_dichiarazione_requisiti_ctype" abstract="true"> -->
+    <xsd:complexType name="sezione_dichiarazione_requisiti_ctype">
+        <xsd:sequence>
+            <xsd:element name="scia_dichiarazione_agenzie_viaggio" type="edicreq:dichiarazione_requisiti_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>   
+    </xsd:complexType>
+    
+    <xsd:element name="sezione_dichiarazione_requisiti" type="sdicreq:sezione_dichiarazione_requisiti_ctype"/>
+</xsd:schema>

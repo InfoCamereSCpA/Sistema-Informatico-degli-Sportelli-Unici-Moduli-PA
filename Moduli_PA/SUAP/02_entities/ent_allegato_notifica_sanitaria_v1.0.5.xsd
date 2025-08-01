@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:eallnotsan="../02_entities/allegato_allegato_notifica_sanitaria"
+            xmlns:eallperana="../02_entities/allegato_persona_anagrafica"
+
+            xmlns:efile="../02_entities/files"
+
+            targetNamespace="../02_entities/allegato_allegato_notifica_sanitaria"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/files" schemaLocation="../02_entities/ent_files_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_persona_anagrafica" schemaLocation="../02_entities/ent_allegato_persona_anagrafica_v1.0.5.xsd"/>
+
+
+    <xsd:complexType name="allegato_allegato_notifica_sanitaria_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="efile:file_ctype">
+                <xsd:sequence>
+                    <xsd:element name="notificaSanitaria" type="eallnotsan:NotificaSanitariaType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="NotificaSanitariaType">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="apertura" type="eallnotsan:NotificaSanitariaAperturaType"/>
+                <xsd:element name="subingresso" type="eallnotsan:NotificaSanitariaSubingressoType"/>
+                <xsd:element name="modificaAttivita" type="eallnotsan:NotificaSanitariModificaAttivitaType"/>
+                <xsd:element name="cessazioneSospensione" type="eallnotsan:NotificaSanitariaCessazioneSospensioneType"/>
+            </xsd:choice>
+            <xsd:element name="note" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="dichiarazionePresaVisioneInformativaPrivacy" type="xsd:boolean" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+
+    <xsd:complexType name="NotificaSanitariaAperturaType">
+        <xsd:complexContent>
+            <xsd:extension base="eallnotsan:NotificaSanitariaRelativaBaseType">
+                <xsd:sequence>
+                    <xsd:element name="sedeFissa" type="xsd:boolean" />
+                    <xsd:element name="sede" type="eallperana:IndirizzoType"/>
+                    <xsd:element name="contatti" >
+                        <xsd:complexType>
+                            <xsd:complexContent>
+                                <xsd:extension base="eallperana:ContattiFoniaType">
+                                    <xsd:sequence>
+                                        <xsd:element name="altroDomicilioElettronico" type="xsd:string"/>
+                                    </xsd:sequence>
+                                </xsd:extension>
+                            </xsd:complexContent>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="tipologiaAttivita" type="eallnotsan:NotificaSanitariaTipologiaAttivitaType"/>
+                    <xsd:element name="inizioAttivita" type="eallnotsan:NotificaSanitariaDecorrenzaType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="NotificaSanitariaRelativaBaseType" abstract="true">
+        <xsd:sequence>
+            <xsd:element name="dichiarante">
+                <xsd:complexType>
+                    <xsd:group ref="eallperana:PersonaBaseGroup"/>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="NotificaSanitariaTipologiaAttivitaType">
+        <xsd:sequence>
+            <xsd:element name="produzionePrimaria" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="cacciaEraccoltaSelvaggina" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="PescaEimbarcazioniDaPesca" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="raccoltaEimbarcazioniRaccoltaMolluschi" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="venditaDirettaLatte" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="venditaDirettaUova" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="venditaDirettaMiele" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="raccolaFunghiTartufi" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="raccoltaVegetaliSpontanei" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="coltivazioniPermanentiUsoAlimentare" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="coltivazioniNonPermanentiUsoAlimentare" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="vegetaliProduzioneTrasformazioneConfezionamento" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="conserveVegetaliIIGamma" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="vegetaliCongelatiSurgelatiIIIGamma" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="freshCutIVGamma" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="ortofrutticoliPrecottiVGamma" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="secchiTostatiSpezie" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="succhiFruttaOrtaggi" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="olio" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="grassiVegetali" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="viniMosti" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="alcolici" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="sidroAltriViniBaseFrutta" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="birraAltreFermetateNonDistillate" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="molituraFrumentoAltriCereali" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="lavorazioneRiso" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="altreLavorazioniSemiGranaglieLegumi" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="amidiProdottiAmidacei" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="zucchero" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="caffe" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="teAltriInfusi" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="homeFood" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="prodottiFornoPasticceriaGelatiPiattiPronti" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="produzionePastaFrescaSeccaFarinaceiSimili" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="produzionePanePizzaAltri" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="produzionePasticceria" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="produzioneGelateria" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="produzioneCacaoCioccolatoConfetterie" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="produzioneCibiPronti" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="produzioneHomeFood" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+
+            <xsd:element name="altriAlimentiProduzioneTrasformazione" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="bibiteAnalcolicheAcqueBottiglia" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="ghiaccio" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="saleEstrazione" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="saleIodato" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="alimentiAnimaliProduzioneTrasformazioneConfezionamento" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="prodottiPescaAziendeAcquacoltura" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="avicoliCunicoli" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="carniLavorazioneImpiantiAnnessiEsercizio" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="prodottiPescaLavorazioneImpiantiAnnessiEsercizio" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="prodottiApiarioRaccoltaLavorazione" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="prodottiBaseLatte" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="produzioneHomeFood" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="ristorazione" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="produzionePastiProntiRistorazioneCollettiva" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="somministrazioneRistorazioneCollettiva" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="somministrazioneDirettaRistorazionePubblica" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="barAssimilati" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="ristorazioneInManifestazioniTemporanee" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="homeRestaurant" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+
+            <xsd:element name="commercioIngrossoAlimentiBevande" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="cashCarry" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="broker" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="ingrossoConDeposito" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="commercioDettaglioAlimentiBevande" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="inEsercizioVicinato" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="inMediaStruttura" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="inGrandeStruttura" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="perCorrispondenzaFormeSpeciali" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="commercioAmbulante" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="aPostoFisso" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="inFormaItinerante" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="distributori" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="automaticiAlimentiBevande" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="latteCrudo" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="acquaPotabileTrattata" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="depositoAlimentiBevandeContoTerziNoRisconoscimento" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="inRegimeTemperatura" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="nonInRegimeTemperatura" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="piattaformaDistribuzioneAlimenti" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="depositoAlimentiBevandeAnnessoEsercizi" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="inRegimeTemperatura" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="nonInRegimeTemperatura" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+
+            <xsd:element name="trasportoAlimentiBevandeContoTerzi" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="inCisternaInRegimeTemperatura" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="inCisternaNonInRegimeTemperatura" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="inRegimeTemperatura" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="nonInRegimeTemperatura" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="altro" type="eallperana:EmptyType" minOccurs="0" maxOccurs="1"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="NotificaSanitariaDecorrenzaType">
+        <xsd:choice>
+            <xsd:element name="contestuale" type="eallperana:EmptyType"/>
+            <xsd:element name="decorrenza" >
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="dal" type="xsd:date"/>
+                        <xsd:element name="termine" type="xsd:date" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="NotificaSanitariaSubingressoType">
+        <xsd:complexContent>
+            <xsd:extension base="eallnotsan:NotificaSanitariaRelativaBaseType">
+                <xsd:sequence>
+                    <xsd:element name="soggettoDitta" type="xsd:string"/>
+                    <xsd:choice>
+                        <xsd:element name="codiceFiscale" type="eallperana:CodiceFiscaleType"/>
+                        <xsd:element name="pIVA" type="eallperana:PIVA"/>
+                    </xsd:choice>
+                    <xsd:element name="protocolloTrasferimento" type="eallnotsan:ProtocolloStandardType"/>
+                    <xsd:element name="inizioAttivita" type="eallnotsan:NotificaSanitariaDecorrenzaType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="ProtocolloStandardType">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare i dati che compongono il Protocollo Standard</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="eallperana:AttoBaseType">
+                <xsd:sequence>
+                    <xsd:element name="codiceAmministrazione" type="eallperana:CodiceAmministrazione" minOccurs="0"/>
+                    <xsd:element name="codiceAOO" type="eallperana:CodiceAOO" minOccurs="0"/>
+                    <xsd:element name="codiceRegistro" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="comuneRilascio" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="NotificaSanitariModificaAttivitaType">
+        <xsd:complexContent>
+            <xsd:extension base="eallnotsan:NotificaSanitariaRelativaBaseType">
+                <xsd:sequence>
+                    <xsd:element name="tipologiaAttivita" type="eallnotsan:NotificaSanitariaTipologiaAttivitaType"/>
+                    <xsd:element name="decorrenzaModifiche" type="eallnotsan:NotificaSanitariaDecorrenzaType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="NotificaSanitariaCessazioneSospensioneType">
+        <xsd:complexContent>
+            <xsd:extension base="eallnotsan:NotificaSanitariaRelativaBaseType">
+                <xsd:sequence>
+                    <xsd:element name="protocolloAttivita" type="eallnotsan:ProtocolloStandardType"/>
+                    <xsd:element name="sede" type="eallperana:IndirizzoType"/>
+                    <xsd:choice>
+                        <xsd:element name="dataCessazione" type="xsd:date"/>
+                        <xsd:element name="periodoSospensione" type="eallperana:PeriodoDateType"/>
+                    </xsd:choice>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    
+
+    <xsd:element name="allegato_allegato_notifica_sanitaria" type="eallnotsan:allegato_allegato_notifica_sanitaria_ctype"/>
+
+</xsd:schema>

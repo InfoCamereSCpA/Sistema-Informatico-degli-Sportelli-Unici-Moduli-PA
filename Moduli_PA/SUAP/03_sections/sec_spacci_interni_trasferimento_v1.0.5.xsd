@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sspainttra="../03_sections/spacci_interni_trasferimento"
+
+            xmlns:espainttra="../02_entities/spacci_interni_trasferimento"
+
+            targetNamespace="../03_sections/spacci_interni_trasferimento" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/spacci_interni_trasferimento" schemaLocation="../02_entities/ent_spacci_interni_trasferimento_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_spacci_interni_trasferimento_ctype">
+        <xsd:sequence>
+            <xsd:element name="spacci_interni_trasferimento" type="espainttra:spacci_interni_trasferimento_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_spacci_interni_trasferimento" type="sspainttra:sezione_spacci_interni_trasferimento_ctype"/>
+
+</xsd:schema>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ensapeini="../02_entities/notifica_sanitaria_apertura_inizio" 
+            targetNamespace="../02_entities/notifica_sanitaria_apertura_inizio" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:complexType name="inizio_attivita_ctype">
+        <xsd:sequence>
+            <xsd:element name="avvio_contestuale" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="avvio_decorrenza" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="avvio_decorrenza_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1" />
+                        <xsd:element name="data_decorrenza" type="xsd:date" minOccurs="0" maxOccurs="1" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="termine_attivita" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="termine_attivita_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1" />
+                        <xsd:element name="data_termine" type="xsd:date" minOccurs="0" maxOccurs="1" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+        
+    </xsd:complexType>
+    
+    <xsd:element name="inizio_attivita" type="ensapeini:inizio_attivita_ctype"/>
+</xsd:schema>

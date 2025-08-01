@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:esomcirzonnonamp="../02_entities/somministrazione_circoli_privati_commerciali_zone_non_tutelate_ampliamento"
+            xmlns:ctipi="../commons/tipi"
+            xmlns:eproto="../02_entities/protocollo"
+            targetNamespace="../02_entities/somministrazione_circoli_privati_commerciali_zone_non_tutelate_ampliamento" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="../02_entities/ent_protocollo_v1.0.5.xsd"/>
+
+    <!-- AS-IS: AmpliamentoBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="ampliamento_base_type" abstract="true"/>
+
+    <xsd:complexType name="ampliamento_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esomcirzonnonamp:ampliamento_base_type">
+                <xsd:sequence>
+                    <xsd:element name="superficie_da" type="xsd:double" default="0.0" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="superficie_a" type="xsd:double" default="0.0" minOccurs="1" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="somministrazione_circoli_zone_non_tutelate_ampliamento_ctype">
+        <xsd:sequence>
+            <xsd:element name="nr_protocollo" type="eproto:numero_registrazione_stype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="data_protocollo" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="ampliamento_superficie" type="esomcirzonnonamp:ampliamento_base_type" minOccurs="1" maxOccurs="1"/>
+            <!--
+            <xsd:element name="superficie_da" type="xsd:double" default="0.0" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="superficie_a" type="xsd:double" default="0.0" minOccurs="1" maxOccurs="1"/>
+            -->
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="somministrazione_circoli_zone_non_tutelate_ampliamento" type="esomcirzonnonamp:somministrazione_circoli_zone_non_tutelate_ampliamento_ctype"/>
+</xsd:schema>

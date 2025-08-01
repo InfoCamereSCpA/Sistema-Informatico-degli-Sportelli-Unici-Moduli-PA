@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ssommtempavvio="../03_sections/somministrazione_temporanea_avvio"
+            xmlns:esommtempavvio="../02_entities/somministrazione_temporanea_avvio"
+            targetNamespace="../03_sections/somministrazione_temporanea_avvio" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/somministrazione_temporanea_avvio" schemaLocation="../02_entities/ent_somministrazione_temporanea_avvio_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_somministrazione_temporanea_avvio_ctype">
+        <xsd:sequence>
+            <xsd:element name="avvio" type="esommtempavvio:somministrazione_temporanea_avvio_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="sezione_somministrazione_temporanea_avvio" type="ssommtempavvio:sezione_somministrazione_temporanea_avvio_ctype"/>
+</xsd:schema>

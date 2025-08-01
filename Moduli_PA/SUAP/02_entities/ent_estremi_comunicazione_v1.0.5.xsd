@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:eestremicom="../02_entities/estremi_comunicazione"
+    xmlns:ctipi="../commons/tipi" 
+    targetNamespace="../02_entities/estremi_comunicazione"
+    elementFormDefault="qualified" attributeFormDefault="qualified"    
+    version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+
+    <!-- AS-IS: astrazione pdf -->
+    <xsd:complexType name="estremi_comunicazione_base_type" abstract="true"/>
+
+    <xsd:complexType name="estremi_comunicazione_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eestremicom:estremi_comunicazione_base_type">
+                <xsd:sequence>
+                    <xsd:element name="nrProtocollo" type="xsd:int" default="0" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="dataProtocollo" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="documentoAllegato" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+<!--    <xsd:complexType name="estremi_comunicazione_ctype">-->
+<!--        <xsd:sequence>-->
+<!--            <xsd:element name="nrProtocollo" type="xsd:int" default="0" minOccurs="1" maxOccurs="1"/>-->
+<!--            <xsd:element name="dataProtocollo" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>-->
+<!--            <xsd:element name="documentoAllegato" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>-->
+<!--        </xsd:sequence>-->
+<!--    </xsd:complexType>-->
+    
+    <xsd:element name="estremi_comunicazione" type="eestremicom:estremi_comunicazione_ctype" />
+</xsd:schema>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:eallposreqaltsoc="../02_entities/allegato_possesso_requisiti_altri_soci"
+            xmlns:eallperana="../02_entities/allegato_persona_anagrafica"
+
+            xmlns:efile="../02_entities/files"
+
+            targetNamespace="../02_entities/allegato_possesso_requisiti_altri_soci"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/files" schemaLocation="../02_entities/ent_files_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_persona_anagrafica" schemaLocation="../02_entities/ent_allegato_persona_anagrafica_v1.0.5.xsd"/>
+
+
+    <xsd:complexType name="allegato_possesso_requisiti_altri_soci_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="efile:file_ctype">
+                <xsd:sequence>
+                    <xsd:element name="socio" type="eallperana:allegato_persona_anagrafica_ctype" minOccurs="1" />
+                    <xsd:element name="inQualitaDiSocioDella" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="societa" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="dichiarazionePresaVisioneInformativaPrivacy" type="xsd:boolean"  />
+                    <xsd:element name="documentoIdentitaSocio" type="efile:file_ctype" minOccurs="1" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:element name="allegato_possesso_requisiti_altri_soci" type="eallposreqaltsoc:allegato_possesso_requisiti_altri_soci_ctype"/>
+
+</xsd:schema>

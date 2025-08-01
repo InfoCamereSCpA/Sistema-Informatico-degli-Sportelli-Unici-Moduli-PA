@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sapestruttaa="../03_sections/strutt_aria_aperta_apertura"
+            xmlns:eapeaa="../02_entities/apertura_strutture_aria_aperta"
+            targetNamespace="../03_sections/strutt_aria_aperta_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/apertura_strutture_aria_aperta" schemaLocation="../02_entities/ent_apertura_strutture_aria_aperta_v1.0.5.xsd"/>
+    
+    <xsd:complexType name="sezione_apertura_strutture_aria_aperta_ctype">
+        <xsd:sequence>
+            <xsd:element name="dati_apertura" type="eapeaa:apertura_strutture_aria_aperta_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="sezione_apertura_strutture_aria_aperta" type="sapestruttaa:sezione_apertura_strutture_aria_aperta_ctype"/>
+</xsd:schema>

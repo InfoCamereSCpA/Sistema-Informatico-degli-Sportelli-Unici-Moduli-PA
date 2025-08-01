@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:sschedaanag="../03_sections/scheda_anagrafica"
+    xmlns:epers="../02_entities/persona"
+    xmlns:ecitt="../02_entities/cittadinanza"
+    xmlns:edocril="../02_entities/documento_rilasciato"
+    xmlns:eindita="../02_entities/indirizzo_italiano"
+    xmlns:econt="../02_entities/contatti"
+    xmlns:erapp="../02_entities/rappresentanza"
+    xmlns:eimpresa="../02_entities/impresa"
+    xmlns:edomdig="../02_entities/domicilio_digitale" targetNamespace="../03_sections/scheda_anagrafica" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/persona" schemaLocation="../02_entities/ent_persona_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/cittadinanza" schemaLocation="../02_entities/ent_cittadinanza_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/documento_rilasciato" schemaLocation="../02_entities/ent_documento_rilasciato_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/indirizzo_italiano" schemaLocation="../02_entities/ent_indirizzo_italiano_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/contatti" schemaLocation="../02_entities/ent_contatti_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/rappresentanza" schemaLocation="../02_entities/ent_rappresentanza_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/impresa" schemaLocation="../02_entities/ent_impresa_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/domicilio_digitale" schemaLocation="../02_entities/ent_domicilio_digitale_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_scheda_anagrafica_ctype">
+        <xsd:sequence>
+            <xsd:element name="dati_dichiarante" type="epers:persona_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="cittadinanza" type="ecitt:cittadinanza_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="permesso_soggiorno_dichiarante" type="edocril:documento_rilasciato_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="residenza_dichiarante" type="eindita:indirizzo_italiano_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="contatti_dichiarante" type="econt:contatti_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="rappresentanza_dichiarante" type="erapp:rappresentanza_ctype" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="impresa" minOccurs="0" maxOccurs="1" type="eimpresa:impresa_ctype"/>
+
+            <xsd:element name="dati_procuratore" type="epers:persona_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="residenza_procuratore" type="eindita:indirizzo_italiano_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="contatti_procuratore" type="econt:contatti_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:choice>
+                <xsd:sequence>
+                    <xsd:element name="procuratore_delegato" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="agenzia_imprese" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:choice>
+            <xsd:element name="denominazione" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="domicilio_digitale" type="edomdig:domicilio_digitale_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype" />
+</xsd:schema>

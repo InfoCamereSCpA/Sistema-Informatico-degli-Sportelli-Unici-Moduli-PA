@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:sautorimesse="../03_sections/autorimesse"
+    xmlns:srifatt="../03_sections/riferimento_attivita"
+    xmlns:eautorimesseape="../02_entities/autorimesse_apertura"
+    xmlns:edichautorimesse="../02_entities/autorimesse_altre_dichiarazioni" targetNamespace="../03_sections/autorimesse" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/riferimento_attivita" schemaLocation="../03_sections/sec_riferimento_attivita_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/autorimesse_apertura" schemaLocation="../02_entities/ent_autorimesse_apertura_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/autorimesse_altre_dichiarazioni" schemaLocation="../02_entities/ent_autorimesse_altre_dichiarazioni_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_autorimesse_ctype">
+        <xsd:sequence>
+            <xsd:element name="riferimento_attivita" type="srifatt:riferimento_attivita_type" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="apertura" type="eautorimesseape:autorimesse_apertura_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="altre_dichiarazioni" type="edichautorimesse:autorimesse_altre_dichiarazioni_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_autorimesse" type="sautorimesse:sezione_autorimesse_ctype"/>
+</xsd:schema>

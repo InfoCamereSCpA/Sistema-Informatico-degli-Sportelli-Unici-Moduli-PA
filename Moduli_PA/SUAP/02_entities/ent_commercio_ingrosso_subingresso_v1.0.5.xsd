@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ecommingsub="../02_entities/commercio_ingrosso_subingresso"
+            xmlns:eproto="../02_entities/protocollo"
+            xmlns:ctipi="../commons/tipi"
+
+            targetNamespace="../02_entities/commercio_ingrosso_subingresso"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="./ent_protocollo_v1.0.5.xsd"/>
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:complexType name="commercio_ingrosso_subingresso_ctype">
+        <xsd:sequence>
+            <xsd:element name="comunicazione_subingresso" type="eproto:protocollo_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="avvio_contestuale" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="avvio_decorrenza">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="avvio_decorrenza_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="data_avvio_decorrenza" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <!-- Motivazioni Subingresso -->
+            <xsd:element name="compravendita" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="affitto_azienda" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="donazione" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="fusione" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="fallimento" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="successione" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altre_motivazioni" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="altre_motivazioni_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="altre_motivazioni_string" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="commercio_ingrosso_subingresso" type="ecommingsub:commercio_ingrosso_subingresso_ctype"/>
+</xsd:schema>

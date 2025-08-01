@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ediplo="../02_entities/diploma"
+    xmlns:ctipi="../commons/tipi"
+    xmlns:ccodelist="../commons/codelist"
+    xmlns:canncl="../commons/xsdAnnotations" targetNamespace="../02_entities/diploma" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd" />
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd" />
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd" />
+
+    <xsd:complexType name="diploma_ctype">
+        <xsd:sequence>
+            <xsd:element name="scuola" type="xsd:string"/>
+            <xsd:element name="anno_conclusione" type="xsd:positiveInteger"/>
+            <xsd:element name="materie_attinenti" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="diploma" type="ediplo:diploma_ctype" />
+
+</xsd:schema>

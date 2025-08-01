@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:ealtdicalt="../02_entities/altre_dichiarazioni_altro"
+
+            targetNamespace="../02_entities/altre_dichiarazioni_altro"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <!-- AS-IS: AltreDichiarazioniAltroBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="altre_dichiarazioni_altro_base_type" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation>
+                Base astratto per il tipo altre_dichiarazioni_altro. Estendere per specificare dettagli aggiuntivi.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="altre_dichiarazioni_altro_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="ealtdicalt:altre_dichiarazioni_altro_base_type">
+                <xsd:sequence>
+                    <xsd:element name="altre_dichiarazioni_altro_altro_check" type="xsd:boolean" minOccurs="0" maxOccurs="unbounded"/>
+                    <xsd:element name="altre_dichiarazioni_altro_altro" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="altre_dichiarazioni_altro" type="ealtdicalt:altre_dichiarazioni_altro_ctype"/>
+</xsd:schema>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ecapric="../02_entities/scia_capacita_ricettiva" targetNamespace="../02_entities/scia_capacita_ricettiva" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <!-- AS-IS: CapacitaStrutturaBaseType su SUAP_modulo_strutture_ricettive_alberghiere.xsd -->
+    <xsd:complexType name="scia_capacita_ricettiva_base_type" abstract="true"/>
+
+    <xsd:complexType name="scia_capacita_ricettiva_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="ecapric:scia_capacita_ricettiva_base_type">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Tipo per la capacità ricettiva in una SCIA.
+                    </xsd:documentation>
+                </xsd:annotation>
+
+                <xsd:sequence>
+                    <xsd:element name="tot_posti_letto" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="camere_per_posti_letto" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="camere" type="xsd:integer" default="0" minOccurs="0"/>
+                    <!-- tabella 1-->
+                    <xsd:element name="n_camere_singole_no_bagno" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="n_camere_singole_si_bagno" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="n_camere_doppie_no_bagno" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="n_camere_doppie_si_bagno" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="n_camere_triple_no_bagno" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="n_camere_triple_si_bagno" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="n_camere_quadruple_no_bagno" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="n_camere_quadruple_si_bagno" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="camere_piu_4_letti_no_bagno" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="camere_piu_4_letti_si_bagno" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="n_suite" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="n_altro_1" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="n_altro_2" type="xsd:integer" default="0" minOccurs="0"/>
+
+                    <xsd:element name="unita_abitative_bagno_cucina" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="posti_letto_per_abitazione" type="xsd:integer" default="0" minOccurs="0"/>
+
+                    <!--tabella 2-->
+                    <xsd:element name="unita_uguali" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="tipologia_monolocale" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="appartamenti_multilocali" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="camere_pernottamento" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="soggiorno_in_vano_pernottamento" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="soggiorno_separato_pernottamento" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="cucina" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="bagni_privati" type="xsd:integer" default="0" minOccurs="0"/>
+                    <xsd:element name="Tot_posti_letto" type="xsd:integer" default="0" minOccurs="0"/>
+
+                    <!--Unità abitative ad uso residenziale (solo in caso di condhotel)-->
+                    <xsd:element name="abitazioni_con_posti_letto" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="totale_unita_abitative" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="totale_superficie_unita_abitative" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="scia_capacita_ricettiva" type="ecapric:scia_capacita_ricettiva_ctype"/>
+</xsd:schema>

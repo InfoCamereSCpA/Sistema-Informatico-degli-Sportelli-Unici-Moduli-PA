@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:stresvi="../03_sections/mod_esercizio_vicinato_trasferimento"
+
+            xmlns:ecencom="../02_entities/centro_commerciale"
+            xmlns:esetmer="../02_entities/settori_merceologici"
+            xmlns:eindita="../02_entities/indirizzo_italiano"
+            xmlns:econt="../02_entities/contatti"
+            xmlns:eproto="../02_entities/protocollo"
+
+            targetNamespace="../03_sections/mod_esercizio_vicinato_trasferimento"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/centro_commerciale" schemaLocation="../02_entities/ent_centro_commerciale_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/settori_merceologici" schemaLocation="../02_entities/ent_settori_merceologici_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/indirizzo_italiano" schemaLocation="../02_entities/ent_indirizzo_italiano_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/contatti" schemaLocation="../02_entities/ent_contatti_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="../02_entities/ent_protocollo_v1.0.5.xsd"/>
+
+    <xsd:complexType name="trasferimento_esercizio_vicinato_type">
+        <xsd:sequence>
+            <xsd:element name="protocollo_avvio" type="eproto:protocollo_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="indirizzo_da" type="eindita:indirizzo_italiano_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="in_centro_commerciale_da" type="ecencom:centro_commerciale_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="indirizzo_a" type="eindita:indirizzo_italiano_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="contatti" type="econt:contatti_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="in_centro_commerciale_a" type="ecencom:centro_commerciale_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="settori_merceologici" type="esetmer:settori_merceologici_base_type" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

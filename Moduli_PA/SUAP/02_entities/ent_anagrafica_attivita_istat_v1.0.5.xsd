@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eanagattist="../02_entities/anagrafica_attivita_istat"
+
+            xmlns:ccodelist="../commons/codelist"
+            xmlns:canncl="../commons/xsdAnnotations"
+            targetNamespace="../02_entities/anagrafica_attivita_istat"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+
+    <xsd:complexType name="anagrafica_attivita_istat_ctype">
+        <xsd:sequence>
+            <xsd:element name="via" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="nCivico" type="xsd:nonNegativeInteger" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="piano" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="interno" type="xsd:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="comune" type="ccodelist:CodeType" minOccurs="0" maxOccurs="1" >
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ComuniItaliani</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="provincia" type="ccodelist:CodeType" minOccurs="0" maxOccurs="1" >
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ProvinceItaliane</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="cap" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="stato" type="ccodelist:CodeType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:Stati</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="telefono" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="cellulare" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="sitoWeb" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="codiceIstat" type="ccodelist:CodeType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ComuniItaliani</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="anagrafica_attivita_istat" type="eanagattist:anagrafica_attivita_istat_ctype"/>
+</xsd:schema>

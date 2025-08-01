@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:svarstruttaa="../03_sections/strutt_aria_aperta_variazione"
+            xmlns:evaraa="../02_entities/variazioni_attivita_strutt_aria_aperta"
+            targetNamespace="../03_sections/strutt_aria_aperta_variazione" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/variazioni_attivita_strutt_aria_aperta" schemaLocation="../02_entities/ent_variazioni_attivita_strutt_aria_aperta_v1.0.5.xsd"/>
+    
+    <xsd:complexType name="sezione_variazione_strutture_aria_aperta_ctype">
+        <xsd:sequence>
+            <xsd:element name="variazione_strutture_aria_aperta" type="evaraa:variazioni_strutture_aria_aperta_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="sezione_variazione_strutture_aria_aperta" type="svarstruttaa:sezione_variazione_strutture_aria_aperta_ctype"/>
+</xsd:schema>

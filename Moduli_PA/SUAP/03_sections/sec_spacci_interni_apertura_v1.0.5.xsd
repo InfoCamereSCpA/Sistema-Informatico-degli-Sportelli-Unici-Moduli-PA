@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sspaintape="../03_sections/spacci_interni_apertura"
+
+            xmlns:espaintape="../02_entities/spacci_interni_apertura"
+
+            targetNamespace="../03_sections/spacci_interni_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/spacci_interni_apertura" schemaLocation="../02_entities/ent_spacci_interni_apertura_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_spacci_interni_apertura_ctype">
+        <xsd:sequence>
+            <xsd:element name="spacci_interni_apertura" type="espaintape:spacci_interni_apertura_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_spacci_interni_apertura" type="sspaintape:sezione_spacci_interni_apertura_ctype"/>
+
+</xsd:schema>

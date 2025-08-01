@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:edoccomvar="../02_entities/riepilogo_documentazione_comunicazione_variazioni" targetNamespace="../02_entities/riepilogo_documentazione_comunicazione_variazioni" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+
+    <xsd:complexType name="riepilogo_documentazione_comunicazione_variazione_base_type" abstract="true"/>
+
+    <xsd:complexType name="riepilogo_documentazione_comunicazione_variazione_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="edoccomvar:riepilogo_documentazione_comunicazione_variazione_base_type">
+                <xsd:sequence>
+                    <xsd:element name="procura_delega" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="copia_documento_identita" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="attestazioni_versamenti" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="riepilogo_documentazione_comunicazione_variazione" type="edoccomvar:riepilogo_documentazione_comunicazione_variazione_ctype"/>
+</xsd:schema>

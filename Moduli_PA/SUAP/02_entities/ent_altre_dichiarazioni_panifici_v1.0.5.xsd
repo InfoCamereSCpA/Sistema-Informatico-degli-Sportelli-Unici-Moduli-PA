@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ealtdicpan="../02_entities/altre_dichiarazioni_panifici"
+
+            targetNamespace="../02_entities/altre_dichiarazioni_panifici" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+
+    <xsd:complexType name="altre_dichiarazioni_panifici_ctype">
+        <xsd:sequence>
+            <xsd:element name="consumo_farina_minore_300kg" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="consumo_farina_300_1500kg" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="consumo_farina_superiore_1500kg" type="xsd:boolean" minOccurs="0"/>
+
+            <xsd:element name="consumo_idrico_minore_5mc" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="consumo_idrico_maggiore_5mc" type="xsd:boolean" minOccurs="0"/>
+
+            <xsd:element name="altre_dichiarazioni" type="xsd:string" minOccurs="0"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="altre_dichiarazioni_panifici" type="ealtdicpan:altre_dichiarazioni_panifici_ctype"/>
+
+</xsd:schema>

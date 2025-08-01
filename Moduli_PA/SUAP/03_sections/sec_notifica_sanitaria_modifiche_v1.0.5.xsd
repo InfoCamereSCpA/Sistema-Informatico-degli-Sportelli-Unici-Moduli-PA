@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:snsmodifiche="../03_sections/notifica_sanitaria_modifiche"
+            xmlns:ensmodtipo="../02_entities/notifica_sanitaria_modifica_tipologia"
+            xmlns:enstipoatt="../02_entities/notifica_sanitaria_tipologia_attivita" targetNamespace="../03_sections/notifica_sanitaria_modifiche" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/notifica_sanitaria_modifica_tipologia" schemaLocation="../02_entities/ent_notifica_sanitaria_modifica_tipologia_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/notifica_sanitaria_tipologia_attivita" schemaLocation="../02_entities/ent_notifica_sanitaria_tipologia_attivita_v1.0.5.xsd"/>
+    <xsd:complexType name="sezione_notifica_sanitaria_modifiche_ctype">
+        <xsd:sequence>
+            <xsd:element name="dati_tipologia_attivita" type="ensmodtipo:notifica_sanitaria_modifica_tipologia_ctype"  minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="tipologia_attivita" type="enstipoatt:notifica_sanitaria_tipologia_attivita_ctype" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="avvio_contestuale" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="avvio_decorrenza_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="data_decorrenza" type="xsd:date" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="altre_dichiarazioni" type="xsd:string"  minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="sezione_notifica_sanitaria_modifiche" type="snsmodifiche:sezione_notifica_sanitaria_modifiche_ctype"/>
+</xsd:schema>

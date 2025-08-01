@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:evaraa="../02_entities/variazioni_attivita_strutt_aria_aperta"
+    xmlns:ctipi="../commons/tipi"
+    targetNamespace="../02_entities/variazioni_attivita_strutt_aria_aperta"
+    elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:complexType name="variazioni_strutture_aria_aperta_ctype">
+        <xsd:sequence>
+            <xsd:element name="cin" type="evaraa:cin_stype" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="nr_protocollo" type="xsd:integer" default="0"  minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="data_protocollo" type="ctipi:ggmmaaaa_stype" minOccurs="1"
+                maxOccurs="1"/>
+
+            <xsd:element name="variazione_posti_letto" type="xsd:boolean" default="false"
+                minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="posti_letto_ante" type="xsd:integer" default="0"  minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="posti_letto_post" type="xsd:integer" default="0"  minOccurs="0" maxOccurs="1"/>
+
+
+
+            <xsd:element name="variazione_dotazioni" type="xsd:boolean" default="false"
+                minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dotazioni_ante" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dotazioni_post" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="variazione_classificazione" type="xsd:boolean" default="false"
+                minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="classificazione_ante" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="classificazione_post" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="ampliamento" type="xsd:boolean" default="false" minOccurs="0"
+                maxOccurs="1"/>
+            <xsd:element name="metratura_ante" type="xsd:float" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="metratura_post" type="xsd:float" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="altre_variazioni" type="xsd:boolean" default="false" minOccurs="0"
+                maxOccurs="1"/>
+            <xsd:element name="tipo_altra_variazione" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altra_variazione_ante" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altra_vatazione_post" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="cin_stype">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="IT\d{3}\d{3}[A-Z]\d{1}[A-Z]{1}\d{5}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:element name="variazioni_strutture_aria_aperta"
+        type="evaraa:variazioni_strutture_aria_aperta_ctype"/>
+</xsd:schema>

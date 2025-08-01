@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:edomdig="../02_entities/domicilio_digitale"
+            xmlns:ctipi="../commons/tipi" targetNamespace="../02_entities/domicilio_digitale" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+            <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:complexType name="domicilio_digitale_ctype">
+        <xsd:sequence>
+            <xsd:element name="domicilio_inad_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="domicilio_inad_string" type="ctipi:email_stype" minOccurs="0" maxOccurs="1"/>
+            
+            <xsd:element name="domicilio_ini_pec_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="domicilio_ini_pec_string" type="ctipi:email_stype" minOccurs="0" maxOccurs="1"/>
+            
+            <xsd:element name="elegge" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="domicilio_eletto" type="ctipi:email_stype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="domicilio_digitale" type="edomdig:domicilio_digitale_ctype"></xsd:element>
+</xsd:schema>

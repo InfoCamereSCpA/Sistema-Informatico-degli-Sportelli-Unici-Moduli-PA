@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mextraalbape="../04_forms/attivita_extra_alberghiere_apertura"
+            xmlns:sinfoextraalbape="../03_sections/info_extra_alberghiere_apertura"
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica"
+            xmlns:srdocextraalb="../03_sections/riepilogo_documentazione_extra_alberghiere"
+            targetNamespace="../04_forms/attivita_extra_alberghiere_apertura"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/scheda_anagrafica"
+                schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/info_extra_alberghiere_apertura"
+                schemaLocation="../03_sections/sec_info_extra_alberghiere_apertura_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/riepilogo_documentazione_extra_alberghiere"
+                schemaLocation="../03_sections/sec_riepilogo_documentazione_extra_alberghiere_v1.0.5.xsd"/>
+
+    <xsd:complexType name="comunicazione_apertura_extra_alberghiera_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="apertura"
+                         type="sinfoextraalbape:sezione_info_extra_alberghiere_apertura_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="riepilogo_documentazione"
+                         type="srdocextraalb:riepilogo_documentazione_ctype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="comunicazione_apertura_extra_alberghiera"
+                 type="mextraalbape:comunicazione_apertura_extra_alberghiera_ctype"/>
+</xsd:schema>

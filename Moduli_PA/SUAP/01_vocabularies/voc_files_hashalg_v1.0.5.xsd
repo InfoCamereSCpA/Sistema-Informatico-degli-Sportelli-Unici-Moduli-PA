@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    
+    xmlns:vhashalg="../01_vocabularies/files_hashalg"
+    
+    targetNamespace="../01_vocabularies/files_hashalg" elementFormDefault="qualified"
+    attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:simpleType name="hash_alg_voc">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="SHA-256"/>
+            <xsd:enumeration value="SHA-384"/>
+            <xsd:enumeration value="SHA-512"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

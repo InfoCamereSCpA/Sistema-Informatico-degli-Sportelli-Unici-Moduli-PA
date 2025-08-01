@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:savape="../03_sections/agenzia_viaggio_apertura"
+    xmlns:eanagatt="../02_entities/anagrafica_attivita" xmlns:edaca="../02_entities/dati_catastali"
+    xmlns:easfs="../02_entities/attivita_sede_fissa"
+    targetNamespace="../03_sections/agenzia_viaggio_apertura" elementFormDefault="qualified"
+    attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+
+
+    <xsd:import namespace="../02_entities/anagrafica_attivita"
+        schemaLocation="../02_entities/ent_anagrafica_attivita_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/dati_catastali"
+        schemaLocation="../02_entities/ent_dati_catastali_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/attivita_sede_fissa"
+        schemaLocation="../02_entities/ent_attivita_sede_fissa_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_agenzia_viaggio_apertura_ctype">
+        <xsd:sequence>
+            <xsd:element name="denominazione_commerciale" type="xsd:string" minOccurs="1"
+                maxOccurs="1"/>
+            <xsd:element name="attivita_sede" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="anagrafica_attivita" type="eanagatt:anagrafica_attivita_ctype"
+                minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dati_catastali" type="edaca:dati_catastali_ctype" minOccurs="0"
+                maxOccurs="1"/>
+            <xsd:element name="attivita_online" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:choice>
+                            <xsd:element name="check" type="xsd:boolean" default="false"
+                                minOccurs="0" maxOccurs="1"/>
+                        </xsd:choice>
+                        <xsd:element name="sito_web" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <!-- (solo per l’attività svolta in sede fissa)-->
+            <xsd:element name="sede_fissa" type="easfs:sede_fissa_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="con_vendita_diretta" type="xsd:boolean" default="false" minOccurs="0"
+                maxOccurs="1"/>
+            <xsd:element name="senza_vendita_diretta" type="xsd:boolean" default="false"
+                minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="sezione_agenzia_viaggio_apertura"
+        type="savape:sezione_agenzia_viaggio_apertura_ctype"/>
+</xsd:schema>

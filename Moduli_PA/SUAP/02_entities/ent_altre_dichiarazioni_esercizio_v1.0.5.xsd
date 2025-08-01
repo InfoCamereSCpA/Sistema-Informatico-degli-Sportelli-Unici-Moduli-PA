@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:ealtdicese="../02_entities/altre_dichiarazioni_esercizio"
+
+            targetNamespace="../02_entities/altre_dichiarazioni_esercizio"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:complexType name="altre_dichiarazioni_esercizio_ctype">
+        <xsd:sequence>
+            <!-- <xsd:element name="altre_dichiarazioni_esercizio_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/> -->
+            <xsd:element name="altre_dichiarazioni_esercizio_altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="adesione_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altre_dichiarazioni_ente_nazionale" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="non_adesione_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dichirazione_vendita_bevande_alcoliche_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altre_dichiarazioni_esercizio_altro_2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="altre_dichiarazioni_esercizio" type="ealtdicese:altre_dichiarazioni_esercizio_ctype"/>
+</xsd:schema>

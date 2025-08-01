@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eaasralb="../02_entities/avvio_attivita_strutture_ricettive_alberghiere" 
+            xmlns:ctipi="../commons/tipi"
+            targetNamespace="../02_entities/avvio_attivita_strutture_ricettive_alberghiere" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <!-- AS-IS: StruttureRicettiveCarattereEsercizioBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="strutture_ricettive_carattere_esercizio_base_type" abstract="true"/>
+
+    <!-- AS-IS: ClassificazioneBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="classificazione_base_type" abstract="true"/>
+
+    <xsd:complexType name="strutture_ricettive_carattere_esercizio_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eaasralb:strutture_ricettive_carattere_esercizio_base_type">
+                <xsd:sequence>
+                    <xsd:element name="carattere_annuale" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="carattere_stragionale_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="data_da" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="data_a" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="classificazione_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eaasralb:classificazione_base_type">
+                <xsd:sequence>
+                    <xsd:element name="classificazione_richiesta" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="data_planimetria" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="nr_protocollo" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <!-- AS-IS: TipologiaEsercizioBaseType su SUAP_modulo_strutture_ricettive_alberghiere.xsd -->
+    <xsd:complexType name="tipologia_esercizio_base_type" abstract="true"/>
+
+    <xsd:complexType name="tipologia_esercizio_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eaasralb:tipologia_esercizio_base_type">
+                <xsd:sequence>
+                    <xsd:choice>
+                        <xsd:element name="albergo" type="xsd:boolean"/>
+                        <xsd:element name="residenza_turistico_alberghiera" type="xsd:boolean"/>
+                        <xsd:element name="albergo_diffuso" type="xsd:boolean"/>
+                        <!--
+                            <xsd:element name="check_condhotel" type="xsd:boolean"/>
+                                <xsd:element name="n_scia" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                                <xsd:element name="data" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                                <xsd:element name="aggregazione_struttura_alberghiera" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        -->
+                        <xsd:element name="check_condhotel">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="esecuzione_intervento">
+                                        <xsd:complexType>
+                                            <xsd:sequence>
+                                                <xsd:element name="n_scia" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                                                <xsd:element name="data" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                                            </xsd:sequence>
+                                        </xsd:complexType>
+                                    </xsd:element>
+                                    <xsd:element name="aggregazione_struttura_alberghiera" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+
+
+                        <xsd:element name="altro" type="xsd:string"/>
+                    </xsd:choice>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="avvio_attivita_strutture_ricettive_alberghiere_ctype">
+        <xsd:sequence>
+            <xsd:element name="denominazione_struttura" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="sitoWeb" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="strutture_ricettive_carattere_esercizio"
+                         type="eaasralb:strutture_ricettive_carattere_esercizio_base_type" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="tipologia_esercizio" type="eaasralb:tipologia_esercizio_ctype" minOccurs="0"
+                         maxOccurs="1"/>
+            <xsd:element name="classificazione" type="eaasralb:classificazione_base_type" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    
+    <xsd:element name="avvio_attivita_strutture_ricettive_alberghiere" type="eaasralb:avvio_attivita_strutture_ricettive_alberghiere_ctype"/>
+</xsd:schema>

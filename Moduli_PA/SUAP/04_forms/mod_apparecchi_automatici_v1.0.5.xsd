@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mappaut="../04_forms/apparecchi_automatici"
+            xmlns:ssede="../03_sections/sede"
+            xmlns:sreqpro="../03_sections/requisiti_professionali"
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica"
+            xmlns:ssetali="../03_sections/settore_alimentare"
+            xmlns:sallegati="../03_sections/allegati"
+
+            xmlns:scomins="../03_sections/comunicazioni_installazioni"
+
+            targetNamespace="../04_forms/apparecchi_automatici" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/scheda_anagrafica" schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/requisiti_professionali" schemaLocation="../03_sections/sec_requisiti_professionali_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/sede" schemaLocation="../03_sections/sec_sede_v1.0.5.xsd"/>
+
+    <!-- avvio -->
+    <xsd:import namespace="../03_sections/settore_alimentare" schemaLocation="../03_sections/sec_settore_alimentare_v1.0.5.xsd"/>
+
+    <!-- comuncazione installazioni disinstallazioni -->
+    <xsd:import namespace="../03_sections/comunicazioni_installazioni" schemaLocation="../03_sections/sec_comunicazioni_installazioni_v1.0.5.xsd"/>
+
+    <xsd:import namespace="../03_sections/allegati" schemaLocation="../03_sections/sec_allegati_v1.0.5.xsd"/>
+
+    <xsd:complexType name="modulo_apparecchi_automatici_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype"/>
+            <xsd:element name="sede" type="ssede:sezione_sede_ctype"/>
+            <xsd:element name="avvio" type="ssetali:sezione_settore_alimentare_ctype"/>
+            <xsd:element name="comunicazioni" type="scomins:comunicazioni_installazioni_ctype"/>
+            <xsd:element name="dichiarazione_requisiti" type="sreqpro:sezione_requisiti_professionali_ctype"/>
+            <xsd:element name="tabellaAllegati" type="sallegati:allegati_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_apparecchi_automatici" type="mappaut:modulo_apparecchi_automatici_ctype"/>
+</xsd:schema>

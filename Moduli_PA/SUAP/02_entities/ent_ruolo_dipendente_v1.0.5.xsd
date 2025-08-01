@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:eruodip="../02_entities/ruolo_dipendente"
+    xmlns:ctipi="../commons/tipi"
+    xmlns:ccodelist="../commons/codelist"
+    xmlns:canncl="../commons/xsdAnnotations" targetNamespace="../02_entities/ruolo_dipendente" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd" />
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd" />
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd" />
+
+    <xsd:complexType name="ruolo_dipendente_ctype">
+        <xsd:sequence>
+            <xsd:element name="ruolo" type="xsd:boolean"/>
+            <xsd:element name="da" type="xsd:date"/>
+            <xsd:element name="a" type="xsd:date"/>
+            <xsd:element name="in_qualita_di" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="ruolo_dipendente" type="eruodip:ruolo_dipendente_ctype" />
+
+</xsd:schema>

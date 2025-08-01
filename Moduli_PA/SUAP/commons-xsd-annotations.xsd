@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    
+    xmlns:canncl="../commons/xsdAnnotations"
+    
+    targetNamespace="../commons/xsdAnnotations" elementFormDefault="qualified"
+    attributeFormDefault="qualified" version="1.0.0" xml:lang="it">
+
+    <xsd:element name="codeListReference">
+        <xsd:complexType>
+            <xsd:sequence>                
+                <xsd:element name="ShortName" type="xsd:normalizedString">
+                    <xsd:annotation>
+                        <xsd:documentation> 
+                            Identificativo di una code list associata ad un certo elemento 
+                        </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>                                          
+            </xsd:sequence> 
+        </xsd:complexType>
+    </xsd:element>
+  
+</xsd:schema>

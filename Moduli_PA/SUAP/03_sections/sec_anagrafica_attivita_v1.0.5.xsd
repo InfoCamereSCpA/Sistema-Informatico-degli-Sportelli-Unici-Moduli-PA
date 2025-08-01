@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sanagatt="../03_sections/anagrafica_attivita"
+            xmlns:eanagatt="../02_entities/anagrafica_attivita"
+            xmlns:edaca="../02_entities/dati_catastali" targetNamespace="../03_sections/anagrafica_attivita" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/anagrafica_attivita" schemaLocation="../02_entities/ent_anagrafica_attivita_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/dati_catastali" schemaLocation="../02_entities/ent_dati_catastali_v1.0.5.xsd"/>
+    
+    <xsd:complexType name="sezione_anagrafica_attivita_ctype" >
+        <xsd:sequence>
+            <xsd:element name="anagrafica_attivita" type="eanagatt:anagrafica_attivita_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="dati_catastali" type="edaca:coordinate_catastali_base_type" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="sezione_anagrafica_attivita" type="sanagatt:sezione_anagrafica_attivita_ctype"/>
+</xsd:schema>

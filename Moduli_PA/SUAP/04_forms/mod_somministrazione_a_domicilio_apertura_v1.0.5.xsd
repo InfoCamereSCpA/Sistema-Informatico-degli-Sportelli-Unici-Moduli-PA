@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:msommdomape="../04_forms/somministrazione_a_domicilio_apertura"
+            xmlns:ssede="../03_sections/sede"
+            xmlns:sreqpro="../03_sections/requisiti_professionali"
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica"
+            xmlns:sallegati="../03_sections/allegati"
+            targetNamespace="../04_forms/somministrazione_a_domicilio_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+     <xsd:import namespace="../03_sections/scheda_anagrafica" schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+     <xsd:import namespace="../03_sections/requisiti_professionali" schemaLocation="../03_sections/sec_requisiti_professionali_v1.0.5.xsd"/>
+     <xsd:import namespace="../03_sections/sede" schemaLocation="../03_sections/sec_sede_v1.0.5.xsd"/>
+     <xsd:import namespace="../03_sections/allegati" schemaLocation="../03_sections/sec_allegati_v1.0.5.xsd"/>
+
+    <xsd:complexType name="modulo_somministrazione_a_domicilio_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype"/>
+            <xsd:element name="ssedecottura" type="ssede:sezione_sede_ctype"/>
+            <xsd:element name="ssedemagazzino" type="ssede:sezione_sede_ctype"/>
+            <xsd:element name="dichiarazione_requisiti" type="sreqpro:sezione_requisiti_professionali_ctype"/>
+            <xsd:element name="tabellaAllegati" type="sallegati:allegati_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="modulo_somministrazione_a_domicilio" type="msommdomape:modulo_somministrazione_a_domicilio_ctype"/>
+</xsd:schema>

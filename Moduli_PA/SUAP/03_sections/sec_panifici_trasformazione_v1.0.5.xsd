@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:spantrasformazione="../03_sections/panifici_trasformazione"
+            xmlns:epantrasformazione="../02_entities/panifici_trasformazione"
+
+            targetNamespace="../03_sections/panifici_trasformazione" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/panifici_trasformazione" schemaLocation="../02_entities/ent_panifici_trasformazione_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_panifici_trasformazione_ctype">
+        <xsd:sequence>
+            <xsd:element name="panifici_trasformazione" type="epantrasformazione:panifici_trasformazione_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_panifici_trasformazione" type="spantrasformazione:sezione_panifici_trasformazione_ctype"/>
+
+</xsd:schema>

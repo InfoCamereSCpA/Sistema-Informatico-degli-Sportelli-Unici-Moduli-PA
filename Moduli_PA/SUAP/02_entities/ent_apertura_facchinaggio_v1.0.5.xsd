@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:efacchinaggioape="../02_entities/apertura_facchinaggio"
+            targetNamespace="../02_entities/apertura_facchinaggio" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:complexType name="apertura_facchinaggio_ctype">
+        <xsd:sequence>
+            <xsd:element name="superficie" type="xsd:double" default="0.0" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    
+    <xsd:element name="apertura_extra_alberghiera" type="efacchinaggioape:apertura_facchinaggio_ctype"/>
+</xsd:schema>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:scommingamp="../03_sections/commercio_ingrosso_ampliamento"
+            xmlns:ecommingamp="../02_entities/commercio_ingrosso_ampliamento"
+
+            targetNamespace="../03_sections/commercio_ingrosso_ampliamento" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/commercio_ingrosso_ampliamento" schemaLocation="../02_entities/ent_commercio_ingrosso_ampliamento_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_commercio_ingrosso_ampliamento_ctype">
+        <xsd:sequence>
+            <xsd:element name="commercio_ingrosso_ampliamento" type="ecommingamp:commercio_ingrosso_ampliamento_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_commercio_ingrosso_ampliamento" type="scommingamp:sezione_commercio_ingrosso_ampliamento_ctype"/>
+
+</xsd:schema>

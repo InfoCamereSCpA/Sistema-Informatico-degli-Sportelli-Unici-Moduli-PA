@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sdichcomvar="../03_sections/dichiarazioni_comunicazione_variazioni"
+            xmlns:edichcomvarcomm="../02_entities/dichiarazione_comunicazione_variazioni_commercio"
+            xmlns:edichcomvaracc="../02_entities/dichiarazione_comunicazione_variazioni_acconciatori"
+            xmlns:edichcomvarest="../02_entities/dichiarazione_comunicazione_variazioni_estetisti"
+            targetNamespace="../03_sections/dichiarazioni_comunicazione_variazioni" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/dichiarazione_comunicazione_variazioni_commercio" schemaLocation="../02_entities/ent_dichiarazione_comunicazione_variazioni_commercio_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/dichiarazione_comunicazione_variazioni_acconciatori" schemaLocation="../02_entities/ent_dichiarazione_comunicazione_variazioni_acconciatori_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/dichiarazione_comunicazione_variazioni_estetisti" schemaLocation="../02_entities/ent_dichiarazione_comunicazione_variazioni_estetisti_v1.0.5.xsd"/>
+    
+    <xsd:complexType name="sezione_dichiarazione_comunicazione_variazioni_ctype">
+        <xsd:sequence>
+            <xsd:element name="dichiarazioni_commercio" type="edichcomvarcomm:dichiarazioni_comunicazione_variazioni_commercio_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dichiarazioni_acconciatori" type="edichcomvaracc:dichiarazioni_comunicazione_variazioni_acconciatori_base_type" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dichiarazioni_estetisti" type="edichcomvarest:dichiarazioni_comunicazione_variazioni_estetisti_base_type" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>   
+    </xsd:complexType>
+    
+    <xsd:element name="sezione_dichiarazione_comunicazione_variazioni" type="sdichcomvar:sezione_dichiarazione_comunicazione_variazioni_ctype"/>
+</xsd:schema>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eprocdel="../02_entities/procuratore_delegato"
+            xmlns:ccodelist="../commons/codelist"
+            xmlns:canncl="../commons/xsdAnnotations"
+            xmlns:ctipi="../commons/tipi" targetNamespace="../02_entities/procuratore_delegato" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:complexType name="dati_procuratore_delegato_ctype">
+        <xsd:sequence>
+            <xsd:element name="cognome" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="nome" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="codice_fiscale" type="ctipi:codice_fiscale_stype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="comune_nascita" type="ccodelist:CodeType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ComuniItaliani</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="provincia_nascita" type="ccodelist:CodeType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ProvinceItaliane</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="stato_nascita" type="ccodelist:CodeType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:Stati</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="data_nascita" type="xsd:date"/>
+            <xsd:element name="comune_residenza" type="ccodelist:CodeType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ComuniItaliani</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="provincia_residenza" type="ccodelist:CodeType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ProvinceItaliane</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="stato_residenza" type="ccodelist:CodeType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:Stati</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="indirizzo_residenza" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="nr_civico_residenza" type="xsd:positiveInteger" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="cap_residenza" type="ctipi:cap_stype" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:choice>
+                <xsd:sequence>
+                    <xsd:element name="procuratore_delegato" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="agenzia_imprese" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="denominazione" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+                    
+                </xsd:sequence>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="dati_procuratore_delegato" type="eprocdel:dati_procuratore_delegato_ctype"></xsd:element>
+</xsd:schema>

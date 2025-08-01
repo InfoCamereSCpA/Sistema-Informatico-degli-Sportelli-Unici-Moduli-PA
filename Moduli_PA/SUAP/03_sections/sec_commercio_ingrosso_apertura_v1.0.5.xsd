@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:scommingape="../03_sections/commercio_ingrosso_apertura"
+            xmlns:ecommingape="../02_entities/commercio_ingrosso_apertura"
+
+            targetNamespace="../03_sections/commercio_ingrosso_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/commercio_ingrosso_apertura" schemaLocation="../02_entities/ent_commercio_ingrosso_apertura_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_commercio_ingrosso_apertura_ctype">
+        <xsd:sequence>
+            <xsd:element name="commercio_ingrosso_apertura" type="ecommingape:commercio_ingrosso_apertura_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_commercio_ingrosso_apertura" type="scommingape:sezione_commercio_ingrosso_apertura_ctype"/>
+
+</xsd:schema>

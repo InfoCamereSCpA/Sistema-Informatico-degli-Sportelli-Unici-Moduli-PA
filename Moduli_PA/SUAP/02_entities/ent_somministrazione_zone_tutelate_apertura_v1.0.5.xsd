@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:esomzontutape="../02_entities/somministrazione_zone_tutelate_apertura"
+            targetNamespace="../02_entities/somministrazione_zone_tutelate_apertura"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+
+    <xsd:complexType name="somministrazione_zone_tutelate_apertura_ctype">
+        <xsd:sequence>
+            <xsd:element name="denominazione_insegna" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="permanente_check" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="stagionale_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="da_stagionale" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="a_stagionale" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+            <!-- Campo ambiguo da rendere non obbligatorio -->
+            <xsd:element name="tipologia_esercizio" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="superficie" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="somministrazione_zone_tutelate_apertura" type="esomzontutape:somministrazione_zone_tutelate_apertura_ctype"/>
+</xsd:schema>

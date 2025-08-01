@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sfacchinaggioape="../03_sections/apertura_facchinaggio"
+            xmlns:efacchinaggioape="../02_entities/apertura_facchinaggio"
+            targetNamespace="../03_sections/apertura_facchinaggio" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/apertura_facchinaggio" schemaLocation="../02_entities/ent_apertura_facchinaggio_v1.0.5.xsd"/>
+
+    <xsd:complexType name="apertura_facchinaggio_ctype">
+        <xsd:sequence>
+            <xsd:element name="apertura" type="efacchinaggioape:apertura_facchinaggio_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="apertura_facchinaggio" type="sfacchinaggioape:apertura_facchinaggio_ctype"/>
+</xsd:schema>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:eallposreqperdoc="../02_entities/allegato_possesso_requisiti_personale_docente"
+            xmlns:eallperana="../02_entities/allegato_persona_anagrafica"
+
+            xmlns:efile="../02_entities/files"
+
+            targetNamespace="../02_entities/allegato_possesso_requisiti_personale_docente"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/files" schemaLocation="../02_entities/ent_files_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_persona_anagrafica" schemaLocation="../02_entities/ent_allegato_persona_anagrafica_v1.0.5.xsd"/>
+
+
+    <xsd:complexType name="allegato_possesso_requisiti_personale_docente_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="efile:file_ctype">
+                <xsd:sequence>
+                    <xsd:element name="soggetto" type="eallperana:allegato_persona_anagrafica_ctype" />
+                    <xsd:sequence>
+                        <xsd:element name="insegnateTeoria" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:choice>
+                                    <xsd:element name="dittaIndividuale" type="xsd:string"/>
+                                    <xsd:element name="societa" type="xsd:string"/>
+                                </xsd:choice>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="istruttoreGuida" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:choice>
+                                    <xsd:element name="dittaIndividuale" type="xsd:string"/>
+                                    <xsd:element name="societa" type="xsd:string"/>
+                                </xsd:choice>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                    <xsd:element name="dichiarazioniRequisitiProfessionali" >
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:group ref="eallposreqperdoc:possessoRequistiInsegnateGroup"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="dichiarazionePresaVisioneInformativaPrivacy" type="xsd:boolean" />
+                    <xsd:element name="documentoIdentitaSoggetto" type="efile:file_ctype"  />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:group name="possessoRequistiInsegnateGroup">
+        <xsd:sequence>
+            <xsd:element name="possessoAbilitazioneInsegnanteTeoria" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="attoRilascio" type="eallperana:AttoRilasciatoDaType"/>
+                        <xsd:element name="dataRinnovo" type="xsd:date"/>
+                        <xsd:element name="luogoRinnovo" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="possessoAbilitazioneInsegnanteGuida" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="attoRilascio" type="eallperana:AttoRilasciatoDaType"/>
+                        <xsd:element name="dataRinnovo" type="xsd:date"/>
+                        <xsd:element name="luogoRinnovo" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:group>
+
+
+
+    <xsd:element name="allegato_possesso_requisiti_personale_docente" type="eallposreqperdoc:allegato_possesso_requisiti_personale_docente_ctype"/>
+
+</xsd:schema>

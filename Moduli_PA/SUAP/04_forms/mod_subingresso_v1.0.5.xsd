@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:msubing="../04_forms/subingresso"
+
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica"
+            xmlns:srifatt="../03_sections/riferimento_attivita"
+
+            xmlns:ssubing="../03_sections/subingresso"
+
+            xmlns:sreqpro="../03_sections/requisiti_professionali"
+            xmlns:sreqprotec="../03_sections/requisiti_professionali_tecnici"
+            xmlns:saltdiclocint="../03_sections/altre_dichiarazioni_locali_interni"
+            xmlns:sallegati="../03_sections/allegati"
+
+            targetNamespace="../04_forms/subingresso" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <!-- DEFAULT PRE -->
+    <xsd:import namespace="../03_sections/scheda_anagrafica" schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/riferimento_attivita" schemaLocation="../03_sections/sec_riferimento_attivita_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/requisiti_professionali" schemaLocation="../03_sections/sec_requisiti_professionali_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/requisiti_professionali_tecnici" schemaLocation="../03_sections/sec_requisiti_professionali_tecnici_v1.0.5.xsd"/>
+
+    <!-- MODULO -->
+    <xsd:import namespace="../03_sections/subingresso" schemaLocation="../03_sections/sec_subingresso_v1.0.5.xsd"/>
+
+    <!-- DEFAULT POST -->
+    <xsd:import namespace="../03_sections/altre_dichiarazioni_locali_interni" schemaLocation="../03_sections/sec_altre_dichiarazioni_locali_interni_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/allegati" schemaLocation="../03_sections/sec_allegati_v1.0.5.xsd"/>
+
+    <xsd:complexType name="modulo_subingresso_ctype">
+        <xsd:sequence>
+            <!-- DEFAULT PRE -->
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype"/>
+            <xsd:element name="riferimento_attivita" type="srifatt:riferimento_attivita_type" minOccurs="1" maxOccurs="1"/>
+
+            <!-- MODULO -->
+            <xsd:element name="subingresso" type="ssubing:sezione_subingresso_ctype"/>
+
+            <!-- DEFAULT POST -->
+            <xsd:element name="dichiarazione_requisiti" type="sreqpro:sezione_requisiti_professionali_ctype"/>
+            <xsd:element name="dichiarazione_requisiti_tecnici" type="sreqprotec:sezione_requisiti_professionali_tecnici_ctype"/>
+            <xsd:element name="altre_dichiarazioni_locali_interni" type="saltdiclocint:sezione_altre_dichiarazioni_locali_interni_ctype"/>
+            <xsd:element name="tabellaAllegati" type="sallegati:allegati_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_subingresso" type="msubing:modulo_subingresso_ctype"/>
+</xsd:schema>

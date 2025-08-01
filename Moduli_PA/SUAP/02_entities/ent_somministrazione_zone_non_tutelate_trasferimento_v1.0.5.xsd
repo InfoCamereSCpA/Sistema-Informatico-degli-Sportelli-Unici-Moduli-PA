@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:esomzonnontuttra="../02_entities/somministrazione_zone_non_tutelate_trasferimento"
+
+            xmlns:ctipi="../commons/tipi"
+            xmlns:eproto="../02_entities/protocollo"
+
+            targetNamespace="../02_entities/somministrazione_zone_non_tutelate_trasferimento"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="../02_entities/ent_protocollo_v1.0.5.xsd"/>
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+
+    <!-- AS-IS: InCentroCommercialeBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="in_centro_commerciale_base_type" abstract="true"/>
+
+    <xsd:complexType name="in_centro_commerciale_da_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esomzonnontuttra:in_centro_commerciale_base_type">
+                <xsd:sequence>
+                    <xsd:element name="centro_commerciale_si_da" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="centro_commerciale_no_da" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="centro_commerciale_denominazione_da" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="in_centro_commerciale_a_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esomzonnontuttra:in_centro_commerciale_base_type">
+                <xsd:sequence>
+                    <xsd:element name="centro_commerciale_si_a" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="centro_commerciale_no_a" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="centro_commerciale_denominazione_a" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="somministrazione_zone_non_tutelate_trasferimento_ctype">
+        <xsd:sequence>
+            <xsd:element name="nr_protocollo" type="eproto:numero_registrazione_stype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="data_protocollo" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="indirizzo_da" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="cap_da" type="ctipi:cap_stype" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="in_centro_commerciale_da" type="esomzonnontuttra:in_centro_commerciale_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--
+            <xsd:element name="centro_commerciale_si_da" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="centro_commerciale_no_da" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="centro_commerciale_denominazione_da" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            -->
+
+            <!-- il campo Numero Telefono Fisso/Cell. dove prenderlo? -->
+            <!-- <xsd:element name="telefono_cellulare_da" type="ctipi:telefono_mobile_stype" minOccurs="0" maxOccurs="1"/> -->
+
+            <xsd:element name="indirizzo_a" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="cap_a" type="ctipi:cap_stype" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="in_centro_commerciale_a" type="esomzonnontuttra:in_centro_commerciale_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--
+            <xsd:element name="centro_commerciale_si_a" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="centro_commerciale_no_a" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="centro_commerciale_denominazione_a" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            -->
+
+            <!-- il campo Numero Telefono Fisso/Cell. dove prenderlo? -->
+            <!-- <xsd:element name="telefono_cellulare_a" type="ctipi:telefono_mobile_stype" minOccurs="1" maxOccurs="1"/> -->
+
+            <xsd:element name="superficie_esercizio" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="somministrazione_zone_non_tutelate_trasferimento"
+                 type="esomzonnontuttra:somministrazione_zone_non_tutelate_trasferimento_ctype"/>
+</xsd:schema>

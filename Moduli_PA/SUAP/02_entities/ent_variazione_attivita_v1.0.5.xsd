@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+                
+        xmlns:evaratt="../02_entities/variazione_attivita"
+            xmlns:ccodelist="../commons/codelist"      
+            xmlns:canncl="../commons/xsdAnnotations" 
+            xmlns:ctipi="../commons/tipi" 
+                
+        targetNamespace="../02_entities/variazione_attivita"
+            elementFormDefault="qualified" attributeFormDefault="qualified"    
+            version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>    
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    
+    <xsd:complexType name="variazione_attivita_ctype">
+        <xsd:sequence>
+            <xsd:element name="data_variazione_denominazione" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="denominazione_da" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="denominazione_a" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            
+            <xsd:element name="data_variazione_ragione_sociale" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="ragione_sociale_da" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="ragione_sociale_a" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            
+            <xsd:element name="data_variazione_sede_legale" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="via_vecchia_sede" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="comune_vecchia_sede" type="xsd:string" minOccurs="0" maxOccurs="1" />                
+            <xsd:element name="provincia_vecchia_sede" type="xsd:string" minOccurs="0" maxOccurs="1" />                
+            <xsd:element name="via_nuova_sede" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="comune_nuova_sede" type="xsd:string" minOccurs="0" maxOccurs="1"/>    
+            <xsd:element name="provincia_nuova_sede" type="xsd:string" minOccurs="0" maxOccurs="1" />    
+            
+            <xsd:element name="data_variazione_domicilio_digitale" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="domicilio_inad_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="domicilio_inad_string" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="domicilio_ini_pec_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="domicilio_ini_pec_string" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="domicilio_speciale_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="domicilio_speciale_string" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="nr_documentazione" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_documentazione" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+            
+            <xsd:element name="data_variazione_legale_rappresentante" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="nuovo_rappresentante" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="vecchio_rappresentante" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            
+            <xsd:element name="data_variazione_compagine_sociale" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="compagine_sociale" type="xsd:string" minOccurs="0" maxOccurs="1" />
+        </xsd:sequence>        
+    </xsd:complexType>  
+    
+    <xsd:element name="variazioni_attivita" type="evaratt:variazione_attivita_ctype"/>
+</xsd:schema>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eaccestape="../02_entities/acconciatori_estetisti_apertura"
+
+            xmlns:ctipi="../commons/tipi"
+            xmlns:eproto="../02_entities/protocollo"
+            xmlns:vtipquarestec="../01_vocabularies/tipo_qualita_responsabile_tecnico"
+
+            targetNamespace="../02_entities/acconciatori_estetisti_apertura"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="../02_entities/ent_protocollo_v1.0.5.xsd"/>
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+    <xsd:import namespace="../01_vocabularies/tipo_qualita_responsabile_tecnico" schemaLocation="../01_vocabularies/voc_tipo_qualita_responsabile_tecnico_v1.0.5.xsd"/>
+
+    <!-- AS-IS: InCentroCommercialeBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="in_centro_commerciale_base_type" abstract="true"/>
+
+    <!-- AS-IS: superficeComplessivaBaseType su SUAP_modulo_acconciatori_estetisti.xsd -->
+    <xsd:complexType name="superfice_complessiva_base_type" abstract="true" />
+
+    <!-- AS-IS: AttivitaEsercitaBaseType su SUAP_modulo_acconciatori_estetisti.xsd -->
+    <xsd:complexType name="attivita_esercita_base_type" abstract="true" />
+
+    <xsd:complexType name="in_centro_commerciale_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eaccestape:in_centro_commerciale_base_type">
+                <xsd:sequence>
+                    <xsd:element name="centro_commerciale_si" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="centro_commerciale_no" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="centro_commerciale_denominazione" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="superfice_acc_est_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eaccestape:superfice_complessiva_base_type">
+                <xsd:sequence>
+                    <xsd:element name="superficie_complessiva" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="superficie_attivita" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="attivita_esercita_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eaccestape:attivita_esercita_base_type">
+                <xsd:sequence>
+                    <xsd:element name="unica_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="congiunta_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="congiunta_denominazione" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="nr_protocollo" type="eproto:numero_registrazione_stype" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="data_protocollo" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="acconciatori_estetisti_apertura_ctype">
+        <xsd:sequence>
+
+            <!-- 1.1 – DATI SULL’ATTIVITÀ: -->
+            <xsd:element name="acconciatore_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="estetista_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="superficie_acc_est" type="eaccestape:superfice_complessiva_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--
+            <xsd:element name="superficie_complessiva" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="superficie_attivita" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+            -->
+
+            <xsd:element name="in_centro_commerciale" type="eaccestape:in_centro_commerciale_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--
+            <xsd:element name="centro_commerciale_si" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="centro_commerciale_no" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="centro_commerciale_denominazione" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            -->
+
+            <xsd:element name="attivita_esercita" type="eaccestape:attivita_esercita_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--
+            <xsd:element name="unica_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="congiunta_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="congiunta_denominazione" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="nr_protocollo" type="eproto:numero_registrazione_stype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_protocollo" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+            -->
+
+
+            <!-- 1.2 – DICHIARAZIONI SUL POSSESSO DEI REQUISITI ANTIMAFIA E PROFESSIONALI: -->
+
+            <!-- Unico Responsabile tecnico -->
+            <xsd:element name="responsabile_tecnico_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="abilitazione_professionale_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="ente_abilitazione_professionale" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_abilitazione_professionale" type="ctipi:ggmmaaaa_stype"  minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="atto_abilitazione_professionale" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="qualifica_professionale_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="ente_qualifica_professionale" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_qualifica_professionale" type="ctipi:ggmmaaaa_stype"  minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="atto_qualifica_professionale" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="qualifica_professionale_estero_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="atto_qualifica_estero_professionale" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_qualifica_estero_professionale" type="ctipi:ggmmaaaa_stype"  minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="altro_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+
+            <!-- Molteplici Responsabili tecnici -->
+            <xsd:element name="multi_responsabili_tecnici_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="responsabile_tecnico_blocco" minOccurs="0" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="nome" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="cognome" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="codice_fiscale" type="ctipi:codice_fiscale_stype" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="tipo_qualita_responsabile_tecnico" type="vtipquarestec:tipo_qualita_responsabile_tecnico_voc" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <!-- essere Responsabile tecnico -->
+            <xsd:element name="essere_responsabile_tecnico_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="essere_responsabile_qualifica_professionale_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="essere_responsabile_qualifica_professionale_ente" type="xsd:string" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="essere_responsabile_qualifica_professionale_data" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="essere_responsabile_qualifica_professionale_nr" type="xsd:positiveInteger" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="requisiti_1990_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="requisiti_1990_titolare_impresa_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="requisiti_1990_titolare_nome_impresa" type="xsd:string" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="requisiti_1990_titolare_nr_REA_impresa" type="xsd:positiveInteger" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="requisiti_1990_socio_impresa_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="requisiti_1990_socio_nome_impresa" type="xsd:string" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="requisiti_1990_socio_nr_REA_impresa" type="xsd:positiveInteger" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="requisiti_1990_direttore_impresa_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="requisiti_1990_direttore_nome_impresa" type="xsd:string" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="requisiti_1990_direttore_nr_REA_impresa" type="xsd:positiveInteger" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="requisiti_1990_dipendente_impresa_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="requisiti_1990_dipendente_nome_impresa" type="xsd:string" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="requisiti_1990_dipendente_studio_impresa" type="xsd:positiveInteger" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="requisiti_1990_dipendente_data_da_impresa" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="requisiti_1990_dipendente_data_a_impresa" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="possesso_attestato_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="attestato_regionale_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="ente_attestato_regionale" type="xsd:string" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_attestato_regionale" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="nr_attestato_regionale" type="xsd:positiveInteger" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="attestato_professionale_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="ente_attestato_professionale" type="xsd:string" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_attestato_professionale" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="nr_attestato_professionale" type="xsd:positiveInteger" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="attestato_professionale_estero_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="nr_attestato_professionale_estero" type="xsd:positiveInteger" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_attestato_professionale_estero" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="altro_abilitazione_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altro_abilitazione" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+            <!-- Molteplici Responsabili abilitazione -->
+            <xsd:element name="multi_responsabili_abilitazione_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="responsabile_abilitazione_blocco" minOccurs="0" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="nome" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="cognome" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="codice_fiscale" type="ctipi:codice_fiscale_stype" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="tipo_qualita_responsabile_tecnico" type="vtipquarestec:tipo_qualita_responsabile_tecnico_voc" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="acconciatori_estetisti_apertura" type="eaccestape:acconciatori_estetisti_apertura_ctype"/>
+</xsd:schema>

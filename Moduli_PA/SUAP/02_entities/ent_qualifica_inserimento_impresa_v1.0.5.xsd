@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:equainsimp="../02_entities/qualifica_inserimento_impresa"
+    xmlns:eist="../02_entities/istituto"
+    xmlns:eiscrea="../02_entities/iscrizione_REA"
+    xmlns:ctipi="../commons/tipi"
+    xmlns:ccodelist="../commons/codelist"
+    xmlns:canncl="../commons/xsdAnnotations" targetNamespace="../02_entities/qualifica_inserimento_impresa" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/istituto" schemaLocation="../02_entities/ent_istituto_v1.0.5.xsd" />
+    <xsd:import namespace="../02_entities/iscrizione_REA" schemaLocation="../02_entities/ent_iscrizione_REA_v1.0.5.xsd" />
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd" />
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd" />
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd" />
+
+
+    <xsd:complexType name="qualifica_inserimento_impresa_ctype">
+        <xsd:sequence>
+            <xsd:element name="istituto" type="eist:istituto_ctype" minOccurs="0"/>
+            <xsd:element name="tipo_attivita" type="xsd:string"/>
+            <xsd:element name="dal" type="ctipi:ggmmaaaa_stype"/>
+            <xsd:element name="al" type="ctipi:ggmmaaaa_stype"/>
+            <xsd:element name="CCIAA" type="eiscrea:iscrizione_REA_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="registro_di" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="estremi_registrazione" type="xsd:positiveInteger" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="qualifica_inserimento_impresa" type="equainsimp:qualifica_inserimento_impresa_ctype" />
+</xsd:schema>

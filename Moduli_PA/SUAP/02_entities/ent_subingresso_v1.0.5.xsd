@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:esubing="../02_entities/subingresso"
+
+            xmlns:ctipi="../commons/tipi"
+            xmlns:eproto="../02_entities/protocollo"
+
+            targetNamespace="../02_entities/subingresso"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="../02_entities/ent_protocollo_v1.0.5.xsd"/>
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+
+    <xsd:complexType name="subingresso_ctype">
+        <xsd:sequence>
+
+            <!-- 1 – Dati della impresa a cui si subentra -->
+            <xsd:element name="attivita" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="nr_protocollo" type="eproto:numero_registrazione_stype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_protocollo" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="attivita_contestuale_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="attivita_decorrenza_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="attivita_decorrenza_data" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+
+            <!-- 2 – Motivazione del subingresso -->
+            <xsd:element name="compravendita_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="affitto_azienda_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="donazione_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="fusione_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="fallimento_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="successione_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altre_cause_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altre_cause" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="nr_registrazione" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_registrazione" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+
+            <!-- Elementi aggiuntivi richiesti al 11-07-2025 -->
+            <!-- TODO: in base al 'nuovo PDF' andrebbe tolto? -->
+            <!-- 3 – Variazione della denominazione -->
+            <!-- <xsd:element name="sito_web" type="xsd:string" minOccurs="0" maxOccurs="1"/> -->
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="subingresso" type="esubing:subingresso_ctype"/>
+</xsd:schema>

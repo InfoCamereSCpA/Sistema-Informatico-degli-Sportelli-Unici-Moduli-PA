@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:edichcomvaracc="../02_entities/dichiarazione_comunicazione_variazioni_acconciatori" targetNamespace="../02_entities/dichiarazione_comunicazione_variazioni_acconciatori" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:complexType name="dichiarazioni_comunicazione_variazioni_acconciatori_base_type" abstract="true"/>
+
+    <xsd:complexType name="dichiarazioni_comunicazione_variazioni_acconciatori_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="edichcomvaracc:dichiarazioni_comunicazione_variazioni_acconciatori_base_type">
+                <xsd:sequence>
+
+                    <xsd:element name="responsabile_tecnico_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+                    <xsd:element name="abilitazione_professionale_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="ente_abilitazione_professionale" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="data_abilitazione_professionale" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="atto_abilitazione_professionale" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+                    <xsd:element name="qualifica_professionale_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="ente_qualifica_professionale" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="data_qualifica_professionale" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="atto_qualifica_professionale" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+                    <xsd:element name="qualifica_professionale_estera_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="decreto_qualifica_professionale_estera" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="data_qualifica_professionale_estera" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+                    <xsd:element name="altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+                    <xsd:element name="no_variazioni_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="dichiarazioni_comunicazione_variazioni_acconciatori" type="edichcomvaracc:dichiarazioni_comunicazione_variazioni_acconciatori_ctype"/>
+</xsd:schema>

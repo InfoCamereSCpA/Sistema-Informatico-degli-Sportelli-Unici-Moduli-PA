@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:ealtdiclav="../02_entities/altre_dichiarazioni_lavanderie"
+            xmlns:ealtdicalt="../02_entities/altre_dichiarazioni_altro" 
+
+            targetNamespace="../02_entities/altre_dichiarazioni_lavanderie"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+ <xsd:import namespace="../02_entities/altre_dichiarazioni_altro" schemaLocation="../02_entities/ent_altre_dichiarazioni_altro_v1.0.5.xsd"/>
+
+    <xsd:complexType name="altre_dichiarazioni_lavanderie_ctype">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="biancheria_minore_uguale_100_kg" type="xsd:boolean"/>
+                <xsd:element name="biancheria_maggiore_100_kg"      type="ealtdiclav:biancheria_maggiore_100_kg_base_type"/>
+            </xsd:choice>
+            <xsd:element name="altro" type="ealtdicalt:altre_dichiarazioni_altro_base_type" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- AS-IS: BiancheriaMAGGIORE_100_KGBaseType su SUAP_modulo_lavanderie.xsd -->
+    <xsd:complexType name="biancheria_maggiore_100_kg_base_type" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation>
+                Tipo base astratto per elementi che rappresentano dichiarazioni relative a lavanderie con più di 100 kg di biancheria. Destinato ad essere esteso da implementazioni specifiche.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:complexType>
+
+    <xsd:complexType name="biancheria_maggiore_100_kg_type">
+        <xsd:complexContent>
+            <xsd:extension base="ealtdiclav:biancheria_maggiore_100_kg_base_type">
+                <xsd:sequence>
+                    <xsd:element name="biancheria_maggiore_100_kg" type="xsd:boolean"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="altre_dichiarazioni_lavanderie" type="ealtdiclav:altre_dichiarazioni_lavanderie_ctype"/>
+</xsd:schema>

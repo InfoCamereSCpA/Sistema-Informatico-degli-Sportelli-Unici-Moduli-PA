@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:sageaffape="../03_sections/agenzia_affari_apertura"
+    xmlns:eageaffape="../02_entities/agenzia_affari_apertura" targetNamespace="../03_sections/agenzia_affari_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/agenzia_affari_apertura" schemaLocation="../02_entities/ent_agenzia_affari_apertura_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_agenzia_affari_apertura_ctype">
+        <xsd:sequence>
+            <xsd:element name="agenzia_affari_apertura" type="eageaffape:agenzia_affari_apertura_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_agenzia_affari_apertura" type="sageaffape:sezione_agenzia_affari_apertura_ctype"/>
+
+</xsd:schema>

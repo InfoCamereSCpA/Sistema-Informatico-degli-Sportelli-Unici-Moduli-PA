@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:esetmeramp="../02_entities/settori_merceologici_ampliamento"
+    
+    targetNamespace="../02_entities/settori_merceologici_ampliamento"
+    elementFormDefault="qualified" attributeFormDefault="qualified"    
+    version="1.0.5" xml:lang="it">
+
+    <!-- AS-IS: SettoriMerceologiciBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="settori_merceologici_ampliamento_base_type" abstract="true" />
+
+    <!-- AS-IS: SettoriMerceologiciSuperficieBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="settori_merceologici_superficie_ampliamento_base_type" abstract="true" />
+
+    <!-- AS-IS: OccupazioniMerciIngombrantiNonAlimentariBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="occupazioni_merci_ingombranti_non_alimentari_ampliamento_base_type" abstract="true"/>
+
+    <!-- AS-IS: VariazioneOccupazioneSuperficiBaseType su SUAP_commond_components.xsd -->
+    <xsd:complexType name="variazione_occupazione_superfici_ampliamento_base_type" abstract="true" />
+
+    <xsd:complexType name="settori_merceologici_ampliamento_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esetmeramp:settori_merceologici_ampliamento_base_type">
+                <xsd:sequence>
+                    <!-- Alimentare -->
+                    <xsd:element name="alimentare_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="alimentareMqDa" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="alimentareMqA" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+                    <!-- Non Alimentare -->
+                    <xsd:element name="non_alimentare_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/> 
+                    <xsd:element name="non_alimentareMqDa" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="non_alimentareMqA" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+
+                    <xsd:element name="superficie_totale" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+
+                    <!-- Merci Ingombranti -->
+                    <xsd:element name="merci_ingombranti_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>      
+                    <xsd:element name="merci_ingombrantiMqDa" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="merci_ingombrantiMqA" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+
+                    <!-- Generi Monopolio -->
+                    <xsd:element name="generi_monopolio_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="generi_monopolioMqDa" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="generi_monopolioMqA" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+
+                    <!-- Farmacie -->
+                    <xsd:element name="farmacie_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="farmacieMqDa" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="farmacieMqA" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+
+                    <!-- Carburanti -->
+                    <xsd:element name="carburanti_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="carburantiMqDa" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="carburantiMqA" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:element name="settori_merceologici_ampliamento" type="esetmeramp:settori_merceologici_ampliamento_ctype"/>
+</xsd:schema>

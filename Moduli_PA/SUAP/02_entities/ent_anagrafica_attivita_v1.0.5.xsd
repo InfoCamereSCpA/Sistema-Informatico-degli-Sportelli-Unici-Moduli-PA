@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:eanagatt="../02_entities/anagrafica_attivita"
+    
+    xmlns:ccodelist="../commons/codelist"      
+    xmlns:canncl="../commons/xsdAnnotations" 
+    targetNamespace="../02_entities/anagrafica_attivita"
+    elementFormDefault="qualified" attributeFormDefault="qualified"    
+    version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>    
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    
+    <xsd:complexType name="anagrafica_attivita_ctype">   
+        <xsd:sequence>
+            <xsd:element name="via" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="nCivico" type="xsd:nonNegativeInteger" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="piano" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="interno" type="xsd:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="comune" type="ccodelist:CodeType" minOccurs="0" maxOccurs="1" >                
+                <xsd:annotation>
+                    <xsd:appinfo>                        
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ComuniItaliani</canncl:ShortName>
+                        </canncl:codeListReference>                        
+                    </xsd:appinfo>                    
+                </xsd:annotation>                 
+            </xsd:element>
+            <xsd:element name="provincia" type="ccodelist:CodeType" minOccurs="0" maxOccurs="1" >                
+                <xsd:annotation>
+                    <xsd:appinfo>                        
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ProvinceItaliane</canncl:ShortName>
+                        </canncl:codeListReference>                        
+                    </xsd:appinfo>                    
+                </xsd:annotation>                 
+            </xsd:element>
+            <xsd:element name="cap" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="stato" type="ccodelist:CodeType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:Stati</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="telefono" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="cellulare" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="sitoWeb" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+            <!-- Elementi aggiuntivi richiesti al 11-07-2025 -->
+            <xsd:element name="cin" type="eanagatt:cin_base_type" minOccurs="0" maxOccurs="1"/>
+            <!-- da inserire usando nuovo vocabolario: codici istat regioni e province -->
+            <xsd:element name="codiceIstatRegione" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="codiceIstatProvincia" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+        </xsd:sequence>          
+    </xsd:complexType>
+
+    <!-- Elementi aggiuntivi richiesti al 11-07-2025 -->
+    <!-- AS-IS: astrazione pdf -->
+    <xsd:complexType name="cin_base_type" abstract="true"/>
+    <xsd:complexType name="cin_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eanagatt:cin_base_type">
+                <xsd:sequence>
+                    <xsd:element name="cin" type="eanagatt:cin_stype" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:simpleType name="cin_stype">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="IT\d{3}\d{3}[A-Z]\d{1}[A-Z]{1}\d{5}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    
+    <xsd:element name="anagrafica_attivita" type="eanagatt:anagrafica_attivita_ctype"/>
+</xsd:schema>

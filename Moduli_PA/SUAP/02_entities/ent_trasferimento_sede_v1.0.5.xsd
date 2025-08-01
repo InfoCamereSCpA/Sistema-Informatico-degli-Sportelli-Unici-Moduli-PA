@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:trased="../02_entities/trasferimento_sede"
+    xmlns:ctipi="../commons/tipi" targetNamespace="../02_entities/trasferimento_sede" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:complexType name="trasferimento_sede_base_type" abstract="true"/>
+
+    <xsd:complexType name="trasferimento_sede_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="trased:trasferimento_sede_base_type">
+                <xsd:sequence>
+                    <xsd:element name="n_scia" type="xsd:nonNegativeInteger" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="data" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="indirizzo_da" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="cap_da" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="indirizzo_a" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="cap_a" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="telefono_cellulare" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="trasferimento_sede" type="trased:trasferimento_sede_ctype"/>
+</xsd:schema>

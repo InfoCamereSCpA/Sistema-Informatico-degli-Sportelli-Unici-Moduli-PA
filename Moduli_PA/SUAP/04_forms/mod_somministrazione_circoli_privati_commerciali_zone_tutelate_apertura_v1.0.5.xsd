@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:msomcirzonape="../04_forms/somministrazione_circoli_privati_commerciali_zone_tutelate_apertura"
+
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica"
+            xmlns:srifatt="../03_sections/riferimento_attivita"
+
+            xmlns:ssomcirzonape="../03_sections/somministrazione_circoli_privati_commerciali_zone_tutelate_apertura"
+
+            xmlns:sallegati="../03_sections/allegati"
+
+            targetNamespace="../04_forms/somministrazione_circoli_privati_commerciali_zone_tutelate_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <!-- DEFAULT PRE -->
+    <xsd:import namespace="../03_sections/scheda_anagrafica" schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/riferimento_attivita" schemaLocation="../03_sections/sec_riferimento_attivita_v1.0.5.xsd"/>
+
+    <!-- MODULO -->
+    <xsd:import namespace="../03_sections/somministrazione_circoli_privati_commerciali_zone_tutelate_apertura" schemaLocation="../03_sections/sec_somministrazione_circoli_privati_commerciali_zone_tutelate_apertura_v1.0.5.xsd"/>
+
+    <!-- DEFAULT POST -->
+    <xsd:import namespace="../03_sections/allegati" schemaLocation="../03_sections/sec_allegati_v1.0.5.xsd"/>
+
+    <xsd:complexType name="modulo_somministrazione_circoli_zone_tutelate_apertura_ctype">
+        <xsd:sequence>
+            <!-- DEFAULT PRE -->
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype"/>
+            <xsd:element name="riferimento_attivita" type="srifatt:riferimento_attivita_type" minOccurs="1" maxOccurs="1"/>
+
+            <!-- MODULO -->
+            <xsd:element name="avvio" type="ssomcirzonape:sezione_somministrazione_circoli_zone_tutelate_apertura_ctype"/>
+
+            <!-- DEFAULT POST -->
+            <xsd:element name="tabellaAllegati" type="sallegati:allegati_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_somministrazione_circoli_zone_tutelate_apertura" type="msomcirzonape:modulo_somministrazione_circoli_zone_tutelate_apertura_ctype"/>
+</xsd:schema>

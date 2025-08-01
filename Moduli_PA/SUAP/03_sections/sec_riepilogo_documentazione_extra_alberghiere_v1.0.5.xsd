@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:srdocextraalb="../03_sections/riepilogo_documentazione_extra_alberghiere"
+            xmlns:einfoprivacy="../02_entities/informativa_privacy"
+            targetNamespace="../03_sections/riepilogo_documentazione_extra_alberghiere"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/informativa_privacy"
+                schemaLocation="../02_entities/ent_informativa_privacy_v1.0.5.xsd"/>
+
+    <xsd:complexType name="riepilogo_documentazione_ctype">
+        <xsd:sequence>
+            <xsd:element name="scia_unica_dichiarazione" type="xsd:boolean" default="false"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="scia_condizionata_dichiarazione" type="xsd:boolean" default="false"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="informativa_privacy_check" type="xsd:boolean" default="false"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_dichiarazione" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="firma" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="informativa_privacy" type="einfoprivacy:informativa_privacy_ctype"
+                         minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="procura_delega" type="xsd:boolean" default="false" minOccurs="0"
+                         maxOccurs="1"/>
+            <xsd:element name="copia_documento_identita" type="xsd:boolean" default="false"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="planimetria_quotata_locali" type="xsd:boolean" default="false"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dichiarazioni_requisiti_a" type="xsd:boolean" default="false"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dichiarazioni_requisiti_b" type="xsd:boolean" default="false"
+                         minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="scia_unica" default="false" minOccurs="0" maxOccurs="1" type="xsd:boolean"/>
+
+
+            <xsd:element name="scia_insegna_esercizio" type="xsd:boolean" default="false"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altre_scia" type="xsd:boolean" default="false" minOccurs="0"
+                         maxOccurs="1"/>
+            <xsd:element name="altre_comunicazioni" type="xsd:boolean" default="false" minOccurs="0"
+                         maxOccurs="1"/>
+
+            <xsd:element name="scia_condizionata" type="xsd:boolean" default="false" minOccurs="0"
+                         maxOccurs="1"/>
+
+
+            <xsd:element name="documentazione_rilascio_insegna" type="xsd:boolean" default="false"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altre_domande" type="xsd:boolean" default="false" minOccurs="0"
+                         maxOccurs="1"/>
+
+
+            <xsd:element name="attestazioni_versamenti" type="xsd:boolean" default="false"
+                         minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="attestazioni_bollo" type="xsd:boolean" default="false" minOccurs="0"
+                         maxOccurs="1"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="riepilogo_documentazione" type="srdocextraalb:riepilogo_documentazione_ctype"
+    />
+</xsd:schema>

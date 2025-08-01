@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:vtipquarestec="../01_vocabularies/tipo_qualita_responsabile_tecnico"
+
+            targetNamespace="../01_vocabularies/tipo_qualita_responsabile_tecnico" elementFormDefault="qualified"
+            attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:simpleType name="tipo_qualita_responsabile_tecnico_voc">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="titolare"/>
+            <xsd:enumeration value="socio partecipante al lavoro"/>
+            <xsd:enumeration value="familiare coadiuvante"/>
+            <xsd:enumeration value="dipendente"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

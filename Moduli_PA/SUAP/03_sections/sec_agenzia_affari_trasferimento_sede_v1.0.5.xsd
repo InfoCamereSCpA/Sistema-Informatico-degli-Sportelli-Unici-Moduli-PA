@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:sageaffstrased="../03_sections/agenzia_affari_trasferimento_sede"
+    xmlns:eageaffstrased="../02_entities/agenzia_affari_trasferimento_sede" targetNamespace="../03_sections/agenzia_affari_trasferimento_sede" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/agenzia_affari_trasferimento_sede" schemaLocation="../02_entities/ent_agenzia_affari_trasferimento_sede_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_agenzia_affari_trasferimento_sede_ctype">
+        <xsd:sequence>
+            <xsd:element name="agenzia_affari_trasferimento_sede" type="eageaffstrased:agenzia_affari_trasferimento_sede_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_agenzia_affari_trasferimento_sede" type="sageaffstrased:sezione_agenzia_affari_trasferimento_sede_ctype"/>
+
+</xsd:schema>

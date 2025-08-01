@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:slavape="../03_sections/lavanderie_apertura"
+    xmlns:elavape="../02_entities/lavanderie_apertura"
+    targetNamespace="../03_sections/lavanderie_apertura"
+    elementFormDefault="qualified" attributeFormDefault="qualified"
+    version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/lavanderie_apertura" schemaLocation="../02_entities/ent_lavanderie_apertura_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_lavanderie_apertura_ctype">
+        <xsd:sequence>
+                <xsd:element name="lavanderie_apertura" type="elavape:lavanderie_apertura_ctype" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_lavanderie_apertura" type="slavape:sezione_lavanderie_apertura_ctype" />
+</xsd:schema>

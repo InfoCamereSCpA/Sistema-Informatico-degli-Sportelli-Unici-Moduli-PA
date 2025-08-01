@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mvarav="../04_forms/var_agenzia_viaggio"
+            xmlns:svarav="../03_sections/var_agenzia_viaggio"
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica" targetNamespace="../04_forms/var_agenzia_viaggio" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/var_agenzia_viaggio" schemaLocation="../03_sections/sec_var_agenzia_viaggio_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/scheda_anagrafica" schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+
+    <xsd:complexType name="comunicazione_variazione_agenzia_viaggio_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype"/>
+            <xsd:element name="comunicazione_variazione" type="svarav:sezione_comunicazione_variazione_agenzia_viaggio_ctype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="comunicazione_variazione_agenzia_viaggio" type="mvarav:comunicazione_variazione_agenzia_viaggio_ctype"/>
+</xsd:schema>

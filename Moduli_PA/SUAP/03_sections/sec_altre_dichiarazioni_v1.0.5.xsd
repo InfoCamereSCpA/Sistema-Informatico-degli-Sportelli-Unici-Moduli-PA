@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    
+    xmlns:saltdic="../03_sections/altre_dichiarazioni"
+    
+    xmlns:ctipi="../commons/tipi" 
+    xmlns:cdichiara="../commons/dichiarazioni"
+    
+    targetNamespace="../03_sections/altre_dichiarazioni"
+    elementFormDefault="qualified" attributeFormDefault="qualified"    
+    version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../commons/dichiarazioni" schemaLocation="../commons-dichiarazioni.xsd"/>
+    
+<!--    <xsd:complexType name="altre_dichiarazioni_ctype" abstract="true">-->
+    <xsd:complexType name="altre_dichiarazioni_ctype" >
+        <xsd:sequence>
+            <xsd:element name="rispetto_regolamenti_locali" type="cdichiara:dichiarazione_mandatory_choice_type" minOccurs="0" maxOccurs="1"/>                        
+            <xsd:element name="rispetto_regolamenti_polizia" type="cdichiara:dichiarazione_mandatory_choice_type" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="rispetto_regolamenti_igiene" type="cdichiara:dichiarazione_mandatory_choice_type" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="rispetto_normativa_occupazione_suolo_pubblico" type="cdichiara:dichiarazione_mandatory_choice_type" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="impegno_comunicazioni_apparecchi_automatici" type="cdichiara:dichiarazione_mandatory_choice_type" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="rispetto_normativa_prevenzioni_incendi" type="cdichiara:dichiarazione_mandatory_choice_type" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="rispetto_normativa_movimentazione_merci" type="cdichiara:dichiarazione_mandatory_choice_type" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="non_vendita_pubblico" type="cdichiara:dichiarazione_mandatory_choice_type" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="vendita_effetuata_a" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="dipendenti" type="cdichiara:dichiarazione_boolean_type" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="militari" type="cdichiara:dichiarazione_boolean_type" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="soci" type="cdichiara:dichiarazione_boolean_type" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="interno_scuola" type="cdichiara:dichiarazione_boolean_type" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="interno_ospedale" type="cdichiara:dichiarazione_boolean_type" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="altre_dichiarazioni_ctype_italia">
+        <xsd:complexContent>
+            <xsd:extension base="saltdic:altre_dichiarazioni_ctype">
+                <xsd:sequence>                    
+                    <xsd:element name="impegno_comunicazioni_variazioni" type="cdichiara:dichiarazione_mandatory_choice_type" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+   
+    <xsd:element name="altre_dichiazioni" type="saltdic:altre_dichiarazioni_ctype"/>
+    
+</xsd:schema>

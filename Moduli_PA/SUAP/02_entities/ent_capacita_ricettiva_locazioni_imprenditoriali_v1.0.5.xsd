@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ecapriclocimp="../02_entities/capacita_ricettiva_locazioni_imprenditoriali" targetNamespace="../02_entities/capacita_ricettiva_locazioni_imprenditoriali" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:complexType name="camera_ctype">
+        <xsd:sequence>
+            <xsd:element name="superficie_camera" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="posti_letto_camera" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- AS-IS: astrazione pdf -->
+    <xsd:complexType name="capacita_ricettiva_locazioni_imprenditoriali_base_type" abstract="true"/>
+
+    <xsd:complexType name="capacita_ricettiva_locazioni_imprenditoriali_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="ecapriclocimp:capacita_ricettiva_locazioni_imprenditoriali_base_type">
+                <xsd:sequence>
+                    <xsd:element name="superamento_barr_arc" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+                    <xsd:element name="unita_multilocali" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="superficie_unita_multilocali" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="nr_locali_soggiorno" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="superficie_locali_soggiorno" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="unbounded"/>
+                    <xsd:element name="nr_camere" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="camera" type="ecapriclocimp:camera_ctype" minOccurs="0" maxOccurs="unbounded"/>
+                    <!--   <xsd:element name="superficie_camera" type="xsd:double" default="0" minOccurs="0" maxOccurs="unbounded"/>
+                       <xsd:element name="posti_letto_camera" type="xsd:integer" default="0" minOccurs="0" maxOccurs="unbounded"/> -->
+                    <xsd:element name="cucina_angolo_cottura_multilocali" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="servizi_igienici_multilocali" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="totale_posti_letto_multilocali" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="unita_monolocali" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="superficie_unita_monolocali" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="cucina_angolo_cottura_monolocali" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="servizi_igienici_monolocali" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="totale_posti_letto_monolocali" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+<!--    <xsd:complexType name="capacita_ricettiva_locazioni_imprenditoriali_ctype">-->
+<!--        <xsd:sequence>-->
+<!--            <xsd:element name="superamento_barr_arc" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>-->
+
+<!--            <xsd:element name="unita_multilocali" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>-->
+<!--            <xsd:element name="superficie_unita_multilocali" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>-->
+<!--            <xsd:element name="nr_locali_soggiorno" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>-->
+<!--            <xsd:element name="superficie_locali_soggiorno" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="unbounded"/>-->
+<!--            <xsd:element name="nr_camere" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>-->
+<!--            <xsd:element name="camera" type="ecapriclocimp:camera_ctype" minOccurs="0" maxOccurs="unbounded"/>-->
+<!--         &lt;!&ndash;   <xsd:element name="superficie_camera" type="xsd:double" default="0" minOccurs="0" maxOccurs="unbounded"/>-->
+<!--            <xsd:element name="posti_letto_camera" type="xsd:integer" default="0" minOccurs="0" maxOccurs="unbounded"/> &ndash;&gt;-->
+<!--            <xsd:element name="cucina_angolo_cottura_multilocali" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>-->
+<!--            <xsd:element name="servizi_igienici_multilocali" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>-->
+<!--            <xsd:element name="totale_posti_letto_multilocali" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>-->
+<!--            <xsd:element name="unita_monolocali" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>-->
+<!--            <xsd:element name="superficie_unita_monolocali" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>-->
+<!--            <xsd:element name="cucina_angolo_cottura_monolocali" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>-->
+<!--            <xsd:element name="servizi_igienici_monolocali" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>-->
+<!--            <xsd:element name="totale_posti_letto_monolocali" type="xsd:integer" default="0" minOccurs="0" maxOccurs="1"/>-->
+<!--        </xsd:sequence>-->
+<!--    </xsd:complexType>-->
+
+    <xsd:element name="capacita_ricettiva_locazioni_imprenditoriali" type="ecapriclocimp:capacita_ricettiva_locazioni_imprenditoriali_ctype" />
+</xsd:schema>

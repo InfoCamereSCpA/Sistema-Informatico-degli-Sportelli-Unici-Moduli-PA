@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eaut="../02_entities/autoriparatori"
+
+            xmlns:ctipi="../commons/tipi"
+            xmlns:ccodelist="../commons/codelist"
+            xmlns:canncl="../commons/xsdAnnotations"
+
+            targetNamespace="../02_entities/autoriparatori"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+
+
+    <xsd:complexType name="autoriparatori_ctype">
+        <xsd:sequence>
+
+            <!-- 1.1 – DATI SULL’ATTIVITÀ: -->
+            <xsd:element name="meccatronica_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="carrozzeria_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="gommista_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="superficie_complessiva" type="xsd:double" default="0.0" minOccurs="0" maxOccurs="1"/>
+
+
+
+
+            <!-- 1.2 – DICHIARAZIONI SUL POSSESSO DEI REQUISITI: -->
+
+            <!-- Unico Responsabile tecnico -->
+            <xsd:element name="responsabile_tecnico_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <!-- Check 1: aver esercitato l'attività di autoriparazione come operaio qualificato -->
+            <xsd:element name="attivita_autoriparazione_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="attivita_in_qualita_di" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <!-- Blocco "attivita" ripetibile: START -->
+            <xsd:element name="attivita" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="attivita_autoriparazione_blocco" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="attivita_tipo" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                                    <xsd:element name="attivita_da" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                                    <xsd:element name="attivita_a" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                                    <xsd:element name="attivita_comune_cciaa" type="ccodelist:CodeType" minOccurs="0" maxOccurs="1" >
+                                        <xsd:annotation>
+                                            <xsd:appinfo>
+                                                <canncl:codeListReference>
+                                                    <canncl:ShortName>IT:SUAP:CL:ComuniItaliani</canncl:ShortName>
+                                                </canncl:codeListReference>
+                                            </xsd:appinfo>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="attivita_nr_REA" type="xsd:positiveInteger" minOccurs="0" maxOccurs="1"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <!-- Blocco "attivita" ripetibile: END -->
+
+
+            <!-- Check 2: aver conseguito un titolo di studio a carattere tecnico-professionale -->
+            <xsd:element name="titolo_studio_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="titolo_studio_in_qualita_di" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="titolo_studio" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="titolo_studio_istituto" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="titolo_studio_sede" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="titolo_studio_oggetto" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="titolo_studio_anno" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <!-- Blocco "attivita_titolo_studio" ripetibile: START -->
+            <xsd:element name="titolo_studio_attivita" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="titolo_studio_attivita_autoriparazione_blocco" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="titolo_studio_attivita_tipo" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                                    <xsd:element name="titolo_studio_attivita_da" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                                    <xsd:element name="titolo_studio_attivita_a" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                                    <xsd:element name="titolo_studio_attivita_comune_cciaa" type="ccodelist:CodeType" minOccurs="0" maxOccurs="1" >
+                                        <xsd:annotation>
+                                            <xsd:appinfo>
+                                                <canncl:codeListReference>
+                                                    <canncl:ShortName>IT:SUAP:CL:ComuniItaliani</canncl:ShortName>
+                                                </canncl:codeListReference>
+                                            </xsd:appinfo>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="titolo_studio_attivita_nr_REA" type="xsd:positiveInteger" minOccurs="0" maxOccurs="1"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <!-- Blocco "titolo_studio_attivita" ripetibile: END -->
+
+
+            <!-- Check 3: aver frequentato, con esito positivo, un apposito corso regionale -->
+            <xsd:element name="corso_regionale_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="corso_regionale_in_qualita_di" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="corso_regionale_istituto" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="corso_regionale_sede" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="corso_regionale_oggetto" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="corso_regionale_anno" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <!-- Blocco "attivita_corso_regionale" ripetibile: START -->
+            <xsd:element name="corso_regionale_attivita" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="corso_regionale_attivita_autoriparazione_blocco" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="corso_regionale_attivita_tipo" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                                    <xsd:element name="corso_regionale_attivita_da" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                                    <xsd:element name="corso_regionale_attivita_a" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                                    <xsd:element name="corso_regionale_attivita_comune_cciaa" type="ccodelist:CodeType" minOccurs="0" maxOccurs="1" >
+                                        <xsd:annotation>
+                                            <xsd:appinfo>
+                                                <canncl:codeListReference>
+                                                    <canncl:ShortName>IT:SUAP:CL:ComuniItaliani</canncl:ShortName>
+                                                </canncl:codeListReference>
+                                            </xsd:appinfo>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="corso_regionale_attivita_nr_REA" type="xsd:positiveInteger" minOccurs="0" maxOccurs="1"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <!-- Blocco "corso_regionale_attivita" ripetibile: END -->
+
+
+            <!-- Check 4: aver conseguito un diploma di istruzione secondaria -->
+            <xsd:element name="laurea_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="laurea_istituto" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="laurea_sede" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="laurea_oggetto" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="laurea_anno" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+
+            <!-- Check 5: oppure (in alternativa ai requisiti tecnico professionali previsti dall'art.7, comma 2, della legge n.122 del 1992) -->
+            <xsd:element name="precedente_esperienza_professionale_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+
+            <!-- Check 6: che il proprio titolo professionale è stato riconosciuto, ai sensi del titolo III del decreto legislativo n. 206 del 2007, con provvedimento dell'Autorità -->
+            <xsd:element name="titolo_professionale_riconosciuto_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="data_riconosciuto" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+
+
+            <!-- Check 7: che il/la responsabile tecnico/a preposto è  -->
+            <xsd:element name="resposabile_tecnico_preposto_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="nome_resposabile_tecnico_preposto" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="autoriparatori" type="eaut:autoriparatori_ctype"/>
+</xsd:schema>

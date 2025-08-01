@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mpantras="../04_forms/panifici_trasferimento_sede"
+
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica"
+            xmlns:srifatt="../03_sections/riferimento_attivita"
+
+            xmlns:spantras="../03_sections/panifici_trasferimento_sede"
+            xmlns:sreqpropan="../03_sections/requisiti_professionali_panifici"
+            xmlns:saltdicpan="../03_sections/altre_dichiarazioni_panifici"
+            xmlns:sallegati="../03_sections/allegati"
+
+            targetNamespace="../04_forms/panifici_trasferimento_sede" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <!-- DEFAULT PRE -->
+    <xsd:import namespace="../03_sections/scheda_anagrafica" schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/riferimento_attivita" schemaLocation="../03_sections/sec_riferimento_attivita_v1.0.5.xsd"/>
+
+    <!-- MODULO -->
+    <xsd:import namespace="../03_sections/panifici_trasferimento_sede" schemaLocation="../03_sections/sec_panifici_trasferimento_sede_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/requisiti_professionali_panifici" schemaLocation="../03_sections/sec_requisiti_professionali_panifici_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/altre_dichiarazioni_panifici" schemaLocation="../03_sections/sec_altre_dichiarazioni_panifici_v1.0.5.xsd"/>
+    <!-- DEFAULT POST -->
+    <xsd:import namespace="../03_sections/allegati" schemaLocation="../03_sections/sec_allegati_v1.0.5.xsd"/>
+
+    <xsd:complexType name="modulo_panifici_trasferimento_sede_ctype">
+        <xsd:sequence>
+            <!-- DEFAULT PRE -->
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype"/>
+            <xsd:element name="riferimento_attivita" type="srifatt:riferimento_attivita_type" minOccurs="1" maxOccurs="1"/>
+
+            <!-- MODULO -->
+            <xsd:element name="panifici_trasferimento_sede" type="spantras:sezione_panifici_trasferimento_sede_ctype"/>
+            <xsd:element name="requisiti_professionali" type="sreqpropan:sezione_requisiti_professionali_panifici_ctype"/>
+            <xsd:element name="altre_dichiarazioni" type="saltdicpan:sezione_altre_dichiarazioni_panifici_ctype"/>
+
+            <!-- DEFAULT POST -->
+            <xsd:element name="tabellaAllegati" type="sallegati:allegati_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_panifici_trasferimento_sede" type="mpantras:modulo_panifici_trasferimento_sede_ctype"/>
+</xsd:schema>

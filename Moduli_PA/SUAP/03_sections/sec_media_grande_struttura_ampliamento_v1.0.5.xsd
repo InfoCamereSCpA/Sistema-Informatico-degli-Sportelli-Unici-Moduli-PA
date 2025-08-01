@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:smegrstruttamp="../03_sections/media_grande_struttura_ampliamento"
+            xmlns:emegrstruttamp="../02_entities/media_grande_struttura_ampliamento"
+
+            targetNamespace="../03_sections/media_grande_struttura_ampliamento" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/media_grande_struttura_ampliamento" schemaLocation="../02_entities/ent_media_grande_struttura_ampliamento_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_media_grande_struttura_ampliamento_ctype">
+        <xsd:sequence>
+            <xsd:element name="media_grande_struttura_ampliamento" type="emegrstruttamp:media_grande_struttura_ampliamento_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_media_grande_struttura_ampliamento" type="smegrstruttamp:sezione_media_grande_struttura_ampliamento_ctype"/>
+
+</xsd:schema>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:esomarsera="../02_entities/aree_servizio_apertura"
+            xmlns:ctipi="../commons/tipi"
+            xmlns:ccodelist="../commons/codelist"
+            xmlns:canncl="../commons/xsdAnnotations" targetNamespace="../02_entities/aree_servizio_apertura"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+
+
+    <xsd:complexType name="aree_servizio_apertura_ctype">
+        <xsd:sequence>
+
+            <xsd:element name="autostrada" type="xsd:string" minOccurs="0"/>
+
+            <xsd:element name="strada_extraurbana" type="xsd:string" minOccurs="0"/>
+
+            <xsd:element name="ferrovia" type="xsd:string" minOccurs="0"/>
+
+            <xsd:element name="aeroporto" type="xsd:string" minOccurs="0"/>
+
+            <xsd:element name="stazione_marittima" type="xsd:string" minOccurs="0"/>
+
+            <xsd:element name="trasporto_pubblico" type="xsd:string" minOccurs="0"/>
+
+            <!-- <xsd:element name="altro" type="esomarsera:altro_base_type" minOccurs="0"/> -->
+
+            <xsd:element name="superficie_somministrazione" type="esomarsera:ampliamento_superficie_vendita_base_type"/>
+
+            <xsd:element name="modalita_gestione" type="esomarsera:modalita_gestione_base_type" minOccurs="0"
+                         maxOccurs="1"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--astrazione superficie_somministrazione-->
+    <xsd:complexType name="ampliamento_superficie_vendita_base_type" abstract="true"/>
+    <xsd:complexType name="ampliamento_superficie_vendita_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esomarsera:ampliamento_superficie_vendita_base_type">
+                <xsd:sequence>
+                    <xsd:element name="ampliamento_superficie" type="xsd:double"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!--astrazione modalita_gestione-->
+    <xsd:complexType name="modalita_gestione_base_type" abstract="true"/>
+    <xsd:complexType name="modalita_gestione_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esomarsera:modalita_gestione_base_type">
+                <xsd:sequence>
+                    <xsd:choice>
+                        <xsd:element name="gestione_diretta" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="gestione_terzi" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    </xsd:choice>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!--astrazione altro-->
+    <xsd:complexType name="altro_base_type" abstract="true"/>
+    <xsd:complexType name="altro_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esomarsera:altro_base_type">
+                <xsd:sequence>
+                    <xsd:element name="altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:element name="aree_servizio_apertura" type="esomarsera:aree_servizio_apertura_ctype"/>
+</xsd:schema>
+    

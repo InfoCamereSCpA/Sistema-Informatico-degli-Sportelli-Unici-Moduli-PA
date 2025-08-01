@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:sdicageaff="../03_sections/dichiarazioni_agenzia_affari"
+    xmlns:edicageaff="../02_entities/dichiarazioni_agenzia_affari" targetNamespace="../03_sections/dichiarazioni_agenzia_affari" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/dichiarazioni_agenzia_affari" schemaLocation="../02_entities/ent_dichiarazioni_agenzia_affari_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_dichiarazioni_agenzia_affari_ctype">
+        <xsd:sequence>
+            <xsd:element name="dichiarazioni_agenzia_affari" type="edicageaff:dichiarazioni_agenzia_affari_ctype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_dichiarazioni_agenzia_affari" type="sdicageaff:sezione_dichiarazioni_agenzia_affari_ctype"/>
+
+</xsd:schema>

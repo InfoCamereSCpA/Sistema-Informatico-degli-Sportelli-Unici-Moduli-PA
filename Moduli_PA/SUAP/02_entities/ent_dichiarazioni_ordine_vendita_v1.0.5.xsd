@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:edicordven="../02_entities/dichiarazioni_ordine_vendita"
+            xmlns:ctipi="../commons/tipi"
+            xmlns:eproto="../02_entities/protocollo"
+            targetNamespace="../02_entities/dichiarazioni_ordine_vendita"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="../02_entities/ent_protocollo_v1.0.5.xsd"/>
+
+    <xsd:complexType name="dichiarazioni_ordine_vendita_ctype">
+        <xsd:sequence>
+            <xsd:element name="prima_vendita_sottocosto_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="seconda_vendita_sottocosto_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="seconda_vendita_sottocosto_nr_protocollo" type="eproto:numero_registrazione_stype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="seconda_vendita_sottocosto_data_protocollo" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+
+            <xsd:element name="terza_vendita_sottocosto_check" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="terza_vendita_sottocosto_nr_protocollo" type="eproto:numero_registrazione_stype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="terza_vendita_sottocosto_data_protocollo" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="dichiarazioni_ordine_vendita" type="edicordven:dichiarazioni_ordine_vendita_ctype"/>
+</xsd:schema>

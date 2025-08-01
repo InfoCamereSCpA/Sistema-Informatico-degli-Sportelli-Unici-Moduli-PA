@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:scorrispondenzaape="../03_sections/apertura_corrispondenza"
+            xmlns:ecorrispondenzaape="../02_entities/apertura_corrispondenza"
+            targetNamespace="../03_sections/apertura_corrispondenza" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/apertura_corrispondenza" schemaLocation="../02_entities/ent_apertura_corrispondenza_v1.0.5.xsd"/>
+
+    <xsd:complexType name="apertura_corrispondenza_ctype">
+        <xsd:sequence>
+            <xsd:element name="apertura" type="ecorrispondenzaape:apertura_corrispondenza_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="apertura_corrispondenza" type="scorrispondenzaape:apertura_corrispondenza_ctype"/>
+</xsd:schema>

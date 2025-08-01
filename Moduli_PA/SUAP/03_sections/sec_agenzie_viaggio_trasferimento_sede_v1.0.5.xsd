@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:strased="../03_sections/agenzie_viaggio_trasferimento_sede"
+            xmlns:trased="../02_entities/trasferimento_sede"
+            targetNamespace="../03_sections/agenzie_viaggio_trasferimento_sede" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/trasferimento_sede" schemaLocation="../02_entities/ent_trasferimento_sede_v1.0.5.xsd"/>
+    
+    <xsd:complexType name="sezione_av_trasferimento_sede_ctype">
+        <xsd:sequence>
+            <xsd:element name="scia_trasferimento_sede_agenzie_viaggio" type="trased:trasferimento_sede_base_type" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>   
+    </xsd:complexType>
+    
+    <xsd:element name="sezione_av_trasferimento_sede" type="strased:sezione_av_trasferimento_sede_ctype"/>
+</xsd:schema>

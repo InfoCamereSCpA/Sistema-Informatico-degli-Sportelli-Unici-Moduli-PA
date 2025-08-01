@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:eamesvi="../02_entities/esercizio_vicinato_ampliamento"
+            xmlns:esetmeramp="../02_entities/settori_merceologici_ampliamento"
+            xmlns:ctipi="../commons/tipi"
+
+            targetNamespace="../02_entities/esercizio_vicinato_ampliamento"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/centro_commerciale"
+                schemaLocation="../02_entities/ent_centro_commerciale_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/settori_merceologici_ampliamento"
+                schemaLocation="../02_entities/ent_settori_merceologici_ampliamento_v1.0.5.xsd"/>
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:element name="ampliamento_esercizio_vicinato" type="eamesvi:ampliamento_esercizio_vicinato_ctype"/>
+
+    <xsd:complexType name="ampliamento_esercizio_vicinato_ctype">
+        <xsd:sequence>
+            <xsd:element name="nrProtocollo" type="xsd:integer"/>
+            <xsd:element name="dataRegistrazioneProtocollo" type="ctipi:ggmmaaaa_stype"/>
+
+            <!-- Ampliamento -->
+            <xsd:element name="ampliamentoCheck" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="mqDa" type="xsd:double" default="0.0" minOccurs="0"/>
+            <xsd:element name="mqA" type="xsd:double" default="0.0" minOccurs="0"/>
+
+            <!-- Settori Vendita -->
+            <xsd:element name="settoriVenditaCheck" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="aggiuntaSettori" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="eliminazioneSettori" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="sostituzioneSettori" type="xsd:boolean" minOccurs="0"/>
+
+            <!-- Distribuzione Superficie Vendita -->
+            <xsd:element name="ampliamento_settori_merceologici"
+                         type="esetmeramp:settori_merceologici_ampliamento_base_type" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

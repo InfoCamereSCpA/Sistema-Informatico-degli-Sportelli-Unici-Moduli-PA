@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:eallposreqraptul="../02_entities/allegato_possesso_requisiti_rappresentante_tulps"
+            xmlns:eallperana="../02_entities/allegato_persona_anagrafica"
+
+            xmlns:efile="../02_entities/files"
+
+            targetNamespace="../02_entities/allegato_possesso_requisiti_rappresentante_tulps"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/files" schemaLocation="../02_entities/ent_files_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_persona_anagrafica" schemaLocation="../02_entities/ent_allegato_persona_anagrafica_v1.0.5.xsd"/>
+
+    <xsd:complexType name="allegato_possesso_requisiti_rappresentante_tulps_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eallposreqraptul:AllegatoPossessoRequisitiRappresentanteTulpsArt93Type">
+                <xsd:sequence>
+<!--                    <xsd:element name="titolare" type="xsd:string"/>-->
+<!--                    <xsd:element name="indirizzoStruttura" type="xsd:string" />-->
+                    <xsd:element name="inQualitaDi" minOccurs="1">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="associazioneCircolo" type="xsd:string" minOccurs="0"/>
+                                <xsd:element name="dittaImpresa" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="AllegatoPossessoRequisitiRappresentanteTulpsArt93Type" abstract="true">
+        <xsd:complexContent>
+            <xsd:extension base="efile:file_ctype">
+                <xsd:sequence>
+                    <xsd:element name="rappresentante" type="eallperana:allegato_persona_anagrafica_ctype"  />
+                    <xsd:element name="dichiarazionePresaVisioneInformativaPrivacy" type="xsd:boolean" />
+                    <xsd:element name="documentoIdentitaSoggetto" type="efile:file_ctype"  />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:element name="allegato_possesso_requisiti_rappresentante_tulps" type="eallposreqraptul:allegato_possesso_requisiti_rappresentante_tulps_ctype"/>
+
+</xsd:schema>

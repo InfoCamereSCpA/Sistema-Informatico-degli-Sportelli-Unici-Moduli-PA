@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:esciav="../02_entities/scia_variazione_agenzie_viaggio"
+    xmlns:ctipi="../commons/tipi" targetNamespace="../02_entities/scia_variazione_agenzie_viaggio" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:complexType name="scia_variazione_agenzie_viaggio_base_type" abstract="true"/>
+
+    <xsd:complexType name="scia_variazione_agenzie_viaggio_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esciav:scia_variazione_agenzie_viaggio_base_type">
+                <xsd:sequence>
+                    <xsd:element name="scia_prot_n" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="data" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="direttore_tecnico" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="nome_1" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="nome_2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+                    <xsd:element name="altre_variazioni" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="specifica" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="scia_variazione_agenzie_viaggio" type="esciav:scia_variazione_agenzie_viaggio_ctype"/>
+</xsd:schema>

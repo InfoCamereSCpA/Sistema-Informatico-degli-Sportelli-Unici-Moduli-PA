@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:vtipattsom="../01_vocabularies/tipo_attivita_somministrazione"
+
+            targetNamespace="../01_vocabularies/tipo_attivita_somministrazione" elementFormDefault="qualified"
+            attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:simpleType name="attivita_somministrazione_voc">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ristorazione"/>
+            <xsd:enumeration value="somministrazioneBevande"/>
+            <xsd:enumeration value="somministrazioneCongiuntaIntrattenimento"/>
+            <xsd:enumeration value="somministrazioneEsclusiAlcolici"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

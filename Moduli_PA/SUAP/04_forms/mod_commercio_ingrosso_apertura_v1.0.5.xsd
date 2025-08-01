@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mcommingape="../04_forms/commercio_ingrosso_apertura"
+
+            xmlns:sschedaanag="../03_sections/scheda_anagrafica"
+            xmlns:srifatt="../03_sections/riferimento_attivita"
+
+            xmlns:scommingape="../03_sections/commercio_ingrosso_apertura"
+
+            xmlns:saltdicalt="../03_sections/altre_dichiarazioni_altro"
+            xmlns:sallegati="../03_sections/allegati"
+
+            targetNamespace="../04_forms/commercio_ingrosso_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <!-- DEFAULT PRE -->
+    <xsd:import namespace="../03_sections/scheda_anagrafica" schemaLocation="../03_sections/sec_scheda_anagrafica_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/riferimento_attivita" schemaLocation="../03_sections/sec_riferimento_attivita_v1.0.5.xsd"/>
+
+    <!-- MODULO -->
+    <xsd:import namespace="../03_sections/commercio_ingrosso_apertura" schemaLocation="../03_sections/sec_commercio_ingrosso_apertura_v1.0.5.xsd"/>
+
+    <!-- DEFAULT POST -->
+    <xsd:import namespace="../03_sections/altre_dichiarazioni_altro" schemaLocation="../03_sections/sec_altre_dichiarazioni_altro_v1.0.5.xsd"/>
+    <xsd:import namespace="../03_sections/allegati" schemaLocation="../03_sections/sec_allegati_v1.0.5.xsd"/>
+
+    <xsd:complexType name="modulo_commercio_ingrosso_apertura_ctype">
+        <xsd:sequence>
+            <!-- DEFAULT PRE -->
+            <xsd:element name="scheda_anagrafica" type="sschedaanag:sezione_scheda_anagrafica_ctype"/>
+            <xsd:element name="riferimento_attivita" type="srifatt:riferimento_attivita_type" minOccurs="1" maxOccurs="1"/>
+
+            <!-- MODULO -->
+            <xsd:element name="commercio_ingrosso_apertura" type="scommingape:sezione_commercio_ingrosso_apertura_ctype"/>
+
+            <!-- DEFAULT POST -->
+
+            <xsd:element name="altre_dichiarazioni" type="saltdicalt:sezione_altre_dichiarazioni_altro_ctype"/>
+            <xsd:element name="tabellaAllegati" type="sallegati:allegati_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_commercio_ingrosso_apertura" type="mcommingape:modulo_commercio_ingrosso_apertura_ctype"/>
+</xsd:schema>

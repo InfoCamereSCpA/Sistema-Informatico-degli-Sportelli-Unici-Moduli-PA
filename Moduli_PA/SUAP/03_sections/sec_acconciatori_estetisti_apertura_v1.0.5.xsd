@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:saccestape="../03_sections/acconciatori_estetisti_apertura"
+            xmlns:eaccestape="../02_entities/acconciatori_estetisti_apertura"
+
+            targetNamespace="../03_sections/acconciatori_estetisti_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/acconciatori_estetisti_apertura" schemaLocation="../02_entities/ent_acconciatori_estetisti_apertura_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_acconciatori_estetisti_apertura_ctype">
+        <xsd:sequence>
+            <xsd:element name="acconciatori_estetisti_apertura" type="eaccestape:acconciatori_estetisti_apertura_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_acconciatori_estetisti_apertura" type="saccestape:sezione_acconciatori_estetisti_apertura_ctype"/>
+
+</xsd:schema>

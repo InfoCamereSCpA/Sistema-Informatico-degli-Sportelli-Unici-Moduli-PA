@@ -1,0 +1,1241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gc:CodeList xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:html="http://www.w3.org/1999/xhtml/">
+    <Identification>
+        <ShortName>IT:SUAP:CL:ProvinceItaliane</ShortName>
+        <LongName>Elenco delle Province Italiane</LongName>
+        <Version>1.0</Version>
+        <CanonicalUri></CanonicalUri>
+        <CanonicalVersionUri></CanonicalVersionUri>
+        <Agency>
+            <LongName></LongName>
+            <Identifier></Identifier>
+        </Agency>
+    </Identification>
+    <ColumnSet>
+        <Column id="id">
+            <ShortName>ID</ShortName>
+            <DataType xmlns="http://www.w3.org/2001/XMLSchema" type="integer"/>
+        </Column>
+        <Column id="provincia">
+            <ShortName>Provincia</ShortName>
+            <DataType xmlns="http://www.w3.org/2001/XMLSchema" type="string"/>
+        </Column>
+        <Column id="sigla">
+            <ShortName>Sigla</ShortName>
+            <DataType xmlns="http://www.w3.org/2001/XMLSchema" type="string"/>
+        </Column>
+    </ColumnSet>
+    <SimpleCodeList>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>1</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Agrigento</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>AG</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>2</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Alessandria</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>AL</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>3</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Ancona</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>AN</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>4</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Aosta</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>AO</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>5</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Arezzo</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>AR</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>6</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Ascoli Piceno</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>AP</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>7</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Asti</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>AT</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>8</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Avellino</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>AV</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>9</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Bari</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>BA</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>10</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Barletta-Andria-Trani</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>BT</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>11</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Belluno</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>BL</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>12</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Benevento</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>BN</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>13</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Bergamo</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>BG</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>14</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Biella</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>BI</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>15</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Bologna</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>BO</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>16</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Bolzano</SimpleValue>
+            </Value><Value columnRef="sigla">
+                <SimpleValue>BZ</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>17</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Brescia</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>BS</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>18</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Brindisi</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>BR</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>19</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Cagliari</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>CA</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>20</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Caltanissetta</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>CL</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>21</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Campobasso</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>CB</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>22</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Carbonia-Iglesias</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>CI</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>23</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Caserta</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>CE</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>24</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Catania</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>CT</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>25</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Catanzaro</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>CZ</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>26</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Chieti</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>CH</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>27</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Como</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>CO</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>28</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Cosenza</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>CS</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>29</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Cremona</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>CR</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>30</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Crotone</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>KR</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>31</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Cuneo</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>CN</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>32</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Enna</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>EN</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>33</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Fermo</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>FM</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>34</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Ferrara</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>FE</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>35</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Firenze</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>FI</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>36</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Foggia</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>FG</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>37</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Forlì-Cesena</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>FC</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>38</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Frosinone</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>FR</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>39</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Genova</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>GE</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>40</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Gorizia</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>GO</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>41</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Grosseto</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>GR</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>42</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Imperia</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>IM</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>43</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Isernia</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>IS</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>44</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>L'Aquila</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>AQ</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>45</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>La Spezia</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>SP</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>46</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Latina</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>LT</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>47</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Lecce</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>LE</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>48</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Lecco</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>LC</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>49</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Livorno</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>LI</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>50</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Lodi</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>LO</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>51</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Lucca</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>LU</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>52</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Macerata</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>MC</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>53</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Mantova</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>MN</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>54</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Massa-Carrara</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>MS</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>55</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Matera</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>MT</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>56</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Medio Campidano</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>VS</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>57</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Messina</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>ME</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>58</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Milano</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>MI</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>59</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Modena</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>MO</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>60</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Monza e della Brianza</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>MB</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>61</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Napoli</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>NA</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>62</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Novara</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>NO</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>63</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Nuoro</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>NU</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>64</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Ogliastra</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>OG</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>65</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Olbia-Tempio</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>OT</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>66</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Oristano</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>OR</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>67</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Padova</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>PD</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>68</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Palermo</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>PA</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>69</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Parma</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>PR</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>70</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Pavia</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>PV</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>71</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Perugia</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>PG</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>72</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Pesaro e Urbino</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>PU</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>73</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Pescara</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>PE</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>74</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Piacenza</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>PC</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>75</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Pisa</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>PI</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>76</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Pistoia</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>PT</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>77</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Pordenone</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>PN</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>78</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Potenza</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>PZ</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>79</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Prato</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>PO</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>80</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Ragusa</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>RG</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>81</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Ravenna</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>RA</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>82</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Reggio Calabria</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>RC</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>83</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Reggio Emilia</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>RE</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>84</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Rieti</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>RI</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>85</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Rimini</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>RN</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>86</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Roma</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>Roma</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>87</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Rovigo</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>RO</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>88</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Salerno</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>SA</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>89</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Sassari</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>SS</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>90</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Savona</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>SV</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>91</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Siena</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>SI</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>92</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Siracusa</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>SR</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>93</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Sondrio</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>SO</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>94</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Taranto</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>TA</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>95</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Teramo</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>TE</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>96</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Terni</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>TR</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>97</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Torino</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>TO</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>98</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Trapani</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>TP</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>99</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Trento</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>TN</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>100</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Treviso</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>TV</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>101</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Trieste</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>TS</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>102</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Udine</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>UD</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>103</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Varese</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>VA</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>104</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Venezia</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>VE</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>105</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Verbano-Cusio-Ossola</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>VB</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>106</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Vercelli</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>VC</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>107</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Verona</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>VR</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>108</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Vibo Valentia</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>VV</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>109</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Vicenza</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>VI</SimpleValue>
+            </Value>
+        </Row>
+        <Row>
+            <Value columnRef="id">
+                <SimpleValue>110</SimpleValue>
+            </Value>
+            <Value columnRef="provincia">
+                <SimpleValue>Viterbo</SimpleValue>
+            </Value>
+            <Value columnRef="sigla">
+                <SimpleValue>VT</SimpleValue>
+            </Value>
+        </Row>
+    </SimpleCodeList>
+</gc:CodeList>

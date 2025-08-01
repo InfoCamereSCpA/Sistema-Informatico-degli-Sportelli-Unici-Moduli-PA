@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:etitdisp="../02_entities/titolo_disponibilita"
+            xmlns:ctipi="../commons/tipi" targetNamespace="../02_entities/titolo_disponibilita"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <!-- AS-IS: astrazione pdf -->
+    <xsd:complexType name="titolo_disponibilita_base_type" abstract="true"/>
+
+    <!-- AS-IS: astrazione pdf -->
+    <xsd:complexType name="specifica_dati_proprieta_base_type" abstract="true"/>
+
+    <!-- AS-IS: astrazione pdf -->
+    <xsd:complexType name="tipo_persona_base_type" abstract="true"/>
+
+    <xsd:complexType name="tipo_persona_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="etitdisp:tipo_persona_base_type">
+                <xsd:sequence>
+                    <xsd:element name="tipo_persona" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="specifica_dati_proprieta_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="etitdisp:specifica_dati_proprieta_base_type">
+                <xsd:sequence>
+                    <xsd:element name="specifica" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="titolo_disponibilita_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="etitdisp:titolo_disponibilita_base_type">
+                <xsd:sequence>
+                    <xsd:element name="proprieta" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="usufrutto" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="locazione" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="comodato" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="mandato_rappresentanza" type="xsd:boolean" default="false" minOccurs="0"
+                                 maxOccurs="1"/>
+                    <xsd:element name="altro_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                    <xsd:element name="data_atto" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="nrRegistrazione" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="data_registrazione" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="specifica" type="etitdisp:specifica_dati_proprieta_base_type" minOccurs="0" maxOccurs="1"/>
+                    <!--da rivedere-->
+                    <xsd:element name="tipo_persona" type="etitdisp:tipo_persona_base_type" minOccurs="0" maxOccurs="1"/>
+
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <!--    <xsd:complexType name="titolo_disponibilita_ctype">-->
+    <!--        <xsd:sequence>-->
+    <!--            <xsd:element name="proprieta" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>-->
+    <!--            <xsd:element name="usufrutto" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>-->
+    <!--            <xsd:element name="locazione" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>-->
+    <!--            <xsd:element name="comodato" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>-->
+    <!--            <xsd:element name="mandato_rappresentanza" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>-->
+    <!--            <xsd:element name="altro_check" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>-->
+    <!--            <xsd:element name="altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>-->
+    <!--            <xsd:element name="data_atto" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>-->
+    <!--            <xsd:element name="nrRegistrazione" type="xsd:int" minOccurs="1" maxOccurs="1"/>-->
+    <!--            <xsd:element name="data_registrazione" type="ctipi:ggmmaaaa_stype" minOccurs="1" maxOccurs="1"/>-->
+    <!--            <xsd:element name="specifica" type="xsd:string" minOccurs="0" maxOccurs="1"/>-->
+    <!--            &lt;!&ndash;da rivedere&ndash;&gt;-->
+    <!--            <xsd:element name="tipo_persona" type="xsd:string" minOccurs="0" maxOccurs="1"/>-->
+    <!--        </xsd:sequence>-->
+    <!--    </xsd:complexType>-->
+
+    <xsd:element name="titolo_disponibilita" type="etitdisp:titolo_disponibilita_ctype"/>
+</xsd:schema>

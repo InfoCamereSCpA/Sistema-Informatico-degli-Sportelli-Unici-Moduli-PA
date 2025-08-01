@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+                
+        xmlns:econt="../02_entities/contatti"
+                
+        xmlns:ctipi="../commons/tipi"  
+                
+        targetNamespace="../02_entities/contatti"
+            elementFormDefault="qualified" attributeFormDefault="qualified"    
+            version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    
+    <xsd:complexType name="contatti_ctype">
+        <xsd:sequence>
+            <xsd:element name="telefono_fisso" type="ctipi:telefono_fisso_stype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="cellulare" type="ctipi:telefono_mobile_stype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="fax" type="ctipi:fax_stype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="domicilio_digitale" type="ctipi:email_stype" minOccurs="0" maxOccurs="1"/>            
+            <xsd:element name="email" type="ctipi:email_stype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>        
+    </xsd:complexType>      
+    
+    <xsd:element name="contatti" type="econt:contatti_ctype"/>    
+</xsd:schema>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:edichcomvarest="../02_entities/dichiarazione_comunicazione_variazioni_estetisti" targetNamespace="../02_entities/dichiarazione_comunicazione_variazioni_estetisti" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+
+
+    <xsd:complexType name="dichiarazioni_comunicazione_variazioni_estetisti_base_type" abstract="true"/>
+    
+    
+    <xsd:complexType name="dichiarazioni_comunicazione_variazioni_estetisti_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="edichcomvarest:dichiarazioni_comunicazione_variazioni_estetisti_base_type">
+                <xsd:sequence>
+
+                    <xsd:element name="responsabile_tecnico_check" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="qualifica_professionale_check" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="ente_qualifica_professionale" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="data_qualifica_professionale" type="xsd:date" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="atto_qualifica_professionale" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="abilitazione_professionale_check" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="titolare_check" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="impresa_titolare" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                    <xsd:element name="rea_titolare" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="socio_check" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="impresa_socio" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                    <xsd:element name="rea_socio" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="direttore_check" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="impresa_direttore" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                    <xsd:element name="rea_direttore" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="dipendente_check" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="impresa_dipendente" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                    <xsd:element name="specializzazione_studio_dipendente" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="anno_da" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                    <xsd:element name="anno_a" type="xsd:string" minOccurs="1" maxOccurs="1" />
+
+                    <xsd:element name="attestati_professionali_check" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="attestato_regionale_check" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="ente_attestato_regionale" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="data_attestato_regionale" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="atto_attestato_regionale" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="attestato_scuole_professionali_check" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="ente_attestato_scuole_professionali" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="data_attestato_scuole_professionali" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="atto_attestato_scuole_professionali" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="qualifica_professionale_estera_check" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="decreto_qualifica_professionale_estera" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                    <xsd:element name="data_qualifica_professionale_estera" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="altro" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+                    <xsd:element name="no_variazioni_check" type="xsd:boolean" default="false" minOccurs="1" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="dichiarazioni_comunicazione_variazioni_estetisti" type="edichcomvarest:dichiarazioni_comunicazione_variazioni_estetisti_ctype"/>
+</xsd:schema>

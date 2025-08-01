@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eapesomscuosp="../02_entities/somministrazione_scuole_ospedali_ecc_apertura"
+            targetNamespace="../02_entities/somministrazione_scuole_ospedali_ecc_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:complexType name="apertura_somministrazione_scuole_ospedali_ecc_ctype">
+        <xsd:sequence>
+            <xsd:element name="strutture" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="check_mezzi_trasporto" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="mezzi_trasporto" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="check_altro" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="superficie" type="xsd:double" default="0.0" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="apertura_somministrazione_scuole_ospedali_ecc" type="eapesomscuosp:apertura_somministrazione_scuole_ospedali_ecc_ctype"/>
+</xsd:schema>

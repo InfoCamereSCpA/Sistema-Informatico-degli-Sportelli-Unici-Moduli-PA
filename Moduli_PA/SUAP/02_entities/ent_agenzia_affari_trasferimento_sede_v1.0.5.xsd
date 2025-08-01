@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ccodelist="../commons/codelist"
+    xmlns:canncl="../commons/xsdAnnotations"
+    xmlns:ctipi="../commons/tipi"
+    xmlns:eageaffstrased="../02_entities/agenzia_affari_trasferimento_sede" targetNamespace="../02_entities/agenzia_affari_trasferimento_sede" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:complexType name="agenzia_affari_trasferimento_sede_ctype">
+        <xsd:sequence>
+            <xsd:element name="protocollo_trasferimento" type="xsd:positiveInteger"/>
+            <xsd:element name="data_trasferimento" type="ctipi:ggmmaaaa_stype"/>
+            <xsd:element name="comune" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="indirizzo_da" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="cap_da" type="ctipi:cap_stype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="indirizzo_a" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="cap_a" type="ctipi:cap_stype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="telefono_cellulare_da" type="ctipi:telefono_mobile_stype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="agenzia_affari_trasferimento_sede" type="eageaffstrased:agenzia_affari_trasferimento_sede_ctype"/>
+</xsd:schema>

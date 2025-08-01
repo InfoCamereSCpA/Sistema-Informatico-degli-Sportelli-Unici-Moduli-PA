@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:svarcomvar="../03_sections/variazioni_comunicazione_variazioni"
+            xmlns:evaratt="../02_entities/variazione_attivita" targetNamespace="../03_sections/variazioni_comunicazione_variazioni" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+    
+    <xsd:import namespace="../02_entities/variazione_attivita" schemaLocation="../02_entities/ent_variazione_attivita_v1.0.5.xsd"/>
+    
+    <xsd:complexType name="sezione_variazioni_comunicazone_variazioni_ctype" >
+        <xsd:sequence>
+            <xsd:element name="variazioni" type="evaratt:variazione_attivita_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="sezione_variazioni_comunicazone_variazioni" type="svarcomvar:sezione_variazioni_comunicazone_variazioni_ctype"/>
+</xsd:schema>

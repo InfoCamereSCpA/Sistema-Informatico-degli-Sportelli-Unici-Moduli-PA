@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:svensot="../03_sections/vendita_sottocosto"
+            xmlns:srifatt="../03_sections/riferimento_attivita"
+            xmlns:eanagatt="../02_entities/anagrafica_attivita"
+            xmlns:edatattvensot="../02_entities/dati_attivita_vendita_sottocosto"
+            xmlns:edicordven="../02_entities/dichiarazioni_ordine_vendita"
+            xmlns:edurvensot="../02_entities/durata_vendita_sottocosto"
+            xmlns:eeleprosot="../02_entities/elenco_prodotti_sottocosto"
+            targetNamespace="../03_sections/vendita_sottocosto" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <!-- <xsd:import namespace="../03_sections/riferimento_attivita" schemaLocation="../03_sections/sec_riferimento_attivita_v1.0.5.xsd"/> -->
+    <xsd:import namespace="../02_entities/anagrafica_attivita" schemaLocation="../02_entities/ent_anagrafica_attivita_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/dati_attivita_vendita_sottocosto" schemaLocation="../02_entities/ent_dati_attivita_vendita_sottocosto_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/dichiarazioni_ordine_vendita" schemaLocation="../02_entities/ent_dichiarazioni_ordine_vendita_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/durata_vendita_sottocosto" schemaLocation="../02_entities/ent_durata_vendita_sottocosto_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/elenco_prodotti_sottocosto" schemaLocation="../02_entities/ent_elenco_prodotti_sottocosto_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_vendita_sottocosto_ctype">
+        <xsd:sequence>
+            <xsd:element name="dati_esercizi_commerciali">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="dati_esercizi_commerciali_blocco" type="svensot:blocco_dati_esercizi_commerciali_ctype" minOccurs="0" maxOccurs="unbounded" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="elenco_prodotti_sottocosto" type="eeleprosot:elenco_prodotti_sottocosto_base_type" minOccurs="0" />
+            <xsd:element name="durata_vendita_sottocosto" type="edurvensot:durata_vendita_sottocosto_ctype" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="blocco_dati_esercizi_commerciali_ctype">
+        <xsd:sequence>
+            <xsd:element name="nr_progressivo_esercizio" type="xsd:integer" minOccurs="0" />
+            <!-- <xsd:element name="riferimento_attivita" type="srifatt:riferimento_attivita_type" minOccurs="0" /> -->
+            <xsd:element name="riferimento_attivita" type="eanagatt:anagrafica_attivita_ctype" minOccurs="0" />
+            <xsd:element name="dati_attivita" type="edatattvensot:dati_attivita_vendita_sottocosto_ctype" minOccurs="0" />
+            <xsd:element name="dichiarazioni_ordine_vendita" type="edicordven:dichiarazioni_ordine_vendita_ctype" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_vendita_sottocosto" type="svensot:sezione_vendita_sottocosto_ctype"/>
+
+</xsd:schema>

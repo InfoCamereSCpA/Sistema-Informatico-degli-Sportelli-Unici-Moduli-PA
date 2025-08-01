@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sreqpropan="../03_sections/requisiti_professionali_panifici"
+            xmlns:ereqpropan="../02_entities/requisiti_professionali_panifici"
+
+            targetNamespace="../03_sections/requisiti_professionali_panifici" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/requisiti_professionali_panifici" schemaLocation="../02_entities/ent_requisiti_professionali_panifici_v1.0.5.xsd"/>
+
+    <xsd:complexType name="sezione_requisiti_professionali_panifici_ctype">
+        <xsd:sequence>
+            <xsd:element name="requisiti_professionali_panifici" type="ereqpropan:requisiti_professionali_panifici_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_requisiti_professionali_panifici" type="sreqpropan:sezione_requisiti_professionali_panifici_ctype"/>
+
+</xsd:schema>

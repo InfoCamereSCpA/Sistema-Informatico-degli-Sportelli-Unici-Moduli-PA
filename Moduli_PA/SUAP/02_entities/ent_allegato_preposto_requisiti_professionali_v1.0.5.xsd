@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:eallprereqpro="../02_entities/allegato_preposto_requisiti_professionali"
+
+            xmlns:efile="../02_entities/files"
+            xmlns:eallperana="../02_entities/allegato_persona_anagrafica"
+
+            xmlns:vagidenum="../01_vocabularies/agid_enumeration"
+
+            targetNamespace="../02_entities/allegato_preposto_requisiti_professionali"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/files" schemaLocation="../02_entities/ent_files_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_persona_anagrafica" schemaLocation="../02_entities/ent_allegato_persona_anagrafica_v1.0.5.xsd"/>
+    <xsd:import namespace="../01_vocabularies/agid_enumeration" schemaLocation="../01_vocabularies/voc_agid_enumeration_v1.0.5.xsd"/>
+
+
+    <xsd:complexType name="allegato_preposto_requisiti_professionali_ctype">
+        <xsd:sequence>
+            <xsd:element name="preposto" type="eallperana:allegato_persona_anagrafica_ctype"/>
+            <xsd:element name="allegatoDocumentoIdentitaPreposto" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="inData" type="xsd:date"/>
+            <xsd:element name="requisiti" type="eallprereqpro:DichiaranteRequisitiProfessionaliType"/>
+            <xsd:element name="dichiarazionePresaVisioneInformativaPrivacy" type="xsd:boolean" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="DichiaranteRequisitiProfessionaliType">
+        <xsd:choice>
+            <xsd:element name="corsoProfessionale" type="eallperana:IstitutoType"/>
+            <xsd:element name="esercitatoInProprio">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="attivita" maxOccurs="unbounded">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="tipo" type="xsd:string"/>
+                                    <xsd:element name="dal" type="xsd:date"/>
+                                    <xsd:element name="al" type="xsd:date"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="iscrizioneRegistroImprese" type="eallperana:CCIAAType"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="prestatoOpera">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="impresa">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="nome" type="xsd:string"/>
+                                    <xsd:element name="indirizzo" type="eallperana:IndirizzoType"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:choice>
+                            <xsd:element name="ruolo" type="eallprereqpro:RuoloInImpresaType"/>
+                            <xsd:element name="altroRuolo" type="xsd:string"/>
+                        </xsd:choice>
+                        <xsd:element name="iscrittoINPS">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="da" type="xsd:date"/>
+                                    <xsd:element name="a" type="xsd:date"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="titoloStudio">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="istituto" type="xsd:string"/>
+                        <xsd:element name="annoConclusione" type="xsd:integer"/>
+                        <xsd:element name="materiaAttinente" type="xsd:string" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="riconoscimentoQualificaEsteraAutoritaItaliana" type="eallperana:AttoBaseType"/>
+            <xsd:element name="possessoRequisitoPraticaProfessionale">
+                <xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element name="iscrittoREASettoreAlimentare">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="anno" type="xsd:integer"/>
+                                    <xsd:element name="CCIAA" type="vagidenum:CCIAAEnum"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="esameIdoneitaREA">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="anno" type="xsd:integer"/>
+                                    <xsd:element name="presso" type="xsd:string"/>
+                                </xsd:sequence>
+                                <xsd:attribute name="sezioneSpecialeTurismo" type="xsd:boolean" default="false"/>
+                            </xsd:complexType>
+                        </xsd:element>
+
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:complexType name="RuoloInImpresaType">
+        <xsd:choice>
+            <xsd:element name="DipendenteQualificato" type="eallperana:EmptyType"/>
+            <xsd:element name="CoadiutoreFamiliare" type="eallperana:EmptyType"/>
+            <xsd:element name="SocioLavoratore" type="xsd:string"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:element name="allegato_preposto_requisiti_professionali" type="eallprereqpro:allegato_preposto_requisiti_professionali_ctype"/>
+
+</xsd:schema>

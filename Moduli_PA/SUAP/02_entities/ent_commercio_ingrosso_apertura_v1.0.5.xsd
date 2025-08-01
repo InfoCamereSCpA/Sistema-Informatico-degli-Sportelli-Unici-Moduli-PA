@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ecommingape="../02_entities/commercio_ingrosso_apertura"
+            xmlns:ecarese="../02_entities/carattere_esercizio"
+            xmlns:esetmer="../02_entities/settori_merceologici"
+
+            targetNamespace="../02_entities/commercio_ingrosso_apertura"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.5" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/carattere_esercizio" schemaLocation="./ent_carattere_esercizio_v1.0.5.xsd"/>
+    <xsd:import namespace="../02_entities/settori_merceologici" schemaLocation="./ent_settori_merceologici_v1.0.5.xsd"/>
+
+    <!-- AS-IS: ModalitaVenditaIngrossoSuperficieBaseType su SUAP_modulo_commercio_ingrosso.xsd -->
+    <xsd:complexType name="modalita_vendita_ingrosso_superficie_base_type" abstract="true" />
+
+    <xsd:complexType name="modalita_vendita_ingrosso_superficie_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="ecommingape:modalita_vendita_ingrosso_superficie_base_type">
+                <xsd:sequence>
+                    <xsd:element name="vendita_ingrosso" type="ecommingape:vendita_ctype" minOccurs="0"/>
+                    <xsd:element name="vendita_congiunta" type="ecommingape:vendita_ctype" minOccurs="0"/>
+                    <xsd:element name="vendita_congiunta_ingrosso" type="ecommingape:vendita_ctype" minOccurs="0"/>
+                    <xsd:element name="vendita_congiunta_dettaglio" type="ecommingape:vendita_ctype" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="vendita_ctype">
+        <xsd:sequence>
+            <xsd:element name="check" type="xsd:boolean"/>
+            <xsd:element name="superficie" type="xsd:double" default="0.0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="commercio_ingrosso_apertura_ctype">
+        <xsd:sequence>
+
+            <xsd:element name="modalita_vendita_ingrosso_superficie" type="ecommingape:modalita_vendita_ingrosso_superficie_base_type" minOccurs="0"/>
+            <!--
+            <xsd:element name="vendita_ingrosso" type="ecommingape:vendita_ctype" minOccurs="0"/>
+            <xsd:element name="vendita_congiunta" type="ecommingape:vendita_ctype" minOccurs="0"/>
+            <xsd:element name="vendita_congiunta_ingrosso" type="ecommingape:vendita_ctype" minOccurs="0"/>
+            <xsd:element name="vendita_congiunta_dettaglio" type="ecommingape:vendita_ctype" minOccurs="0"/>
+            -->
+
+            <xsd:element name="carattere_esercizio" type="ecarese:carattere_esercizio_ctype" minOccurs="0"/>
+            <xsd:element name="settori_merceologici" type="esetmer:settori_merceologici_base_type" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="commercio_ingrosso_apertura" type="ecommingape:commercio_ingrosso_apertura_ctype"/>
+</xsd:schema>
