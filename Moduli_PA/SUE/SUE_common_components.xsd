@@ -295,7 +295,6 @@
         </xs:choice>
     </xs:group>
 
-    <!-- TODO: Damiano YYE7283 -->
     <xs:complexType name="NewRegolaritaUrbanisticaBaseType" abstract="true"/>
 
     <xs:group name="NewRegolaritaUrbanisticaOptionGroup">
@@ -313,9 +312,7 @@
             </xs:choice>
         </xs:sequence>
     </xs:group>
-    <!-- TODO: Damiano YYE7283 -->
 
-    <!-- TODO: Matthia YYE7284 -->
     <xs:group name="NewRegolaritaUrbanisticaPdCOptionGroup">
         <xs:sequence>
             <xs:choice>
@@ -327,7 +324,6 @@
             </xs:choice>
         </xs:sequence>
     </xs:group>
-    <!-- TODO: Matthia YYE7284 -->
     
     <xs:complexType name="copiaDocumentiType">
         <xs:sequence>
@@ -380,7 +376,6 @@
             </xs:sequence>
     </xs:complexType>
 
-    <!-- TODO: Damiano YYE7283 -->
     <xs:complexType name="newOggettoPraticheEdilizieType">
         <xs:sequence>
             <xs:element name="titoloUnico" minOccurs="0" type="aggregate:AttoBaseType"/>
@@ -411,7 +406,6 @@
             </xs:element>
         </xs:sequence>
     </xs:complexType>
-    <!-- TODO: Damiano YYE7283 -->
 
     <xs:complexType name="AltraPraticaEdiliziaType">
         <xs:sequence>
@@ -455,14 +449,10 @@
     <!-- Reference suecommon:TipoInterventiOpereBaseType -->
     <xs:complexType name="TipoInterventiOpereBaseType" abstract="true"/>
 
-    <!-- TODO: Matthia YYE7284 -->
     <xs:complexType name="TipoInterventiOpereSalvaCasaBaseType" abstract="true"/>
     <xs:complexType name="StatoLegittimoBaseType" abstract="true"/>
-    <!-- TODO: Matthia YYE7284 -->
 
-    <!-- TODO: Matthia YYE7284 -->
     <xs:complexType name="SanatoriaAsseverazioneBaseType" abstract="true"/>
-    <!-- TODO: Matthia YYE7284 -->
 
     <!-- Reference suecommon:DatiGeometriciType -->
     <xs:complexType name="DatiGeometriciBaseType" abstract="true"/>
@@ -1072,7 +1062,6 @@
                             </xs:complexType>  
                         </xs:element>
 
-                        <!-- TODO: Matthia YYE7284 -->
                         <!-- v.13.3.3  - (new jira PSUA-2514) solo per SCIA e Permesso di Costruire (Asseverazione) -->
                         <xs:element name="procedimentoAccertamento" minOccurs="0">
                             <xs:annotation><xs:documentation>è assoggettato al procedimento di accertamento della compatibilità paesaggistica</xs:documentation></xs:annotation>
@@ -1086,7 +1075,6 @@
                                 </xs:complexContent>
                             </xs:complexType>
                         </xs:element>
-                        <!-- TODO: Matthia YYE7284 -->
 
                     </xs:choice>
                 </xs:complexType>
@@ -1352,8 +1340,6 @@
 
 
 
-    <!-- TODO: Damiano YYE7283 -->
-
     <xs:complexType name="DichiarazioniTolleranzeBaseType" abstract="true"/>
 
     <xs:complexType name="DichiarazioniTolleranzeType">
@@ -1457,7 +1443,6 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <!-- TODO: Damiano YYE7283 -->
 
 
 
@@ -1639,6 +1624,26 @@
             </xs:sequence>
     </xs:complexType>
 
+
+    <!-- new -->
+    <xs:complexType name="InformativaPrivacyType">
+        <xs:sequence>
+            <xs:element name="informativaPrivacy">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="comuneTitolare" type="xs:string" minOccurs="0" />
+                        <xs:element name="indirizzoTitolare" type="xs:string" minOccurs="0" />
+                        <xs:element name="emailPECTitolare" type="xs:string" minOccurs="0" />
+                        <xs:element name="responsabileTrattamento" type="xs:string" minOccurs="0" />
+                        <xs:element name="comuneRichiesteDiritti" type="xs:string" minOccurs="0" />
+                        <xs:element name="emailRichiesteDiritti" type="xs:string" minOccurs="0" />
+                        <xs:element name="emailResponsabileProtezioneDati" type="xs:string" minOccurs="0" />
+                        <xs:element name="dichiarazioneLetturaInformativa" type="xs:boolean" minOccurs="1" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
 
    
   

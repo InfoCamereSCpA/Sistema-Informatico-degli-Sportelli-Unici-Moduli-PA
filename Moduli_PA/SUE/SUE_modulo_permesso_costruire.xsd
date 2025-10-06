@@ -46,17 +46,11 @@
             
             <!-- DICHIARAZIONI -->
             <xs:element name="qualificazioneIntervento" type="suecommon:QualificazioneInterventoBaseType"/>
-            <!-- TODO: Matthia YYE7284 -->
             <xs:element name="sanatoriaInCorso" type="suecommon:SanatoriaInCorsoBaseType" minOccurs="0" />
-            <!-- TODO: Matthia YYE7284 -->
             <xs:element name="titoloPossesso" type="suecommon:TitoloPossessoType"/>
             <xs:element name="localizzazioneIntervento" type="suecommon:LocalizzazioneInterventoType"/>
             <xs:element name="operePreviste" type="suecommon:OperePrevisteType"/>
-
-            <!-- TODO: Damiano YYE7283 -->
             <xs:element name="newRegolaritaUrbanistica" type="suecommon:NewRegolaritaUrbanisticaBaseType" minOccurs="0"/>
-            <!-- TODO: Damiano YYE7283 -->
-
             <xs:element name="calcoloContributoCostruzione" type="suecommon:CalcoloContributoBaseType"/>
             <xs:element name="tecniciIncaricati" type="permcostr:TecniciIncaricatiDeiLavoriType"/>
             <xs:element name="impreseEsecutrici" type="permcostr:ImpreseEsecutriciDeiLavoriType"/>           
@@ -64,14 +58,11 @@
             <xs:element name="dichiarazionePresaVisioneInformativaPrivacy" type="xs:boolean" />
             
             <!-- RELAZIONE TECNICA DI ASSEVERAZIONE -->
-            <!-- TODO: Matthia YYE7284 -->
             <xs:element name="relazioneTecnicaAsseverazione" type="suecommon:RelazioneTecnicaAsseverazioneType" minOccurs="0" />
-            <!-- TODO: Matthia YYE7284 -->
             
             <!-- ALLEGATI  -->
-            <!-- TODO: Damiano YYE7283 -->
             <xs:element name="tabellaAllegati" type="permcostr:TabellaAllegatiType" minOccurs="0"/>
-            <!-- TODO: Damiano YYE7283 -->
+
         </xs:sequence>
     </xs:complexType>
 
@@ -83,7 +74,6 @@
                 <xs:sequence>
                     <xs:choice>
 
-                        <!-- TODO: Matthia YYE7284 -->
                         <xs:element name="newArticolo10" minOccurs="0">
                             <xs:complexType>
                                 <xs:sequence>
@@ -96,7 +86,6 @@
                                 </xs:sequence>
                             </xs:complexType>
                         </xs:element>
-                        <!-- TODO: Matthia YYE7284 -->
 
                         <xs:element name="assoggettatoSCIA" type="xs:string"/>
                         <xs:element name="conformeDisciplinaUrbanistica" type="basic:EmptyType"/>
@@ -129,7 +118,6 @@
     </xs:complexType>
 
 
-    <!-- TODO: Matthia YYE7284 -->
     <xs:complexType name="SanatoriaInCorsoType">
         <xs:complexContent>
             <xs:extension base="suecommon:SanatoriaInCorsoBaseType">
@@ -192,11 +180,9 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <!-- TODO: Matthia YYE7284 -->
 
 
 
-    <!-- TODO: Damiano YYE7283 -->
     <xs:complexType name="newRegolaritaUrbanisticaType">
         <xs:complexContent>
             <xs:extension base="suecommon:NewRegolaritaUrbanisticaBaseType">
@@ -213,7 +199,6 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <!-- TODO: Damiano YYE7283 -->
 
 
 
@@ -279,7 +264,6 @@
     </xs:complexType>
 
 
-    <!-- TODO: Matthia YYE7284 -->
     <xs:complexType name="TipoInterventiOpere">
         <xs:complexContent>
             <xs:extension base="suecommon:TipoInterventiOpereBaseType">
@@ -330,11 +314,11 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <!-- TODO: Matthia YYE7284 -->
 
 
 
 <!--    <xs:complexType name="TipoInterventiOpere">-->
+    <!-- old -->
 <!--        <xs:complexContent>-->
 <!--            <xs:extension base="suecommon:TipoInterventiOpereBaseType">-->
 <!--                <xs:sequence>-->
@@ -366,7 +350,6 @@
 <!--    </xs:complexType>-->
 
 
-    <!-- TODO: Matthia YYE7284 -->
     <xs:complexType name="NewStatoLegittimoType">
         <xs:complexContent>
             <xs:extension base="suecommon:StatoLegittimoBaseType">
@@ -388,10 +371,8 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <!-- TODO: Matthia YYE7284 -->
 
 
-    <!-- TODO: Matthia YYE7284 -->
     <xs:complexType name="SanatoriaAsseverazioneType">
         <xs:complexContent>
             <xs:extension base="suecommon:SanatoriaAsseverazioneBaseType">
@@ -661,7 +642,6 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <!-- TODO: Matthia YYE7284 -->
 
 
 
@@ -687,7 +667,6 @@
 
 
 
-    <!-- TODO: Damiano YYE7283 -->
     <xs:complexType name="TabellaAllegatiType">
         <xs:sequence>
             <xs:element name="allegatiPermessoCostruire" type="permcostr:AllegatiPermessoCostruireType"/>
@@ -704,11 +683,9 @@
             <xs:element name="allegatoDocumentoIdentita" type="moduli:AllegatoType" minOccurs="0" maxOccurs="unbounded" />
             <xs:element name="allegatoAssensoTerzi" type="moduli:AllegatoType" minOccurs="0" />
             <xs:element name="allegatoModelloISTAT"   type="moduli:AllegatoType" minOccurs="0"/>
-            <!-- TODO: Damiano YYE7283 -->
             <xs:element name="allegatoAccatastamentoPrimoImpianto"   type="moduli:AllegatoType" minOccurs="0"/>
             <xs:element name="allegatoDocumentiProbantiRegolaritaEdiliziaImmobile"   type="moduli:AllegatoType" minOccurs="0"/>
             <xs:element name="allegatoRicevutaPagamentoSanzione"   type="moduli:AllegatoType" minOccurs="0"/>
-            <!-- TODO: Damiano YYE7283 -->
             <xs:element name="allegatoDeterminazioneContributoCostruzione"   type="moduli:AllegatoType" minOccurs="0"/>
             <xs:element name="allegatoPreventivoContributoCostruzione" type="moduli:AllegatoType" minOccurs="0" />
             <xs:element name="allegatoProgettoUrbanizzazione" type="moduli:AllegatoType" minOccurs="0" />
@@ -716,7 +693,6 @@
             <xs:element name="allegatoVersamentoImpostaBollo" type="moduli:AllegatoType" minOccurs="0" />
             <xs:element name="allegatoElaboratiGraficiStatoDiFatto" type="moduli:AllegatoType" minOccurs="0" />
             <xs:element name="allegatoDocumentazioneFotograficaStatoDiFatto" type="moduli:AllegatoBaseType" minOccurs="0" />
-            <!-- TODO: Damiano YYE7283 -->
             <xs:element name="allegatoDocumentazioneStatoLegittimo" type="moduli:AllegatoBaseType" minOccurs="0" />
             <xs:element name="allegatoElaboratiTolleranze" type="moduli:AllegatoBaseType" minOccurs="0" />
             <xs:element name="allegatoAutorizzazioneSismicaTolleranze" type="moduli:AllegatoBaseType" minOccurs="0" />
@@ -726,7 +702,6 @@
             <xs:element name="allegatoRimozioneOpereNonSanate" type="moduli:AllegatoBaseType" minOccurs="0" />
 <!--            <xs:element name="allegatoDocumentoProbanteVariante" type="moduli:AllegatoBaseType" minOccurs="0" />-->
 <!--            <xs:element name="allegatoAutorizzazioneSismicaSanatoria" type="moduli:AllegatoBaseType" minOccurs="0" />-->
-            <!-- TODO: Damiano YYE7283 -->
             <xs:element name="allegatoElaboratiSuperamentoBarriereArchitettoniche" type="moduli:AllegatoType" minOccurs="0"/>
             <xs:element name="allegatoDerogaBarriereArchitettoniche" type="moduli:AllegatoType" minOccurs="0"/>
             <xs:element name="allegatoProgettoImpianti" type="moduli:AllegatoType" minOccurs="0"/>
@@ -746,9 +721,7 @@
             <xs:element name="allegatoRisultatiQualitaTerreni" type="moduli:AllegatoType" minOccurs="0"/>
             <xs:element name="allegatoAutorizzazioniScarichiIdrici" type="moduli:AllegatoType" minOccurs="0"/>
             <xs:element name="allegatoRelazionePaesaggistica" type="moduli:AllegatoType" minOccurs="0"/>
-            <!-- TODO: Damiano YYE7283 -->
             <xs:element name="allegatoDocumentazioneParereVincolante" type="moduli:AllegatoType" minOccurs="0"/>
-            <!-- TODO: Damiano YYE7283 -->
             <xs:element name="allegatoRilascioParereSoprintendenza" type="moduli:AllegatoType" minOccurs="0"/>
             <xs:element name="allegatoRilascioNullaOstaAreaProtetta" type="moduli:AllegatoType" minOccurs="0"/>
             <xs:element name="allegatoRilascioAutorizzazioneVincoloIdrogeologico" type="moduli:AllegatoType" minOccurs="0"/>
@@ -766,6 +739,5 @@
         </xs:sequence>
     </xs:complexType>
 
-    <!-- TODO: Damiano YYE7283 -->
     
 </xs:schema>

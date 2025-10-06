@@ -62,9 +62,7 @@
                     </xs:annotation>
                     <xs:sequence>
                         <xs:element name="tipoDiIntervento" type="cila:TipologiaInterventoBaseType"/>
-                        <!-- TODO: Damiano YYE7283 -->
                         <xs:element name="dichiarazioniTolleranze" type="suecommon:DichiarazioniTolleranzeBaseType" minOccurs="0"/>
-                        <!-- TODO: Damiano YYE7283 -->
                         <!-- 2)	Altre comunicazioni, segnalazioni, asseverazioni etc. (*) -->
                         <xs:element name="altreComunicazioni" type="suecommon:ComunicazioniSegnalazioniBaseType" minOccurs="0" maxOccurs="unbounded"/>
                         <xs:element name="attiDiAssenso" type="suecommon:AttiAssensoType" minOccurs="0" maxOccurs="unbounded"/>
@@ -73,9 +71,9 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <!-- TODO: Damiano YYE7283 -->
+
             <xs:element name="tabellaAllegati" type="cila:TabellaAllegatiType" minOccurs="0"/>
-            <!-- TODO: Damiano YYE7283 -->
+
         </xs:sequence>
     </xs:complexType>
     
