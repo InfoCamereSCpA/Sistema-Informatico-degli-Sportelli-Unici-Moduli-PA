@@ -148,7 +148,7 @@
     <xs:complexType name="AllegatiSCPAType">
         <xs:sequence>
             <xs:element name="allegatoProcuraDelega" type="moduli:AllegatoType" minOccurs="0"/>
-            <xs:element name="allegatoVersamentoDirittiSegreteria" type="moduli:AllegatoType" />
+            <xs:element name="allegatoVersamentoDirittiSegreteria" type="moduli:AllegatoType" minOccurs="0" />
             <xs:element name="allegatoDocumentoIdentita" type="moduli:AllegatoType" minOccurs="0" maxOccurs="unbounded" />
             <xs:element name="allegatoPlanimetricoVarianti" type="moduli:AllegatoType" minOccurs="0" />
             <xs:element name="allegatoConformitaImpianti" type="moduli:AllegatoType" minOccurs="0"/>
@@ -291,7 +291,7 @@
                             <xs:element name="antincendio"  type="scpa:CaratteristicheCertificazioniImpiantiType" minOccurs="0" maxOccurs="1"/>
                             <xs:element name="scariche"  type="scpa:CaratteristicheCertificazioniImpiantiType" minOccurs="0" maxOccurs="1"/>
                             <xs:element name="lineevita"  type="scpa:CaratteristicheCertificazioniImpiantiBaseType"/>
-                            <xs:element name="altro">
+                            <xs:element name="altro" minOccurs="0">
                                 <xs:complexType>
                                     <xs:complexContent>
                                         <xs:extension base="scpa:CaratteristicheCertificazioniImpiantiType">
