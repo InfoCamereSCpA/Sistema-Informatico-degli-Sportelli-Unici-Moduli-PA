@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:estaleg="../02_entities/stato_legittimo"
+            targetNamespace="../02_entities/stato_legittimo"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+
+    <xsd:complexType name="stato_legittimo_base_type" abstract="true"/>
+
+    <xsd:complexType name="new_statolegittimo_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="estaleg:stato_legittimo_base_type">
+                <xsd:sequence>
+                    <!-- X.1 -->
+                    <xsd:element name="stato_legittimo_risultante">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <!-- X.1.1 -->
+                                <xsd:element name="pagamento_sanzione" minOccurs="0" type="xsd:boolean"/>
+                                <!-- X.1.2 -->
+                                <xsd:element name="tolleranze_accertate" minOccurs="0" type="xsd:boolean"/>
+                                <!-- X.1.3 -->
+                                <xsd:element name="sanatoria_regolarizzazioni" minOccurs="0" type="xsd:boolean"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:element name="new_stato_legittimo" type="estaleg:new_statolegittimo_ctype"/>
+</xsd:schema>

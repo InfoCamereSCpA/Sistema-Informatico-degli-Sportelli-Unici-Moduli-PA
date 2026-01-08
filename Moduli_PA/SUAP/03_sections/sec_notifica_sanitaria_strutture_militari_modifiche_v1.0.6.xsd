@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:snotsanstrmilmod="../03_sections/notifica_sanitaria_strutture_militari_modifiche"
+            xmlns:ensmodtipo="../02_entities/notifica_sanitaria_modifica_tipologia"
+            xmlns:enotsanstrmiltipatt="../02_entities/notifica_sanitaria_strutture_militari_tipologia_attivita"
+            xmlns:enotsanstrmildecmod="../02_entities/notifica_sanitaria_strutture_militari_decorrenza_modifiche"
+            targetNamespace="../03_sections/notifica_sanitaria_strutture_militari_modifiche" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/notifica_sanitaria_modifica_tipologia" schemaLocation="../02_entities/ent_notifica_sanitaria_modifica_tipologia_v1.0.6.xsd"/>
+    <xsd:import namespace="../02_entities/notifica_sanitaria_strutture_militari_tipologia_attivita" schemaLocation="../02_entities/ent_notifica_sanitaria_strutture_militari_tipologia_attivita_v1.0.6.xsd"/>
+    <xsd:import namespace="../02_entities/notifica_sanitaria_strutture_militari_decorrenza_modifiche" schemaLocation="../02_entities/ent_notifica_sanitaria_strutture_militari_decorrenza_modifiche_v1.0.6.xsd"/>
+
+
+    <xsd:complexType name="sezione_notifica_sanitaria_modifiche_ctype">
+        <xsd:sequence>
+            <xsd:element name="dati_tipologia_attivita" type="ensmodtipo:notifica_sanitaria_modifica_tipologia_ctype"  minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="tipologia_attivita" type="enotsanstrmiltipatt:notifica_sanitaria_tipologia_attivita_ctype" minOccurs="1" maxOccurs="1" />
+            <xsd:element name="decorrenza_modifiche" type="enotsanstrmildecmod:decorrenza_modifiche_ctype" minOccurs="1" maxOccurs="1" />
+            <xsd:element name="altre_dichiarazioni" type="xsd:string"  minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_notifica_sanitaria_modifiche" type="snotsanstrmilmod:sezione_notifica_sanitaria_modifiche_ctype"/>
+</xsd:schema>

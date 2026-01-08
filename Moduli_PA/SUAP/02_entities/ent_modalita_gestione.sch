@@ -1,5 +1,5 @@
 <!--
-    @data_creazione: 30 July 2025
+    @data_creazione: 24/11/2025
     @version: 1.0.0
 -->
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">

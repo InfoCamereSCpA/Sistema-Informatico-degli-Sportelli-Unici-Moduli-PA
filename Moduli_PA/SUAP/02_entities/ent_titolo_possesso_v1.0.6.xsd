@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:etitpos="../02_entities/titolo_possesso"
+            targetNamespace="../02_entities/titolo_possesso"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+<!--    Riferimento Titolarità Intervento-->
+
+    <xsd:complexType name="titolo_possesso_ctype">
+        <xsd:sequence>
+            <xsd:element name="titolo" type="xsd:string"/>
+            <xsd:choice>
+                <xsd:element name="titolare_esclusivo" type="xsd:boolean"/>
+                <xsd:element name="non_titolare_esclusivo" type="xsd:boolean"/>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="titolo_possesso" type="etitpos:titolo_possesso_ctype"/>
+</xsd:schema>

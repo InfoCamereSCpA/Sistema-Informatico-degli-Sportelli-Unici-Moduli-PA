@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ecalconcospdc="../02_entities/calcolo_contributo_costruzione_pdc"
+            targetNamespace="../02_entities/calcolo_contributo_costruzione_pdc"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <!-- Reference ecalconcospdc:CalcoloContributoBaseType -->
+    <xsd:complexType name="calcolo_contributo_base_type" abstract="true"/>
+
+    <xsd:complexType name="calcolo_contributo_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="ecalconcospdc:calcolo_contributo_base_type">
+                <xsd:choice>
+                    <xsd:element name="titolo_gratuito" type="xsd:string"/>
+                    <xsd:element name="titolo_oneroso">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:choice>
+                                    <xsd:element name="calcolo_sportello" type="xsd:boolean"/>
+                                    <xsd:element name="calcolo_preventivo" type="xsd:boolean"/>
+                                </xsd:choice>
+                                <xsd:element name="versamento" minOccurs="0">
+                                    <xsd:complexType>
+                                        <xsd:choice>
+                                            <xsd:element name="momento_ritiro" type="xsd:boolean"/>
+                                            <xsd:element name="chiede_rateizzazione">
+                                                <xsd:complexType>
+                                                    <xsd:sequence>
+                                                        <xsd:element name="corrisponde_in_corso" minOccurs="0" type="xsd:boolean"/>
+                                                    </xsd:sequence>
+                                                </xsd:complexType>
+                                            </xsd:element>
+                                        </xsd:choice>
+                                    </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="oneri_urbanizzazione" minOccurs="0" type="xsd:boolean"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="calcolo_contributo_costruzione_pdc" type="ecalconcospdc:calcolo_contributo_ctype"/>
+</xsd:schema>

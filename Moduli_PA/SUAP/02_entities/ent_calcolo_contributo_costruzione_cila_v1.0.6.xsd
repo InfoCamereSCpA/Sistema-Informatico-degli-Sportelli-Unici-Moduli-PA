@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ecalconcoscila="../02_entities/calcolo_contributo_costruzione_cila"
+            targetNamespace="../02_entities/calcolo_contributo_costruzione_cila"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+
+    <!-- Reference ecalconcoscila:CalcoloContributoBaseType -->
+    <xsd:complexType name="calcolo_contributo_base_type" abstract="true"/>
+
+
+    <!-- f) Calcolo del contributo di costruzione (*) -->
+    <xsd:complexType name="calcolo_contributo_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="ecalconcoscila:calcolo_contributo_base_type">
+                <xsd:choice>
+                    <xsd:element name="titolo_gratuito" type="xsd:boolean"/>
+                    <xsd:element name="titolo_oneroso">
+                        <xsd:complexType>
+                            <xsd:choice>
+                                <xsd:element name="ric_versamento" type="xsd:boolean"/>
+                                <xsd:element name="versamento_inizio_lavori" type="xsd:boolean"/>
+                            </xsd:choice>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="calcolo_contributo_costruzione_cila" type="ecalconcoscila:calcolo_contributo_ctype"/>
+</xsd:schema>

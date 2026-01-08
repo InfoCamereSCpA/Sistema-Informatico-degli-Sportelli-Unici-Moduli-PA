@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sideimm="../03_sections/identificativo_catastale"
+            xmlns:eideimm="../02_entities/identificativo_catastale"
+            xmlns:eubiimm="../02_entities/ubicazione_immobile"
+            targetNamespace="../03_sections/identificativo_catastale" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/ubicazione_immobile" schemaLocation="../02_entities/ent_ubicazione_immobile_v1.0.6.xsd"/>
+    <xsd:import namespace="../02_entities/identificativo_catastale" schemaLocation="../02_entities/ent_identificativo_catastale_v1.0.6.xsd" />
+
+    <xsd:complexType name="sezione_identificativo_catastale_ctype">
+        <xsd:sequence>
+            <xsd:element name="ubicazione_immobile" type="eubiimm:identificativi_immobile_base_type" minOccurs="0"/>
+            <xsd:element name="dati_catastali" type="eideimm:coordinate_catastali_ctype" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_identificativo_catastale" type="sideimm:sezione_identificativo_catastale_ctype"/>
+
+</xsd:schema>

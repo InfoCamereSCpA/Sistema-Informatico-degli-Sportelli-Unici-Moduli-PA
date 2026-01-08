@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eimpeselavcila="../02_entities/impresa_esecutrice_lavori_cila"
+            targetNamespace="../02_entities/impresa_esecutrice_lavori_cila"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+
+    <xsd:complexType name="cila_imprese_esecutrici_dei_lavori_ctype">
+        <xsd:choice>
+            <xsd:element name="da_soggetti_coinvolti" type="xsd:boolean"/>
+            <xsd:element name="no_privati_ditte_esterne" type="eimpeselavcila:no_privati_ditte_esterne_base_type"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="no_privati_ditte_esterne_base_type" abstract="true"/>
+
+    <xsd:complexType name="no_privati_ditte_esterne_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eimpeselavcila:no_privati_ditte_esterne_base_type">
+                <xsd:sequence>
+                    <xsd:element name="no_privati_ditte_esterne" type="xsd:boolean"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:element name="impresa_esecutrice_lavori_cila" type="eimpeselavcila:cila_imprese_esecutrici_dei_lavori_ctype"/>
+</xsd:schema>

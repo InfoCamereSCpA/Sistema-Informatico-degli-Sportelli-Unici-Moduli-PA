@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:scommingvar="../03_sections/commercio_ingrosso_variazione"
+            xmlns:ecommingvar="../02_entities/commercio_ingrosso_variazione"
+
+            targetNamespace="../03_sections/commercio_ingrosso_variazione" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/commercio_ingrosso_variazione" schemaLocation="../02_entities/ent_commercio_ingrosso_variazione_v1.0.6.xsd"/>
+
+    <xsd:complexType name="sezione_commercio_ingrosso_variazione_ctype">
+        <xsd:sequence>
+            <xsd:element name="commercio_ingrosso_variazione" type="ecommingvar:commercio_ingrosso_variazione_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_commercio_ingrosso_variazione" type="scommingvar:sezione_commercio_ingrosso_variazione_ctype"/>
+
+</xsd:schema>

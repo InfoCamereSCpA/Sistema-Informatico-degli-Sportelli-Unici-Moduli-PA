@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:etuteco="../02_entities/tutela_ecologica"
+            targetNamespace="../02_entities/tutela_ecologica"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <!-- Reference etuteco:TutelaEcologicaType -->
+    <xsd:complexType name="tutela_ecologica_base_type" abstract="true"/>
+
+    <xsd:complexType name="tutela_ecologica_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="etuteco:tutela_ecologica_base_type">
+                <xsd:sequence>
+                    <xsd:element name="fascia_rispetto_depuratori" minOccurs="0" type="xsd:boolean"/>
+                    <xsd:element name="fascia_rispetto_pozzi" minOccurs="0" type="xsd:boolean"/>
+                    <xsd:element name="altro" minOccurs="0" type="xsd:string"/>
+                    <xsd:element name="allegati_per_vincoli">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="autocertificazioni_conformita" minOccurs="0" type="xsd:boolean"/>
+                                <xsd:element name="documentazione_atti_di_assenso" minOccurs="0" type="xsd:boolean"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="tutela_ecologica" type="etuteco:tutela_ecologica_ctype"/>
+</xsd:schema>

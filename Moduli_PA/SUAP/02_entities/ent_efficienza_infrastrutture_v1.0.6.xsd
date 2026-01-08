@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eeffinf="../02_entities/efficienza_infrastrutture"
+            targetNamespace="../02_entities/efficienza_infrastrutture"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+
+
+    <!-- Reference eeffinf:EfficienzaInfrastruttureType -->
+    <xsd:complexType name="efficienza_infrastrutture_base_type" abstract="true"/>
+
+    <xsd:complexType name="efficienza_infrastrutture_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eeffinf:efficienza_infrastrutture_base_type">
+                <xsd:sequence>
+                    <xsd:element name="stradale" minOccurs="0" type="xsd:string"/>
+                    <xsd:element name="ferroviario" minOccurs="0" type="xsd:boolean"/>
+                    <xsd:element name="elettrodotto" minOccurs="0" type="xsd:boolean"/>
+                    <xsd:element name="gasdotto" minOccurs="0" type="xsd:boolean"/>
+                    <xsd:element name="militare" minOccurs="0" type="xsd:boolean"/>
+                    <xsd:element name="aeroportuale" minOccurs="0" type="xsd:boolean"/>
+                    <xsd:element name="altro" minOccurs="0" type="xsd:string"/>
+                    <xsd:element name="allegati_per_vincoli">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="autocertificazioni_conformita" minOccurs="0" type="xsd:boolean"/>
+                                <xsd:element name="documentazione_atti_di_assenso" minOccurs="0" type="xsd:boolean"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="efficienza_infrastrutture" type="eeffinf:efficienza_infrastrutture_ctype"/>
+</xsd:schema>

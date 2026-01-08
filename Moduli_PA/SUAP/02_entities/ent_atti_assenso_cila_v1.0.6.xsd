@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eattasscila="../02_entities/atti_assenso_cila"
+            targetNamespace="../02_entities/atti_assenso_cila"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+
+    <!-- Reference suecommon:AttiAssensoType -->
+    <xsd:complexType name="atti_assenso_ctype">
+        <xsd:sequence>
+            <xsd:element name="tipo_atto" minOccurs="0"  type="xsd:string"/>
+            <xsd:element name="autorita_competente" minOccurs="0" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="atti_assenso_cila" type="eattasscila:atti_assenso_ctype"/>
+</xsd:schema>

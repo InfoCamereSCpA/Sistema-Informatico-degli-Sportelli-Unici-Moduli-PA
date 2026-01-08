@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mcominilav="../04_forms/comunicazione_inizio_lavori"
+            xmlns:sanacominilavsue="../03_sections/anagrafica_comunicazione_inizio_lavori_sue"
+            xmlns:sdiccil="../03_sections/dichiarazioni_cil"
+            xmlns:sallegatisue="../03_sections/allegati_sue"
+            targetNamespace="../04_forms/comunicazione_inizio_lavori" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/anagrafica_comunicazione_inizio_lavori_sue" schemaLocation="../03_sections/sec_anagrafica_comunicazione_inizio_lavori_sue_v1.0.6.xsd"/>
+    <xsd:import namespace="../03_sections/dichiarazioni_cil" schemaLocation="../03_sections/sec_dichiarazioni_cil_v1.0.6.xsd"/>
+    <xsd:import namespace="../03_sections/allegati_sue" schemaLocation="../03_sections/sec_allegati_sue_v1.0.6.xsd"/>
+
+    <xsd:complexType name="modulo_comunicazione_inizio_lavori_ctype">
+        <xsd:sequence>
+            <!-- SOGGETTI -->
+            <xsd:element name="scheda_anagrafica" type="sanacominilavsue:titolare_ctype" minOccurs="0" />
+
+            <!-- DICHIARAZIONI -->
+            <xsd:element name="dichiarazioni" type="sdiccil:sezione_dichiarazioni_cil_ctype" minOccurs="0" />
+
+            <!-- ALLEGATI  -->
+            <xsd:element name="tabella_allegati" type="sallegatisue:allegati_sue_ctype" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_comunicazione_inizio_lavori" type="mcominilav:modulo_comunicazione_inizio_lavori_ctype"/>
+
+</xsd:schema>

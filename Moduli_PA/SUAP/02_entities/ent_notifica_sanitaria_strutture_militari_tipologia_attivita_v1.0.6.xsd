@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:enotsanstrmiltipatt="../02_entities/notifica_sanitaria_strutture_militari_tipologia_attivita"
+
+            targetNamespace="../02_entities/notifica_sanitaria_strutture_militari_tipologia_attivita" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <xsd:complexType name="notifica_sanitaria_tipologia_attivita_ctype">
+        <xsd:sequence>
+            <!-- Produzione primaria -->
+            <xsd:element name="prodotti_forno_pasticceria" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="pasta_farinacei_simili" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="pane_pizza_altri_forno" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="prodotti_pasticceria" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="prodotti_gelateria" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="cacao_pastigliaggi" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="cibi_pronti" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="produzione_cibi_pronti" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="distributori" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="automatici_alimenti_bevande" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="acqua_potabile_trattata" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="ristorazione" minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="produzione_pasti_pronti_ristorazione_collettiva" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="somministrazione_pasti_ristorazione_collettiva" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="somministrazione_diretta_ristorazione_pubblica" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="bar_assimilati" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="ristorazione_pubblica_in_manifestazioni_temporanee" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="altro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="notifica_sanitaria_strutture_militari_tipologia_attivita" type="enotsanstrmiltipatt:notifica_sanitaria_tipologia_attivita_ctype"/>
+</xsd:schema>

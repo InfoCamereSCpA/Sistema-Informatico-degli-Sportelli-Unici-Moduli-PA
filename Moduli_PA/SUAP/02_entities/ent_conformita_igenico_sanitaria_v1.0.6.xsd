@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:econigesan="../02_entities/conformita_igenico_sanitaria"
+            targetNamespace="../02_entities/conformita_igenico_sanitaria"
+
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <!-- Reference econigesan:ConformitaSanitariaType -->
+    <xsd:complexType name="conformita_sanitaria_base_type" abstract="true"/>
+
+    <xsd:complexType name="conformita_sanitaria_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="econigesan:conformita_sanitaria_base_type">
+                <xsd:choice>
+                    <!-- V.11.1 -->
+                    <xsd:element name="conforme" type="xsd:boolean"/>
+                    <!-- V.11.2 -->
+                    <xsd:element name="non_conforme">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element type="xsd:boolean" name="non_conforme_allegato_richiesta_deroga" />
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <!-- V.11.3 (new jira PSUA-2514) -->
+                    <xsd:element name="conforme_art_24" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <!-- V.11.3.1 -->
+                                <xsd:element name="altezza_minima_interna" type="econigesan:dati_locali_ctype"/>
+                                <!-- V.11.3.2 -->
+                                <xsd:element name="alloggio_mono_stanza_una_persona"
+                                             type="econigesan:dati_locali_ctype"/>
+                                <!-- V.11.3.3 -->
+                                <xsd:element name="alloggio_mono_stanza_due_persona"
+                                             type="econigesan:dati_locali_ctype"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <!-- Reference econigesan:ConformitaSanitariaType -->
+
+    <xsd:complexType name="dati_locali_ctype">
+        <xsd:sequence>
+            <!-- V.11.3.2.x -->
+            <xsd:element name="requisito_adattabilita" minOccurs="0" type="xsd:boolean"/>
+            <xsd:element name="recupero_edilizio" minOccurs="0" type="xsd:boolean"/>
+            <xsd:element name="ristrutturazione_norme_igenico_sanitarie" minOccurs="0" type="xsd:boolean"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="conformita_igenico_sanitaria" type="econigesan:conformita_sanitaria_ctype"/>
+</xsd:schema>

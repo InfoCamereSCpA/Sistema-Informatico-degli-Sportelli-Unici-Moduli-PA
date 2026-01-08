@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:equaintscia="../02_entities/qualificazione_intervento_scia"
+            targetNamespace="../02_entities/qualificazione_intervento_scia"
+            xmlns:ctipi="../commons/tipi"
+            xmlns:eproto="../02_entities/protocollo"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="../02_entities/ent_protocollo_v1.0.6.xsd"/>
+
+
+    <!--     Reference suecommon:QualificazioneInterventoBaseType -->
+    <xsd:complexType name="qualificazione_intervento_base_type" abstract="true"/>
+
+    <!-- Reference scia: Presentazione della SCIA/SCIA Unica/SCIA Condizionata -->
+    <xsd:complexType name="qualificazione_intervento_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="equaintscia:qualificazione_intervento_base_type">
+                <xsd:sequence>
+                    <xsd:choice>
+                        <xsd:element name="manutenzione_straordinaria"
+                                     type="equaintscia:qualificazione_intervento_ristrutturazione_mutamento_ctype"/>
+                        <xsd:element name="manutenzione_restauro"
+                                     type="equaintscia:qualificazione_intervento_ristrutturazione_mutamento_ctype"/>
+                        <xsd:element name="manutenzione_ristrutturazione"
+                                     type="equaintscia:qualificazione_intervento_ristrutturazione_mutamento_ctype"/>
+
+                        <xsd:element name="variante_in_corso_dopera_permesso_di_costruire_nr_protocollo"
+                                     type="eproto:numero_registrazione_stype" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="variante_in_corso_dopera_permesso_di_costruire_data_protocollo"
+                                     type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+
+                        <xsd:element name="variante_in_corso_dopera_scia_nr_protocollo"
+                                     type="eproto:numero_registrazione_stype"/>
+                        <xsd:element name="variante_in_corso_dopera_scia_data_protocollo" type="ctipi:ggmmaaaa_stype"/>
+
+                        <xsd:element name="variante_in_corso_dopera_variazione_essenziale" type="xsd:boolean"/>
+
+
+
+                        <xsd:element name="mutamento_destinazione_uso_singola_unita">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:choice>
+                                        <xsd:element name="senza_opere_categoria_singola_unita" type="xsd:boolean"/>
+                                        <xsd:element name="senza_opere_tra_categorie_singola_unita" type="xsd:boolean"/>
+                                        <xsd:element name="con_opere_categoria_singola_unita" type="xsd:boolean"/>
+                                        <xsd:element name="con_opere_tra_categorie_singola_unita" type="xsd:boolean"/>
+                                    </xsd:choice>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+
+                        <xsd:element name="mutamento_destinazione_uso_intero_immobile">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:choice>
+                                        <xsd:element name="con_opere" type="xsd:boolean"/>
+                                        <xsd:element name="senza_opere" type="xsd:boolean"/>
+                                    </xsd:choice>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+
+                    </xsd:choice>
+                    <xsd:choice>
+                        <xsd:element name="procedimento_automatizzato" type="xsd:boolean"/>
+                        <xsd:element name="procedimento_ordinario" type="xsd:boolean"/>
+                    </xsd:choice>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="qualificazione_intervento_ristrutturazione_mutamento_ctype">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="no_mutamento" type="xsd:boolean"/>
+                <xsd:element name="mutamento_categoria_singola_unita" type="xsd:boolean"/>
+                <xsd:element name="mutamento_tra_categorie_singola_unita" type="xsd:boolean"/>
+                <xsd:element name="mutamento_categoria_intero_immobile" type="xsd:boolean"/>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="qualificazione_intervento_scia" type="equaintscia:qualificazione_intervento_ctype"/>
+</xsd:schema>

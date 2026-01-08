@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ebararcsca="../02_entities/barriere_architettoniche_sca"
+            targetNamespace="../02_entities/barriere_architettoniche_sca"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+
+
+    <xsd:complexType name="barriere_architettoniche_ctype">
+        <xsd:sequence>
+            <xsd:element name="non_soggetto_prescrizioni" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="soggetto_prescrizioni" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="soggetto_prescrizioni_edifico_pubblico" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+
+    <xsd:element name="barriere_architettoniche_sca" type="ebararcsca:barriere_architettoniche_ctype"/>
+</xsd:schema>

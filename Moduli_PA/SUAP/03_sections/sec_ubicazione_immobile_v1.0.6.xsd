@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:subiimm="../03_sections/ubicazione_immobile"
+            xmlns:eubiimm="../02_entities/ubicazione_immobile"
+            targetNamespace="../03_sections/ubicazione_immobile" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/ubicazione_immobile" schemaLocation="../02_entities/ent_ubicazione_immobile_v1.0.6.xsd"/>
+
+    <xsd:complexType name="sezione_ubicazione_immobile_ctype">
+        <xsd:sequence>
+            <xsd:element name="dati_immobile" type="eubiimm:ubicazione_immobile_ctype" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_ubicazione_immobile" type="subiimm:sezione_ubicazione_immobile_ctype"/>
+
+</xsd:schema>

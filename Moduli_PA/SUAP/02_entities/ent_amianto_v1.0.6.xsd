@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eami="../02_entities/amianto"
+            targetNamespace="../02_entities/amianto"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+
+    <!-- Reference suecommon:AmiantoType -->
+    <xsd:complexType name="amianto_ctype">
+        <xsd:choice>
+            <xsd:element name="non_interessano" type="xsd:boolean"/>
+            <xsd:element name="interessano">
+                <xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element name="piano_di_lavoro_allegato" type="eami:piano_di_lavoro_allegato_base_type" minOccurs="0"/>
+                        <xsd:element name="piano_di_lavoro_prima_inizio_lavori" type="xsd:boolean" minOccurs='0'/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:complexType name="piano_di_lavoro_allegato_base_type" abstract="true"/>
+
+    <xsd:complexType name="piano_di_lavoro_allegato_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eami:piano_di_lavoro_allegato_base_type">
+                <xsd:sequence>
+                    <xsd:element name="piano_di_lavoro_prima_inizio_lavori" type="xsd:boolean" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:element name="amianto" type="eami:amianto_ctype"/>
+</xsd:schema>

@@ -1,0 +1,34 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:scomfinlav="../03_sections/comunicazione_fine_lavori"
+            xmlns:ecomfinlav="../02_entities/comunicazione_fine_lavori"
+            xmlns:eallperana="../02_entities/allegato_persona_anagrafica"
+            targetNamespace="../03_sections/comunicazione_fine_lavori" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/comunicazione_fine_lavori" schemaLocation="../02_entities/ent_comunicazione_fine_lavori_v1.0.6.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_persona_anagrafica" schemaLocation="../02_entities/ent_allegato_persona_anagrafica_v1.0.6.xsd"/>
+
+
+
+    <xsd:complexType name="sezione_comunicazione_fine_lavori_ctype">
+        <xsd:sequence>
+            <xsd:element name="fine_lavori" type="ecomfinlav:fine_lavori_ctype" minOccurs="1" />
+            <xsd:element name="dichiarazione_presa_visione_informativa_privacy" type="xsd:boolean" />
+            <xsd:element name="soggetti_coinvolti" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="it">
+                            Compilare solo in caso di più di un Titolare
+                            (I seguenti campi sono da compilare solo qualora i dati siano diversi da quelli indicati nei titoli/comunicazioni che hanno legittimato l’intervento)
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:sequence>
+                        <xsd:element name="scheda_titolare" type="eallperana:allegato_persona_anagrafica_ctype" minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_comunicazione_cessazione" type="scomfinlav:sezione_comunicazione_fine_lavori_ctype"/>
+</xsd:schema>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:edicreqaut="../02_entities/dichiarazioni_requisiti_autoscuole"
+    xmlns:ctipi="../commons/tipi"
+    xmlns:ealtdicalt="../02_entities/altre_dichiarazioni_altro"
+    xmlns:eproto="../02_entities/protocollo" targetNamespace="../02_entities/dichiarazioni_requisiti_autoscuole" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/altre_dichiarazioni_altro" schemaLocation="../02_entities/ent_altre_dichiarazioni_altro_v1.0.6.xsd"/>
+
+    <xsd:complexType name="dichiarazioni_requisiti_autoscuole_ctype">
+        <xsd:sequence>
+            <xsd:element name="sede_principale" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="possesso_diploma_istruzione_secondo_grado" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="in" type="xsd:string"/>
+                                    <xsd:element name="luogo" type="xsd:string"/>
+                                    <xsd:element name="anno_scolastico_da">
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:integer">
+                                                <xsd:minInclusive value="1"/>
+                                                <xsd:maxInclusive value="9999"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element name="anno_scolastico_a">
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:integer">
+                                                <xsd:minInclusive value="1"/>
+                                                <xsd:maxInclusive value="9999"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+
+                        <xsd:group ref="edicreqaut:possesso_requisti_insegnante_group"/>
+
+                        <xsd:element name="esperienza_biennale_insegnante" type="edicreqaut:tabella_esperienza_insegnante_ctype" minOccurs="0" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+
+            <xsd:element name="sede_ulteriore" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="nominativo" type="xsd:string"/>
+                        <xsd:element name="in_organico_come">
+                            <xsd:complexType>
+                                <xsd:choice>
+                                    <xsd:element name="dipendente" type="xsd:boolean"/>
+                                    <xsd:element name="collaboratore_familiare" type="xsd:boolean"/>
+                                    <xsd:element name="socio" type="xsd:boolean"/>
+                                    <xsd:element name="amministratore" type="xsd:boolean"/>
+                                </xsd:choice>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:group name="possesso_requisti_insegnante_group">
+        <xsd:sequence>
+            <xsd:element name="possesso_abilitazione_insegnante_teoria" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="atto_rilascio" type="edicreqaut:atto_rilascio_da_ctype"/>
+                        <xsd:element name="data_rinnovo" type="ctipi:ggmmaaaa_stype"/>
+                        <xsd:element name="luogo_rinnovo" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="possesso_abilitazione_insegnante_guida" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="atto_rilascio" type="edicreqaut:atto_rilascio_da_ctype"/>
+                        <xsd:element name="data_rinnovo" type="ctipi:ggmmaaaa_stype"/>
+                        <xsd:element name="luogo_rinnovo" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:complexType name="atto_rilascio_da_ctype">
+        <xsd:sequence>
+            <xsd:element name="numero" type="xsd:string"/>
+            <xsd:element name="data" type="ctipi:ggmmaaaa_stype"/>
+            <xsd:element name="rilasciata_da" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tabella_docenti">
+        <xsd:sequence>
+            <xsd:element name="docenti" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="nome" type="xsd:string"/>
+                        <xsd:element name="cognome" type="xsd:string"/>
+
+                        <xsd:element name="in_qualita_di">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="insegnante" type="xsd:boolean"/>
+                                    <xsd:element name="istruttore" type="xsd:boolean"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="tabella_esperienza_insegnante_ctype">
+        <xsd:sequence>
+            <xsd:element name="esperienza" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="denominazione" type="xsd:string"/>
+                        <xsd:element name="provincia" type="xsd:string"/>
+                        <xsd:element name="da" type="ctipi:ggmmaaaa_stype"/>
+                        <xsd:element name="a" type="ctipi:ggmmaaaa_stype"/>
+
+                        <xsd:element name="in_qualita_di">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="insegnante" type="xsd:boolean"/>
+                                    <xsd:element name="istruttore" type="xsd:boolean"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="dichiarazioni_requisiti_autoscuole" type="edicreqaut:dichiarazioni_requisiti_autoscuole_ctype"/>
+</xsd:schema>

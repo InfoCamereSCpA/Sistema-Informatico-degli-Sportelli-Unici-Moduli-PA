@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:easssca="../02_entities/assevera_sca"
+            targetNamespace="../02_entities/assevera_sca"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <!-- DICHIARAZIONE ASSEVERATA -->
+    <xsd:complexType name="assevera_ctype">
+        <xsd:choice>
+            <xsd:element name="agibilita_immobile" type="xsd:boolean"/>
+            <xsd:element name="agibilita_parziale_edifici"  type="xsd:boolean"/>
+            <xsd:element name="agibilita_parziale_singoli_immobili"  type="xsd:boolean"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:element name="assevera_sca" type="easssca:assevera_ctype"/>
+</xsd:schema>

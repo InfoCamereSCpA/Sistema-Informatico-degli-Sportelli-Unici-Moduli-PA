@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eprescia="../02_entities/presentazione_scia"
+            targetNamespace="../02_entities/presentazione_scia"
+            xmlns:ctipi="../commons/tipi"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <!-- Reference scia: Presentazione della SCIA/SCIA Unica/SCIA Condizionata -->
+    <xsd:complexType name="presentazione_ctype">
+        <xsd:choice>
+            <xsd:element name="scia" type="ctipi:ggmmaaaa_stype"/>
+            <xsd:element name="scia_unica" type="ctipi:ggmmaaaa_stype"/>
+            <xsd:element name="scia_condizionata" type="xsd:boolean" />
+        </xsd:choice>
+    </xsd:complexType>
+
+    <!-- Reference scia alternativa: PresentazioneBaseType -->
+    <xsd:complexType name="presentazione_scia_alternativa_base_ctype" abstract="true"/>
+    <xsd:complexType name="presentazione_scia_alternativa_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eprescia:presentazione_scia_alternativa_base_ctype">
+                <xsd:choice>
+                    <xsd:element name="scia_alternativa" type="xsd:boolean" minOccurs='0'/>
+                    <xsd:element name="scia_unica" type="xsd:boolean" minOccurs='0'/>
+                    <xsd:element name="scia_condizionata" type="xsd:boolean" minOccurs='0' />
+                </xsd:choice>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="presentazione_scia" type="eprescia:presentazione_ctype"/>
+</xsd:schema>

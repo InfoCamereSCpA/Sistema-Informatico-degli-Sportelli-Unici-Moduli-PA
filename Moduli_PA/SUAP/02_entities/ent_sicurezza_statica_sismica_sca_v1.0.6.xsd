@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:esicstasissca="../02_entities/sicurezza_statica_sismica_sca"
+            xmlns:eprosta="../02_entities/protocollo_standard"
+            targetNamespace="../02_entities/sicurezza_statica_sismica_sca"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/allegato_persona_anagrafica"
+                schemaLocation="../02_entities/ent_allegato_persona_anagrafica_v1.0.6.xsd"/>
+    <xsd:import namespace="../02_entities/protocollo_standard" schemaLocation="../02_entities/ent_protocollo_standard_v1.0.6.xsd"/>
+
+
+    <!-- Sicurezza Statica Sismica -->
+    <xsd:complexType name="sicurezza_statica_sismica_base_type" abstract="true"/>
+    
+    
+    <xsd:complexType name="sicurezza_statica_sismica_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esicstasissca:sicurezza_statica_sismica_base_type">
+                <xsd:sequence>
+                    <xsd:choice>
+                        <xsd:element name="non_ha_interessato_strutture"  type="xsd:boolean"/>
+                        <xsd:element name="ha_interessato_strutture">
+                            <xsd:complexType>
+                                <xsd:choice>
+                                    <xsd:element name="certificato_collaudo_statico"  type="xsd:boolean"/>
+                                    <xsd:element name="estremi_collaudo_statico" type="esicstasissca:protocollo_ctype"/>
+                                    <xsd:element name="dichiarazione_esecuzione_interventi" type="xsd:boolean"/>
+                                    <xsd:element name="estremi_dichiarazione_esecuzione_interventi" type="esicstasissca:protocollo_ctype"/>
+                                    <xsd:element name="no_collaudo_statico"  type="xsd:boolean"/>
+                                </xsd:choice>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:choice>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+
+    <xsd:complexType name="protocollo_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eprosta:protocollo_standard_ctype">
+                <xsd:sequence>
+                    <xsd:element name="presso" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+
+    <xsd:element name="sicurezza_statica_sismica_sca" type="esicstasissca:sicurezza_statica_sismica_ctype"/>
+</xsd:schema>

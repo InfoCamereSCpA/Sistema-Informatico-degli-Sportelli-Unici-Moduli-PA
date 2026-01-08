@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mscia="../04_forms/scia"
+            xmlns:sanasue="../03_sections/anagrafica_sue"
+            xmlns:sallegatisue="../03_sections/allegati_sue"
+            xmlns:sdicscia="../03_sections/dichiarazioni_scia"
+            xmlns:sreltecassscia="../03_sections/relazione_tecnica_asseverazione_scia"
+
+            targetNamespace="../04_forms/scia" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/anagrafica_sue" schemaLocation="../03_sections/sec_anagrafica_sue_v1.0.6.xsd"/>
+    <xsd:import namespace="../03_sections/allegati_sue" schemaLocation="../03_sections/sec_allegati_sue_v1.0.6.xsd"/>
+    <xsd:import namespace="../03_sections/dichiarazioni_scia" schemaLocation="../03_sections/sec_dichiarazioni_scia_v1.0.6.xsd"/>
+    <xsd:import namespace="../03_sections/relazione_tecnica_asseverazione_scia" schemaLocation="../03_sections/sec_relazione_tecnica_asseverazione_scia_v1.0.6.xsd"/>
+
+
+
+    <xsd:complexType name="modulo_scia_ctype">
+        <xsd:sequence>
+            <!-- SOGGETTI -->
+            <xsd:element name="scheda_anagrafica" type="sanasue:sezione_anagrafica_sue_ctype" minOccurs="0" />
+
+            <!-- DICHIARAZIONI -->
+            <xsd:element name="dichiarazioni" type="sdicscia:sezione_dichiarazioni_scia_ctype" minOccurs="0" />
+
+            <!-- RELAZIONE TECNICA DI ASSEVERAZIONE -->
+            <xsd:element name="relazione_tecnica_asseverazione" type="sreltecassscia:sezione_relazione_tecnica_asseverazione_scia_ctype" minOccurs="0" />
+
+            <!-- ALLEGATI  -->
+            <xsd:element name="tabella_allegati" type="sallegatisue:allegati_sue_ctype" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_scia" type="mscia:modulo_scia_ctype"/>
+
+</xsd:schema>

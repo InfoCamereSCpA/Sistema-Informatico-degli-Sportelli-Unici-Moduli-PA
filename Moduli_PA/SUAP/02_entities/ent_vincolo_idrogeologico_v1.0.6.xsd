@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:evicidrgeo="../02_entities/vincolo_idrogeologico"
+            targetNamespace="../02_entities/vincolo_idrogeologico"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <!-- Reference evicidrgeo:VincoloIdrogeologicoType -->
+    <xsd:complexType name="vincolo_idrogeologico_base_type" abstract="true"/>
+
+    <xsd:complexType name="vincolo_idrogeologico_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="evicidrgeo:vincolo_idrogeologico_base_type">
+                <xsd:choice>
+                    <xsd:element name="non_sottoposto_tutela" type="xsd:boolean"/>
+                    <xsd:element name="tutela_senza_autorizzazione" type="xsd:boolean"/>
+                    <xsd:element name="sottoposto_tutela">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element  name="sottoposto_tutela_allegato_documentazione" type="xsd:boolean"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                 </xsd:choice>
+            </xsd:extension>
+        </xsd:complexContent>
+            </xsd:complexType>
+
+
+    <xsd:element name="vincolo_idrogeologico" type="evicidrgeo:vincolo_idrogeologico_ctype"/>
+</xsd:schema>

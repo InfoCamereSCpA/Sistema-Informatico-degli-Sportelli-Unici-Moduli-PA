@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:einfoprisue="../02_entities/informativa_privacy_sue"
+            targetNamespace="../02_entities/informativa_privacy_sue" elementFormDefault="qualified"
+            attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <xsd:complexType name="informativa_privacy_ctype">
+        <xsd:sequence>
+            <xsd:element name="comune_titolare" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="indirizzo_titolare" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="email_pectitolare" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="responsabile_trattamento" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="comune_richieste_diritti" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="email_richieste_diritti" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="email_responsabile_protezione_dati" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="dichiarazione_lettura_informativa" type="xsd:boolean" minOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="informativa_privacy_sue" type="einfoprisue:informativa_privacy_ctype"/>
+</xsd:schema>

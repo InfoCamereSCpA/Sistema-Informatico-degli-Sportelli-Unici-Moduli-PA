@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:esicimpsca="../02_entities/sicurezza_impianti_sca"
+
+            targetNamespace="../02_entities/sicurezza_impianti_sca"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/allegato_persona_anagrafica"
+                schemaLocation="../02_entities/ent_allegato_persona_anagrafica_v1.0.6.xsd"/>
+
+    <!-- Sicurezza Impianti table : start -->
+    <xsd:complexType name="sicurezza_impianti_ctype">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="nessun_impianto" type="xsd:boolean"/>
+                <xsd:element name="impianti_con_certificazione">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="elettrico"
+                                         type="esicimpsca:caratteristiche_certificazioni_impianti_ctype" minOccurs="0"
+                                         maxOccurs="1"/>
+                            <xsd:element name="radiotel" type="esicimpsca:caratteristiche_certificazioni_impianti_ctype"
+                                         minOccurs="0" maxOccurs="1"/>
+                            <xsd:element name="riscaldamento"
+                                         type="esicimpsca:caratteristiche_certificazioni_impianti_ctype" minOccurs="0"
+                                         maxOccurs="1"/>
+                            <xsd:element name="idrico" type="esicimpsca:caratteristiche_certificazioni_impianti_ctype"
+                                         minOccurs="0" maxOccurs="1"/>
+                            <xsd:element name="gas" type="esicimpsca:caratteristiche_certificazioni_impianti_ctype"
+                                         minOccurs="0" maxOccurs="1"/>
+                            <xsd:element name="ascensori"
+                                         type="esicimpsca:caratteristiche_certificazioni_impianti_ctype" minOccurs="0"
+                                         maxOccurs="1"/>
+                            <xsd:element name="antincendio"
+                                         type="esicimpsca:caratteristiche_certificazioni_impianti_ctype" minOccurs="0"
+                                         maxOccurs="1"/>
+                            <xsd:element name="scariche" type="esicimpsca:caratteristiche_certificazioni_impianti_ctype"
+                                         minOccurs="0" maxOccurs="1"/>
+                            <xsd:element name="lineevita"
+                                         type="esicimpsca:caratteristiche_certificazioni_impianti_base_type"/>
+                            <xsd:element name="altro">
+                                <xsd:complexType>
+                                    <xsd:complexContent>
+                                        <xsd:extension base="esicimpsca:caratteristiche_certificazioni_impianti_ctype">
+                                            <xsd:sequence>
+                                                <xsd:element name="impianto" type="xsd:string"/>
+                                            </xsd:sequence>
+                                        </xsd:extension>
+                                    </xsd:complexContent>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="caratteristiche_certificazioni_impianti_base_type" abstract="true">
+        <xsd:sequence>
+            <xsd:element name="subalt_nr" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="pg_doc_depositato" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="conformita" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="collaudo" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="atto_notorio" type="xsd:boolean" minOccurs="0"/> <!-- non presente su 2 elementi -->
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="caratteristiche_certificazioni_impianti_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esicimpsca:caratteristiche_certificazioni_impianti_base_type"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <!-- Sicurezza Impianti table : end -->
+
+    <xsd:element name="sicurezza_impianti_sca" type="esicimpsca:sicurezza_impianti_ctype"/>
+</xsd:schema>

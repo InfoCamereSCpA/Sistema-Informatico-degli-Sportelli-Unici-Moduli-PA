@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ebararc="../02_entities/barriere_architettoniche"
+            targetNamespace="../02_entities/barriere_architettoniche"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <!-- Reference suecommon:BarriereArchitettonicheType -->
+    <xsd:complexType name="barriere_architettoniche_ctype">
+        <xsd:sequence>
+            <xsd:element name="non_soggetto" minOccurs="0" type="xsd:boolean"/>
+            <xsd:element name="edificio_privato_aperto_al_pubblico" minOccurs="0" type="xsd:boolean"/>
+            <xsd:element name="soggetto" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="accessibilita" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="visibilita" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="adattabilita" type="xsd:boolean" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="soggetto_non_rispetta" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="allega_relazione_tecnica" type="xsd:boolean"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="barriere_architettoniche" type="ebararc:barriere_architettoniche_ctype"/>
+</xsd:schema>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eopeurbpri="../02_entities/opere_urbanizzazione_primaria"
+            xmlns:ctipi="../commons/tipi"
+            targetNamespace="../02_entities/opere_urbanizzazione_primaria"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+
+
+    <!-- Reference suecommon:OpereUrbanizzazionePrimariaType -->
+    <xsd:complexType name="opere_urbanizzazione_primaria_base_type" abstract="true"/>
+
+    <xsd:complexType name="opere_urbanizzazione_primaria_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eopeurbpri:opere_urbanizzazione_primaria_base_type">
+                <xsd:choice>
+                    <xsd:element name="dotata" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="non_dotata" type="ctipi:ggmmaaaa_stype"  minOccurs="0"/>
+                </xsd:choice>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:element name="opere_urbanizzazione_primaria" type="eopeurbpri:opere_urbanizzazione_primaria_ctype"/>
+</xsd:schema>

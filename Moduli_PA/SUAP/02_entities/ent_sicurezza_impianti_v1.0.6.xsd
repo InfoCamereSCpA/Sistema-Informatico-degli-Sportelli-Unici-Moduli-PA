@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:esicimp="../02_entities/sicurezza_impianti"
+            targetNamespace="../02_entities/sicurezza_impianti"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+
+
+    <xsd:complexType name="sicurezza_impianti_ctype">
+        <xsd:choice>
+            <xsd:element name="non_comporta_impianti" type="xsd:boolean"/>
+            <xsd:element name="comporta_impianti" type="esicimp:comporta_impianti_ctype"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:complexType name="comporta_impianti_ctype">
+        <xsd:sequence>
+            <xsd:element name="elettronica" minOccurs="0" type="xsd:boolean"/>
+            <xsd:element name="elettronici" minOccurs="0" type="xsd:boolean"/>
+            <xsd:element name="climatizzazione" minOccurs="0" type="xsd:boolean"/>
+            <xsd:element name="idriciSanitari" minOccurs="0" type="xsd:boolean"/>
+            <xsd:element name="gas" minOccurs="0" type="xsd:boolean"/>
+            <xsd:element name="sollevamento" minOccurs="0" type="xsd:boolean"/>
+            <xsd:element name="antincendio" minOccurs="0" type="xsd:boolean"/>
+            <xsd:element name="altro" minOccurs="0" type="esicimp:comporta_impianti_altro_base_type"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="comporta_impianti_altro_base_type" abstract="true"/>
+
+    <xsd:complexType name="comporta_impianti_altro_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esicimp:comporta_impianti_altro_base_type">
+                <xsd:sequence>
+                    <xsd:element name="specifica" type="xsd:string"/>
+                    <xsd:choice>
+                        <xsd:element name="non_soggetto" type="xsd:boolean"/>
+                        <xsd:element name="soggetto" type="xsd:boolean"/>
+                        <xsd:element name="nsoggetto_allega_elaborati" type="xsd:boolean"/>
+                    </xsd:choice>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:element name="sicurezza_impianti" type="esicimp:sicurezza_impianti_ctype"/>
+</xsd:schema>

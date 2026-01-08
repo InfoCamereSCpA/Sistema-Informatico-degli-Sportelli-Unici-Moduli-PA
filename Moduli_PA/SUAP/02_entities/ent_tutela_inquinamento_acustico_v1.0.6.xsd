@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:etutinqacu="../02_entities/tutela_inquinamento_acustico"
+            targetNamespace="../02_entities/tutela_inquinamento_acustico"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <!-- Reference etutinqacu:TutelaInquinamentoAcusticoType -->
+    <xsd:complexType name="tutela_inquinamento_acustico_base_type" abstract="true"/>
+
+    <xsd:complexType name="tutela_inquinamento_acustico_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="etutinqacu:tutela_inquinamento_acustico_base_type">
+                <xsd:sequence>
+                    <xsd:choice>
+                        <xsd:element name="non_rientra_art_8" type="xsd:boolean">
+                            <xsd:annotation><xsd:documentation>non rientra nell’ambito di applicazione dell’articolo 8 della l. n. 447/1995</xsd:documentation></xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="rientra_art_8">
+                            <xsd:annotation>
+                                <xsd:documentation>rientra nell’ambito di applicazione dell’articolo 8 della l. n. 447/1995, integrato con i
+                                    contenuti dell’articolo 4 del d.P.R. n. 227/2011</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="documentazione_impatto_acustico" minOccurs="0" type="xsd:boolean">
+                                        <xsd:annotation><xsd:documentation>documentazione di impatto acustico  (art. 8, commi 2 e 4, l. n. 447/1995)</xsd:documentation></xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="previsione_clima_acustico" minOccurs="0" type="xsd:boolean">
+                                        <xsd:annotation><xsd:documentation>valutazione previsionale di clima acustico (art. 8, comma 3, l. n. 447/1995)</xsd:documentation></xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="dichiarazione_rispetto_limiti" minOccurs="0" type="xsd:boolean">
+                                        <xsd:annotation><xsd:documentation>dichiarazione sostitutiva dell’atto di notorietà, a firma del titolare, relativa al rispetto
+                                            dei limiti stabiliti dal documento di classificazione acustica del territorio comunale di riferimento
+                                            ovvero, ove questo non sia stato adottato, ai limiti individuati dal d.P.C.M. 14 novembre 1997
+                                            (art. 4, commi 1 e 2, d.P.R. n. 227/2011)</xsd:documentation></xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="documentazione_misure_nulla_osta" minOccurs="0" type="xsd:boolean">
+                                        <xsd:annotation><xsd:documentation>la documentazione di previsione di impatto acustico con l’indicazione delle misure previste
+                                            per ridurre o eliminare le emissioni sonore, nel caso in cui i valori di emissioni sono superiori a quelli
+                                            della zonizzazione acustica comunale o a quelli individuati dal d.P.C.M. 14 novembre 1997
+                                            (art. 8, comma 6, l. n. 447/1995) ai fini del rilascio del nulla-osta da parte del Comune
+                                            (art. 8, comma 6, l. n. 447/1995)</xsd:documentation></xsd:annotation>
+                                    </xsd:element>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:choice>
+                    <xsd:choice>
+                        <xsd:element name="non_rientra_1997_12_05" type="xsd:boolean">
+                            <xsd:annotation><xsd:documentation>non rientra nell’ambito dell’applicazione  del d.P.C.M. 5 dicembre 1997</xsd:documentation></xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="rientra_1997_12_05" type="xsd:boolean">
+                            <xsd:annotation><xsd:documentation>rientra nell’ambito dell’applicazione  del d.P.C.M. 5 dicembre 1997</xsd:documentation></xsd:annotation>
+                        </xsd:element>
+                    </xsd:choice>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+
+    <xsd:element name="tutela_inquinamento_acustico" type="etutinqacu:tutela_inquinamento_acustico_ctype"/>
+</xsd:schema>

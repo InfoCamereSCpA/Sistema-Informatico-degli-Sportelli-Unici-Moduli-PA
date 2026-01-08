@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sdiccila="../03_sections/dichiarazioni_cila"
+            xmlns:etitpos="../02_entities/titolo_possesso"
+            xmlns:eopeparcom="../02_entities/opere_parti_comuni"
+            targetNamespace="../03_sections/dichiarazioni_cila" elementFormDefault="qualified"
+            attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/titolo_possesso" schemaLocation="../02_entities/ent_titolo_possesso_v1.0.6.xsd"/>
+    <xsd:import namespace="../02_entities/opere_parti_comuni" schemaLocation="../02_entities/ent_opere_parti_comuni_v1.0.6.xsd"/>
+
+
+
+    <xsd:complexType name="sezione_dichiarazioni_cila_ctype">
+        <xsd:sequence>
+            <xsd:element name="titolo_possesso" type="etitpos:titolo_possesso_ctype" minOccurs="0"/>
+            <xsd:element name="opere_previste" type="eopeparcom:opere_previste_base_type" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_dichiarazioni_cila" type="sdiccila:sezione_dichiarazioni_cila_ctype"/>
+
+</xsd:schema>

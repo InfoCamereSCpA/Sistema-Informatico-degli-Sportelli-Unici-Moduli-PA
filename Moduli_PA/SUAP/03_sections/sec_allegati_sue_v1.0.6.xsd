@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+            xmlns:sallegatisue="../03_sections/allegati_sue"
+            xmlns:efile="../02_entities/files"
+            xmlns:eallsogcoi="../02_entities/allegato_soggetti_coinvolti"
+
+            xmlns:ccts-cct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2"
+            xmlns:ccts="urn:un:unece:uncefact:documentation:2"
+
+            targetNamespace="../03_sections/allegati_sue"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.6" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/files" schemaLocation="../02_entities/ent_files_v1.0.6.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_soggetti_coinvolti" schemaLocation="../02_entities/ent_allegato_soggetti_coinvolti_v1.0.6.xsd"/>
+
+    <xsd:complexType name="allegati_sue_ctype">
+        <xsd:sequence>
+            <xsd:element name="allegatiSCIA" type="sallegatisue:AllegatiSCIAType" minOccurs="0" />
+            <xsd:element name="allegatiSCIAUnica" type="sallegatisue:AllegatiSCIAUnicaType" minOccurs="0" />
+            <xsd:element name="allegatiSCIACondizionata" type="sallegatisue:AllegatiSCIACondizionataType" minOccurs="0" />
+
+            <xsd:element name="allegatiSCIAAlternativa" type="sallegatisue:allegatiSCIAAlternativa"/>
+            <xsd:element name="allegatiPermessoCostruire" type="sallegatisue:allegatiPermessoCostruire"/>
+        </xsd:sequence>
+
+    </xsd:complexType>
+
+
+    
+    <xsd:complexType name="AllegatiSCIAType">
+        <xsd:sequence>
+            <!-- SCIA -->
+            <xsd:element name="allegatoProcuraDelega" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoSoggettiCoinvolti" type="eallsogcoi:allegato_soggetti_coinvolti_ctype" minOccurs="0" />
+            <xsd:element name="allegatoVersamentoDirittiSegreteria" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoDocumentoIdentita" type="efile:file_ctype" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="allegatoAssensoTerzi" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoVersamentoOblazioneInEsecuzione" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoVersamentoOblazioneSanatoria" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoDocumentazioneArticolo9Bis" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoVersamentoOblazione" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoAccatastamentoPrimoImpianto" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoAltriDocumentiProbanti" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoRicevutaVersamentoSanzione" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoDeterminazioneContributoCostruzione"   type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoPreventivoContributoCostruzione" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoRicevutaVersamentoContributoCostruzione" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoNotificaPreliminare" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoElaboratiGraficiStatoDiFatto" type="efile:file_ctype" minOccurs="0"  />
+            <xsd:element name="allegatoDocumentazioneFotograficaStatoDiFatto" type="efile:file_ctype" minOccurs="0"  />
+            <xsd:element name="allegatoDocumentazioneStatoLegittimo" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoElaboratiTolleranze" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoAutorizzazioneSismicaTolleranze" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoElaboratiSanatoria" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoDocumentoProbanteInterventoAbusivo" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoRimozioneOpereNonSanate" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoDocumentoProbanteVariante" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoRelazioneGeologica" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoElaboratiSuperamentoBarriereArchitettoniche" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoProgettoImpianti" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoRelazioneConsumiEnergetici" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoConformitaVincoliEcologica" type="sallegatisue:AllegatoConformitaVincoliEcologicaType" minOccurs="0"/>
+            <xsd:element name="allegatoConformitaVincoliFunzionale" type="sallegatisue:AllegatoConformitaVincoliFunzionaleType" minOccurs="0"/>
+            <!-- SCIA end -->
+
+            <!-- SEGNALAZIONE CERTIFICATA AGIBILITA -->
+            <xsd:element name="allegatoPlanimetricoVarianti" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoConformitaImpianti" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoCertificatoCollaudoStatico" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoAQE" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoAggiornamentoNumerazioneCivica" type="efile:file_ctype" minOccurs="0"/>
+            <!-- SEGNALAZIONE CERTIFICATA AGIBILITA end -->
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="AllegatiSCIAUnicaType">
+        <xsd:sequence>
+
+            <!-- SCIA -->
+            <xsd:element name="allegatoDenunciaLavori" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoDenunciaLavoriZonaSismica" type="efile:file_ctype" minOccurs="0" />
+            <xsd:element name="allegatoDocImpattoAcustico" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoValitazionePrevisionaleClimaAcustico" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoDichiarazioneSostitutiva" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoPianoDemolizioneAmianto" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoAttestazioneVersamentoOneriDiritti" type="efile:file_ctype" minOccurs="0"/>
+            <!-- SCIA end -->
+
+            <!-- SCIA ALTERNATIVA -->
+            <xsd:element name="allegatoRisultatiQualitaTerreni" type="efile:file_ctype" minOccurs="0"/>
+            <!-- SCIA ALTERNATIVA end -->
+
+            <!-- CILA -->
+            <xsd:element name="allegatoAltreComunicazioni" type="sallegatisue:AllegatoAltreComunicazioniType" minOccurs="0" />
+            <xsd:element name="allegatoRilascioAttiAssenso" type="sallegatisue:AllegatoRilascioAttiAssensoType" minOccurs="0" />
+            <!-- CILA end -->
+
+            <!-- SEGNALAZIONE CERTIFICATA AGIBILITA -->
+            <xsd:element name="allegatoSCIAart4DPR1512011" type="efile:file_ctype" minOccurs="0"/>
+            <!-- SEGNALAZIONE CERTIFICATA AGIBILITA end -->
+            
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="AllegatiSCIACondizionataType">
+        <xsd:sequence>
+            <!-- SCIA -->
+            <xsd:element name="allegatoVersamentoImpostaBollo" type="efile:file_ctype"  minOccurs="0"/>
+            <xsd:element name="allegatoDerogaBarriereArchitettoniche" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoDocRilascioParereVigiliFuoco" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoDerogaPrevenzioneIncendi" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoDocImpattoAcusticoPerNullaOsta" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoDerogaConformitaRequisitiIgienicoSanitari" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoAutorizzazioneSismica" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoRelazionePaesaggistica" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoParereVincolante" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoRilascioParereSoprintendenza" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoRilascioNullaOstaAreaProtetta" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoRilascioAutorizzazioneVincoloIdrogeologico" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoRilascioAutorizzazioneVincoloIdraulico" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoApprovazioneProgettoVINCA" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoDerogaFasciaRispettoCimiteriale" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoValutazioneComitatoTecnicoRegionaleIncidenteRilevante" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoAssensoTutelaEcologica" type="sallegatisue:AllegatoAssensoTutelaEcologicaType" minOccurs="0"/>
+            <xsd:element name="allegatoAssensoTutelaFunzionale" type="sallegatisue:AllegatoAssensoTutelaFunzionaleType" minOccurs="0"/>
+            <xsd:element name="allegatoAttestazioneVersamentoOneriDiritti" type="efile:file_ctype" minOccurs="0"/>
+            <!-- SCIA end -->
+
+            <!-- SCIA ALTERNATIVA -->
+            <xsd:element name="allegatoAutorizzazioniScarichiIdrici" type="efile:file_ctype" minOccurs="0"/>
+            <!-- SCIA ALTERNATIVA end -->
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="allegatiSCIAAlternativa">
+        <xsd:sequence>
+            <!-- SCIA ALTERNATIVA -->
+            <xsd:element name="allegatoModelloISTAT"   type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoDocumentiProbantiRegolaritaEdiliziaImmobile"   type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoRicevutaPagamentoSanzione"   type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegatoProgettoUrbanizzazione" type="efile:file_ctype" minOccurs="0" />
+            <!-- SCIA ALTERNATIVA end -->
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="allegatiPermessoCostruire">
+        <xsd:sequence>
+            <!-- PERMESSO DI COSTRUIRE -->
+            <xsd:element name="allegatoDocumentazioneParereVincolante" type="efile:file_ctype" minOccurs="0"/>
+            <!-- PERMESSO DI COSTRUIRE end -->
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+
+    <!-- includes da tipi elementi complessi -->
+    <xsd:complexType name="AllegatoConformitaVincoliEcologicaType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="it">
+                <ccts:Definition>Autocertificazione relativa alla conformità dell’intervento per altri vincoli di tutela ecologica (specificare i vincoli in oggetto)</ccts:Definition>
+                <ccts:UsageRule>(ad es. se l’intervento ricade nella fascia di rispetto dei depuratori)</ccts:UsageRule>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="efile:file_ctype">
+                <xsd:sequence>
+                    <xsd:element name="specifica" minOccurs="0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="AllegatoConformitaVincoliFunzionaleType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="it">
+                <ccts:Definition>Autocertificazione relativa alla conformità dell’intervento per altri vincoli di tutela funzionale (specificare i vincoli in oggetto)</ccts:Definition>
+                <ccts:UsageRule>ad es. se l’intervento ricade nella fascia di rispetto stradale, ferroviario, di elettrodotto, gasdotto, militare, etc...)</ccts:UsageRule>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="efile:file_ctype">
+                <xsd:sequence>
+                    <xsd:element name="specifica" minOccurs="0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="AllegatoAssensoTutelaEcologicaType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="it">
+                <ccts:Definition>Documentazione necessaria ai fini del rilascio degli atti di assenso relativi ad altri vincoli di tutela ecologica (specificare i vincoli in oggetto)</ccts:Definition>
+                <ccts:UsageRule>(ad es. se l’intervento ricade nella fascia di rispetto dei depuratori)</ccts:UsageRule>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="efile:file_ctype">
+                <xsd:sequence>
+                    <xsd:element name="specifica" minOccurs="0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="AllegatoAssensoTutelaFunzionaleType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="it">
+                <ccts:Definition>Documentazione necessaria ai fini del rilascio degli atti di assenso relativi ai vincoli di tutela funzionale (specificare i vincoli in oggetto)</ccts:Definition>
+                <ccts:UsageRule>(ad es. se l’intervento ricade nella fascia di rispetto stradale, ferroviario, di elettrodotto, gasdotto, militare, ecc.)</ccts:UsageRule>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="efile:file_ctype">
+                <xsd:sequence>
+                    <xsd:element name="specifica" minOccurs="0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="AllegatoAltreComunicazioniType" >
+        <xsd:annotation>
+            <xsd:documentation xml:lang="it">
+                <ccts:Definition>Documentazione necessaria per la presentazione di altre comunicazioni, segnalazioni (specificare)</ccts:Definition>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="efile:file_ctype">
+                <xsd:sequence>
+                    <xsd:element name="specifica" minOccurs="0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="AllegatoRilascioAttiAssensoType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="it">
+                <ccts:Definition>Documentazione necessaria per il rilascio di atti di assenso obbligatori ai sensi delle normative di settore (specificare)</ccts:Definition>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="efile:file_ctype">
+                <xsd:sequence>
+                    <xsd:element name="specifica" minOccurs="0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+
+    <xsd:element name="allegati_sue" type="sallegatisue:allegati_sue_ctype"/>
+
+</xsd:schema>

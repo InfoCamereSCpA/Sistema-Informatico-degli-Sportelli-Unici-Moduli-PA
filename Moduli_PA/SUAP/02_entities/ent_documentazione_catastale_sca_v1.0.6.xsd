@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:edoccatsca="../02_entities/documentazione_catastale_sca"
+            xmlns:eprosta="../02_entities/protocollo_standard"
+            targetNamespace="../02_entities/documentazione_catastale_sca" elementFormDefault="qualified"
+            attributeFormDefault="qualified" version="1.0.6" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/protocollo_standard" schemaLocation="../02_entities/ent_protocollo_standard_v1.0.6.xsd"/>
+
+    <xsd:complexType name="documentazione_catastale_ctype">
+        <xsd:choice>
+            <xsd:element name="non_comporta_variazione_iscrizione" type="xsd:boolean"/>
+            <xsd:element name="comporta_variazione_iscrizione">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="protocollo_estremi" type="eprosta:protocollo_standard_ctype"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:complexType name="protocollo_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eprosta:protocollo_standard_ctype">
+                <xsd:sequence>
+                    <xsd:element name="presso" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+
+
+    <xsd:element name="documentazione_catastale_sca" type="edoccatsca:documentazione_catastale_ctype"/>
+</xsd:schema>
