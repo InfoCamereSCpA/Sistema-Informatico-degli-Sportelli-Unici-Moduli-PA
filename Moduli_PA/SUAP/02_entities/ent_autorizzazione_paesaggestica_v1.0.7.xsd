@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eautpae="../02_entities/autorizzazione_paesaggestica"
+            targetNamespace="../02_entities/autorizzazione_paesaggestica"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:complexType name="autorizzazione_paesaggistica_ctype">
+        <xsd:choice>
+            <xsd:element name="non_ricade_in_zona_tutelata" type="xsd:boolean"/>
+            <xsd:element name="non_soggetto_autorizzazione" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>ricade in zona tutelata, ma le opere non comportano alterazione dei luoghi o
+                        dell’aspetto
+                        esteriore degli edifici ovvero non sono soggetti ad autorizzazione ai sensi dell’art. 149,
+                        d.lgs.
+                        n. 42/2004 e del d.P.R. n. 31/2017, allegato A e art. 4
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ricade_in_zona_tutelata">
+                <xsd:complexType>
+                    <xsd:choice>
+
+                        <xsd:element name="procedimento_semplificato">
+                            <xsd:annotation>
+                                <xsd:documentation>è assoggettato al procedimento semplificato di autorizzazione
+                                    paesaggistica, in quanto di lieve
+                                    entità, secondo quanto previsto dal d.P.R. n. 31/2017
+                                </xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="procedimento_semplificato_allegato_relazione_paesaggistica_semplificata"  type="xsd:boolean"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+
+
+<!--                        <xsd:element name="procedimento_semplificato_allegato_relazione_paesaggistica_semplificata"-->
+<!--                                     type="xsd:boolean">-->
+<!--                            <xsd:annotation>-->
+<!--                                <xsd:documentation>si allega la relazione paesaggistica semplificata e la documentazione-->
+<!--                                    necessaria ai fini-->
+<!--                                    del rilascio dell’autorizzazione paesaggistica semplificata-->
+<!--                                </xsd:documentation>-->
+<!--                            </xsd:annotation>-->
+<!--                        </xsd:element>-->
+
+
+                        <xsd:element name="procedimento_ordinario">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element type="xsd:boolean" name="procedimento_ordinario_allegato_relazione_paesaggistica" />
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+
+                        <!-- v.13.3.3  - (new jira PSUA-2514) solo per SCIA e Permesso di Costruire (Asseverazione) -->
+                        <xsd:element name="procedimento_accertamento" minOccurs="0" >
+                            <xsd:annotation>
+                                <xsd:documentation>è assoggettato al procedimento di accertamento della compatibilità
+                                    paesaggistica
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        <xsd:complexType>
+                            <xsd:sequence><xsd:element name="procedimento_accertamento_allegato_parere_vincolante" type="xsd:boolean">
+                                <xsd:annotation>
+                                    <xsd:documentation>si allega documentazione necessaria ai fini del rilascio del
+                                        parere vincolante (vedi quadro della documentazione allegata
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element></xsd:sequence>
+                        </xsd:complexType>
+                        </xsd:element>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:element name="autorizzazione_paesaggestica" type="eautpae:autorizzazione_paesaggistica_ctype"/>
+</xsd:schema>

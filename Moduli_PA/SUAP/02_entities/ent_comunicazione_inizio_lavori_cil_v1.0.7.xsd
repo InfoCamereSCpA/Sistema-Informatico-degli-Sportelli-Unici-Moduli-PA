@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ecominilavcil="../02_entities/comunicazione_inizio_lavori_cil"
+            xmlns:ctipi="../commons/tipi"
+            targetNamespace="../02_entities/comunicazione_inizio_lavori_cil"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <!-- Reference cil:ComunicaInzioLavoriType -->
+    <xsd:complexType name="comunica_inizio_lavori_ctype">
+        <xsd:sequence>
+            <xsd:element name="data_inizio" minOccurs="0" type="ctipi:ggmmaaaa_stype"/>
+            <xsd:element name="data_fine" minOccurs="0" type="ctipi:ggmmaaaa_stype"/>
+            <xsd:element name="dettaglio_lavori" minOccurs="0" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="comunicazione_inizio_lavori_cil" type="ecominilavcil:comunica_inizio_lavori_ctype"/>
+</xsd:schema>

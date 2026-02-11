@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sauaall="../03_sections/aua_allegati"
+            xmlns:efile="../02_entities/files"
+            targetNamespace="../03_sections/aua_allegati"
+            elementFormDefault="qualified" attributeFormDefault="qualified"
+            version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/files" schemaLocation="../02_entities/ent_files_v1.0.7.xsd"/>
+
+
+    <xsd:complexType name="aua_allegati_ctype">
+        <xsd:sequence>
+            <xsd:element name="allegato_scheda_a_scarico_acque_reflue" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegato_scheda_b_effluenti_di_allevamento" type="efile:file_ctype" minOccurs="0"/>
+            <!-- SCHEDA B: RELAZIONE TECNICA – UTILIZZAZIONE AGRONOMICA DELLE ACQUE DI VEGETAZIONE E DEGLI SCARICHI DEI FRANTOI OLEARI -->
+            <xsd:element name="allegato_scheda_b_relazione_tecnica" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegato_scheda_c_emissioni_in_atmosfera" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegato_scheda_d_emissioni_in_atmosfera_per_attivita_in_deroga" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegato_scheda_e_impatto_acustico" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegato_scheda_f_fanghi_di_depurazione" type="efile:file_ctype" minOccurs="0"/>
+            <!-- RELAZIONE TECNICA DESCRITTIVA – FANGHI DI DEPURAZIONE  -->
+            <xsd:element name="allegato_scheda_f_relazione_tecnica_descrittiva" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegato_scheda_g_1_rifiuti_non_pericolosi" type="efile:file_ctype" minOccurs="0"/>
+            <!-- SCHEMA DI RELAZIONE TECNICA OPERAZIONI DI RECUPERO DI RIFIUTI NON PERICOLOSI -->
+            <xsd:element name="allegato_scheda_g_1_relazione_tecnica_operazioni_recupero_non_pericolosi" type="efile:file_ctype" minOccurs="0"/>
+            <xsd:element name="allegato_scheda_g_2_rifiuti_pericolosi" type="efile:file_ctype" minOccurs="0"/>
+            <!-- SCHEMA DI RELAZIONE TECNICA OPERAZIONI DI RECUPERO DI RIFIUTI PERICOLOSI -->
+            <xsd:element name="allegato_scheda_g_2_relazione_tecnica_operazioni_recupero_pericolosi" type="efile:file_ctype" minOccurs="0"/>
+        </xsd:sequence>
+
+    </xsd:complexType>
+
+
+
+
+
+
+
+    <xsd:element name="aua_allegati" type="sauaall:aua_allegati_ctype"/>
+
+</xsd:schema>

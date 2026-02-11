@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauacerambvol="../02_entities/aua_certificazioni_ambientali_volontarie"
+            xmlns:ctipi="../commons/tipi"
+            targetNamespace="../02_entities/aua_certificazioni_ambientali_volontarie"
+            elementFormDefault="qualified">
+
+  <!-- Import dei tipi comuni per la data -->
+  <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+  <!-- Tipo per una singola certificazione ambientale volontaria -->
+  <xsd:complexType name="certificazione_ambientale_volontaria_ctype">
+    <xsd:sequence>
+      <xsd:element name="certificazione" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="autorita_rilascio" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="numero" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="data_emissione" type="ctipi:ggmmaaaa_stype" minOccurs="0"/>
+      <xsd:element name="note" type="xsd:string" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!-- Lista delle certificazioni ambientali volontarie -->
+  <xsd:complexType name="certificazioni_ambientali_volontarie_ctype">
+    <xsd:sequence>
+      <xsd:element name="certificazione_ambientale_volontaria" type="eauacerambvol:certificazione_ambientale_volontaria_ctype" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!-- Elemento radice -->
+  <xsd:element name="certificazioni_ambientali_volontarie" type="eauacerambvol:certificazioni_ambientali_volontarie_ctype"/>
+
+</xsd:schema>

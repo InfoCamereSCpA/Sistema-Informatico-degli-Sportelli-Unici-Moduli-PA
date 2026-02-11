@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschcpiagessol="../02_entities/aua_scheda_c_piano_gestione_solventi"
+            targetNamespace="../02_entities/aua_scheda_c_piano_gestione_solventi"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!--    SCHEDA C3  -->
+
+    <xsd:complexType name="scheda_c_piano_gestione_solventi_blocco_ctype">
+        <xsd:sequence>
+            <xsd:element name="i1_quantita_solventi_immessi" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>I1: Quantità di solventi organici o la loro quantità nei preparati acquistati che
+                        sono immessi nel processo nell'arco di tempo in cui viene calcolato il bilancio di massa.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="i2_quantita_solventi_recuperati" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>I2: Quantità di solventi organici o la loro quantità nei preparati recuperati e
+                        reimmessi come solvente nel processo.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="o1_emissioni_effluenti" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>O1: Emissioni negli effluenti gassosi.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="o2_quantita_solventi_acqua" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>O2: Quantità di solventi organici scaricati nell'acqua.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="o3_quantita_residuo_prodotti" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>O3: Quantità di solventi che rimane come contaminante o residuo nei prodotti
+                        all'uscita del processo.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="o4_emissioni_diffuse_aria" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>O4: Emissioni diffuse di solventi organici nell'aria.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="o5_quantita_perse_reazioni" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>O5: Quantità di solventi organici e composti organici persi a causa di reazioni
+                        chimiche o fisiche.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="o6_quantita_rifiuti" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>O6: Quantità di solventi organici contenuti nei rifiuti raccolti.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="o7_quantita_vendita" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>O7: Quantità di solventi organici da soli o solventi organici contenuti in
+                        preparati che sono o saranno venduti come prodotto...
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="o8_quantita_recuperati_riuso" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>O8: Quantità di solventi organici contenuti nei preparati recuperati per riuso,
+                        ma non per riutilizzo nel processo...
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="o9_quantita_scaricati_altro" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>O9: Quantità di solventi organici scaricati in altro modo.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:choice>
+                <xsd:element name="f_calcolo_sottrazione">
+                    <xsd:annotation>
+                        <xsd:documentation>Modalità F = I1 - O1 - O5 - O6 - O7 - O8</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="f_calcolo_sottrazione_check" type="xsd:boolean"/>
+                            <xsd:element name="f_calcolo_sottrazione_t_cov_anno" type="xsd:string"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="f_calcolo_somma">
+                    <xsd:annotation>
+                        <xsd:documentation>Modalità F = O2 + O3 + O4 + O9</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="f_calcolo_somma_check" type="xsd:boolean"/>
+                            <xsd:element name="f_calcolo_somma_t_cov_anno" type="xsd:string"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:choice>
+
+            <xsd:element name="e_emissione_totale" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>E = F + O1</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="c_consumo_solvente" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>C = I1 - O8</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="i_input_solvente" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>I = I1 + I2</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="ims_materia_solida_immessa" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>IMS: Materia Solida Immessa nel processo. (1) (Massima teorica)
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+
+            <xsd:element name="fecov_ims_fattore_emissione" type="xsd:string" minOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>FECOV/IMS (Fattore di Emissione) = t EB (Emissione Bersaglio) / t IMS (Materia
+                        Solida Immessa) - VALORE LIMITE DI EMISSIONE
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Tipo Astratto principale -->
+    <xsd:complexType name="scheda_c_piano_gestione_solventi_base_type" abstract="true"/>
+
+    <xsd:complexType name="scheda_c_piano_gestione_solventi_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschcpiagessol:scheda_c_piano_gestione_solventi_base_type">
+                    <xsd:sequence>
+                        <xsd:element name="scheda_c_piano_gestione_solventi" type="eauaschcpiagessol:scheda_c_piano_gestione_solventi_blocco_ctype"/>
+                    </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+</xsd:schema>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauatitabi="../02_entities/aua_titoli_abilitativi"
+            xmlns:ctipi="../commons/tipi"
+            targetNamespace="../02_entities/aua_titoli_abilitativi"
+            elementFormDefault="qualified">
+
+  <!-- Import dei tipi comuni per la data -->
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+  <!-- Tipo per un singolo titolo abilitativo -->
+  <xsd:complexType name="titolo_abilitativo_ambientale_ctype">
+    <xsd:sequence>
+      <xsd:element name="scheda_interessata" type="xsd:string"/>
+      <xsd:element name="ente" type="xsd:string"/>
+      <xsd:element name="numero_protocollo" type="xsd:string"/>
+      <xsd:element name="data_protocollo" type="ctipi:ggmmaaaa_stype"/>
+      <xsd:element name="scadenza" type="ctipi:ggmmaaaa_stype" minOccurs="0"/>
+      <xsd:element name="note" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!-- Lista dei titoli abilitativi -->
+  <xsd:complexType name="titoli_abilitativi_ambientali_ctype">
+    <xsd:sequence>
+      <xsd:element name="titolo_abilitativo" type="eauatitabi:titolo_abilitativo_ambientale_ctype" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!-- Elemento radice -->
+  <xsd:element name="titoli_abilitativi_ambientali" type="eauatitabi:titoli_abilitativi_ambientali_ctype"/>
+
+</xsd:schema>

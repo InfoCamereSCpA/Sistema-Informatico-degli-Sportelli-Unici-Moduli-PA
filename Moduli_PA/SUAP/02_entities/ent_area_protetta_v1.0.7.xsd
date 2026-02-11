@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:earepro="../02_entities/area_protetta"
+            targetNamespace="../02_entities/area_protetta"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!-- Reference earepro:AreaProtettaType -->
+    <xsd:complexType name="area_protetta_base_type" abstract="true"/>
+
+    <xsd:complexType name="area_protetta_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="earepro:area_protetta_base_type">
+                <xsd:choice>
+                    <xsd:element name="non_ricade_tutela" type="xsd:boolean"/>
+                    <xsd:element name="ricade_tutela" type="xsd:boolean"/>
+                    <xsd:element name="sottoposto_disposizioni">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element type="xsd:boolean" name="sottoposto_disposizioni_allegato_rilascioParere" />
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="area_protetta" type="earepro:area_protetta_ctype"/>
+</xsd:schema>

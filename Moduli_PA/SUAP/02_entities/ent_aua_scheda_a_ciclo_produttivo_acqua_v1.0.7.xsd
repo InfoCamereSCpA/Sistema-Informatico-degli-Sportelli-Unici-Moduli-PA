@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="../02_entities/aua_scheda_a_ciclo_produttivo_acqua"
+            xmlns:eauaschacicproacq="../02_entities/aua_scheda_a_ciclo_produttivo_acqua"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified"
+            version="1.0.7" xml:lang="it">
+
+    <!--    SCHEDA A-A2 -->
+
+    <!-- Tipi base astratti -->
+    <xsd:complexType name="descrizione_attivita_base_type" abstract="true"/>
+    <xsd:complexType name="materie_lavorate_base_type" abstract="true"/>
+
+    <!-- Tipo concreto principale -->
+    <xsd:complexType name="ciclo_produttivo_acqua_ctype">
+                <xsd:sequence>
+                    <xsd:element name="descrizione_attivita" type="eauaschacicproacq:descrizione_attivita_base_type"/>
+                    <xsd:element name="descrizione_ciclo_produttivo" type="xsd:string"/>
+                    <xsd:element name="materie_lavorate" type="eauaschacicproacq:materie_lavorate_base_type" minOccurs="0"/>
+                </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Choice descrizione attivita -->
+    <xsd:complexType name="descrizione_attivita_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschacicproacq:descrizione_attivita_base_type">
+                <xsd:choice>
+                    <xsd:element name="industriale" type="xsd:boolean"/>
+                    <xsd:element name="artigianale" type="xsd:boolean"/>
+                    <xsd:element name="commerciale" type="xsd:boolean"/>
+                    <xsd:element name="servizio" type="xsd:boolean"/>
+                    <xsd:element name="altro" type="eauaschacicproacq:altro_attivita_ctype"/>
+                </xsd:choice>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Altro con specifica -->
+    <xsd:complexType name="altro_attivita_ctype">
+        <xsd:sequence>
+            <xsd:element name="altro_check" type="xsd:boolean"/>
+            <xsd:element name="specificare" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- TODO: presente sul PDF ma non trovato sul FO -->
+    <!-- compilazione alternativa alle tabelle 4.3.1 e 4.3.2 della parte generale -->
+    <!-- Tipo concreto materie lavorate -->
+    <xsd:complexType name="materie_lavorate_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschacicproacq:materie_lavorate_base_type">
+                <xsd:sequence>
+                    <xsd:element name="materie_lavorate_descrizione" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Elemento principale -->
+    <xsd:element name="aua_scheda_a_ciclo_produttivo_acqua" type="eauaschacicproacq:ciclo_produttivo_acqua_ctype"/>
+</xsd:schema>

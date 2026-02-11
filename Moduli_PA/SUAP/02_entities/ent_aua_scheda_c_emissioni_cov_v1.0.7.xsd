@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschcemicov="../02_entities/aua_scheda_c_emissioni_cov"
+            targetNamespace="../02_entities/aua_scheda_c_emissioni_cov"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!--    SCHEDA C2-4  -->
+
+    <xsd:complexType name="tipo_massa_ctype">
+        <xsd:choice>
+            <xsd:element name="massa_solventi" type="xsd:boolean"/>
+            <xsd:element name="massa_equivalente_carbonio" type="xsd:boolean"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:complexType name="unita_misura_ctype">
+        <xsd:choice>
+            <xsd:element name="t_c" type="xsd:boolean"/>
+            <xsd:element name="t_cov" type="xsd:boolean"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:simpleType name="attivita_enum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="1_STAMPA_OFFSET_15"/>
+            <xsd:enumeration value="2_ROTOCALCOGRAFIA_PER_PUBBLICAZIONI_25"/>
+            <xsd:enumeration value="3_1_ALTRI_TIPI_DI_ROTOCALCOGRAFIA_15"/>
+            <xsd:enumeration value="3_2_OFFSET_DAL_ROTOLO_SU_TESSILI_CARTONE_30"/>
+            <xsd:enumeration value="4_PULIZIA_DI_SUPERFICIE_2"/>
+            <xsd:enumeration value="5_ALTRI_TIPI_DI_PULIZIE_DI_SUPERIFICE_2"/>
+            <xsd:enumeration value="6_1_RIVESTIMENTO_DI_AUTOVEICOLI_0_5"/>
+            <xsd:enumeration value="6_2_RIVESTIMENTO_DI_AUTOVEICOLI_15"/>
+            <xsd:enumeration value="6_3_FINITURA_DI_AUTOVEICOLI_0_5"/>
+            <xsd:enumeration value="7_VERNICIATURA_IN_CONTINUO_COIL_COATING_25"/>
+            <xsd:enumeration value="8_ALTRI_TIPI_RIVESTIMENTO_METALLI_5"/>
+            <xsd:enumeration value="9_RIVESTIMENTO_DI_FILO_PER_AVVOLGIMENTO_5"/>
+            <xsd:enumeration value="10_RIVESTIMENTO_DELLE_SUPERFICI_DI_LEGNO_15"/>
+            <xsd:enumeration value="11_PULITURA_A_SECCO"/>
+            <xsd:enumeration value="12_IMPREGNAZIONE_DEL_LEGNO_25"/>
+            <xsd:enumeration value="13_1_RIVESTIMENTO_DI_CUOIO_AD_ESCLUSIONE_DEL_13_2_10"/>
+            <xsd:enumeration value="13_2_RIVESTIMENTO_DI_CUOIO_ARRED_PELLETTERIA_10"/>
+            <xsd:enumeration value="14_FABBRICAZIONE_DI_CALZATURE_5"/>
+            <xsd:enumeration value="15_STRATIFICAZIONE_DI_LEGNO_E_PLASTICA_5"/>
+            <xsd:enumeration value="16_RIVESTIMENTI_ADESIVI_5"/>
+            <xsd:enumeration value="17_FABBRICAZIONE_DI_PREPARATI_PER_VERNICI_100"/>
+            <xsd:enumeration value="18_CONVERSIONE_DELLA_GOMMA_15"/>
+            <xsd:enumeration value="19_ESTRAZIONE_DI_OLIO_VEGETALE_E_GRASSO_ANIMALE_10"/>
+            <xsd:enumeration value="20_FABBRICAZIONE_DI_PRODOTTI_FARMACEUTICI_50"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="dati_consumo_capacita_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="tipo_massa_riferimento" type="eauaschcemicov:tipo_massa_ctype" minOccurs="1"/>
+            <xsd:element name="attivita" type="eauaschcemicov:attivita_enum" minOccurs="1"/>
+            <xsd:element name="soglia_di_consumo_solvente" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="consumo_max_teorico_di_solventi" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="consumo_di_solventi" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="capacita_nominale" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="ore_di_attivita_anno" type="xsd:string" minOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="dati_materie_prime_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="materia_prima_solvente" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="cov_percentuale" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="residuo_secco_percentuale" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="consumo_annuo" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="unita_di_misura" type="eauaschcemicov:unita_misura_ctype" minOccurs="1"/>
+            <xsd:element name="conversione_c_a_cov_effettuata" type="xsd:boolean" minOccurs="1"/>
+            <xsd:element name="fattore_di_conversione" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="scheda_c_emissioni_cov" type="eauaschcemicov:scheda_c_emissioni_cov_ctype"/>
+
+    <xsd:complexType name="scheda_c_emissioni_cov_ctype">
+        <xsd:sequence>
+            <xsd:element name="dati_consumo_capacita_blocco" type="eauaschcemicov:dati_consumo_capacita_ripetibile_ctype" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="dati_materie_prime_blocco" type="eauaschcemicov:dati_materie_prime_ripetibile_ctype" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

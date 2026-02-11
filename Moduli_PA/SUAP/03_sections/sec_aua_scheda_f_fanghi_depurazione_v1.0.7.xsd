@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sauaschffandep="../03_sections/aua_scheda_f_fanghi_depurazione"
+            xmlns:eauaschffandep="../02_entities/aua_scheda_f_fanghi_depurazione"
+
+            targetNamespace="../03_sections/aua_scheda_f_fanghi_depurazione" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/aua_scheda_f_fanghi_depurazione" schemaLocation="../02_entities/ent_aua_scheda_f_fanghi_depurazione_v1.0.7.xsd"/>
+
+
+    <xsd:complexType name="sezione_aua_scheda_f_fanghi_depurazione_ctype">
+        <xsd:sequence>
+            <!-- SCHEDA F1 (*) -->
+            <xsd:element name="fanghi_depurazione" type="eauaschffandep:scheda_f_fanghi_depurazione_base_type" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_aua_scheda_f_fanghi_depurazione" type="sauaschffandep:sezione_aua_scheda_f_fanghi_depurazione_ctype"/>
+</xsd:schema>

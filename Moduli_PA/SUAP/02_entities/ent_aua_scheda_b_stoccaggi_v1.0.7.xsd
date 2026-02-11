@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschbsto="../02_entities/aua_scheda_b_stoccaggi"
+            xmlns:ctipi="../commons/tipi"
+            targetNamespace="../02_entities/aua_scheda_b_stoccaggi"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <!--    SCHEDA B1-4  -->
+    <xsd:complexType name="scheda_b_stoccaggi_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_b_stoccaggi_blocco" type="eauaschbsto:scheda_b_stoccaggi_ripetibile_ctype" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Tipo concreto ripetibile -->
+    <xsd:complexType name="scheda_b_stoccaggi_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="tipo_stoccaggio" type="xsd:string"/>
+            <xsd:element name="indirizzo_codice_allevamento" type="xsd:string"/>
+            <xsd:element name="volume_anno" type="xsd:string"/>
+       </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!-- Elemento principale -->
+    <xsd:element name="scheda_b_stoccaggi" type="eauaschbsto:scheda_b_stoccaggi_ctype"/>
+
+</xsd:schema>

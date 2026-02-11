@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mpercos="../04_forms/permesso_di_costruire"
+            xmlns:sanasue="../03_sections/anagrafica_sue"
+            xmlns:sdicpdc="../03_sections/dichiarazioni_pdc"
+            xmlns:sreltecasspdc="../03_sections/relazione_tecnica_asseverazione_pdc"
+            xmlns:sallegatisue="../03_sections/allegati_sue"
+            targetNamespace="../04_forms/permesso_di_costruire" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/anagrafica_sue" schemaLocation="../03_sections/sec_anagrafica_sue_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/dichiarazioni_pdc" schemaLocation="../03_sections/sec_dichiarazioni_pdc_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/relazione_tecnica_asseverazione_pdc" schemaLocation="../03_sections/sec_relazione_tecnica_asseverazione_pdc_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/allegati_sue" schemaLocation="../03_sections/sec_allegati_sue_v1.0.7.xsd"/>
+
+    <xsd:complexType name="modulo_permesso_di_costruire_ctype">
+        <xsd:sequence>
+            <!-- SOGGETTI -->
+            <xsd:element name="scheda_anagrafica" type="sanasue:sezione_anagrafica_sue_ctype" minOccurs="0" />
+
+            <!-- DICHIARAZIONI -->
+            <xsd:element name="dichiarazioni" type="sdicpdc:sezione_dichiarazioni_pdc_ctype" minOccurs="0" />
+
+            <!-- RELAZIONE TECNICA DI ASSEVERAZIONE -->
+            <xsd:element name="relazione_tecnica_asseverazione" type="sreltecasspdc:sezione_relazione_tecnica_asseverazione_pdc_ctype" minOccurs="0" />
+
+            <!-- ALLEGATI  -->
+            <xsd:element name="tabella_allegati" type="sallegatisue:allegati_sue_ctype" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_permesso_di_costruire" type="mpercos:modulo_permesso_di_costruire_ctype"/>
+
+</xsd:schema>

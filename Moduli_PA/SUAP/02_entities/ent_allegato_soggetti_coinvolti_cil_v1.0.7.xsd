@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eallsogcoicil="../02_entities/allegato_soggetti_coinvolti_cil"
+            xmlns:eallperana="../02_entities/allegato_persona_anagrafica"
+            xmlns:eallimpana="../02_entities/allegato_impresa_anagrafica"
+
+            xmlns:ccts-cct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2"
+            xmlns:ccts="urn:un:unece:uncefact:documentation:2"
+
+            targetNamespace="../02_entities/allegato_soggetti_coinvolti_cil" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/allegato_persona_anagrafica" schemaLocation="../02_entities/ent_allegato_persona_anagrafica_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_impresa_anagrafica" schemaLocation="../02_entities/ent_allegato_impresa_anagrafica_v1.0.7.xsd"/>
+
+    <xsd:complexType name="allegato_soggetti_coinvolti_cil_ctype">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="it">
+                <ccts:Definition>Soggetti Coinvolti</ccts:Definition>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="titolari"  minOccurs="0" maxOccurs="unbounded" type="eallsogcoicil:titolare_soggetti_ctype">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="it">
+                        Compilare solo in caso di più di un Titolare, seziona ripetibile
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element name="imprese_esecutrici" minOccurs="0" maxOccurs="unbounded" type="eallsogcoicil:imprese_esecutrici_ctype">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="it">Compilare in caso di affidamento dei lavori ad una o più imprese – sezione ripetibile</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="dichiarazionePresaVisioneInformativaPrivacy" type="xsd:boolean" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+
+
+    <xsd:complexType name="ProfessionistaAnagraficaDirettoreType">
+        <xsd:complexContent>
+            <xsd:extension base="eallperana:allegato_persona_anagrafica_ctype">
+                <xsd:sequence>
+                    <xsd:element name="direttoreLavori" type="eallperana:EmptyType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="ProfessionistaAnagraficaType">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare tutti i dati anagrafici di un professionista</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="eallperana:allegato_persona_anagrafica_ctype">
+                <xsd:sequence>
+                    <xsd:element name="studiopro" type="eallperana:IndirizzoType"/>
+                    <xsd:element name="ordineprofessionale" type="eallsogcoicil:OrdineProfessionaleType"/>
+                    <xsd:element name="contatti" type="eallperana:ContattiType" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="OrdineProfessionaleType">
+        <xsd:sequence>
+            <xsd:element name="OrdineNome" type="xsd:string"/>
+            <xsd:element name="OrdineCitta" type="xsd:string"/>
+            <xsd:element name="OrdineNumero" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="AltriTecniciType">
+        <xsd:sequence>
+            <xsd:element name="incaricatoDi" type="xsd:string"/>
+            <xsd:element name="schedaAltroTecnico" type="eallsogcoicil:ProfessionistaAnagraficaType"/>
+            <xsd:element name="alleDipendenzeDi">
+                <xsd:complexType>
+                    <xsd:complexContent>
+                        <xsd:extension base="eallimpana:allegato_impresa_anagrafica_ctype">
+                            <xsd:sequence>
+                                <xsd:element name="legaleRappresentante" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                        </xsd:extension>
+                    </xsd:complexContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="estremiAbilitazione" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!-- TECNICI INCARICATI end -->
+
+
+
+    <!-- IMPRESE ESECUTRICI -->
+    <xsd:complexType name="imprese_esecutrici_ctype">
+        <xsd:sequence>
+            <xsd:element name="schedaDitta">
+                <xsd:complexType>
+                    <xsd:complexContent>
+                        <xsd:extension base="eallimpana:allegato_impresa_anagrafica_ctype">
+                            <xsd:sequence>
+                                <xsd:element name="legaleRappresentante" minOccurs="0">
+                                    <xsd:complexType>
+                                        <xsd:complexContent>
+                                            <xsd:extension base="eallperana:PersonaAnagraficaNascitaType">
+                                                <xsd:sequence>
+                                                    <xsd:element name="contatti" type="eallperana:ContattiType" minOccurs="0"/>
+                                                </xsd:sequence>
+                                            </xsd:extension>
+                                        </xsd:complexContent>
+                                    </xsd:complexType>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:extension>
+                    </xsd:complexContent>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="verificaRegolaritaContributiva">
+                <xsd:complexType>
+                    <xsd:sequence><!-- scelta multipla -->
+                        <xsd:element name="cassaEdile" minOccurs="0" maxOccurs="1">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="sede" type="xsd:string"/>
+                                    <xsd:element name="codiceImpresa" type="xsd:string"/>
+                                    <xsd:element name="codiceCassa" type="xsd:string"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="Inps" minOccurs="0" maxOccurs="1">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="sede" type="xsd:string"/>
+                                    <xsd:element name="codiceMatrPos" type="xsd:string"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="Inail" minOccurs="0" maxOccurs="1">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="sede" type="xsd:string"/>
+                                    <xsd:element name="codiceImpresa" type="xsd:string"/>
+                                    <xsd:element name="posizioneAssicurativa" type="xsd:string"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!-- IMPRESE ESECUTRICI end -->
+
+
+    <xsd:complexType name="titolare_soggetti_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eallperana:allegato_persona_anagrafica_ctype">
+                <xsd:sequence>
+                    <xsd:element name="inQualitaDi" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="impresa" type="eallimpana:allegato_impresa_anagrafica_ctype" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="allegato_soggetti_coinvolti_cil" type="eallsogcoicil:allegato_soggetti_coinvolti_cil_ctype" />
+
+</xsd:schema>

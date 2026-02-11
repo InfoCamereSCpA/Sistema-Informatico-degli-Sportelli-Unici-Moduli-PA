@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschg2reqsog="../02_entities/aua_scheda_g2_requisiti_soggettivi"
+            targetNamespace="../02_entities/aua_scheda_g2_requisiti_soggettivi"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+    <!--    SCHEDA G2-2  -->
+
+
+
+    <xsd:complexType name="scheda_g2_requisiti_soggettivi_ctype">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="istanza_referente_aua" type="xsd:boolean"/>
+
+                <xsd:element name="istanza_gestore" type="eauaschg2reqsog:istanza_gestore_ctype"/>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="istanza_gestore_ctype">
+        <xsd:sequence>
+            <xsd:element name="stato_ditta" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="condanne" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="obblighi_contributivi" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="misure_prevenzione" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="false_dichiarazioni" type="xsd:boolean" minOccurs="0"/>
+
+            <xsd:choice>
+                <xsd:element name="proprietario_area" type="xsd:boolean"/>
+                <xsd:element name="piena_disponibilita" type="eauaschg2reqsog:piena_disponibilita_ctype"/>
+            </xsd:choice>
+
+            <xsd:element name="dichiarazione_procedura_semplificata" type="xsd:boolean" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="piena_disponibilita_ctype">
+        <xsd:sequence>
+            <xsd:element name="anni" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="in_base_a" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+
+
+    <xsd:element name="scheda_g2_requisiti_soggettivi" type="eauaschg2reqsog:scheda_g2_requisiti_soggettivi_ctype"/>
+
+</xsd:schema>

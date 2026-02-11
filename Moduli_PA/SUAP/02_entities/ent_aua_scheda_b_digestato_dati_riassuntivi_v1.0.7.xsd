@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:eauaschbdigria="../02_entities/aua_scheda_b_digestato_dati_riassuntivi"
+
+    targetNamespace="../02_entities/aua_scheda_b_digestato_dati_riassuntivi"
+    elementFormDefault="qualified"
+    attributeFormDefault="qualified"
+    version="1.0.7"
+    xml:lang="it">
+
+   <!-- Scheda B1-3(5c)  -->
+
+    <!-- Ripetizione principale -->
+    <xsd:complexType name="scheda_b_digestato_dati_riassuntivi_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_b_digestato_dati_riassuntivi_blocco" type="eauaschbdigria:scheda_b_digestato_dati_riassuntivi_ctype" maxOccurs="unbounded"/>
+            <!-- Totale solido/palabile (dopo trattamento) -->
+            <xsd:element name="totale_solido_palabile_post_trattamento" type="eauaschbdigria:totale_solido_palabile_post_trattamento_base_type"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Tipo concreto principale -->
+    <xsd:complexType name="scheda_b_digestato_dati_riassuntivi_ctype">
+        <xsd:sequence>
+            <!-- Digestato tal quale -->
+            <xsd:element name="digestato_tal_quale" type="eauaschbdigria:digestato_tal_quale_ctype"/>
+            <!-- Liquido/chiarificato (dopo trattamento) -->
+            <xsd:element name="liquido_chiarificato_post_trattamento" type="eauaschbdigria:liquido_chiarificato_post_trattamento_base_type"/>
+            <!-- Totale liquido -->
+            <xsd:element name="totale_liquido" type="eauaschbdigria:totale_liquido_base_type"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Digestato tal quale -->
+    <xsd:complexType name="digestato_tal_quale_ctype">
+        <xsd:sequence>
+            <xsd:element name="presente" type="xsd:boolean"/>
+            <xsd:element name="volume_m3_anno" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="azoto_kg_anno" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="titolo_n_kg_m3" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="azoto_zootecnico_percentuale" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="capacita_stoccaggio_giorni" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="capacita_stoccaggio_m3" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Liquido/chiarificato (dopo trattamento) - tipo astratto -->
+    <xsd:complexType name="liquido_chiarificato_post_trattamento_base_type" abstract="true"/>
+    <!-- Tipo concreto -->
+    <xsd:complexType name="liquido_chiarificato_post_trattamento_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschbdigria:liquido_chiarificato_post_trattamento_base_type">
+                <xsd:sequence>
+                    <xsd:element name="presente" type="xsd:boolean"/>
+                    <xsd:element name="volume_m3_anno" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="azoto_kg_anno" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="titolo_n_kg_m3" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="azoto_zootecnico_percentuale" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="capacita_stoccaggio_giorni" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="capacita_stoccaggio_m3" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Totale liquido - tipo astratto -->
+    <xsd:complexType name="totale_liquido_base_type" abstract="true"/>
+    <!-- Tipo concreto -->
+    <xsd:complexType name="totale_liquido_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschbdigria:totale_liquido_base_type">
+                <xsd:sequence>
+                    <xsd:element name="volume_m3_anno" type="xsd:string"/>
+                    <xsd:element name="azoto_kg_anno" type="xsd:string"/>
+                    <xsd:element name="titolo_n_kg_m3" type="xsd:string"/>
+                    <xsd:element name="azoto_zootecnico_percentuale" type="xsd:string"/>
+                    <xsd:element name="capacita_stoccaggio_giorni" type="xsd:string"/>
+                    <xsd:element name="capacita_stoccaggio_m3" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Totale solido/palabile (dopo trattamento) - tipo astratto -->
+    <xsd:complexType name="totale_solido_palabile_post_trattamento_base_type" abstract="true"/>
+    <!-- Tipo concreto -->
+    <xsd:complexType name="totale_solido_palabile_post_trattamento_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschbdigria:totale_solido_palabile_post_trattamento_base_type">
+                <xsd:sequence>
+                    <xsd:element name="volume_m3_anno" type="xsd:string"/>
+                    <xsd:element name="azoto_kg_anno" type="xsd:string"/>
+                    <xsd:element name="titolo_n_kg_m3" type="xsd:string"/>
+                    <xsd:element name="azoto_zootecnico_percentuale" type="xsd:string"/>
+                    <xsd:element name="capacita_stoccaggio_giorni" type="xsd:string"/>
+                    <xsd:element name="capacita_stoccaggio_m3" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Elemento principale -->
+    <xsd:element name="scheda_b_digestato_dati_riassuntivi" type="eauaschbdigria:scheda_b_digestato_dati_riassuntivi_ripetibile_ctype"/>
+</xsd:schema>

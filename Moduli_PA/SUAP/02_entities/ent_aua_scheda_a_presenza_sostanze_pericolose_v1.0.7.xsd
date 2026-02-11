@@ -1,0 +1,82 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschapresosper="../02_entities/aua_scheda_a_presenza_sostanze_pericolose"
+            xmlns:eauacodscaenu="../02_entities/aua_codice_scarico_enum"
+            targetNamespace="../02_entities/aua_scheda_a_presenza_sostanze_pericolose"
+            elementFormDefault="qualified">
+
+    <xsd:import namespace="../02_entities/aua_codice_scarico_enum" schemaLocation="../02_entities/ent_aua_codice_scarico_enum_v1.0.7.xsd"/>
+
+    <!--    SCHEDA A4-A8 -->
+
+
+
+    <!-- Tipo ripetibile (blocco) -->
+    <xsd:complexType name="presenza_sostanze_pericolose_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="presenza_sostanze_pericolose" type="xsd:boolean"/>
+            <xsd:element name="codice" type="eauacodscaenu:codice_scarico_enum"/>
+            <xsd:element name="numero_cas" type="xsd:string"/>
+            <xsd:element name="elemento_sostanza" type="xsd:string"/>
+
+            <!-- Choice presenza insediamento -->
+            <xsd:element name="presenza_insediamento">
+                <xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element name="utilizzata" type="xsd:boolean"/>
+                        <xsd:element name="prodotta" type="xsd:boolean"/>
+                        <xsd:element name="trasformata" type="xsd:boolean"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+            <!-- Choice presenza scarico -->
+            <xsd:element name="presenza_nello_scarico">
+                <xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element name="presunta" type="xsd:boolean"/>
+                        <xsd:element name="verificata" type="xsd:boolean"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="concentrazione_minima" type="xsd:string"/>
+            <xsd:element name="concentrazione_media" type="xsd:string"/>
+            <xsd:element name="concentrazione_massima" type="xsd:string"/>
+            <xsd:element name="presenza_elementi_pericolosi" type="xsd:boolean"/>
+            <xsd:element name="cadmio" type="eauaschapresosper:elemento_pericoloso_ctype" minOccurs="0"/>
+            <xsd:element name="mercurio_elettrolisi" type="eauaschapresosper:elemento_pericoloso_ctype" minOccurs="0"/>
+            <xsd:element name="mercurio_no_elettrolisi" type="eauaschapresosper:elemento_pericoloso_ctype" minOccurs="0"/>
+            <xsd:element name="esaclorocicloesano" type="eauaschapresosper:elemento_pericoloso_ctype" minOccurs="0"/>
+            <xsd:element name="ddt" type="eauaschapresosper:elemento_pericoloso_ctype" minOccurs="0"/>
+            <xsd:element name="pentaclorofenolo" type="eauaschapresosper:elemento_pericoloso_ctype" minOccurs="0"/>
+            <xsd:element name="aldrin_dieldrin_endrin_isodrin" type="eauaschapresosper:elemento_pericoloso_ctype" minOccurs="0"/>
+            <xsd:element name="esaclorobenzene" type="eauaschapresosper:elemento_pericoloso_ctype" minOccurs="0"/>
+            <xsd:element name="esaclorobutadine" type="eauaschapresosper:elemento_pericoloso_ctype" minOccurs="0"/>
+            <xsd:element name="cloroformio" type="eauaschapresosper:elemento_pericoloso_ctype" minOccurs="0"/>
+            <xsd:element name="tetracloruro_di_carbonio" type="eauaschapresosper:elemento_pericoloso_ctype" minOccurs="0"/>
+            <xsd:element name="dicloroetano" type="eauaschapresosper:elemento_pericoloso_ctype" minOccurs="0"/>
+            <xsd:element name="tricloroetilene" type="eauaschapresosper:elemento_pericoloso_ctype" minOccurs="0"/>
+            <xsd:element name="triclobenzene" type="eauaschapresosper:elemento_pericoloso_ctype" minOccurs="0"/>
+            <xsd:element name="percloroetilene" type="eauaschapresosper:elemento_pericoloso_ctype" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="elemento_pericoloso_ctype">
+        <xsd:sequence>
+            <xsd:element name="presenza" type="xsd:boolean"/>
+            <xsd:element name="capacita_produzione_industriale" type="xsd:string"/>
+            <xsd:element name="fabbisogno_orario" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="presenza_sostanze_pericolose_ctype">
+        <xsd:sequence>
+            <xsd:element name="presenza_sostanze_pericolose_blocco" type="eauaschapresosper:presenza_sostanze_pericolose_ripetibile_ctype" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+
+    <!-- Elemento principale -->
+    <xsd:element name="presenza_sostanze_pericolose" type="eauaschapresosper:presenza_sostanze_pericolose_ctype"/>
+
+</xsd:schema>

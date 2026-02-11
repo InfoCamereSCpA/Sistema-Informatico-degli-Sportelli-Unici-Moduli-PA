@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschbvolced="../02_entities/aua_scheda_b_volumi_ceduti"
+            xmlns:ctipi="../commons/tipi"
+            targetNamespace="../02_entities/aua_scheda_b_volumi_ceduti"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <!--    SCHEDA B1-3(5)  -->
+    <xsd:complexType name="scheda_b_volumi_ceduti_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_b_volumi_ceduti_blocco" type="eauaschbvolced:scheda_b_volumi_ceduti_ripetibile_ctype" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Tipo concreto ripetibile -->
+    <xsd:complexType name="scheda_b_volumi_ceduti_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="cuaa_azienda_acquirente" type="xsd:string"/>
+            <xsd:element name="qualita_utilizzatrice_agronomica" type="xsd:string"/>
+            <xsd:element name="scadenza_contratto_cessione" type="ctipi:ggmmaaaa_stype"/>
+            <xsd:element name="sostanza_ceduta" type="xsd:string"/>
+            <xsd:element name="volume_ceduto" type="xsd:string"/>
+            <xsd:element name="azoto_ceduto" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!-- Elemento principale -->
+    <xsd:element name="scheda_b_volumi_ceduti" type="eauaschbvolced:scheda_b_volumi_ceduti_ctype"/>
+
+</xsd:schema>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:etipintopescia="../02_entities/tipologia_intervento_opere_scia"
+            targetNamespace="../02_entities/tipologia_intervento_opere_scia"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+    <!-- Reference etipintopescia:TipoInterventiOpereBaseType -->
+    <xsd:complexType name="tipo_interventi_opere_base_type" abstract="true"/>
+
+
+    <xsd:complexType name="tipo_interventi_opere_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="etipintopescia:tipo_interventi_opere_base_type">
+                <xsd:sequence>
+                    <!-- v1.1 -->
+                    <xsd:element name="progetto_in_scia" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <!-- v1.1.1 -->
+                                <xsd:element name="intervento_manutenzione_straordinaria">
+                                    <xsd:complexType>
+                                        <xsd:choice>
+                                            <xsd:sequence>
+                                                <xsd:element name="no_mutamento_destinazione_uso_straordinaria" minOccurs="0" type="xsd:boolean"/>
+                                                <xsd:element name="si_mutamento_destinazione_uso_straordinaria" minOccurs="0" type="xsd:boolean"/>
+                                            </xsd:sequence>
+                                        </xsd:choice>
+                                    </xsd:complexType>
+                                </xsd:element>
+                                <!-- v1.1.2 -->
+                                <xsd:element name="intervento_restauro_risanamento">
+                                    <xsd:complexType>
+                                        <xsd:choice>
+                                            <xsd:sequence>
+                                                <xsd:element name="no_mutamento_destinazione_uso_restauro" minOccurs="0" type="xsd:boolean"/>
+                                                <xsd:element name="si_mutamento_destinazione_uso_restauro" minOccurs="0" type="xsd:boolean"/>
+                                            </xsd:sequence>
+                                        </xsd:choice>
+                                    </xsd:complexType>
+                                </xsd:element>
+                                <!-- v1.1.3 -->
+                                <xsd:element name="intervento_ristrutturazione_edilizia">
+                                    <xsd:complexType>
+                                        <xsd:choice>
+                                            <xsd:sequence>
+                                                <xsd:element name="no_mutamento_destinazione_uso_ristrutturazione" minOccurs="0" type="xsd:boolean"/>
+                                                <xsd:element name="si_mutamento_destinazione_uso_ristrutturazione" minOccurs="0" type="xsd:boolean"/>
+                                            </xsd:sequence>
+                                        </xsd:choice>
+                                    </xsd:complexType>
+                                </xsd:element>
+                                <!-- v1.1.4 -->
+                                <xsd:element name="variante_permesso_costruire" minOccurs="0" type="xsd:boolean"/>
+                                <!-- v1.1.5 -->
+                                <xsd:element name="variante_scia_essenziale" minOccurs="0" type="xsd:boolean"/>
+                                <!-- v1.1.6 -->
+                                <xsd:element name="variante_scia_no_essenziale" minOccurs="0" type="xsd:boolean"/>
+                                <!-- v1.1.7 -->
+                                <xsd:element name="mutamento_destinazione_duso">
+                                    <xsd:complexType>
+                                        <xsd:sequence>
+                                            <!-- v1.1.7.x -->
+                                            <xsd:element name="senza_opere_stessa_categoria" minOccurs="0" type="xsd:boolean"/>
+                                            <xsd:element name="senza_opere_tra_categorie" minOccurs="0" type="xsd:boolean"/>
+                                            <xsd:element name="con_opere_stessa_categoria" minOccurs="0" type="xsd:boolean"/>
+                                            <xsd:element name="con_opere_tra_categorie" minOccurs="0" type="xsd:boolean"/>
+                                            <xsd:element name="senza_opere_intero_immobile_stessa_categoria" minOccurs="0" type="xsd:boolean"/>
+                                            <xsd:element name="con_opere_intero_immobile_stessa_categoria" minOccurs="0" type="xsd:boolean"/>
+                                        </xsd:sequence>
+                                    </xsd:complexType>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+
+                    <!-- v1.2 -->
+                    <xsd:element name="scia_in_sanatoria" minOccurs="0" type="xsd:boolean"/>
+
+                    <!-- v1.3 -->
+                    <xsd:element name="descrizione_intervento" minOccurs="0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+
+    <xsd:element name="tipologia_intervento_opere_scia" type="etipintopescia:tipo_interventi_opere_ctype"/>
+</xsd:schema>

@@ -1,0 +1,43 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschacomscater="../02_entities/aua_scheda_a_composizione_scarico_terminale"
+            xmlns:eauacodscaenu="../02_entities/aua_codice_scarico_enum"
+            targetNamespace="../02_entities/aua_scheda_a_composizione_scarico_terminale"
+            elementFormDefault="qualified">
+
+    <xsd:import namespace="../02_entities/aua_codice_scarico_enum" schemaLocation="../02_entities/ent_aua_codice_scarico_enum_v1.0.7.xsd"/>
+
+
+    <!--    SCHEDA A4-A6 -->
+
+  <!-- Tipo astratto principale -->
+  <xsd:complexType name="scheda_a_composizione_scarico_terminale_base_type" abstract="true"/>
+
+  <!-- Tipo concreto -->
+  <xsd:complexType name="scheda_a_composizione_scarico_terminale_ctype">
+    <xsd:complexContent>
+      <xsd:extension base="eauaschacomscater:scheda_a_composizione_scarico_terminale_base_type">
+        <xsd:sequence>
+          <xsd:element name="scarico_parziale" type="eauaschacomscater:scarico_parziale_ctype" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- Tipo per ogni scarico parziale -->
+  <xsd:complexType name="scarico_parziale_ctype">
+    <xsd:sequence>
+      <xsd:element name="codice" type="eauacodscaenu:codice_scarico_enum"/>
+      <xsd:element name="acque_reflue_produttive" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="acque_reflue_raffreddamento" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="acque_reflue_lavaggio_impianti" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="acque_reflue_meteoriche_dilavamento" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="acque_di_prima_pioggia" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="acque_reflue_domestiche" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="acque_reflue_assimilate_domestiche" type="xsd:boolean" minOccurs="0"/>
+      <xsd:element name="altro" type="xsd:boolean" minOccurs="0"/>
+        <xsd:element name="altro_specificare" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+</xsd:schema>

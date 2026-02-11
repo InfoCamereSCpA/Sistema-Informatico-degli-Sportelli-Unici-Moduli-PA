@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sauaschascaacqref="../03_sections/aua_scheda_a_scarico_acque_reflue"
+            xmlns:eauaschaquasino="../02_entities/aua_scheda_a_quadro_sinottico"
+            xmlns:eauaschacicproacq="../02_entities/aua_scheda_a_ciclo_produttivo_acqua"
+            xmlns:eauaschaquapre="../02_entities/aua_scheda_a_quadro_prelievi"
+            xmlns:eauaschadespunsca="../02_entities/aua_scheda_a_descrizione_punti_scarico"
+            xmlns:eauaschascaass="../02_entities/aua_scheda_a_scarichi_forma_associata"
+            xmlns:eauaschacomscater="../02_entities/aua_scheda_a_composizione_scarico_terminale"
+            xmlns:eauaschacarquascater="../02_entities/aua_scheda_a_caratteristiche_qualitative_scarico_terminale"
+            xmlns:eauaschapresosper="../02_entities/aua_scheda_a_presenza_sostanze_pericolose"
+            xmlns:eauaschasisconparana="../02_entities/aua_scheda_a_sistema_controllo_parametri_analitici"
+            xmlns:eauaschadattecscaacqref="../02_entities/aua_scheda_a_dati_tecnici_scarico_acque_reflue"
+            xmlns:eauaschedarecref="../02_entities/aua_scheda_a_recapito_reflui"
+            xmlns:eauaschasisdepacqref="../02_entities/aua_scheda_a_sistema_depurazione_acque_reflue"
+            xmlns:eauaschasisdepacqrefdom="../02_entities/aua_scheda_a_sistema_depurazione_acque_reflue_domestiche"
+            targetNamespace="../03_sections/aua_scheda_a_scarico_acque_reflue" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/aua_scheda_a_quadro_sinottico" schemaLocation="../02_entities/ent_aua_scheda_a_quadro_sinottico_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_a_ciclo_produttivo_acqua" schemaLocation="../02_entities/ent_aua_scheda_a_ciclo_produttivo_acqua_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_a_quadro_prelievi" schemaLocation="../02_entities/ent_aua_scheda_a_quadro_prelievi_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_a_descrizione_punti_scarico" schemaLocation="../02_entities/ent_aua_scheda_a_descrizione_punti_scarico_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_a_scarichi_forma_associata" schemaLocation="../02_entities/ent_aua_scheda_a_scarichi_forma_associata_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_a_composizione_scarico_terminale" schemaLocation="../02_entities/ent_aua_scheda_a_composizione_scarico_terminale_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_a_caratteristiche_qualitative_scarico_terminale" schemaLocation="../02_entities/ent_aua_scheda_a_caratteristiche_qualitative_scarico_terminale_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_a_presenza_sostanze_pericolose" schemaLocation="../02_entities/ent_aua_scheda_a_presenza_sostanze_pericolose_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_a_sistema_controllo_parametri_analitici" schemaLocation="../02_entities/ent_aua_scheda_a_sistema_controllo_parametri_analitici_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_a_dati_tecnici_scarico_acque_reflue" schemaLocation="../02_entities/ent_aua_scheda_a_dati_tecnici_scarico_acque_reflue_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_a_recapito_reflui" schemaLocation="../02_entities/ent_aua_scheda_a_recapito_reflui_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_a_sistema_depurazione_acque_reflue" schemaLocation="../02_entities/ent_aua_scheda_a_sistema_depurazione_acque_reflue_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_a_sistema_depurazione_acque_reflue_domestiche" schemaLocation="../02_entities/ent_aua_scheda_a_sistema_depurazione_acque_reflue_domestiche_v1.0.7.xsd"/>
+
+
+
+    <xsd:complexType name="sezione_aua_scheda_a_scarico_acque_reflue_ctype">
+        <xsd:sequence>
+            <!--    SCHEDA A1  -->
+            <xsd:element name="quadro_sinottico_scarichi_finali" type="eauaschaquasino:quadro_sinottico_ctype" minOccurs="0" maxOccurs="1"/>
+            <!--    SCHEDA A2  -->
+            <xsd:element name="ciclo_produttivo_acqua" type="eauaschacicproacq:ciclo_produttivo_acqua_ctype" minOccurs="0" maxOccurs="1"/>
+            <!--    SCHEDA A3  -->
+            <xsd:element name="quadro_prelievi" type="eauaschaquapre:quadro_prelievi_ctype" minOccurs="0" maxOccurs="1"/>
+            <!--    SCHEDA A4-A.1-2-3-4  -->
+            <xsd:element name="descrizione_punti_scarico" type="eauaschadespunsca:punto_scarico_ctype" minOccurs="0" maxOccurs="1"/>
+            <!--    SCHEDA A4-A.5  -->
+            <xsd:element name="scarichi_forma_associata" type="eauaschascaass:scarico_forma_associata_ctype" minOccurs="0" maxOccurs="1"/>
+            <!--    SCHEDA A4-A.6  -->
+            <xsd:element name="composizione_scarico_terminale" type="eauaschacomscater:scheda_a_composizione_scarico_terminale_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--    SCHEDA A4-A.7  -->
+            <xsd:element name="caratteristiche_qualitative_scarico_terminale" type="eauaschacarquascater:caratteristiche_qualitative_scarico_terminale_ctype" minOccurs="0" maxOccurs="1"/>
+            <!--    SCHEDA A4-A.8  -->
+            <xsd:element name="presenza_sostanze_pericolose" type="eauaschapresosper:presenza_sostanze_pericolose_ctype" minOccurs="0" maxOccurs="1"/>
+            <!--    SCHEDA A4-A.9  -->
+            <xsd:element name="sistema_controllo_parametri_analitici" type="eauaschasisconparana:sistema_controllo_parametri_analitici_ctype" minOccurs="0" maxOccurs="1"/>
+            <!--    SCHEDA A5  -->
+            <xsd:element name="dati_tecnici_scarico_acque_reflue" type="eauaschadattecscaacqref:scheda_a_dati_tecnici_scarico_acque_reflue_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--    SCHEDA A6-A.1-2  -->
+            <xsd:element name="recapito_reflui" type="eauaschedarecref:scheda_a_recapito_reflui_ctype" minOccurs="0" maxOccurs="1"/>
+            <!--    SCHEDA A7  -->
+            <xsd:element name="sistema_depurazione_acque_reflue_industriali" type="eauaschasisdepacqref:scheda_a_sistema_depurazione_base_type" minOccurs="0" maxOccurs="1"/>
+            <!--    SCHEDA A8  -->
+            <xsd:element name="sistema_depurazione_acque_reflue_domestiche" type="eauaschasisdepacqrefdom:scheda_a_sistema_depurazione_domestica_base_type" minOccurs="0" maxOccurs="1"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_aua_scheda_a_scarico_acque_reflue" type="sauaschascaacqref:sezione_aua_scheda_a_scarico_acque_reflue_ctype"/>
+</xsd:schema>

@@ -1,0 +1,32 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschasisconparana="../02_entities/aua_scheda_a_sistema_controllo_parametri_analitici"
+            xmlns:eauacodscaenu="../02_entities/aua_codice_scarico_enum"
+            targetNamespace="../02_entities/aua_scheda_a_sistema_controllo_parametri_analitici"
+            elementFormDefault="qualified">
+
+    <xsd:import namespace="../02_entities/aua_codice_scarico_enum" schemaLocation="../02_entities/ent_aua_codice_scarico_enum_v1.0.7.xsd"/>
+
+    <!--    SCHEDA A4-A9 -->
+
+
+
+    <!-- Tipo ripetibile (blocco) -->
+    <xsd:complexType name="sistema_controllo_parametri_analitici_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="codice" type="eauacodscaenu:codice_scarico_enum"/>
+            <xsd:element name="specifica_sistema" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="sistema_controllo_parametri_analitici_ctype">
+        <xsd:sequence>
+            <xsd:element name="sistema_controllo_parametri_analitici_blocco" type="eauaschasisconparana:sistema_controllo_parametri_analitici_ripetibile_ctype" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!-- Elemento principale -->
+    <xsd:element name="sistema_controllo_parametri_analitici" type="eauaschasisconparana:sistema_controllo_parametri_analitici_ctype"/>
+
+</xsd:schema>

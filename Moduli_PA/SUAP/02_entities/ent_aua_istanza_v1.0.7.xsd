@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaist="../02_entities/aua_istanza"
+            xmlns:ctipi="../commons/tipi"
+            targetNamespace="../02_entities/aua_istanza"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:complexType name="aua_istanza_ctype">
+        <xsd:sequence>
+            <xsd:element name="richiesta_gestore">
+                <xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element name="rilascio" type="xsd:boolean" fixed="true"/>
+                        <xsd:element name="modifica_sostanziale" type="eauaist:estremi_atto_ctype"/>
+                        <xsd:element name="rinnovo" type="eauaist:estremi_atto_ctype"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="dettaglio_autorizzazioni">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="a_scarichi_acque_reflue" type="eauaist:scelta_autorizzazione_base_type"
+                                     minOccurs="0"/>
+                        <xsd:element name="b_utilizzazione_agronomica" type="eauaist:scelta_autorizzazione_base_type"
+                                     minOccurs="0"/>
+                        <xsd:element name="c_emissioni_atmosfera_art269" type="eauaist:scelta_autorizzazione_base_type"
+                                     minOccurs="0"/>
+                        <xsd:element name="d_emissioni_atmosfera_art272" type="eauaist:scelta_autorizzazione_base_type"
+                                     minOccurs="0"/>
+                        <xsd:element name="e_impatto_acustico" type="eauaist:scelta_autorizzazione_base_type" minOccurs="0"/>
+                        <xsd:element name="f_utilizzo_fanghi" type="eauaist:scelta_autorizzazione_base_type" minOccurs="0"/>
+                        <xsd:element name="g_rifiuti" type="eauaist:scelta_autorizzazione_base_type" minOccurs="0"/>
+                        <!-- TODO: mancante sul FO -->
+                        <xsd:element name="altro" type="eauaist:scelta_autorizzazione_base_type" minOccurs="0"/>
+                        <xsd:element name="altro_specificare" type="xsd:string" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="scelta_autorizzazione_base_type" abstract="true"/>
+
+    <xsd:complexType name="scelta_autorizzazione_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaist:scelta_autorizzazione_base_type">
+                <xsd:choice>
+                    <xsd:element name="nuova" type="xsd:boolean"/>
+
+                    <xsd:element name="modifica_sostanziale" type="xsd:boolean"/>
+
+                    <xsd:element name="rinnovo" type="xsd:boolean"/>
+
+                    <xsd:element name="non_assoggettato" type="xsd:boolean"/>
+
+                    <xsd:element name="proseguimento_senza_modifiche">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="dichiara_invarianza" type="xsd:boolean" fixed="true"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="estremi_atto_ctype">
+        <xsd:sequence>
+            <xsd:element name="numero" type="xsd:string"/>
+            <xsd:element name="data" type="ctipi:ggmmaaaa_stype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="aua_istanza" type="eauaist:aua_istanza_ctype"/>
+
+
+</xsd:schema>

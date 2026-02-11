@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschbdatcesacq="../02_entities/aua_scheda_b_dati_cessione_acque"
+            xmlns:ctipi="../commons/tipi"
+            targetNamespace="../02_entities/aua_scheda_b_dati_cessione_acque"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <!-- SCHEDA B2-4 (sul FrontOffice e' rappresentato come scheda B2-5 non presente invece nel documento PDF) -->
+
+    <xsd:element name="dati_cessione_acque" type="eauaschbdatcesacq:dati_cessione_acque_blocco_ctype"/>
+
+    <xsd:complexType name="dati_cessione_acque_blocco_ctype">
+        <xsd:sequence>
+            <xsd:element name="cessione_acque_blocco" type="eauaschbdatcesacq:cessione_acque_ripetibile_ctype" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="cessione_acque_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="cuaa_azienda_acquirente" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="in_qualita_di" type="eauaschbdatcesacq:in_qualita_di_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="scadenza_contratto_cessione" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="sostanza_ceduta" type="eauaschbdatcesacq:sostanza_ceduta_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="volume_ceduto" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="azoto_ceduto" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="in_qualita_di_ctype">
+        <xsd:choice>
+            <xsd:element name="utilizzatrice_agronomica_detentore" type="xsd:boolean"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:complexType name="sostanza_ceduta_ctype">
+        <xsd:choice>
+            <xsd:element name="acque_di_vegetazione" type="xsd:boolean"/>
+            <xsd:element name="sanse_umide" type="xsd:boolean"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+</xsd:schema>

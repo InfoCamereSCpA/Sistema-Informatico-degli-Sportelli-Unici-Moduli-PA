@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:erisincril="../02_entities/rischio_incidente_rilevante"
+            targetNamespace="../02_entities/rischio_incidente_rilevante"
+
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!-- Nessuna Reference nell'AS-IS -->
+    <xsd:complexType name="rischio_rilevante_base_type" abstract="true"/>
+
+    <xsd:complexType name="rischio_rilevante_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="erisincril:rischio_rilevante_base_type">
+                <xsd:choice>
+                    <xsd:element name="assenza_attivita" type="xsd:boolean"/>
+                    <xsd:element name="presenza_attivita_area_danno">
+                        <xsd:complexType>
+                            <xsd:choice>
+                                <xsd:element name="non_ricade_area_danno" type="xsd:boolean"/>
+                                <xsd:element name="ricade_area_danno">
+                                    <xsd:complexType>
+                                        <xsd:sequence>
+                                            <xsd:element name="ricade_area_danno_allegato_valutazione_progetto"
+                                                         type="xsd:boolean"/>
+                                        </xsd:sequence>
+                                    </xsd:complexType>
+                                </xsd:element>
+                            </xsd:choice>
+
+                        </xsd:complexType>
+                    </xsd:element>
+
+                    <xsd:element name="presenza_attivita_no_area_danno">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="presenza_attivita_no_area_danno_allegato_valutazione_progetto"
+                                             type="xsd:boolean"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:element name="rischio_incidente_rilevante" type="erisincril:rischio_rilevante_ctype"/>
+</xsd:schema>

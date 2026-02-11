@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:eautoape="../02_entities/autoscuole_apertura"
+    xmlns:ctipi="../commons/tipi" targetNamespace="../02_entities/autoscuole_apertura" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:complexType name="autoscuole_apertura_ctype">
+        <xsd:sequence>
+
+            <xsd:choice>
+                <xsd:element name="prima_sede" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="ulteriore_sede" minOccurs="0" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:annotation>
+                            <xsd:documentation>Tipo per specificare il numero e una data di protocollo</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:sequence>
+                            <xsd:element name="numero_protocollo" type="xsd:string"/>
+                            <xsd:element name="data_registrazione" type="ctipi:ggmmaaaa_stype"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:choice>
+
+            <xsd:choice>
+                <xsd:element name="non_aderisce" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="aderisce">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="istituto" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element name="comune" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element name="indirizzo" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element name="nr_provvedimento" type="xsd:positiveInteger" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element name="del" type="ctipi:ggmmaaaa_stype" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element name="rilasciato_da" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                            <xsd:element name="corsi" type="eautoape:corsi_ctype" minOccurs="0" maxOccurs="1"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:choice>
+
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="corsi_ctype">
+        <xsd:sequence>
+            <xsd:element name="teoria" type="eautoape:categoria_patenti_ctype" minOccurs="0"/>
+            <xsd:element name="guida" type="eautoape:categoria_patenti_ctype" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="categoria_patenti_ctype">
+        <xsd:sequence>
+            <xsd:element name="a" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="am" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="a1" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="a2" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="be" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="c" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="c1" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="c1e" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="d" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="d1" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="d1e" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="ce" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="de" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="abilitazione_professionale" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="qualificazione_professionale" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="autoscuole_apertura" type="eautoape:autoscuole_apertura_ctype"/>
+</xsd:schema>

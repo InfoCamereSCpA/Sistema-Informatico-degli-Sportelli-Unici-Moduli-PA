@@ -1,0 +1,87 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauacodscaenu="../02_entities/aua_codice_scarico_enum"
+            targetNamespace="../02_entities/aua_codice_scarico_enum"
+            elementFormDefault="qualified">
+
+    
+
+    <!-- Enumerazione codice scarico -->
+    <xsd:simpleType name="codice_scarico_enum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="S01"/>
+            <xsd:enumeration value="S02"/>
+            <xsd:enumeration value="S03"/>
+            <xsd:enumeration value="S04"/>
+            <xsd:enumeration value="S05"/>
+            <xsd:enumeration value="S06"/>
+            <xsd:enumeration value="S07"/>
+            <xsd:enumeration value="S08"/>
+            <xsd:enumeration value="S09"/>
+            <xsd:enumeration value="S10"/>
+            <xsd:enumeration value="S11"/>
+            <xsd:enumeration value="S12"/>
+            <xsd:enumeration value="S13"/>
+            <xsd:enumeration value="S14"/>
+            <xsd:enumeration value="S15"/>
+            <xsd:enumeration value="S16"/>
+            <xsd:enumeration value="S17"/>
+            <xsd:enumeration value="S18"/>
+            <xsd:enumeration value="S19"/>
+            <xsd:enumeration value="S20"/>
+            <xsd:enumeration value="S21"/>
+            <xsd:enumeration value="S22"/>
+            <xsd:enumeration value="S23"/>
+            <xsd:enumeration value="S24"/>
+            <xsd:enumeration value="S25"/>
+            <xsd:enumeration value="S26"/>
+            <xsd:enumeration value="S27"/>
+            <xsd:enumeration value="S28"/>
+            <xsd:enumeration value="S29"/>
+            <xsd:enumeration value="S30"/>
+            <xsd:enumeration value="S31"/>
+            <xsd:enumeration value="S32"/>
+            <xsd:enumeration value="S33"/>
+            <xsd:enumeration value="S34"/>
+            <xsd:enumeration value="S35"/>
+            <xsd:enumeration value="S36"/>
+            <xsd:enumeration value="S37"/>
+            <xsd:enumeration value="S38"/>
+            <xsd:enumeration value="S39"/>
+            <xsd:enumeration value="S40"/>
+            <xsd:enumeration value="S41"/>
+            <xsd:enumeration value="S42"/>
+            <xsd:enumeration value="S43"/>
+            <xsd:enumeration value="S44"/>
+            <xsd:enumeration value="S45"/>
+            <xsd:enumeration value="S46"/>
+            <xsd:enumeration value="S47"/>
+            <xsd:enumeration value="S48"/>
+            <xsd:enumeration value="S49"/>
+            <xsd:enumeration value="S50"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+    <!-- Enumerazione identificativo_scarico -->
+    <xsd:simpleType name="identificativo_scarico_enum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="S01"/>
+            <xsd:enumeration value="S02"/>
+            <xsd:enumeration value="S03"/>
+            <xsd:enumeration value="S04"/>
+            <xsd:enumeration value="S05"/>
+            <xsd:enumeration value="S06"/>
+            <xsd:enumeration value="S07"/>
+            <xsd:enumeration value="S08"/>
+            <xsd:enumeration value="S09"/>
+            <xsd:enumeration value="S10"/>
+            <xsd:enumeration value="S11"/>
+            <xsd:enumeration value="S12"/>
+            <xsd:enumeration value="S13"/>
+            <xsd:enumeration value="S14"/>
+            <xsd:enumeration value="S15"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+</xsd:schema>

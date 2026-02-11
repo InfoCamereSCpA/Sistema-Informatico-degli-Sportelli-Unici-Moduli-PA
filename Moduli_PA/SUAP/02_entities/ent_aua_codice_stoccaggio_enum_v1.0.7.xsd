@@ -1,0 +1,87 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauacodstoenu="../02_entities/aua_codice_stoccaggio_enum"
+            targetNamespace="../02_entities/aua_codice_stoccaggio_enum"
+            elementFormDefault="qualified">
+
+
+
+    <!-- Enumerazione codice stoccaggio -->
+    <xsd:simpleType name="codice_stoccaggio_enum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="CS01"/>
+            <xsd:enumeration value="CS02"/>
+            <xsd:enumeration value="CS03"/>
+            <xsd:enumeration value="CS04"/>
+            <xsd:enumeration value="CS05"/>
+            <xsd:enumeration value="CS06"/>
+            <xsd:enumeration value="CS07"/>
+            <xsd:enumeration value="CS08"/>
+            <xsd:enumeration value="CS09"/>
+            <xsd:enumeration value="CS10"/>
+            <xsd:enumeration value="CS11"/>
+            <xsd:enumeration value="CS12"/>
+            <xsd:enumeration value="CS13"/>
+            <xsd:enumeration value="CS14"/>
+            <xsd:enumeration value="CS15"/>
+            <xsd:enumeration value="CS16"/>
+            <xsd:enumeration value="CS17"/>
+            <xsd:enumeration value="CS18"/>
+            <xsd:enumeration value="CS19"/>
+            <xsd:enumeration value="CS20"/>
+            <xsd:enumeration value="CS21"/>
+            <xsd:enumeration value="CS22"/>
+            <xsd:enumeration value="CS23"/>
+            <xsd:enumeration value="CS24"/>
+            <xsd:enumeration value="CS25"/>
+            <xsd:enumeration value="CS26"/>
+            <xsd:enumeration value="CS27"/>
+            <xsd:enumeration value="CS28"/>
+            <xsd:enumeration value="CS29"/>
+            <xsd:enumeration value="CS30"/>
+            <xsd:enumeration value="CS31"/>
+            <xsd:enumeration value="CS32"/>
+            <xsd:enumeration value="CS33"/>
+            <xsd:enumeration value="CS34"/>
+            <xsd:enumeration value="CS35"/>
+            <xsd:enumeration value="CS36"/>
+            <xsd:enumeration value="CS37"/>
+            <xsd:enumeration value="CS38"/>
+            <xsd:enumeration value="CS39"/>
+            <xsd:enumeration value="CS40"/>
+            <xsd:enumeration value="CS41"/>
+            <xsd:enumeration value="CS42"/>
+            <xsd:enumeration value="CS43"/>
+            <xsd:enumeration value="CS44"/>
+            <xsd:enumeration value="CS45"/>
+            <xsd:enumeration value="CS46"/>
+            <xsd:enumeration value="CS47"/>
+            <xsd:enumeration value="CS48"/>
+            <xsd:enumeration value="CS49"/>
+            <xsd:enumeration value="CS50"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+    <!-- Enumerazione identificativo_stoccaggio -->
+    <xsd:simpleType name="identificativo_stoccaggio_enum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="CS01"/>
+            <xsd:enumeration value="CS02"/>
+            <xsd:enumeration value="CS03"/>
+            <xsd:enumeration value="CS04"/>
+            <xsd:enumeration value="CS05"/>
+            <xsd:enumeration value="CS06"/>
+            <xsd:enumeration value="CS07"/>
+            <xsd:enumeration value="CS08"/>
+            <xsd:enumeration value="CS09"/>
+            <xsd:enumeration value="CS10"/>
+            <xsd:enumeration value="CS11"/>
+            <xsd:enumeration value="CS12"/>
+            <xsd:enumeration value="CS13"/>
+            <xsd:enumeration value="CS14"/>
+            <xsd:enumeration value="CS15"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+</xsd:schema>

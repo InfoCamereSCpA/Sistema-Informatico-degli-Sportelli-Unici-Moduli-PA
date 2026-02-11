@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sauaschdemiatmimp="../03_sections/aua_scheda_d_emissioni_atmosfera_impianti"
+            xmlns:eauaschdemiatmimp="../02_entities/aua_scheda_d_emissioni_atmosfera_impianti"
+
+            targetNamespace="../03_sections/aua_scheda_d_emissioni_atmosfera_impianti" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/aua_scheda_d_emissioni_atmosfera_impianti" schemaLocation="../02_entities/ent_aua_scheda_d_emissioni_atmosfera_impianti_v1.0.7.xsd"/>
+
+
+    <xsd:complexType name="sezione_aua_scheda_d_emissioni_atmosfera_impianti_ctype">
+        <xsd:sequence>
+            <!-- SCHEDA D1 -->
+            <xsd:element name="emissioni_atmosfera_impianti" type="eauaschdemiatmimp:scheda_d_emissioni_atmosfera_impianti_base_type" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_aua_scheda_d_emissioni_atmosfera_impianti" type="sauaschdemiatmimp:sezione_aua_scheda_d_emissioni_atmosfera_impianti_ctype"/>
+</xsd:schema>

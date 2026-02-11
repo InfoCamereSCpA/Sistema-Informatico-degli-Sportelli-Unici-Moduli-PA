@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:eauaschbpaldatria="../02_entities/aua_scheda_b_palabili_dati_riassuntivi"
+    xmlns:ctipi="../commons/tipi"
+    targetNamespace="../02_entities/aua_scheda_b_palabili_dati_riassuntivi"
+    elementFormDefault="qualified"
+    attributeFormDefault="qualified"
+    version="1.0.7"
+    xml:lang="it">
+
+    <!-- Scheda B1-5(b) -->
+
+    <!-- Import tipi comuni -->
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:complexType name="scheda_b_palabili_dati_riassuntivi_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_b_palabili_dati_riassuntivi_blocco" type="eauaschbpaldatria:scheda_b_palabili_dati_riassuntivi_ctype" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Tipo concreto -->
+    <xsd:complexType name="scheda_b_palabili_dati_riassuntivi_ctype">
+        <xsd:sequence>
+            <!-- Palabile -->
+            <xsd:element name="palabile" type="eauaschbpaldatria:palabile_ripetibile_ctype"/>
+            <!-- Totale palabili -->
+            <xsd:element name="totale_palabili" type="eauaschbpaldatria:totale_palabili_ripetibile_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Palabile (ripetibile) -->
+    <xsd:complexType name="palabile_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="letame_bovino_maturo" type="xsd:boolean"/>
+            <xsd:element name="volume_m3_anno" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="azoto_kg_anno" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="titolo_n_kg_m3" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="azoto_zootecnico_percentuale" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="capacita_stoccaggio_giorni" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="capacita_stoccaggio_m3" type="xsd:string" minOccurs="0"/>
+            <!-- Palabile/solido post trattamento -->
+            <xsd:element name="palabile_solido_post_trattamento" type="xsd:boolean"/>
+            <xsd:element name="volume_post_trattamento_m3_anno" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="azoto_post_trattamento_kg_anno" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="titolo_n_post_trattamento_kg_m3" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="azoto_zootecnico_post_trattamento_percentuale" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="capacita_stoccaggio_post_trattamento_giorni" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="capacita_stoccaggio_post_trattamento_m3" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Totale palabili (ripetibile) -->
+    <xsd:complexType name="totale_palabili_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="volume_m3_anno" type="xsd:string"/>
+            <xsd:element name="azoto_kg_anno" type="xsd:string"/>
+            <xsd:element name="titolo_n_kg_m3" type="xsd:string"/>
+            <xsd:element name="azoto_zootecnico_percentuale" type="xsd:string"/>
+            <xsd:element name="capacita_stoccaggio_giorni" type="xsd:string"/>
+            <xsd:element name="capacita_stoccaggio_m3" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Elemento principale -->
+    <xsd:element name="scheda_b_palabili_dati_riassuntivi" type="eauaschbpaldatria:scheda_b_palabili_dati_riassuntivi_ripetibile_ctype"/>
+</xsd:schema>

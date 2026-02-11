@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschcimpcomciv="../02_entities/aua_scheda_c_impianti_combustione_civili"
+            targetNamespace="../02_entities/aua_scheda_c_impianti_combustione_civili"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!--    SCHEDA C1-3(b)  -->
+
+    <!-- Enumerazione combustibile -->
+    <xsd:simpleType name="combustibile_enum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="GAS_NATURALE"/>
+            <xsd:enumeration value="ANTRACITE_PRODOTTI_ANTRACITOSI_E_LORO_MISCELE_CON_ZOLFO_1_M_M"/>
+            <xsd:enumeration value="MISCELE_DI_ACQUA_CARBONE_ANCHE_ADITTIVATE_CONTENENTI_ZOLFO_1_M_M"/>
+            <xsd:enumeration value="BIODIESEL"/>
+            <xsd:enumeration value="GAS_D_ALTOFORNO_DI_COCKERIA_E_DI_ACCIAIERIA"/>
+            <xsd:enumeration value="CARBONE_DI_LEGNA"/>
+            <xsd:enumeration value="GPL"/>
+            <xsd:enumeration value="LEGNA_DA_ARDERE"/>
+            <xsd:enumeration value="MATERIALE_VEGETALE_PRODOTTO_DA_COLTIVAZIONI_DEDICATE"/>
+            <xsd:enumeration value="MATERIALE_VEGETALE_PRODOTTO_DA_COLTIVAZIONI_NON_DEDICATE"/>
+            <xsd:enumeration value="MATERIALE_VEGETALE_PRODOTTO_DA_POTATURA"/>
+            <xsd:enumeration value="MATERIALE_VEGETALE_PRODOTTO_DA_CORTECCE_SEGATURA_TRUCIOLI_ETC"/>
+            <xsd:enumeration value="MATERIALE_VEGETALE_PRODOTTO_DA_PRODOTTI_AGRICOLI"/>
+            <xsd:enumeration value="MATERIALE_VEGETALE_PRODOTTO_DA_SANSA_DI_OLIVA_DISOLEATA_ETC"/>
+            <xsd:enumeration value="MATERIALE_VEGETALE_PRODOTTO_DA_VINACCE_E_POLLINA"/>
+            <xsd:enumeration value="OLI_VEGETALI"/>
+            <xsd:enumeration value="BIOGAS_DA_FERMENTAZIONE"/>
+            <xsd:enumeration value="GAS_DI_RAFFERINERIA_E_PETROLCHIMICI"/>
+            <xsd:enumeration value="SYNGAS"/>
+            <xsd:enumeration value="GASOLIO"/>
+            <xsd:enumeration value="EMULSIONI_DI_ACQUA_GASOLIO_CON_ZOLFO_0_1_M_M"/>
+            <xsd:enumeration value="OLIO_COMBUSTIBILE_CON_ZOLFO_1_M_M"/>
+            <xsd:enumeration value="EMULSIONI_DI_ACQUA_OLIO_CON_ZOLFO_1_M_M"/>
+            <xsd:enumeration value="CARBONE_DA_VAPORE_CON_ZOLFO_1_M_M"/>
+            <xsd:enumeration value="COKE_METALLURGICO_E_DA_GAS_CON_ZOLFO_1_M_M"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- choice sm_sc installato -->
+    <xsd:complexType name="sm_sc_installato_ctype">
+        <xsd:choice>
+            <xsd:element name="nessuno" type="xsd:boolean"/>
+            <xsd:element name="sae" type="xsd:boolean"/>
+            <xsd:element name="sc" type="xsd:boolean"/>
+            <xsd:element name="sme" type="xsd:boolean"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <!-- Elemento principale ripetibile -->
+    <xsd:element name="scheda_c_impianti_combustione_civili" type="eauaschcimpcomciv:scheda_c_impianti_combustione_civili_ctype"/>
+
+    <xsd:complexType name="scheda_c_impianti_combustione_civili_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_c_impianti_combustione_civili_blocco" type="eauaschcimpcomciv:scheda_c_impianti_combustione_civili_blocco_ctype" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Blocco dati -->
+    <xsd:complexType name="scheda_c_impianti_combustione_civili_blocco_ctype">
+        <xsd:sequence>
+            <xsd:element name="sigla_impianto" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="tipologia_impianto" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="potenza_singolo_focolare_mwt" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="combustibile" type="eauaschcimpcomciv:combustibile_enum" minOccurs="1"/>
+            <xsd:element name="consumo_combustibile" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="sm_sc_installato" type="eauaschcimpcomciv:sm_sc_installato_ctype" minOccurs="1"/>
+            <xsd:element name="sigla_emissione" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="sistemi_abbattimento" type="xsd:string" minOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

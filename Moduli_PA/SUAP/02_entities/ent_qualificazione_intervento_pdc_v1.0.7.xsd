@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:equaintpdc="../02_entities/qualificazione_intervento_pdc"
+            targetNamespace="../02_entities/qualificazione_intervento_pdc"
+            xmlns:ctipi="../commons/tipi"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <!-- Reference suecommon:QualificazioneInterventoBaseType -->
+    <xsd:complexType name="qualificazione_intervento_base_type" abstract="true"/>
+
+    <xsd:complexType name="qualificazione_intervento_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="equaintpdc:qualificazione_intervento_base_type">
+                <xsd:sequence>
+                    <xsd:choice>
+
+                        <xsd:element name="new_articolo_10" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:choice>
+                                        <xsd:element name="no_mutamento" type="xsd:boolean" />
+                                        <xsd:element name="mutamento_categoria_singola_unita" type="xsd:boolean" />
+                                        <xsd:element name="mutamento_tra_categorie_singola_unita" type="xsd:boolean" />
+                                        <xsd:element name="mutamento_categoria_intero_immobile" type="xsd:boolean" />
+                                    </xsd:choice>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+
+                        <xsd:element name="assoggettato_scia" type="xsd:string"/>
+                        <xsd:element name="conforme_disciplina_urbanistica" type="xsd:boolean"/>
+                        <xsd:element name="deroga_pianificazione_urbanistica">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="densita_edilizia" minOccurs="0" type="xsd:string"/>
+                                    <xsd:element name="altezza" minOccurs="0" type="xsd:string"/>
+                                    <xsd:element name="distanza_fabbricati" minOccurs="0" type="xsd:string"/>
+                                    <xsd:element name="destinazione_duso" minOccurs="0" type="xsd:string"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="variazione_sostanziale">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:choice>
+                                        <xsd:element name="titolo_unico" type="equaintpdc:atto_base_ctype"/>
+                                        <xsd:element name="permesso_costruire" type="equaintpdc:atto_base_ctype"/>
+                                        <xsd:element name="segnalazione_certificata" type="equaintpdc:atto_base_ctype"/>
+                                    </xsd:choice>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:choice>
+                    <xsd:element name="procedimento_ordinario" type="xsd:boolean"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="atto_base_ctype">
+        <xsd:sequence>
+            <xsd:element name="numero" type="xsd:string"/>
+            <xsd:element name="data" type="ctipi:ggmmaaaa_stype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="qualificazione_intervento_pdc" type="equaintpdc:qualificazione_intervento_ctype"/>
+</xsd:schema>

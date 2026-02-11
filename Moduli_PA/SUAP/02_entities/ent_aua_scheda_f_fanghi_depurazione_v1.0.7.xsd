@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschffandep="../02_entities/aua_scheda_f_fanghi_depurazione"
+            targetNamespace="../02_entities/aua_scheda_f_fanghi_depurazione"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!-- SCHEDA F1 -->
+
+
+    <xsd:complexType name="dettaglio_altre_autorizzazioni_ctype">
+        <xsd:sequence>
+            <xsd:element name="specifica_scheda_interesse" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="scheda_f_fanghi_depurazione_base_type" abstract="true"/>
+
+    <xsd:complexType name="scheda_f_fanghi_depurazione_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschffandep:scheda_f_fanghi_depurazione_base_type">
+                <xsd:sequence>
+                    <xsd:element name="fanghi_prodotti_stoccati_impianti_indicati" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="rispetto_piano_distribuzione" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="consenso_spandimento_terreni" type="xsd:boolean" minOccurs="0"/>
+
+                    <xsd:element name="impegno_rispettare_normative" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="impegno_aggiornamento_dati" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="impegno_conservazione_registro" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="impegno_invio_scheda_riassuntiva" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="impegno_conservazione_scheda_accompagnamento" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="impegno_notifica_suap" type="xsd:boolean" minOccurs="0"/>
+
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="scheda_f_fanghi_depurazione" type="eauaschffandep:scheda_f_fanghi_depurazione_base_type"/>
+
+</xsd:schema>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sauaschcemiatm="../03_sections/aua_scheda_c_emissioni_atmosfera"
+
+            xmlns:eauaschcpromatpri="../02_entities/aua_scheda_c_produzioni_materie_prime"
+            xmlns:eauaschcmatpriaus="../02_entities/aua_scheda_c_materie_prime_ausiliarie"
+            xmlns:eauaschccarsisabb="../02_entities/aua_scheda_c_caratteristiche_sistemi_abbattimento"
+            xmlns:eauaschcemicon="../02_entities/aua_scheda_c_emissioni_convogliate"
+            xmlns:eauaschcemidif="../02_entities/aua_scheda_c_emissioni_diffuse"
+            xmlns:eauaschcemicov="../02_entities/aua_scheda_c_emissioni_cov"
+            xmlns:eauaschcimpcomind="../02_entities/aua_scheda_c_impianti_combustione_industriale"
+            xmlns:eauaschcimpcomciv="../02_entities/aua_scheda_c_impianti_combustione_civili"
+            xmlns:eauaschcinfges="../02_entities/aua_scheda_c_informazioni_gestionali"
+            xmlns:eauaschcpiagessol="../02_entities/aua_scheda_c_piano_gestione_solventi"
+            xmlns:eauaschcsosmatpriuti="../02_entities/aua_scheda_c_sostanze_materie_prime_utilizzate"
+
+            targetNamespace="../03_sections/aua_scheda_c_emissioni_atmosfera" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/aua_scheda_c_produzioni_materie_prime" schemaLocation="../02_entities/ent_aua_scheda_c_produzioni_materie_prime_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_c_materie_prime_ausiliarie" schemaLocation="../02_entities/ent_aua_scheda_c_materie_prime_ausiliarie_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_c_caratteristiche_sistemi_abbattimento" schemaLocation="../02_entities/ent_aua_scheda_c_caratteristiche_sistemi_abbattimento_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_c_emissioni_convogliate" schemaLocation="../02_entities/ent_aua_scheda_c_emissioni_convogliate_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_c_emissioni_diffuse" schemaLocation="../02_entities/ent_aua_scheda_c_emissioni_diffuse_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_c_emissioni_cov" schemaLocation="../02_entities/ent_aua_scheda_c_emissioni_cov_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_c_emissioni_cov" schemaLocation="../02_entities/ent_aua_scheda_c_emissioni_cov_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_c_impianti_combustione_industriale" schemaLocation="../02_entities/ent_aua_scheda_c_impianti_combustione_industriale_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_c_impianti_combustione_civili" schemaLocation="../02_entities/ent_aua_scheda_c_impianti_combustione_civili_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_c_informazioni_gestionali" schemaLocation="../02_entities/ent_aua_scheda_c_informazioni_gestionali_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_c_piano_gestione_solventi" schemaLocation="../02_entities/ent_aua_scheda_c_piano_gestione_solventi_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_c_sostanze_materie_prime_utilizzate" schemaLocation="../02_entities/ent_aua_scheda_c_sostanze_materie_prime_utilizzate_v1.0.7.xsd"/>
+
+
+    <xsd:complexType name="sezione_aua_scheda_c_emissioni_atmosfera_ctype">
+        <xsd:sequence>
+            <!-- TODO:Non presente sul FO. compilazione alternativa alla tabella 4.3.1 della parte generale -->
+            <!-- SCHEDA C1-2(a) -->
+            <!-- <xsd:element name="produzioni_materie_prime" type="eauaschcpromatpri:scheda_c_produzioni_materie_prime_ctype" minOccurs="0" maxOccurs="1"/> -->
+
+            <!-- TODO:Non presente sul FO. compilazione alternativa alla tabella 4.3.2 della parte generale -->
+            <!-- SCHEDA C1-2(b) -->
+            <!-- <xsd:element name="produzioni_materie_prime_ausiliarie" type="eauaschcmatpriaus:scheda_c_materie_prime_ausiliarie_ctype" minOccurs="0" maxOccurs="1"/> -->
+
+            <!-- SCHEDA C1-2(c) -->
+            <xsd:element name="sostanze_miscele_materie_prime_ausiliarie_utilizzate" type="eauaschcsosmatpriuti:sostanze_materie_prime_utilizzate_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA C1-3(a) -->
+            <xsd:element name="impianti_combustione_industriale" type="eauaschcimpcomind:scheda_c_impianti_combustione_industriale_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA C1-3(b) -->
+            <xsd:element name="impianti_combustione_civili" type="eauaschcimpcomciv:scheda_c_impianti_combustione_civili_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA C2-1  -->
+            <xsd:element name="emissioni_convogliate" type="eauaschcemicon:emissioni_convogliate_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA C2-2  -->
+            <xsd:element name="caratteristiche_sistemi_abbattimento" type="eauaschccarsisabb:caratteristiche_sistemi_abbattimento_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA C2-3 -->
+            <xsd:element name="emissioni_diffuse" type="eauaschcemidif:caratteristiche_sistemi_abbattimento_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA C2-4 -->
+            <xsd:element name="emissioni_cov" type="eauaschcemicov:scheda_c_emissioni_cov_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA C3 (*) -->
+            <xsd:element name="piano_gestione_solventi" type="eauaschcpiagessol:scheda_c_piano_gestione_solventi_base_type" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA C4 -->
+            <xsd:element name="informazioni_gestionali" type="eauaschcinfges:informazioni_gestionali_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA C5 -->
+            <xsd:element name="progetto_adeguamento" type="eauaschcinfges:progetto_adeguamento_ctype" minOccurs="0" maxOccurs="1"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_aua_scheda_c_emissioni_atmosfera" type="sauaschcemiatm:sezione_aua_scheda_c_emissioni_atmosfera_ctype"/>
+</xsd:schema>

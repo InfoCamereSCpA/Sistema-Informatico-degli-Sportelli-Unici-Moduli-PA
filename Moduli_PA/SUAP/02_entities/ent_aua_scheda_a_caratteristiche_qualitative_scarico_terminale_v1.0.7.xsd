@@ -1,0 +1,77 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschacarquascater="../02_entities/aua_scheda_a_caratteristiche_qualitative_scarico_terminale"
+            xmlns:eauacodscaenu="../02_entities/aua_codice_scarico_enum"
+            targetNamespace="../02_entities/aua_scheda_a_caratteristiche_qualitative_scarico_terminale"
+            elementFormDefault="qualified">
+
+    <xsd:import namespace="../02_entities/aua_codice_scarico_enum" schemaLocation="../02_entities/ent_aua_codice_scarico_enum_v1.0.7.xsd"/>
+
+    <!--    SCHEDA A4-A7 -->
+
+
+    <!-- Tipo astratto -->
+    <xsd:complexType name="quantita_mensile_scaricata_base_type" abstract="true"/>
+
+    <!-- Tipo ripetibile (blocco) -->
+    <xsd:complexType name="caratteristiche_qualitative_scarico_terminale_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="codice" type="eauacodscaenu:codice_scarico_enum"/>
+            <xsd:element name="parametro" type="xsd:string"/>
+            <xsd:element name="concentrazione" type="xsd:string"/>
+            <xsd:element name="quantita_giornaliera_scaricata" type="xsd:string"/>
+            <xsd:element name="quantita_mensile_scaricata"
+                         type="eauaschacarquascater:quantita_mensile_scaricata_base_type"/>
+            <xsd:element name="presenza_sostanze_pericolose" type="xsd:boolean"/>
+            <xsd:element name="numero_cas" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="elemento_sostanza" type="xsd:string" minOccurs="0"/>
+
+            <!-- Choice presenza insediamento -->
+            <xsd:element name="presenza_insediamento" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element name="utilizzata" type="xsd:boolean"/>
+                        <xsd:element name="prodotta" type="xsd:boolean"/>
+                        <xsd:element name="trasformata" type="xsd:boolean"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+            <!-- Choice presenza scarico -->
+            <xsd:element name="presenza_nello_scarico" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element name="presunta" type="xsd:boolean"/>
+                        <xsd:element name="verificata" type="xsd:boolean"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="concentrazione_minima" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="concentrazione_media" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="concentrazione_massima" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="caratteristiche_qualitative_scarico_terminale_ctype">
+        <xsd:sequence>
+            <xsd:element name="caratteristiche_qualitative_scarico_terminale_blocco"
+                         type="eauaschacarquascater:caratteristiche_qualitative_scarico_terminale_ripetibile_ctype"
+                         maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!-- Tipo concreto principale -->
+    <xsd:complexType name="quantita_mensile_scaricata_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschacarquascater:quantita_mensile_scaricata_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valore" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Elemento principale -->
+    <xsd:element name="caratteristiche_qualitative_scarico_terminale" type="eauaschacarquascater:caratteristiche_qualitative_scarico_terminale_ctype"/>
+
+</xsd:schema>

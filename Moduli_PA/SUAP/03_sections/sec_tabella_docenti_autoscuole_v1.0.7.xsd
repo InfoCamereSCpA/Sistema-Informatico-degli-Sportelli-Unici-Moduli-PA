@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:stabdoc="../03_sections/tabella_docenti_autoscuole"
+    xmlns:etabdoc="../02_entities/tabella_docenti_autoscuole"
+    xmlns:ctipi="../commons/tipi" targetNamespace="../03_sections/tabella_docenti_autoscuole" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/tabella_docenti_autoscuole" schemaLocation="../02_entities/ent_tabella_docenti_autoscuole_v1.0.7.xsd"/>
+
+    <xsd:complexType name="sezione_tabella_docenti_autoscuole_ctype">
+        <xsd:sequence>
+            <xsd:element name="tabella_docenti" type="etabdoc:tabella_docenti_autoscuole_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="sezione_tabella_docenti_autoscuole" type="stabdoc:sezione_tabella_docenti_autoscuole_ctype"/>
+</xsd:schema>

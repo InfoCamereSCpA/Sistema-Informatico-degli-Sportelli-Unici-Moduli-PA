@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ecalconcosscia="../02_entities/calcolo_contributo_costruzione_scia"
+            targetNamespace="../02_entities/calcolo_contributo_costruzione_scia"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+    <!-- Reference ecalconcosscia:CalcoloContributoBaseType -->
+    <xsd:complexType name="calcolo_contributo_base_type" abstract="true"/>
+
+
+    <!-- Reference ecalconcosscia:CalcoloContributoBaseType -->
+    <xsd:complexType name="calcolo_contributo_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="ecalconcosscia:calcolo_contributo_base_type">
+                <xsd:choice>
+                    <xsd:element name="titolo_gratuito" type="xsd:string"/>
+                    <xsd:element name="titolo_oneroso">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="contributo">
+                                    <xsd:complexType>
+                                        <xsd:choice>
+                                            <xsd:element name="calcolos_portello" type="xsd:boolean"/>
+                                            <xsd:element name="calcolo_preventivo" type="xsd:boolean"/>
+                                        </xsd:choice>
+                                    </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="versamento">
+                                    <xsd:complexType>
+                                        <xsd:choice>
+                                            <xsd:element name="allega_attestazione" type="xsd:boolean"/>
+                                            <xsd:element name="trasmette_prima_inizio_lavori" type="xsd:boolean"/>
+                                            <xsd:element name="chiede_rateizzazione" type="xsd:boolean"/>
+                                            <xsd:element name="corrisponde_in_corso" type="xsd:boolean"/>
+                                        </xsd:choice>
+                                    </xsd:complexType>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="calcolo_contributo_costruzione_scia" type="ecalconcosscia:calcolo_contributo_ctype"/>
+</xsd:schema>

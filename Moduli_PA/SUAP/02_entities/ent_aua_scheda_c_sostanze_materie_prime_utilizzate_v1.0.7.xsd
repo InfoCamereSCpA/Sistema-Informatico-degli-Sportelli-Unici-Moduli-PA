@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschcsosmatpriuti="../02_entities/aua_scheda_c_sostanze_materie_prime_utilizzate"
+            targetNamespace="../02_entities/aua_scheda_c_sostanze_materie_prime_utilizzate"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!--    SCHEDA C1-2(c)  -->
+
+    <xsd:element name="sostanze_materie_prime_utilizzate" type="eauaschcsosmatpriuti:sostanze_materie_prime_utilizzate_ctype"/>
+
+    <xsd:complexType name="sostanze_materie_prime_utilizzate_ctype">
+        <xsd:sequence>
+            <xsd:element name="sostanza_materia_prima_blocco" type="eauaschcsosmatpriuti:sostanza_materia_prima_ctype" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="sostanza_materia_prima_ctype">
+        <xsd:sequence>
+            <xsd:element name="n_progr" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="descrizione" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="tipologia" type="eauaschcsosmatpriuti:tipologia_ctype" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="impianto_fase_utilizzo" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="stato_fisico" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="indicazioni_pericolo" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="composizione" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="tenore_cov" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="quantita_annue_utilizzate" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+
+            <xsd:element name="um" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipologia_ctype">
+        <xsd:choice>
+            <xsd:element name="mp" type="xsd:boolean"/>
+            <xsd:element name="ma" type="xsd:boolean"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+</xsd:schema>

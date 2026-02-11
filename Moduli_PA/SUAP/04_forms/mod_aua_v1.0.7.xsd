@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:maua="../04_forms/aua"
+
+            xmlns:sauaana="../03_sections/aua_anagrafica"
+            xmlns:sauadatimp="../03_sections/aua_dati_impianto"
+            xmlns:sauaist="../03_sections/aua_istanza"
+            xmlns:sauadic="../03_sections/aua_dichiarazioni"
+
+            xmlns:sauaschascaacqref="../03_sections/aua_scheda_a_scarico_acque_reflue"
+            xmlns:sauaschbutiagr="../03_sections/aua_scheda_b_utilizzazione_agronomica"
+            xmlns:sauaschcemiatm="../03_sections/aua_scheda_c_emissioni_atmosfera"
+            xmlns:sauaschdemiatmimp="../03_sections/aua_scheda_d_emissioni_atmosfera_impianti"
+            xmlns:sauascheimpacu="../03_sections/aua_scheda_e_impatto_acustico"
+            xmlns:sauaschffandep="../03_sections/aua_scheda_f_fanghi_depurazione"
+            xmlns:sauaschg1recrifnonper="../03_sections/aua_scheda_g1_recupero_rifiuti_non_pericolosi"
+            xmlns:sauaschg2recrifper="../03_sections/aua_scheda_g2_recupero_rifiuti_pericolosi"
+
+            xmlns:sauaall="../03_sections/aua_allegati"
+            targetNamespace="../04_forms/aua" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/aua_anagrafica" schemaLocation="../03_sections/sec_aua_anagrafica_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/aua_dati_impianto" schemaLocation="../03_sections/sec_aua_dati_impianto_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/aua_istanza" schemaLocation="../03_sections/sec_aua_istanza_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/aua_dichiarazioni" schemaLocation="../03_sections/sec_aua_dichiarazioni_v1.0.7.xsd"/>
+
+    <xsd:import namespace="../03_sections/aua_scheda_a_scarico_acque_reflue" schemaLocation="../03_sections/sec_aua_scheda_a_scarico_acque_reflue_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/aua_scheda_b_utilizzazione_agronomica" schemaLocation="../03_sections/sec_aua_scheda_b_utilizzazione_agronomica_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/aua_scheda_c_emissioni_atmosfera" schemaLocation="../03_sections/sec_aua_scheda_c_emissioni_atmosfera_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/aua_scheda_d_emissioni_atmosfera_impianti" schemaLocation="../03_sections/sec_aua_scheda_d_emissioni_atmosfera_impianti_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/aua_scheda_e_impatto_acustico" schemaLocation="../03_sections/sec_aua_scheda_e_impatto_acustico_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/aua_scheda_f_fanghi_depurazione" schemaLocation="../03_sections/sec_aua_scheda_f_fanghi_depurazione_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/aua_scheda_g1_recupero_rifiuti_non_pericolosi" schemaLocation="../03_sections/sec_aua_scheda_g1_recupero_rifiuti_non_pericolosi_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/aua_scheda_g2_recupero_rifiuti_pericolosi" schemaLocation="../03_sections/sec_aua_scheda_g2_recupero_rifiuti_pericolosi_v1.0.7.xsd"/>
+
+
+    <xsd:import namespace="../03_sections/aua_allegati" schemaLocation="../03_sections/sec_aua_allegati_v1.0.7.xsd"/>
+
+
+    <xsd:complexType name="modulo_aua_ctype">
+        <xsd:sequence>
+
+            <!-- SOGGETTI -->
+            <xsd:element name="scheda_anagrafica" type="sauaana:sezione_aua_anagrafica_ctype" minOccurs="0" />
+
+            <!-- DATI IMPIANTO -->
+            <xsd:element name="dati_impianto" type="sauadatimp:sezione_aua_dati_impianto_ctype" minOccurs="0" />
+
+            <!-- ISTANZA -->
+            <xsd:element name="istanza" type="sauaist:sezione_aua_istanza_ctype" minOccurs="0" />
+
+            <!-- DICHIARAZIONI -->
+            <xsd:element name="dichiarazioni" type="sauadic:sezione_aua_dichiarazioni_ctype" minOccurs="0" />
+
+            <!-- Scheda A - Scarico acque reflue -->
+            <xsd:element name="scheda_a_scarico_acque_reflue" type="sauaschascaacqref:sezione_aua_scheda_a_scarico_acque_reflue_ctype" minOccurs="0"/>
+
+            <!-- Scheda B - Effluenti di allevamento -->
+            <xsd:element name="scheda_b_utilizzazione_agronomica" type="sauaschbutiagr:sezione_aua_scheda_b_utilizzazione_agronomica_ctype" minOccurs="0"/>
+
+            <!-- Scheda C - Emissioni in atmosfera (art. 269 D.Lgs 152/2006) -->
+            <xsd:element name="scheda_c_emissioni_atmosfera" type="sauaschcemiatm:sezione_aua_scheda_c_emissioni_atmosfera_ctype" minOccurs="0"/>
+
+            <!-- Scheda D - Emissioni in atmosfera per attività in deroga (Art. 272 D.Lgs 152/2006) -->
+            <xsd:element name="scheda_d_emissioni_in_atmosfera_per_attivita_in_deroga" type="sauaschdemiatmimp:sezione_aua_scheda_d_emissioni_atmosfera_impianti_ctype" minOccurs="0"/>
+
+            <!-- Scheda E - Impatto acustico -->
+            <xsd:element name="scheda_e_impatto_acustico" type="sauascheimpacu:sezione_aua_scheda_e_impatto_acustico_ctype" minOccurs="0"/>
+
+            <!-- Scheda F - Fanghi di depurazione -->
+            <xsd:element name="scheda_f_fanghi_di_depurazione" type="sauaschffandep:sezione_aua_scheda_f_fanghi_depurazione_ctype" minOccurs="0"/>
+
+            <!-- Scheda G1 - Rifiuti non pericolosi (Artt. 214 e 216 D.Lgs 152/2006) -->
+            <xsd:element name="scheda_g_1_rifiuti_non_pericolosi" type="sauaschg1recrifnonper:sezione_aua_scheda_g1_recupero_rifiuti_non_pericolosi_ctype" minOccurs="0"/>
+
+            <!-- Scheda G2 - Rifiuti pericolosi (Artt. 215 e 216 D.Lgs 152/2006) -->
+            <xsd:element name="scheda_g_2_rifiuti_pericolosi" type="sauaschg2recrifper:sezione_aua_scheda_g2_recupero_rifiuti_pericolosi_ctype" minOccurs="0"/>
+
+            <!-- ALLEGATI  -->
+            <xsd:element name="tabella_allegati" type="sauaall:aua_allegati_ctype" minOccurs="0" />
+
+            <!-- PRIVACY  -->
+            <xsd:element name="dichiarazione_presa_visione_informativa_privacy" type="xsd:boolean" />
+
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_aua" type="maua:modulo_aua_ctype"/>
+
+</xsd:schema>

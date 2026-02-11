@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sreltecassscia="../03_sections/relazione_tecnica_asseverazione_scia"
+            xmlns:etipintopescia="../02_entities/tipologia_intervento_opere_scia"
+            xmlns:estaleg="../02_entities/stato_legittimo"
+            xmlns:edictol="../02_entities/dichiarazione_tolleranze"
+            xmlns:esanassscia="../02_entities/sanatoria_asseverazione_scia"
+            xmlns:edatgeoimm="../02_entities/dati_geometrici_immobile"
+            xmlns:estrurb="../02_entities/strumentazione_urbanistica"
+            xmlns:ebararc="../02_entities/barriere_architettoniche"
+            xmlns:esicimp="../02_entities/sicurezza_impianti"
+            xmlns:econene="../02_entities/consumi_energetici"
+            xmlns:etutinqacu="../02_entities/tutela_inquinamento_acustico"
+            xmlns:epromatris="../02_entities/produzioni_materiali_risulta"
+            xmlns:epreinc="../02_entities/prevenzione_incendi"
+            xmlns:eami="../02_entities/amianto"
+            xmlns:econigesan="../02_entities/conformita_igenico_sanitaria"
+            xmlns:eintzonsis="../02_entities/intervento_zona_sismica"
+            xmlns:eautpae="../02_entities/autorizzazione_paesaggestica"
+            xmlns:eautsop="../02_entities/autorizzazione_soprintendenza"
+            xmlns:earepro="../02_entities/area_protetta"
+            xmlns:evicidr="../02_entities/vincolo_idraulico"
+            xmlns:enatdue="../02_entities/natura_duemila"
+            xmlns:eriscim="../02_entities/rispetto_cimiteriale"
+            xmlns:erisincril="../02_entities/rischio_incidente_rilevante"
+            xmlns:etuteco="../02_entities/tutela_ecologica"
+            xmlns:eeffinf="../02_entities/efficienza_infrastrutture"
+            xmlns:evicidrgeo="../02_entities/vincolo_idrogeologico"
+            targetNamespace="../03_sections/relazione_tecnica_asseverazione_scia" elementFormDefault="qualified"
+            attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/titolo_possesso" schemaLocation="../02_entities/ent_titolo_possesso_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/tipologia_intervento_opere_scia" schemaLocation="../02_entities/ent_tipologia_intervento_opere_scia_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/stato_legittimo" schemaLocation="../02_entities/ent_stato_legittimo_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/dichiarazione_tolleranze" schemaLocation="../02_entities/ent_dichiarazione_tolleranze_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/sanatoria_asseverazione_scia" schemaLocation="../02_entities/ent_sanatoria_asseverazione_scia_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/dati_geometrici_immobile" schemaLocation="../02_entities/ent_dati_geometrici_immobile_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/strumentazione_urbanistica" schemaLocation="../02_entities/ent_strumentazione_urbanistica_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/barriere_architettoniche" schemaLocation="../02_entities/ent_barriere_architettoniche_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/sicurezza_impianti" schemaLocation="../02_entities/ent_sicurezza_impianti_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/consumi_energetici" schemaLocation="../02_entities/ent_consumi_energetici_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/tutela_inquinamento_acustico" schemaLocation="../02_entities/ent_tutela_inquinamento_acustico_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/produzioni_materiali_risulta" schemaLocation="../02_entities/ent_produzioni_materiali_risulta_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/prevenzione_incendi" schemaLocation="../02_entities/ent_prevenzione_incendi_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/amianto" schemaLocation="../02_entities/ent_amianto_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/conformita_igenico_sanitaria" schemaLocation="../02_entities/ent_conformita_igenico_sanitaria_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/intervento_zona_sismica" schemaLocation="../02_entities/ent_intervento_zona_sismica_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/autorizzazione_paesaggestica" schemaLocation="../02_entities/ent_autorizzazione_paesaggestica_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/autorizzazione_soprintendenza" schemaLocation="../02_entities/ent_autorizzazione_soprintendenza_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/area_protetta" schemaLocation="../02_entities/ent_area_protetta_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/vincolo_idraulico" schemaLocation="../02_entities/ent_vincolo_idraulico_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/natura_duemila" schemaLocation="../02_entities/ent_natura_duemila_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/rispetto_cimiteriale" schemaLocation="../02_entities/ent_rispetto_cimiteriale_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/rischio_incidente_rilevante" schemaLocation="../02_entities/ent_rischio_incidente_rilevante_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/tutela_ecologica" schemaLocation="../02_entities/ent_tutela_ecologica_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/efficienza_infrastrutture" schemaLocation="../02_entities/ent_efficienza_infrastrutture_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/vincolo_idrogeologico" schemaLocation="../02_entities/ent_vincolo_idrogeologico_v1.0.7.xsd"/>
+
+
+
+
+    <xsd:complexType name="sezione_relazione_tecnica_asseverazione_scia_ctype">
+        <xsd:sequence>
+            <xsd:element name="tipo_interventi_opere" type="etipintopescia:tipo_interventi_opere_base_type" minOccurs="0"/>
+            <xsd:element name="stato_legittimo" type="estaleg:stato_legittimo_base_type" minOccurs="0"/>
+            <xsd:element name="dichiarazioni_tolleranze" type="edictol:dichiarazioni_tolleranze_base_type" minOccurs="0"/>
+            <xsd:element name="sanatoria" type="esanassscia:sanatoria_asseverazione_base_type" minOccurs="0"/>
+            <xsd:element name="dati_geometrici" type="edatgeoimm:dati_geometrici_base_type" minOccurs="0"/>
+            <xsd:element name="strumentazione_urbanistica" type="estrurb:strumentazione_urbanistica_base_type" minOccurs="0"/>
+            <xsd:element name="barriere_architettoniche" type="ebararc:barriere_architettoniche_ctype" minOccurs="0"/>
+            <xsd:element name="sicurezza_impianti" type="esicimp:sicurezza_impianti_ctype" minOccurs="0"/>
+            <xsd:element name="consumi_energetici" type="econene:consumi_energetici_base_type" minOccurs="0"/>
+            <xsd:element name="tutela_inquinamento_acustico" type="etutinqacu:tutela_inquinamento_acustico_base_type" minOccurs="0"/>
+            <xsd:element name="materiali_risulta" type="epromatris:materiali_risulta_base_type" minOccurs="0"/>
+            <xsd:element name="prevenzione_incendi" type="epreinc:prevenzione_incendi_ctype" minOccurs="0"/>
+            <xsd:element name="amianto" type="eami:amianto_ctype" minOccurs="0"/>
+            <xsd:element name="conformita_sanitaria" type="econigesan:conformita_sanitaria_base_type" minOccurs="0"/>
+            <xsd:element name="intervento_zona_sismica" type="eintzonsis:intervento_zona_sismica_base_type" minOccurs="0"/>
+            <xsd:element name="autorizzazione_paesaggistica" type="eautpae:autorizzazione_paesaggistica_ctype" minOccurs="0"/>
+            <xsd:element name="autorizzazione_soprintendenza" type="eautsop:autorizzazione_soprintendenza_ctype" minOccurs="0"/>
+            <xsd:element name="area_protetta" type="earepro:area_protetta_base_type" minOccurs="0"/>
+            <xsd:element name="vincolo_idrogeologico" type="evicidrgeo:vincolo_idrogeologico_base_type" minOccurs="0"/>
+            <xsd:element name="vincolo_idraulico" type="evicidr:vincolo_idraulico_base_type" minOccurs="0"/>
+            <xsd:element name="natura_2000" type="enatdue:natura_2000_base_type" minOccurs="0"/>
+            <xsd:element name="rispetto_cimiteriale" type="eriscim:rispetto_cimiteriale_base_type" minOccurs="0"/>
+            <xsd:element name="rischio_rilevante" type="erisincril:rischio_rilevante_ctype" minOccurs="0"/>
+            <xsd:element name="tutela_ecologica" type="etuteco:tutela_ecologica_base_type" minOccurs="0"/>
+            <xsd:element name="efficienza_infrastrutture" type="eeffinf:efficienza_infrastrutture_base_type" minOccurs="0"/>
+            <xsd:element name="note" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="dichiarazione_presa_visione_informativa_privacy" type="xsd:boolean" />
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_relazione_tecnica_asseverazione_scia" type="sreltecassscia:sezione_relazione_tecnica_asseverazione_scia_ctype"/>
+
+</xsd:schema>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ctipi="../commons/tipi"
+            xmlns:ccodelist="../commons/codelist"
+            xmlns:canncl="../commons/xsdAnnotations"
+            xmlns:eauacodstoenu="../02_entities/aua_codice_stoccaggio_enum"
+            xmlns:eauaschbcarconsto="../02_entities/aua_scheda_b_caratteristiche_contenitori_stoccaggio"
+            targetNamespace="../02_entities/aua_scheda_b_caratteristiche_contenitori_stoccaggio"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+    <xsd:import namespace="../02_entities/aua_codice_stoccaggio_enum" schemaLocation="../02_entities/ent_aua_codice_stoccaggio_enum_v1.0.7.xsd"/>
+
+    <!-- SCHEDA B2-3.2 -->
+
+    <xsd:complexType name="titolare_contenitore_ctype">
+        <xsd:sequence>
+            <xsd:element name="codice_fiscale" type="ctipi:codice_fiscale_stype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="nome" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="cognome" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="localizzazione_contenitore_ctype">
+        <xsd:sequence>
+            <xsd:element name="provincia" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="comune" type="ccodelist:CodeType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ComuniItaliani</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="localita" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipologia_contenitore_ctype">
+        <xsd:choice>
+            <xsd:element name="manufatto_in_cemento" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="bacino_impermeabilizzato" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="presenza_di_copertura" type="xsd:boolean" minOccurs="0"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:complexType name="contenitore_stoccaggio_ctype">
+        <xsd:sequence>
+            <xsd:element name="identificativo_contenitore" type="eauacodstoenu:codice_stoccaggio_enum" minOccurs="0"/>
+            <xsd:element name="titolare" type="eauaschbcarconsto:titolare_contenitore_ctype" minOccurs="0"/>
+            <xsd:element name="localizzazione" type="eauaschbcarconsto:localizzazione_contenitore_ctype" minOccurs="0"/>
+            <xsd:element name="tipologia" type="eauaschbcarconsto:tipologia_contenitore_ctype" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="scheda_b_caratteristiche_contenitori_stoccaggio_ctype">
+        <xsd:sequence>
+            <xsd:element name="contenitore" type="eauaschbcarconsto:contenitore_stoccaggio_ctype" minOccurs="0" maxOccurs="unbounded"/>
+
+            <xsd:element name="volume_contenitori_per_acque_di_vegetazione" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="volume_contenitori_per_sanse_umide" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="scheda_b_caratteristiche_contenitori_stoccaggio" type="eauaschbcarconsto:scheda_b_caratteristiche_contenitori_stoccaggio_ctype"/>
+
+</xsd:schema>

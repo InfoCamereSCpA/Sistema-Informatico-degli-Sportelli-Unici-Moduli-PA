@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschbtratana="../02_entities/aua_scheda_b_trattamento_anaerobico"
+            targetNamespace="../02_entities/aua_scheda_b_trattamento_anaerobico"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!--    SCHEDA B1-3(4)  -->
+
+    <xsd:complexType name="scheda_b_trattamento_anaerobico_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_b_trattamento_anaerobico_blocco" type="eauaschbtratana:scheda_b_trattamento_anaerobico_ripetibile_ctype" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!-- Tipo concreto -->
+    <xsd:complexType name="scheda_b_trattamento_anaerobico_ripetibile_ctype">
+                <xsd:sequence>
+                    <!-- CUAA aziende conferenti -->
+                    <xsd:element name="cuaa_aziende_conferenti" type="xsd:string"/>
+                    
+                    <!-- Effluenti di allevamento (ripetibile) -->
+                    <xsd:element name="effluenti_allevamento_blocco" type="eauaschbtratana:effluenti_allevamento_ctype"/>
+                    
+                    <!-- Altre biomasse (ripetibile) -->
+                    <xsd:element name="altre_biomasse_blocco" type="eauaschbtratana:altre_biomasse_ctype"/>
+                    
+                    <!-- Ingresso digestore -->
+                    <xsd:element name="ingresso_digestore" type="eauaschbtratana:ingresso_uscita_digestore_ctype"/>
+                    
+                    <!-- Uscita digestore -->
+                    <xsd:element name="uscita_digestore" type="eauaschbtratana:ingresso_uscita_digestore_ctype"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+    <!-- Effluenti di allevamento (ripetibile) -->
+    <xsd:complexType name="effluenti_allevamento_ctype">
+        <xsd:sequence>
+            <xsd:element name="progr" type="xsd:string"/>
+            <xsd:element name="cod_pr_n_rea" type="xsd:string"/>
+            <xsd:element name="specie" type="xsd:string"/>
+            <xsd:element name="liquame_palabile_azoto_kg_anno" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Altre biomasse (ripetibile) -->
+    <xsd:complexType name="altre_biomasse_ctype">
+        <xsd:sequence>
+            <xsd:element name="tipo" type="xsd:string"/>
+            <xsd:element name="azoto_kg_t" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Ingresso/Uscita digestore -->
+    <xsd:complexType name="ingresso_uscita_digestore_ctype">
+        <xsd:sequence>
+            <xsd:element name="volume_m3_anno" type="xsd:string"/>
+            <xsd:element name="azoto_kg_anno" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Elemento principale -->
+    <xsd:element name="scheda_b_trattamento_anaerobico" type="eauaschbtratana:scheda_b_trattamento_anaerobico_ctype"/>
+</xsd:schema>

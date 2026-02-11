@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:eauaschbconproeffall="../02_entities/aua_scheda_b_consistenza_produzione_effluenti_allevamento"
+    targetNamespace="../02_entities/aua_scheda_b_consistenza_produzione_effluenti_allevamento"
+    elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!--    SCHEDA B1-3(1-2-3)  -->
+
+    <!-- Tipo concreto principale -->
+    <xsd:complexType name="scheda_b_consistenza_produzione_effluenti_allevamento_ctype">
+                <xsd:sequence>
+                    <!-- Blocco 1: Consistenza media annuale -->
+                    <xsd:element name="consistenza_annuale_blocco" type="eauaschbconproeffall:consistenza_annuale_ripetibile_ctype" maxOccurs="unbounded"/>
+                    <!-- Blocco 2: Trattamenti diversi dall'anaerobico -->
+                    <xsd:element name="trattamenti_diversi_blocco" type="eauaschbconproeffall:trattamenti_diversi_ripetibile_ctype" maxOccurs="unbounded"/>
+                    <!-- Blocco 3: Altri liquami -->
+                    <xsd:element name="altri_liquami_blocco" type="eauaschbconproeffall:altri_liquami_ripetibile_ctype" maxOccurs="unbounded"/>
+                </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Blocco 1: Consistenza media annuale -->
+    <xsd:complexType name="consistenza_annuale_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="codice_allevamento" type="xsd:string"/>
+            <xsd:element name="categoria_animali" type="xsd:string"/>
+            <xsd:element name="tipo_stabulazione" type="xsd:string"/>
+            <xsd:element name="dettagli_stabulazione" type="xsd:string"/>
+            <xsd:element name="media_capi" type="xsd:string"/>
+            <xsd:element name="peso_vivo_totale" type="xsd:string"/>
+            <xsd:element name="liquame_volume" type="xsd:string"/>
+            <xsd:element name="liquame_azoto" type="xsd:string"/>
+            <xsd:element name="letame_volume" type="xsd:string"/>
+            <xsd:element name="letame_azoto" type="xsd:string"/>
+            <xsd:element name="azoto_totale" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Blocco 2: Trattamenti diversi dall'anaerobico -->
+    <xsd:complexType name="trattamenti_diversi_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="codice_allevamento" type="xsd:string"/>
+            <xsd:element name="linea_trattamento" type="xsd:string"/>
+            <xsd:element name="liquame_avviato_trattamento" type="xsd:string"/>
+            <xsd:element name="azoto_contenuto" type="xsd:string"/>
+            <xsd:element name="palabile_post_trattamento_volume" type="xsd:string"/>
+            <xsd:element name="palabile_post_trattamento_azoto" type="xsd:string"/>
+            <xsd:element name="liquidi_post_trattamento_volume" type="xsd:string"/>
+            <xsd:element name="liquidi_post_trattamento_azoto" type="xsd:string"/>
+            <xsd:element name="azoto_totale" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Blocco 3: Altri liquami -->
+    <xsd:complexType name="altri_liquami_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="codice_allevamento" type="xsd:string"/>
+            <xsd:element name="acque" type="eauaschbconproeffall:acque_blocco_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Sottoblocco acque -->
+    <xsd:complexType name="acque_blocco_ctype">
+        <xsd:sequence>
+            <xsd:element name="da_sala_mungitura_volume" type="xsd:string"/>
+            <xsd:element name="da_platee_stoccaggio_volume" type="xsd:string"/>
+            <xsd:element name="da_spazi_esterni_volume" type="xsd:string"/>
+            <xsd:element name="totale_volume" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Elemento principale -->
+    <xsd:element name="scheda_b_consistenza_produzione_effluenti_allevamento" type="eauaschbconproeffall:scheda_b_consistenza_produzione_effluenti_allevamento_ctype"/>
+</xsd:schema>

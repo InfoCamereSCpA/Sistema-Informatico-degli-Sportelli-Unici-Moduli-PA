@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschbteruti="../02_entities/aua_scheda_b_terreni_utilizzabili"
+            xmlns:eauacodterenu="../02_entities/aua_codice_terreno_enum"
+
+            targetNamespace="../02_entities/aua_scheda_b_terreni_utilizzabili"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+    <!--    SCHEDA B1(6-1) -->
+
+    <!-- Import enum terreni utilizzabili -->
+    <xsd:import namespace="../02_entities/aua_codice_terreno_enum" schemaLocation="../02_entities/ent_aua_codice_terreno_enum_v1.0.7.xsd"/>
+
+
+    <!-- Tipo astratto ordinamento colturale praticato -->
+    <xsd:complexType name="ordinamento_colturale_praticato_base_type" abstract="true"/>
+    <!-- Tipo concreto ordinamento colturale praticato -->
+    <xsd:complexType name="ordinamento_colturale_praticato_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschbteruti:ordinamento_colturale_praticato_base_type">
+                <xsd:sequence>
+                    <xsd:element name="ordinamento" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Tipo astratto distanza da contenitori di stoccaggio km -->
+    <xsd:complexType name="distanza_da_contenitori_stoccaggio_km_base_type" abstract="true"/>
+    <!-- Tipo concreto distanza da contenitori di stoccaggio km -->
+    <xsd:complexType name="distanza_da_contenitori_stoccaggio_km_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschbteruti:distanza_da_contenitori_stoccaggio_km_base_type">
+                <xsd:sequence>
+                    <xsd:element name="distanza_km" type="xsd:decimal"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+
+    <xsd:complexType name="scheda_b_terreni_utilizzabili_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_b_terreni_utilizzabili_blocco"
+                         type="eauaschbteruti:scheda_b_terreni_utilizzabili_ripetibile_ctype" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Tipo ripetibile per ogni record -->
+    <xsd:complexType name="scheda_b_terreni_utilizzabili_ripetibile_ctype">
+        <xsd:sequence>
+            <!-- Terreni utilizzabili da allevamento/impianto -->
+            <xsd:element name="terreni_utilizzabili" type="eauacodterenu:codice_terreno_enum"/>
+            <!-- fabbricati/terreni (booleano per ciascuno) -->
+            <xsd:choice>
+                <xsd:element name="fabbricati" type="xsd:boolean"/>
+                <xsd:element name="terreni" type="xsd:boolean"/>
+            </xsd:choice>
+            <!-- Comune catastale -->
+            <xsd:element name="comune_catastale" type="xsd:string"/>
+            <!-- Sezione -->
+            <xsd:element name="sezione" type="xsd:string"/>
+            <!-- Foglio n° -->
+            <xsd:element name="foglio_numero" type="xsd:string"/>
+            <!-- Particella -->
+            <xsd:element name="particella" type="xsd:string"/>
+            <!-- Titolo disponibilità particella -->
+            <xsd:element name="titolo_disponibilita_particella" type="xsd:string"/>
+            <!-- Nominativo concedente -->
+            <xsd:element name="nominativo_concedente" type="xsd:string"/>
+            <!-- Superficie catastale disponibile HA, ARE -->
+            <xsd:element name="superficie_catastale_disponibile_ha_are" type="xsd:string"/>
+            <!-- Superficie zona vulnerabile HA, ARE -->
+            <xsd:element name="superficie_zona_vulnerabile_ha_are" type="xsd:string"/>
+            <!-- Superficie zona non vulnerabile HA, ARE -->
+            <xsd:element name="superficie_zona_non_vulnerabile_ha_are" type="xsd:string"/>
+            <!-- Azoto spandibile kg -->
+            <xsd:element name="azoto_spandibile_kg" type="xsd:string"/>
+            <!-- Ordinamento colturale praticato -->
+            <xsd:element name="ordinamento_colturale_praticato"
+                         type="eauaschbteruti:ordinamento_colturale_praticato_base_type"/>
+            <!-- Distanza da contenitori di stoccaggio km -->
+            <xsd:element name="distanza_da_contenitori_stoccaggio_km"
+                         type="eauaschbteruti:distanza_da_contenitori_stoccaggio_km_base_type"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Elemento principale ripetibile -->
+    <xsd:element name="scheda_b_terreni_utilizzabili" type="eauaschbteruti:scheda_b_terreni_utilizzabili_ctype"/>
+
+</xsd:schema>

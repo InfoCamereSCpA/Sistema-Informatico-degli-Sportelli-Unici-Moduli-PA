@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschg2infrifrec="../02_entities/aua_scheda_g2_informazioni_rifiuti_recuperati"
+
+            targetNamespace="../02_entities/aua_scheda_g2_informazioni_rifiuti_recuperati"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+
+    <!--    SCHEDA G2-3  -->
+
+    <xsd:complexType name="scheda_g2_informazioni_rifiuti_recuperati_ctype">
+        <xsd:sequence>
+            <xsd:element name="informazioni_rifiuto_blocco" type="eauaschg2infrifrec:informazioni_rifiuto_ripetibile_ctype" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="informazioni_rifiuto_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="tipologia_rifiuto" type="xsd:string" minOccurs="0"/>
+
+            <xsd:element name="attivita_recupero" type="xsd:string" minOccurs="0"/>
+
+            <xsd:element name="codici_cer" type="xsd:string" minOccurs="0"/>
+
+            <xsd:element name="provenienza" type="xsd:string" minOccurs="0"/>
+
+            <xsd:element name="caratteristiche_rifiuto" type="xsd:string" minOccurs="0"/>
+
+            <xsd:element name="stato_fisico" type="eauaschg2infrifrec:stato_fisico_base_type" minOccurs="0"/>
+
+            <xsd:element name="quantita_max_annua_recuperata" type="xsd:string" minOccurs="0"/>
+
+            <xsd:element name="quantita_max_istantanea_messa_riserva" type="xsd:string" minOccurs="0"/>
+
+            <xsd:element name="potenzialita_giornaliera_recupero" type="eauaschg2infrifrec:potenzialita_giornaliera_recupero_base_type" minOccurs="0"/>
+
+            <xsd:element name="codici_descrizione_operazioni_recupero" type="xsd:string" minOccurs="0"/>
+
+            <xsd:element name="quantita_annua_rifiuti_avviati" type="xsd:string" minOccurs="0"/>
+
+            <xsd:element name="quantita_annua_prodotto_ottenuto" type="xsd:string" minOccurs="0"/>
+
+            <xsd:element name="percentuale_prodotto_recuperato" type="xsd:string" minOccurs="0"/>
+
+            <xsd:element name="caratteristiche_stoccaggio" type="eauaschg2infrifrec:caratteristiche_stoccaggio_base_type" minOccurs="0"/>
+
+            <xsd:element name="ubicazione_stoccaggio" type="eauaschg2infrifrec:ubicazione_stoccaggio_base_type" minOccurs="0"/>
+
+            <xsd:element name="caratteristiche_merceologiche_materie" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="stato_fisico_base_type" abstract="true"/>
+
+    <xsd:complexType name="stato_fisico_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschg2infrifrec:stato_fisico_base_type">
+                <xsd:sequence>
+                    <xsd:element name="descrizione" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="potenzialita_giornaliera_recupero_base_type" abstract="true"/>
+
+    <xsd:complexType name="potenzialita_giornaliera_recupero_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschg2infrifrec:potenzialita_giornaliera_recupero_base_type">
+                <xsd:sequence>
+                    <xsd:element name="descrizione" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="caratteristiche_stoccaggio_base_type" abstract="true"/>
+
+    <xsd:complexType name="caratteristiche_stoccaggio_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschg2infrifrec:caratteristiche_stoccaggio_base_type">
+                <xsd:sequence>
+                    <xsd:element name="specificare" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="ubicazione_stoccaggio_base_type" abstract="true"/>
+
+    <xsd:complexType name="ubicazione_stoccaggio_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschg2infrifrec:ubicazione_stoccaggio_base_type">
+                <xsd:sequence>
+                    <xsd:element name="specificare" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="scheda_g2_informazioni_rifiuti_recuperati" type="eauaschg2infrifrec:scheda_g2_informazioni_rifiuti_recuperati_ctype"/>
+
+</xsd:schema>

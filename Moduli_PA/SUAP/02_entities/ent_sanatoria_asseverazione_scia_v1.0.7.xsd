@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:esanassscia="../02_entities/sanatoria_asseverazione_scia"
+            targetNamespace="../02_entities/sanatoria_asseverazione_scia"
+            xmlns:ctipi="../commons/tipi"
+
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+
+    <xsd:complexType name="sanatoria_asseverazione_base_type" abstract="true"/>
+
+    <!-- X) Sanatoria e regolarizzazioni per interventi già realizzati e in corso di esecuzione (*)	-->
+    <xsd:complexType name="sanatoria_asseverazione_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esanassscia:sanatoria_asseverazione_base_type">
+                <xsd:sequence>
+
+                        <!-- X.1 -->
+                        <xsd:element name="intervento_data" type="ctipi:ggmmaaaa_stype" minOccurs="0"/>
+
+                        <!-- X.2 -->
+                        <xsd:element name="variante_in_corso_opera" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="intervento_data_epoca_atto" type="xsd:string" />
+                                    <xsd:element name="intervento_data_epoca_attesta" type="xsd:string" />
+                                    <xsd:element name="oblazione_dovuta" type="xsd:string" />
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+
+                        <!-- X.3 -->
+                        <xsd:element name="intervento_in_assenza_scia" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="intervento_data" type="ctipi:ggmmaaaa_stype" />
+                                    <xsd:element name="oblazione">
+                                        <xsd:complexType>
+                                            <xsd:sequence>
+                                                <xsd:element name="oblazione_dovuta" type="xsd:string" />
+                                            </xsd:sequence>
+                                        </xsd:complexType>
+                                    </xsd:element>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+
+                        <!-- X.4 -->
+                        <xsd:element name="intervento_in_assenza_scia_fino_dieci_mila" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <!-- X.4.1 -->
+                                    <xsd:element name="atto_data_epoca" minOccurs="0">
+                                        <xsd:complexType>
+                                            <xsd:sequence>
+                                                <xsd:element name="intervento_data_epoca_atto" type="xsd:string" />
+                                            </xsd:sequence>
+                                        </xsd:complexType>
+                                    </xsd:element>
+                                    <!-- X.4.2 -->
+                                    <xsd:element name="attesta_data_epoca" minOccurs="0">
+                                        <xsd:complexType>
+                                            <xsd:sequence>
+                                                <xsd:element name="intervento_data_epoca_attesta" type="xsd:string" />
+                                            </xsd:sequence>
+                                        </xsd:complexType>
+                                    </xsd:element>
+                                    <!-- X.4.3 -->
+                                    <xsd:element name="oblazione" minOccurs="0">
+                                        <xsd:complexType>
+                                            <xsd:sequence>
+                                                <xsd:element name="oblazione_dovuta" type="xsd:string" />
+                                            </xsd:sequence>
+                                        </xsd:complexType>
+                                    </xsd:element>
+                                    <!-- X.4.4 -->
+                                    <xsd:element name="ai_fini_della_sanatoria" minOccurs="0">
+                                        <xsd:complexType>
+                                            <xsd:sequence>
+                                                <xsd:choice>
+                                                    <xsd:element name="no_interventi" type="xsd:boolean" />
+                                                    <xsd:element name="propone_interventi" type="xsd:boolean" />
+                                                </xsd:choice>
+                                            </xsd:sequence>
+                                        </xsd:complexType>
+                                    </xsd:element>
+                                    <!-- X.4.5 -->
+                                    <xsd:element name="rilevanza_sismica_interventi" minOccurs="0">
+                                        <xsd:complexType>
+                                            <xsd:choice>
+                                                <!-- X.4.5.1 -->
+                                                <xsd:element name="zona_sismica_bassa" type="xsd:boolean" />
+                                                <!-- X.4.5.2 -->
+                                                <xsd:element name="zona_sismica_media_alta">
+                                                    <xsd:complexType>
+                                                        <xsd:sequence>
+                                                            <xsd:choice>
+                                                                <!-- X.4.5.2.1 -->
+                                                                <xsd:element name="no_rilevanza_strutturale" type="xsd:boolean" />
+                                                                <!-- X.4.5.2.2 -->
+                                                                <xsd:element name="ha_rilevanza_strutturale">
+                                                                    <xsd:complexType>
+                                                                        <xsd:sequence>
+                                                                            <!-- X.4.5.2.2.1 -->
+                                                                            <xsd:element name="intervento_rilevante_ai_sensi_art_94" minOccurs="0">
+                                                                                <xsd:complexType>
+                                                                                    <xsd:sequence>
+                                                                                        <!-- X.4.5.2.2.1.1 -->
+                                                                                        <xsd:element name="autorizzazione_sismica_allegato" type="esanassscia:atto_base_ctype" />
+                                                                                        <!-- X.4.5.2.2.1.2 -->
+                                                                                        <xsd:element name="silenzio_assenso_documentato" type="esanassscia:atto_base_ctype" />
+                                                                                    </xsd:sequence>
+                                                                                </xsd:complexType>
+                                                                            </xsd:element>
+                                                                            <!-- X.4.5.2.2.2 -->
+                                                                            <xsd:element name="intervento_minore_rilevanza"  minOccurs="0">
+                                                                                <xsd:complexType>
+                                                                                    <xsd:sequence>
+                                                                                        <!-- X.4.5.2.2.2.1 -->
+                                                                                        <xsd:element name="decorso_termini_controllo_regionale" type="xsd:boolean" />
+                                                                                    </xsd:sequence>
+                                                                                </xsd:complexType>
+                                                                            </xsd:element>
+                                                                            <!-- X.4.5.2.2.3 -->
+                                                                            <xsd:element name="intervento_privo_rilevanza"  minOccurs="0">
+                                                                                <xsd:complexType>
+                                                                                    <xsd:sequence>
+                                                                                        <!-- X.4.5.2.2.3.1 -->
+                                                                                        <xsd:element name="decorso_termini_controllo_regionale" type="xsd:boolean" />
+                                                                                    </xsd:sequence>
+                                                                                </xsd:complexType>
+                                                                            </xsd:element>
+                                                                        </xsd:sequence>
+                                                                    </xsd:complexType>
+                                                                </xsd:element>
+                                                            </xsd:choice>
+                                                        </xsd:sequence>
+                                                    </xsd:complexType>
+                                                </xsd:element>
+                                            </xsd:choice>
+                                        </xsd:complexType>
+                                    </xsd:element>
+
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+
+
+
+                    <!-- X.5 -->
+                    <xsd:element name="iscrizione_catastale" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="dichiara" type="xsd:boolean" minOccurs="0"/>
+                                <xsd:element name="comunica" type="esanassscia:atto_base_ctype" minOccurs="0" />
+                                <xsd:element name="si_impegna" type="xsd:boolean" minOccurs="0" />
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="atto_base_ctype">
+        <xsd:sequence>
+            <xsd:element name="numero" type="xsd:string"/>
+            <xsd:element name="data" type="ctipi:ggmmaaaa_stype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="sanatoria_asseverazione_scia" type="esanassscia:sanatoria_asseverazione_ctype"/>
+</xsd:schema>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:eauaschbdictitcomutiagr="../02_entities/aua_scheda_b_dichiarazioni_titolare_comunicazione_utilizzazione_agronomica"
+    targetNamespace="../02_entities/aua_scheda_b_dichiarazioni_titolare_comunicazione_utilizzazione_agronomica"
+    elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!--    SCHEDA B1-1  -->
+    <!-- Tipo concreto -->
+    <xsd:complexType name="scheda_b_dichiarazioni_ctype">
+                <xsd:sequence>
+                    <!-- Sezione dichiara -->
+                    <xsd:element name="conoscenza_normativa_utilizzazione_agronomica" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="attivita_non_prima_30_giorni" type="xsd:boolean" minOccurs="0"/>
+
+                    <!-- Sezione impegni -->
+                    <xsd:element name="impegno_prescrizioni_normativa" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="impegno_comunicare_variazioni" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="impegno_conservare_documentazione" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="sede_legale_allevamento" type="xsd:string" minOccurs="0"/>
+
+                    <!-- Documentazione allegata -->
+                    <xsd:element name="visure_estratti_catastali" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="attestati_disponibilita_terreni" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="registro_utilizzazione_annuale" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="documentazione_accompagnamento" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="documentazione_fiscale_vendita" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="contratti_originali" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="verbali_collaudo_contenitori" type="xsd:boolean" minOccurs="0"/>
+
+                    <!-- Sezione azoto e impegni specifici -->
+                    <xsd:element name="impegno_azoto_3001_6000kg" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="impegno_azoto_superiore_6000kg" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="impegno_azienda_superiore_500_uba" type="xsd:boolean" minOccurs="0"/>
+
+                    <!-- TODO: campi non trovati sul FO ma presenti sul PDF -->
+                    <xsd:element name="no_autorizzazione_ambientale" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="richiesto_presentazione_AUA" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="indicare_scheda_interesse" type="xsd:string" minOccurs="0"/>
+
+                </xsd:sequence>
+
+    </xsd:complexType>
+
+    <!-- Elemento principale -->
+    <xsd:element name="scheda_b_dichiarazioni_titolare_comunicazione_utilizzazione_agronomica" type="eauaschbdictitcomutiagr:scheda_b_dichiarazioni_ctype"/>
+
+</xsd:schema>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschbcarfra="../02_entities/aua_scheda_b_caratteristiche_frantoio"
+            xmlns:ctipi="../commons/tipi"
+            targetNamespace="../02_entities/aua_scheda_b_caratteristiche_frantoio"
+            elementFormDefault="qualified"
+            attributeFormDefault="qualified"
+            version="1.0.7"
+            xml:lang="it">
+
+    <!-- Import tipi comuni -->
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <!-- SCHEDA B2-2 -->
+
+    <!-- Tipo astratto per quantità di sanse umide inviate all'impianto di biogas -->
+    <xsd:complexType name="quantita_sanse_umide_biogas_base_type" abstract="true"/>
+
+    <!-- Tipo concreto per quantità di sanse umide inviate all'impianto di biogas -->
+    <xsd:complexType name="quantita_sanse_umide_biogas_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschbcarfra:quantita_sanse_umide_biogas_base_type">
+                <xsd:sequence>
+                    <xsd:element name="quantita" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Tipo principale della scheda caratteristiche frantoio -->
+    <xsd:complexType name="scheda_b_caratteristiche_frantoio_ctype">
+        <xsd:sequence>
+            <!-- Tipologia ciclo lavorazione -->
+            <xsd:element name="tipologia_ciclo_lavorazione" type="xsd:string"/>
+            <!-- Tonnellate olive molibili in otto ore -->
+            <xsd:element name="tonnellate_olive_molibili_otto_ore" type="xsd:string"/>
+            <!-- Produzione stimata acque di vegetazione (m3) -->
+            <xsd:element name="produzione_stimata_acque_vegetazione_m3" type="xsd:string"/>
+            <!-- Produzione stimata sanse umide (m3) -->
+            <xsd:element name="produzione_stimata_sanse_umide_m3" type="xsd:string"/>
+            <!-- Data inizio campagna -->
+            <xsd:element name="data_inizio_campagna" type="ctipi:ggmmaaaa_stype"/>
+            <!-- Data fine campagna -->
+            <xsd:element name="data_fine_campagna" type="ctipi:ggmmaaaa_stype"/>
+            <!-- Produzione annua media sanse umide non inviate a sansificio (m3) -->
+            <xsd:element name="produzione_annua_media_sanse_umide_non_inviate_sansificio_m3" type="xsd:string"/>
+            <!-- Quantità di sanse umide inviate all'impianto di biogas (astratto) -->
+            <xsd:element name="quantita_sanse_umide_biogas" type="eauaschbcarfra:quantita_sanse_umide_biogas_base_type"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Elemento principale -->
+    <xsd:element name="scheda_b_caratteristiche_frantoio" type="eauaschbcarfra:scheda_b_caratteristiche_frantoio_ctype"/>
+
+</xsd:schema>

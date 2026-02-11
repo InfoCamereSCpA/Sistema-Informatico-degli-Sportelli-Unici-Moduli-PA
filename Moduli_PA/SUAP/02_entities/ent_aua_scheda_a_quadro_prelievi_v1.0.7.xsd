@@ -1,0 +1,211 @@
+<!-- ent_aua_scheda_a_quadro_prelievi_v1.0.7.xsd -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschaquapre="../02_entities/aua_scheda_a_quadro_prelievi"
+            xmlns:ctipi="../commons/tipi"
+            targetNamespace="../02_entities/aua_scheda_a_quadro_prelievi"
+            elementFormDefault="qualified">
+
+    <!-- Import tipi comuni -->
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+
+
+    <!--    SCHEDA A-A3 -->
+
+    <xsd:complexType name="quadro_prelievi_ctype">
+        <xsd:sequence>
+            <xsd:element name="quadro_prelievo_blocco" type="eauaschaquapre:quadro_prelievi_ripetibile_ctype" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!-- Enumerazione per Fonte -->
+    <xsd:simpleType name="fonte_enum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="SORGENTI"/>
+            <xsd:enumeration value="ACQUEDOTTI"/>
+            <xsd:enumeration value="CORPO IDRICO SUPERFICIALE"/>
+            <xsd:enumeration value="POZZI"/>
+            <xsd:enumeration value="ALTRO"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+
+
+    <!-- Tipi astratti -->
+    <xsd:complexType name="codice_base_type" abstract="true"/>
+    <xsd:complexType name="coordinate_geografiche_base_type" abstract="true"/>
+    <xsd:complexType name="prelievo_max_autorizzato_base_type" abstract="true"/>
+    <xsd:complexType name="prelievo_medio_effettivo_base_type" abstract="true"/>
+    <xsd:complexType name="utilizzazione_base_type" abstract="true"/>
+    <xsd:complexType name="quantita_riutilizzata_base_type" abstract="true"/>
+
+    <!-- Complesso per dati concessione -->
+    <xsd:complexType name="dati_concessione_ctype">
+        <xsd:sequence>
+            <xsd:element name="ente" type="xsd:string"/>
+            <xsd:element name="data" type="ctipi:ggmmaaaa_stype"/>
+            <xsd:element name="n_concessione" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Complesso per coordinate geografiche -->
+    <xsd:complexType name="coordinate_geografiche_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschaquapre:coordinate_geografiche_base_type">
+                <xsd:sequence>
+                    <xsd:element name="asse_x" type="xsd:string"/>
+                    <xsd:element name="asse_y" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Complesso per prelievo max autorizzato -->
+    <xsd:complexType name="prelievo_max_autorizzato_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschaquapre:prelievo_max_autorizzato_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valore" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Complesso per prelievo medio effettivo -->
+    <xsd:complexType name="prelievo_medio_effettivo_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschaquapre:prelievo_medio_effettivo_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valore" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Complesso per utilizzazione -->
+    <xsd:complexType name="utilizzazione_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschaquapre:utilizzazione_base_type">
+                <xsd:sequence>
+                    <xsd:element name="percentuale" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Complesso per quantita riutilizzata -->
+    <xsd:complexType name="quantita_riutilizzata_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschaquapre:quantita_riutilizzata_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valore" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Complesso per codice -->
+    <xsd:complexType name="codice_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschaquapre:codice_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valore" type="eauaschaquapre:codice_enum"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Complesso per Fonte con specifica "Altro" -->
+    <xsd:complexType name="fonte_ctype">
+        <xsd:sequence>
+            <xsd:element name="fonte" type="eauaschaquapre:fonte_enum"/>
+            <xsd:element name="specificare" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Complesso per Riuso con quantità riutilizzata -->
+    <xsd:complexType name="riuso_ctype">
+        <xsd:sequence>
+            <xsd:element name="riuso" type="xsd:boolean"/>
+            <xsd:element name="quantita_riutilizzata" type="eauaschaquapre:quantita_riutilizzata_base_type" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Complesso principale ripetibile -->
+    <xsd:complexType name="quadro_prelievi_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="fonte" type="eauaschaquapre:fonte_ctype"/>
+            <xsd:element name="codice" type="eauaschaquapre:codice_base_type"/>
+            <xsd:element name="coordinate_geografiche" type="eauaschaquapre:coordinate_geografiche_base_type"/>
+            <xsd:element name="dati_concessione" type="eauaschaquapre:dati_concessione_ctype"/>
+            <xsd:element name="prelievo_max_autorizzato" type="eauaschaquapre:prelievo_max_autorizzato_base_type"/>
+            <xsd:element name="prelievo_medio_effettivo" type="eauaschaquapre:prelievo_medio_effettivo_base_type"/>
+            <xsd:element name="utilizzazione" type="eauaschaquapre:utilizzazione_base_type"/>
+            <xsd:element name="riuso" type="eauaschaquapre:riuso_ctype"/>
+            <xsd:element name="presenza_contatori" type="xsd:boolean"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!-- Enumerazione per Codice (A01-A50) -->
+    <xsd:simpleType name="codice_enum">
+        <xsd:restriction base="xsd:string">
+            <!-- Generato da A01 a A50 -->
+            <xsd:enumeration value="A01"/>
+            <xsd:enumeration value="A02"/>
+            <xsd:enumeration value="A03"/>
+            <xsd:enumeration value="A04"/>
+            <xsd:enumeration value="A05"/>
+            <xsd:enumeration value="A06"/>
+            <xsd:enumeration value="A07"/>
+            <xsd:enumeration value="A08"/>
+            <xsd:enumeration value="A09"/>
+            <xsd:enumeration value="A10"/>
+            <xsd:enumeration value="A11"/>
+            <xsd:enumeration value="A12"/>
+            <xsd:enumeration value="A13"/>
+            <xsd:enumeration value="A14"/>
+            <xsd:enumeration value="A15"/>
+            <xsd:enumeration value="A16"/>
+            <xsd:enumeration value="A17"/>
+            <xsd:enumeration value="A18"/>
+            <xsd:enumeration value="A19"/>
+            <xsd:enumeration value="A20"/>
+            <xsd:enumeration value="A21"/>
+            <xsd:enumeration value="A22"/>
+            <xsd:enumeration value="A23"/>
+            <xsd:enumeration value="A24"/>
+            <xsd:enumeration value="A25"/>
+            <xsd:enumeration value="A26"/>
+            <xsd:enumeration value="A27"/>
+            <xsd:enumeration value="A28"/>
+            <xsd:enumeration value="A29"/>
+            <xsd:enumeration value="A30"/>
+            <xsd:enumeration value="A31"/>
+            <xsd:enumeration value="A32"/>
+            <xsd:enumeration value="A33"/>
+            <xsd:enumeration value="A34"/>
+            <xsd:enumeration value="A35"/>
+            <xsd:enumeration value="A36"/>
+            <xsd:enumeration value="A37"/>
+            <xsd:enumeration value="A38"/>
+            <xsd:enumeration value="A39"/>
+            <xsd:enumeration value="A40"/>
+            <xsd:enumeration value="A41"/>
+            <xsd:enumeration value="A42"/>
+            <xsd:enumeration value="A43"/>
+            <xsd:enumeration value="A44"/>
+            <xsd:enumeration value="A45"/>
+            <xsd:enumeration value="A46"/>
+            <xsd:enumeration value="A47"/>
+            <xsd:enumeration value="A48"/>
+            <xsd:enumeration value="A49"/>
+            <xsd:enumeration value="A50"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- Elemento principale -->
+    <xsd:element name="quadro_prelievi" type="eauaschaquapre:quadro_prelievi_ctype"/>
+</xsd:schema>

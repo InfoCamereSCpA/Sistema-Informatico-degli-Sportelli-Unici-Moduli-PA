@@ -1,0 +1,156 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschedarecref="../02_entities/aua_scheda_a_recapito_reflui"
+            xmlns:eauacodscaenu="../02_entities/aua_codice_scarico_enum"
+            targetNamespace="../02_entities/aua_scheda_a_recapito_reflui"
+            elementFormDefault="qualified">
+
+    <xsd:import namespace="../02_entities/aua_codice_scarico_enum" schemaLocation="../02_entities/ent_aua_codice_scarico_enum_v1.0.7.xsd"/>
+
+    <!--    SCHEDA A6 -->
+
+
+    <!-- Tipi astratti -->
+    <xsd:complexType name="natura_del_corpo_recettore_base_type" abstract="true"/>
+    <xsd:complexType name="portata_media_base_type" abstract="true"/>
+    <xsd:complexType name="portata_minima_base_type" abstract="true"/>
+    <xsd:complexType name="n_giorni_con_portata_nulla_base_type" abstract="true"/>
+    <xsd:complexType name="distanza_minima_rete_fognaria_pubblica_base_type" abstract="true"/>
+    <xsd:complexType name="possibilita_convoglio_riutilizzo_base_type" abstract="true"/>
+    <xsd:complexType name="distanza_punti_captazione_derivazione_base_type" abstract="true"/>
+    <xsd:complexType name="profondita_piano_campagna_base_type" abstract="true"/>
+
+    <!-- Tipi concreti -->
+    <xsd:complexType name="natura_del_corpo_recettore_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschedarecref:natura_del_corpo_recettore_base_type">
+                <xsd:choice>
+                    <xsd:element name="artificiale" type="xsd:boolean"/>
+                    <xsd:element name="naturale" type="xsd:boolean"/>
+                </xsd:choice>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="portata_media_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschedarecref:portata_media_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valore" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="portata_minima_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschedarecref:portata_minima_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valore" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="n_giorni_con_portata_nulla_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschedarecref:n_giorni_con_portata_nulla_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valore" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="distanza_minima_rete_fognaria_pubblica_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschedarecref:distanza_minima_rete_fognaria_pubblica_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valore" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="possibilita_convoglio_riutilizzo_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschedarecref:possibilita_convoglio_riutilizzo_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valore" type="xsd:boolean"/>
+                    <xsd:element name="motivazione" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="distanza_punti_captazione_derivazione_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschedarecref:distanza_punti_captazione_derivazione_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valore" type="xsd:boolean"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="profondita_piano_campagna_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschedarecref:profondita_piano_campagna_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valore" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Blocco 6.1 ripetibile -->
+    <xsd:complexType name="recapito_acque_superficiali_ctype">
+        <xsd:sequence>
+            <xsd:element name="denominazione_corpo_idrico_superficiale" type="xsd:string"/>
+            <xsd:element name="natura_del_corpo_recettore" type="eauaschedarecref:natura_del_corpo_recettore_base_type"/>
+            <xsd:element name="portata_media" type="eauaschedarecref:portata_media_base_type"/>
+            <xsd:element name="portata_minima" type="eauaschedarecref:portata_minima_base_type"/>
+            <xsd:element name="n_giorni_con_portata_nulla" type="eauaschedarecref:n_giorni_con_portata_nulla_base_type"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Blocco 6.2 ripetibile -->
+    <xsd:complexType name="recapito_suolo_sottosuolo_ctype">
+        <xsd:sequence>
+            <xsd:element name="distanza_piu_vicino_corpo_idrico" type="xsd:string"/>
+            <xsd:element name="distanza_minima_rete_fognaria_pubblica"
+                         type="eauaschedarecref:distanza_minima_rete_fognaria_pubblica_base_type"/>
+            <xsd:element name="possibilita_convoglio_riutilizzo"
+                         type="eauaschedarecref:possibilita_convoglio_riutilizzo_base_type"/>
+            <xsd:element name="distanza_punti_captazione_derivazione" type="eauaschedarecref:distanza_punti_captazione_derivazione_base_type"/>
+            <xsd:element name="modalita_dispersione_sottosuolo">
+                <xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element name="pozzo_assorbente" type="xsd:boolean"/>
+                        <xsd:element name="condotta_disperdente" type="xsd:boolean"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="profondita_piano_campagna" type="eauaschedarecref:profondita_piano_campagna_base_type"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Elemento principale ripetibile -->
+    <xsd:element name="scheda_a_recapito_reflui" type="eauaschedarecref:scheda_a_recapito_reflui_ctype"/>
+
+    <xsd:complexType name="scheda_a_recapito_reflui_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_a_recapito_reflui_blocco" type="eauaschedarecref:scheda_a_recapito_reflui_ripetibile_ctype" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="scheda_a_recapito_reflui_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="codice_scarico" type="eauacodscaenu:codice_scarico_enum"/>
+            <xsd:element name="acque_superficiali_presente" type="xsd:boolean"/>
+            <xsd:element name="recapiti_acque_superficiali" type="eauaschedarecref:recapito_acque_superficiali_ctype" minOccurs="0" />
+            <xsd:element name="suolo_sottosuolo_presente" type="xsd:boolean"/>
+            <xsd:element name="recapiti_suolo_sottosuolo" type="eauaschedarecref:recapito_suolo_sottosuolo_ctype" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:elocint="../02_entities/localizzazione_intervento"
+            xmlns:eubiimm="../02_entities/ubicazione_immobile"
+            xmlns:eidecat="../02_entities/identificativo_catastale"
+            targetNamespace="../02_entities/localizzazione_intervento"
+
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+    <xsd:import namespace="../02_entities/ubicazione_immobile" schemaLocation="../02_entities/ent_ubicazione_immobile_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/identificativo_catastale" schemaLocation="../02_entities/ent_identificativo_catastale_v1.0.7.xsd"/>
+
+
+    <!-- Reference elocint:LocalizzazioneInterventoType -->
+    <xsd:complexType name="localizzazione_intervento_ctype">
+        <xsd:sequence>
+            <xsd:element name="immobile" type="elocint:localizzazione_immobile_ctype" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="localizzazione_immobile_ctype">
+        <xsd:sequence>
+            <xsd:element name="ubicazioneImmobile" type="eubiimm:ubicazione_immobile_ctype"/>
+            <xsd:element name="riferimentiCatastali">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="datiCatastali" type="eidecat:coordinate_catastali_ctype"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="coordinate" type="elocint:coordinate_base_type" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Reference :campo astratto CoordinateBaseType -->
+    <xsd:complexType name="coordinate_base_type" abstract="true"/>
+    <xsd:complexType name="coordinate_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="elocint:coordinate_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valori" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:element name="localizzazione_intervento" type="elocint:localizzazione_intervento_ctype"/>
+</xsd:schema>

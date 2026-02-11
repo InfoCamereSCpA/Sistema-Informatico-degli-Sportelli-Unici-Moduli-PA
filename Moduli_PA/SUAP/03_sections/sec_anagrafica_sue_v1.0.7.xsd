@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sanasue="../03_sections/anagrafica_sue"
+            xmlns:eallperana="../02_entities/allegato_persona_anagrafica"
+            xmlns:eschditsue="../02_entities/scheda_ditta_sue"
+            targetNamespace="../03_sections/anagrafica_sue" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/allegato_persona_anagrafica" schemaLocation="../02_entities/ent_allegato_persona_anagrafica_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/scheda_ditta_sue" schemaLocation="../02_entities/ent_scheda_ditta_sue_v1.0.7.xsd"/>
+
+    <xsd:complexType name="sezione_anagrafica_sue_ctype">
+        <xsd:sequence>
+            <xsd:element name="schedaTitolare" type="eallperana:allegato_persona_anagrafica_ctype" minOccurs="0" />
+            <xsd:element name="schedaDitta" type="eschditsue:scheda_ditta_sue_ctype" minOccurs="0"/>
+            <xsd:element name="schedaDelegato" type="eallperana:allegato_persona_anagrafica_ctype" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_anagrafica_sue" type="sanasue:sezione_anagrafica_sue_ctype"/>
+
+</xsd:schema>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:scomcila="../03_sections/comunicazioni_cila"
+            xmlns:epreinilavcila="../02_entities/presentazione_inizio_lavori_cila"
+            xmlns:equaintcila="../02_entities/qualificazione_intervento_cila"
+            xmlns:elocint="../02_entities/localizzazione_intervento"
+            xmlns:ecalconcoscila="../02_entities/calcolo_contributo_costruzione_cila"
+            xmlns:etecinc="../02_entities/tecnici_incaricati"
+            xmlns:eimpeselavcila="../02_entities/impresa_esecutrice_lavori_cila"
+            xmlns:eoblsalsic="../02_entities/obblighi_salute_sicurezza"
+            targetNamespace="../03_sections/comunicazioni_cila" elementFormDefault="qualified"
+            attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+    <xsd:import namespace="../02_entities/presentazione_inizio_lavori_cila" schemaLocation="../02_entities/ent_presentazione_inizio_lavori_cila_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/qualificazione_intervento_cila" schemaLocation="../02_entities/ent_qualificazione_intervento_cila_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/localizzazione_intervento" schemaLocation="../02_entities/ent_localizzazione_intervento_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/calcolo_contributo_costruzione_cila" schemaLocation="../02_entities/ent_calcolo_contributo_costruzione_cila_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/tecnici_incaricati" schemaLocation="../02_entities/ent_tecnici_incaricati_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/impresa_esecutrice_lavori_cila" schemaLocation="../02_entities/ent_impresa_esecutrice_lavori_cila_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/obblighi_salute_sicurezza" schemaLocation="../02_entities/ent_obblighi_salute_sicurezza_v1.0.7.xsd"/>
+
+
+
+    <xsd:complexType name="sezione_comunicazioni_cila_ctype">
+        <xsd:sequence>
+            <xsd:element name="presentazione_inizio_lavori" type="epreinilavcila:interventi_soggetti_acila_base_type" minOccurs="0"/>
+            <xsd:element name="qualificazione_intervento" type="equaintcila:qualificazione_intervento_base_type" minOccurs="0"/>
+            <xsd:element name="localizzazione_intervento" type="elocint:localizzazione_intervento_ctype" minOccurs="0"/>
+            <xsd:element name="calcolo_contributo_costruzione" type="ecalconcoscila:calcolo_contributo_base_type" minOccurs="0"/>
+            <xsd:element name="tecnici_incaricati" type="etecinc:tecnici_incaricati_dei_lavori_ctype" minOccurs="0"/>
+            <xsd:element name="imprese_esecutrici" type="eimpeselavcila:cila_imprese_esecutrici_dei_lavori_ctype" minOccurs="0"/>
+            <xsd:element name="obblighi_salute_sicurezza" type="eoblsalsic:obblighi_salute_sicurezza_ctype" minOccurs="0"/>
+            <xsd:element name="dichiarazione_presa_visione_informativa_privacy" type="xsd:boolean" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="sezione_comunicazioni_cila" type="scomcila:sezione_comunicazioni_cila_ctype"/>
+
+</xsd:schema>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:eauaschbdicimptitcom="../02_entities/aua_scheda_b_dichiarazione_impegni_titolare_comunicazione"
+    targetNamespace="../02_entities/aua_scheda_b_dichiarazione_impegni_titolare_comunicazione"
+    elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!-- SCHEDA B2-1 -->
+
+    <!-- Tipo concreto per la scheda B2(1) -->
+    <xsd:complexType name="scheda_b_dichiarazione_impegni_ctype">
+        <xsd:sequence>
+            <!-- Sezione dichiara -->
+            <xsd:element name="conoscenza_normativa_utilizzazione_agronomica" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="attivita_non_prima_30_giorni" type="xsd:boolean" minOccurs="0"/>
+
+            <!-- Sezione impegni -->
+            <xsd:element name="impegno_utilizzazione_agronomica_prescrizioni" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="impegno_comunicare_variazioni_frantoio" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="impegno_conservare_documentazione_suap" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="sede_legale_frantoi_n" type="xsd:string" minOccurs="0"/>
+
+            <!-- Documentazione allegata -->
+            <xsd:element name="visure_estratti_catastali" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="attestati_disponibilita_terreni" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="documentazione_accompagnamento" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="contratti_originali_cessione_acque" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="verbali_collaudo_contenitori" type="xsd:boolean" minOccurs="0"/>
+
+            <!-- Allegati alla comunicazione -->
+            <xsd:element name="relazione_tecnica_dm_6_luglio_2005" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="dichiarazioni_firma_titolare_spandente" type="xsd:boolean" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Elemento principale -->
+    <xsd:element name="scheda_b_dichiarazione_impegni_titolare_comunicazione" type="eauaschbdicimptitcom:scheda_b_dichiarazione_impegni_ctype"/>
+
+</xsd:schema>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eoblsalsicaltpdc="../02_entities/obblighi_salute_sicurezza_altpdc"
+            targetNamespace="../02_entities/obblighi_salute_sicurezza_altpdc"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!-- Reference eoblsalsicaltpdc:ObblighiSaluteSicurezzaType -->
+    <xsd:complexType name="obblighi_salute_sicurezza_altpdc_ctype">
+        <xsd:choice>
+            <xsd:element name="non_ricade" type="xsd:boolean"/>
+            <xsd:element name="ricade" >
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:group ref="eoblsalsicaltpdc:obblighi_salute_sicurezza_altpdc_entita_cantiere_group"/>
+                        <xsd:choice>
+                            <xsd:element name="no_notifica" type="xsd:boolean"/>
+                            <xsd:element name="notifica">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="allega" minOccurs="0" type="eoblsalsicaltpdc:allega_base_type"/>
+                                        <xsd:element name="invio_prima_inizio_lavori" type="xsd:boolean" minOccurs="0" />
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:choice>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ricade_riserva_presenta_prima_inizio_lavori" type="eoblsalsicaltpdc:ricade_riserva_presenta_prima_inizio_lavori_base_type"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:group name="obblighi_salute_sicurezza_altpdc_entita_cantiere_group">
+        <xsd:choice>
+            <xsd:element name="inf200ggUomo" type="xsd:boolean" minOccurs="0" />
+            <xsd:element name="pariSup200ggUomo" type="xsd:boolean" minOccurs="0" />
+        </xsd:choice>
+    </xsd:group>
+
+    <xsd:complexType name="allega_base_type" abstract="true"/>
+
+    <xsd:complexType name="allega_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eoblsalsicaltpdc:allega_base_type">
+                <xsd:sequence>
+                    <xsd:element name="allega" minOccurs="0" type="xsd:boolean"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="ricade_riserva_presenta_prima_inizio_lavori_base_type" abstract="true"/>
+
+    <xsd:complexType name="ricade_riserva_presenta_prima_inizio_lavori_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eoblsalsicaltpdc:ricade_riserva_presenta_prima_inizio_lavori_base_type">
+                <xsd:sequence>
+                    <xsd:element name="ricade_riserva_presenta_prima_inizio_lavori" minOccurs="0" type="xsd:boolean"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="obblighi_salute_sicurezza_altpdc" type="eoblsalsicaltpdc:obblighi_salute_sicurezza_altpdc_ctype"/>
+</xsd:schema>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschbcarsitspa="../02_entities/aua_scheda_b_caratteristiche_siti_spandimento"
+            xmlns:ctipi="../commons/tipi"
+            targetNamespace="../02_entities/aua_scheda_b_caratteristiche_siti_spandimento"
+            elementFormDefault="qualified"
+            attributeFormDefault="qualified"
+            version="1.0.7"
+            xml:lang="it">
+
+    <!-- Import tipi comuni -->
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <!-- SCHEDA B2-3.1 -->
+
+    <!-- Tipo concreto per il blocco ripetibile dei siti di spandimento -->
+    <xsd:complexType name="sito_spandimento_ctype">
+                <xsd:sequence>
+                    <!-- Comune dove si trova il sito -->
+                    <xsd:element name="comune" type="xsd:string"/>
+                    <!-- Foglio catastale -->
+                    <xsd:element name="fg" type="xsd:string"/>
+                    <!-- Mappale catastale -->
+                    <xsd:element name="mapp" type="xsd:string"/>
+                    <!-- Superficie utilizzata (ha/are) -->
+                    <xsd:element name="superficie_ha_are" type="xsd:string"/>
+                    <!-- Titolo d'uso -->
+                    <xsd:element name="titolo_uso" type="xsd:string"/>
+                    <!-- Acque di vegetazione (m3) -->
+                    <xsd:element name="acque_vegetazione_m3" type="xsd:string"/>
+                    <!-- Sanse (m3) -->
+                    <xsd:element name="sanse_m3" type="xsd:string"/>
+                    <!-- Anni di spandimento previsti -->
+                    <xsd:element name="anni_spandimento_previsti" type="xsd:string"/>
+                </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Tipo astratto principale -->
+    <xsd:complexType name="scheda_b_caratteristiche_siti_spandimento_base_type" abstract="true"/>
+
+    <!-- Tipo concreto principale -->
+    <xsd:complexType name="scheda_b_caratteristiche_siti_spandimento_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschbcarsitspa:scheda_b_caratteristiche_siti_spandimento_base_type">
+                <xsd:sequence>
+                    <!-- Periodo spandimento dal -->
+                    <xsd:element name="periodo_spandimento_dal" type="ctipi:ggmmaaaa_stype"/>
+                    <!-- Periodo spandimento al -->
+                    <xsd:element name="periodo_spandimento_al" type="ctipi:ggmmaaaa_stype"/>
+                    <!-- Quantità totale acque vegetazione da spandere (m3) -->
+                    <xsd:element name="quantita_totale_acque_vegetazione_spandere_m3" type="xsd:string"/>
+                    <!-- Quantità totale sanse umide da spandere (m3) -->
+                    <xsd:element name="quantita_totale_sanse_umide_spandere_m3" type="xsd:string"/>
+                    <!-- Nominativo e indirizzo titolare siti spandimento -->
+                    <xsd:element name="nominativo_indirizzo_titolare_siti_spandimento" type="xsd:string"/>
+                    <!-- Codice fiscale impresa agricola -->
+                    <xsd:element name="codice_fiscale_impresa_agricola" type="xsd:string"/>
+                    <!-- Data scadenza contratto gestione sito dal -->
+                    <xsd:element name="data_scadenza_contratto_gestione_sito_dal" type="ctipi:ggmmaaaa_stype"/>
+                    <!-- Data scadenza contratto gestione sito al -->
+                    <xsd:element name="data_scadenza_contratto_gestione_sito_al" type="ctipi:ggmmaaaa_stype"/>
+                    <!-- Blocco ripetibile dei siti di spandimento -->
+                    <xsd:element name="siti_spandimento_blocco" type="eauaschbcarsitspa:sito_spandimento_ctype" maxOccurs="unbounded"/>
+                    <!-- Totale superficie ha are -->
+                    <xsd:element name="totale_superficie_ha_are" type="xsd:string"/>
+                    <!-- Totale acque vegetazione (m3) -->
+                    <xsd:element name="totale_acque_vegetazione_m3" type="xsd:string"/>
+                    <!-- Totale sanse (m3) -->
+                    <xsd:element name="totale_sanse_m3" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Elemento principale -->
+    <xsd:element name="scheda_b_caratteristiche_siti_spandimento" type="eauaschbcarsitspa:scheda_b_caratteristiche_siti_spandimento_ctype"/>
+
+</xsd:schema>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sauaschbutiagr="../03_sections/aua_scheda_b_utilizzazione_agronomica"
+
+            xmlns:eauaschbcarconsto="../02_entities/aua_scheda_b_caratteristiche_contenitori_stoccaggio"
+            xmlns:eauaschbcarfra="../02_entities/aua_scheda_b_caratteristiche_frantoio"
+            xmlns:eauaschbcarsitspa="../02_entities/aua_scheda_b_caratteristiche_siti_spandimento"
+            xmlns:eauaschbcomdet="../02_entities/aua_scheda_b_comunicazione_detentore"
+            xmlns:eauaschbconproeffall="../02_entities/aua_scheda_b_consistenza_produzione_effluenti_allevamento"
+            xmlns:eauaschbdatcesacq="../02_entities/aua_scheda_b_dati_cessione_acque"
+            xmlns:eauaschbdatidall="../02_entities/aua_scheda_b_dati_identificativi_allevamenti"
+            xmlns:eauaschbdatideapp="../02_entities/aua_scheda_b_dati_identificativi_appezzamenti"
+            xmlns:eauaschbdicimptitcom="../02_entities/aua_scheda_b_dichiarazione_impegni_titolare_comunicazione"
+            xmlns:eauaschbdictitcomutiagr="../02_entities/aua_scheda_b_dichiarazioni_titolare_comunicazione_utilizzazione_agronomica"
+            xmlns:eauaschbdigria="../02_entities/aua_scheda_b_digestato_dati_riassuntivi"
+            xmlns:eauaschbeffsepsolliq="../02_entities/aua_scheda_b_effluente_separazione_solido_liquido"
+            xmlns:eauaschbliqdatria="../02_entities/aua_scheda_b_liquame_dati_riassuntivi"
+            xmlns:eauaschbmoddis="../02_entities/aua_scheda_b_modalita_distribuzione"
+            xmlns:eauaschbpaldatria="../02_entities/aua_scheda_b_palabili_dati_riassuntivi"
+            xmlns:eauaschbsto="../02_entities/aua_scheda_b_stoccaggi"
+            xmlns:eauaschbteruti="../02_entities/aua_scheda_b_terreni_utilizzabili"
+            xmlns:eauaschbtratana="../02_entities/aua_scheda_b_trattamento_anaerobico"
+            xmlns:eauaschbvolced="../02_entities/aua_scheda_b_volumi_ceduti"
+
+            targetNamespace="../03_sections/aua_scheda_b_utilizzazione_agronomica" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/aua_scheda_b_caratteristiche_contenitori_stoccaggio" schemaLocation="../02_entities/ent_aua_scheda_b_caratteristiche_contenitori_stoccaggio_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_caratteristiche_frantoio" schemaLocation="../02_entities/ent_aua_scheda_b_caratteristiche_frantoio_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_caratteristiche_siti_spandimento" schemaLocation="../02_entities/ent_aua_scheda_b_caratteristiche_siti_spandimento_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_comunicazione_detentore" schemaLocation="../02_entities/ent_aua_scheda_b_comunicazione_detentore_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_consistenza_produzione_effluenti_allevamento" schemaLocation="../02_entities/ent_aua_scheda_b_consistenza_produzione_effluenti_allevamento_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_dati_cessione_acque" schemaLocation="../02_entities/ent_aua_scheda_b_dati_cessione_acque_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_dati_identificativi_allevamenti" schemaLocation="../02_entities/ent_aua_scheda_b_dati_identificativi_allevamenti_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_dati_identificativi_appezzamenti" schemaLocation="../02_entities/ent_aua_scheda_b_dati_identificativi_appezzamenti_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_dichiarazione_impegni_titolare_comunicazione" schemaLocation="../02_entities/ent_aua_scheda_b_dichiarazione_impegni_titolare_comunicazione_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_dichiarazioni_titolare_comunicazione_utilizzazione_agronomica" schemaLocation="../02_entities/ent_aua_scheda_b_dichiarazioni_titolare_comunicazione_utilizzazione_agronomica_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_digestato_dati_riassuntivi" schemaLocation="../02_entities/ent_aua_scheda_b_digestato_dati_riassuntivi_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_effluente_separazione_solido_liquido" schemaLocation="../02_entities/ent_aua_scheda_b_effluente_separazione_solido_liquido_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_liquame_dati_riassuntivi" schemaLocation="../02_entities/ent_aua_scheda_b_liquame_dati_riassuntivi_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_modalita_distribuzione" schemaLocation="../02_entities/ent_aua_scheda_b_modalita_distribuzione_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_palabili_dati_riassuntivi" schemaLocation="../02_entities/ent_aua_scheda_b_palabili_dati_riassuntivi_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_stoccaggi" schemaLocation="../02_entities/ent_aua_scheda_b_stoccaggi_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_terreni_utilizzabili" schemaLocation="../02_entities/ent_aua_scheda_b_terreni_utilizzabili_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_trattamento_anaerobico" schemaLocation="../02_entities/ent_aua_scheda_b_trattamento_anaerobico_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_b_volumi_ceduti" schemaLocation="../02_entities/ent_aua_scheda_b_volumi_ceduti_v1.0.7.xsd"/>
+
+
+    <xsd:complexType name="sezione_aua_scheda_b_utilizzazione_agronomica_ctype">
+        <xsd:sequence>
+            <!-- SCHEDA B1-1 -->
+            <xsd:element name="dichiarazioni_titolare_comunicazione_utilizzazione_agronomica" type="eauaschbdictitcomutiagr:scheda_b_dichiarazioni_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA B1-2 -->
+            <xsd:element name="dati_identificativi_allevamenti" type="eauaschbdatidall:dati_identificativi_allevamenti_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA B1-3(1-2-3) -->
+            <xsd:element name="consistenza_produzione_effluenti_allevamento" type="eauaschbconproeffall:scheda_b_consistenza_produzione_effluenti_allevamento_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA B1-3(4) -->
+            <xsd:element name="trattamento_anaerobico" type="eauaschbtratana:scheda_b_trattamento_anaerobico_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA B1-3(4-bis) -->
+            <xsd:element name="effluente_separazione_solido_liquido" type="eauaschbeffsepsolliq:scheda_b_effluente_separazione_solido_liquido_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA B1-3(5) -->
+            <xsd:element name="volumi_ceduti" type="eauaschbvolced:scheda_b_volumi_ceduti_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA B1-4 -->
+            <xsd:element name="stoccaggi" type="eauaschbsto:scheda_b_stoccaggi_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- Scheda B1-5(a) -->
+            <xsd:element name="liquame_dati_riassuntivi" type="eauaschbliqdatria:scheda_b_liquame_dati_riassuntivi_ripetibile_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- Scheda B1-5(b) -->
+            <xsd:element name="palabili_dati_riassuntivi" type="eauaschbpaldatria:scheda_b_palabili_dati_riassuntivi_ripetibile_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- Scheda B1-3(5c) -->
+            <xsd:element name="digestato_dati_riassuntivi" type="eauaschbdigria:scheda_b_digestato_dati_riassuntivi_ripetibile_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA B1(6-1) -->
+            <xsd:element name="terreni_utilizzabili" type="eauaschbteruti:scheda_b_terreni_utilizzabili_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA B1(6-2) -->
+            <xsd:element name="dati_identificativi_appezzamenti" type="eauaschbdatideapp:scheda_b_dati_identificativi_appezzamenti_base_type" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA B1(6-3) -->
+            <xsd:element name="modalita_distribuzione" type="eauaschbmoddis:scheda_b_modalita_distribuzione_base_type" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA B1(7) -->
+            <xsd:element name="comunicazione_detentore" type="eauaschbcomdet:scheda_b_comunicazione_detentore_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA B2-1 -->
+            <xsd:element name="dichiarazione_impegni_titolare_comunicazione" type="eauaschbdicimptitcom:scheda_b_dichiarazione_impegni_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA B2-2 -->
+            <xsd:element name="caratteristiche_frantoio" type="eauaschbcarfra:scheda_b_caratteristiche_frantoio_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA B2-3.1 -->
+            <xsd:element name="caratteristiche_siti_spandimento" type="eauaschbcarsitspa:scheda_b_caratteristiche_siti_spandimento_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA B2-3.2 -->
+            <xsd:element name="caratteristiche_contenitori_stoccaggio" type="eauaschbcarconsto:scheda_b_caratteristiche_contenitori_stoccaggio_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA B2-4 (sul FrontOffice e' rappresentato come scheda B2-5 non presente invece nel documento PDF) -->
+            <xsd:element name="dati_cessione_acque" type="eauaschbdatcesacq:dati_cessione_acque_blocco_ctype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_aua_scheda_b_utilizzazione_agronomica" type="sauaschbutiagr:sezione_aua_scheda_b_utilizzazione_agronomica_ctype"/>
+</xsd:schema>

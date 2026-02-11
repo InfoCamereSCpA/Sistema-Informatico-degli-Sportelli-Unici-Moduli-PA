@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:equaintcila="../02_entities/qualificazione_intervento_cila"
+            targetNamespace="../02_entities/qualificazione_intervento_cila"
+            xmlns:ctipi="../commons/tipi"
+
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <!--     Reference suecommon:QualificazioneInterventoBaseType -->
+    <xsd:complexType name="qualificazione_intervento_base_type" abstract="true"/>
+
+    <!-- d) Qualificazione dell’intervento (*) -->
+    <xsd:complexType name="qualificazione_intervento_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="equaintcila:qualificazione_intervento_base_type">
+                <xsd:sequence>
+                    <xsd:choice>
+                        <xsd:element name="intervento_dichiarazione_progettista"
+                                     type="equaintcila:intervento_dichiarazione_progettista_ctype"/>
+                        <xsd:element name="intervento_corso_di_esecuzione_data_inizio_lavori"
+                                     type="ctipi:ggmmaaaa_stype"/>
+                        <xsd:element name="intervento_con_sanzione_data_lavori" type="ctipi:ggmmaaaa_stype"/>
+                    </xsd:choice>
+                    <!-- Presentazione allo SUAP Verifica che ricguarda Procedimento Automatizzato / Ordinario -->
+                    <xsd:choice>
+                        <xsd:element name="procedimento_automatizzato" type="xsd:boolean"/>
+                        <xsd:element name="procedimento_ordinario" type="xsd:boolean"/>
+                    </xsd:choice>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="intervento_dichiarazione_progettista_ctype">
+        <xsd:choice>
+            <xsd:element name="data_inizio_lavori" type="ctipi:ggmmaaaa_stype"/>
+            <xsd:element name="inizio_lavori_comunicazione_suap" type="xsd:boolean"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+
+    <xsd:element name="qualificazione_intervento_cila" type="equaintcila:qualificazione_intervento_ctype"/>
+</xsd:schema>

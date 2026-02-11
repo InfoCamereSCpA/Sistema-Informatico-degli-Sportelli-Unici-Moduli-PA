@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ealtdicaut="../02_entities/altre_dichiarazioni_autoscuole"
+    xmlns:ctipi="../commons/tipi"
+    xmlns:ealtdicalt="../02_entities/altre_dichiarazioni_altro" targetNamespace="../02_entities/altre_dichiarazioni_autoscuole" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/altre_dichiarazioni_altro" schemaLocation="../02_entities/ent_altre_dichiarazioni_altro_v1.0.7.xsd"/>
+
+    <xsd:complexType name="altre_dichiarazioni_autoscuole_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="ealtdicalt:altre_dichiarazioni_altro_base_type">
+                <xsd:sequence>
+                    <!--solo per prima sede-->
+                    <xsd:element name="gestione_diretta" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="capacita_finanziaria" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="dotazione_aula" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="dotazione_segreteria" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="dotazione_servizi_igienici" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="dichiarazione_rispetto" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="altro" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="descrizione_altro" type="xsd:string" minOccurs="0"/>
+
+                     <!--arredamento-->
+                    <xsd:element name="cattedra" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="lavagna" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="posti_allievi" type="xsd:boolean" minOccurs="0"/>
+
+                    <xsd:element name="materiale_obbligatorio" type="ealtdicaut:materiale_obbligatorio_ctype"/>
+                    <xsd:element name="mezzi_a_disposizione" type="ealtdicaut:mezzi_a_disposizione_ctype" maxOccurs="unbounded"/>
+                    
+                    <xsd:element name="rispetto_regolamenti" type="xsd:boolean" minOccurs="0"/>
+                    <xsd:element name="impegno_comunicare_variazioni" type="xsd:boolean" minOccurs="0"/>
+
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="materiale_obbligatorio_ctype">
+        <xsd:sequence>
+            <xsd:element name="cartelli_stradali">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="tradizionale" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="multimediale" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="materiale_didattico" type="ealtdicaut:materiale_didattico_ctype"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="quadro_illuminazione">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="tradizionale" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="multimediale" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="materiale_didattico" type="ealtdicaut:materiale_didattico_ctype"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="tavole_cinture_sicurezza">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="tradizionale" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="multimediale" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="materiale_didattico" type="ealtdicaut:materiale_didattico_ctype"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="tavole_dispositivi_inquinamento">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="tradizionale" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="multimediale" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="materiale_didattico" type="ealtdicaut:materiale_didattico_ctype"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="tavole_primo_soccorso">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="tradizionale" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="multimediale" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="materiale_didattico" type="ealtdicaut:materiale_didattico_ctype"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="tavole_trasporto_merci_pericolose">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="tradizionale" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="multimediale" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="materiale_didattico" type="ealtdicaut:materiale_didattico_ctype"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="tavole_organi_motore">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="tradizionale" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="multimediale" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="materiale_didattico" type="ealtdicaut:materiale_didattico_ctype"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="gruppo_motore_in_scala">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="tradizionale" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="multimediale" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="materiale_didattico" type="ealtdicaut:materiale_didattico_ctype"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="cartelli_motore_diesel">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="tradizionale" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="multimediale" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="materiale_didattico" type="ealtdicaut:materiale_didattico_ctype"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="cartelli_organi_di_traino">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="tradizionale" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="multimediale" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="materiale_didattico" type="ealtdicaut:materiale_didattico_ctype"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="elementi_frenanti">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="tradizionale" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="multimediale" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="materiale_didattico" type="ealtdicaut:materiale_didattico_ctype"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="materiale_didattico_ctype">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="autoprodotto" type="xsd:boolean"/>
+                <xsd:element name="marca_tipo_materiale_utilizzato" type="xsd:string" />
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="mezzi_a_disposizione_ctype">
+        <xsd:sequence>
+            <xsd:element name="auto_categoria_B" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="marca_tipo" type="xsd:string"/>
+                        <xsd:element name="targa" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ciclomotore_categoria_am" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="marca_tipo" type="xsd:string"/>
+                        <xsd:element name="targa" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="motociclo_categoria_a1" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="marca_tipo" type="xsd:string"/>
+                        <xsd:element name="targa" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="motociclo_categoria_a2" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="marca_tipo" type="xsd:string"/>
+                        <xsd:element name="targa" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="motociclo_categoria_a" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="marca_tipo" type="xsd:string"/>
+                        <xsd:element name="targa" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="autocarro_categoria_c" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="marca_tipo" type="xsd:string"/>
+                        <xsd:element name="targa" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="rimorchio" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="marca_tipo" type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="targa" type="xsd:string" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="autoarticolato_categoria_ce" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="marca_tipo" type="xsd:string"/>
+                        <xsd:element name="targa" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="autobus_categoria_d" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="marca_tipo" type="xsd:string"/>
+                        <xsd:element name="targa" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="rimorchio_categoria_de" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="marca_tipo" type="xsd:string"/>
+                        <xsd:element name="targa" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="altre_dichiarazioni_autoscuole" type="ealtdicaut:altre_dichiarazioni_autoscuole_ctype"/>
+</xsd:schema>

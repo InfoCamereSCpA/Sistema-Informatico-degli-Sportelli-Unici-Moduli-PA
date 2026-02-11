@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eprosta="../02_entities/protocollo_standard"
+            xmlns:ctipi="../commons/tipi"
+            targetNamespace="../02_entities/protocollo_standard"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:complexType name="protocollo_standard_ctype">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare i dati che compongono il Protocollo Standard</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="eprosta:protocollo_ctype">
+                <xsd:sequence>
+                    <xsd:element name="codice_amministrazione" type="eprosta:codice_amministrazione" minOccurs="0"/>
+                    <xsd:element name="codice_aoo" type="eprosta:codice_aoo" minOccurs="0"/>
+                    <xsd:element name="codice_registro" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="comune_rilascio" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:simpleType name="codice_amministrazione">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[A-Za-z0-9\-_]{1,16}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="codice_aoo">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[A-Za-z0-9\-_]{1,16}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="protocollo_ctype">
+        <xsd:annotation>
+            <xsd:documentation>Tipo per specificare il numero e una data di protocollo</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="numero_protocollo" type="xsd:string"/>
+            <xsd:element name="data_registrazione" type="ctipi:ggmmaaaa_stype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+
+    <xsd:element name="protocollo_standard" type="eprosta:protocollo_standard_ctype"/>
+</xsd:schema>

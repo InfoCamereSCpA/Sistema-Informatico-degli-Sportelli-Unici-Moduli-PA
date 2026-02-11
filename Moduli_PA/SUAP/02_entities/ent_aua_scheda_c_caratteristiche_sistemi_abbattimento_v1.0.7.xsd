@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschccarsisabb="../02_entities/aua_scheda_c_caratteristiche_sistemi_abbattimento"
+            xmlns:eauapunemirifenu="../02_entities/aua_punto_emissione_riferimento_enum"
+            targetNamespace="../02_entities/aua_scheda_c_caratteristiche_sistemi_abbattimento"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!--    SCHEDA C2-2  -->
+    
+    <xsd:import namespace="../02_entities/aua_punto_emissione_riferimento_enum"
+                schemaLocation="../02_entities/ent_aua_punto_emissione_riferimento_enum_v1.0.7.xsd"/>
+
+
+    <xsd:element name="caratteristiche_sistemi_abbattimento" type="eauaschccarsisabb:caratteristiche_sistemi_abbattimento_ctype"/>
+
+    <xsd:complexType name="caratteristiche_sistemi_abbattimento_ctype">
+        <xsd:sequence>
+            <xsd:element name="emissione_convogliata_blocco" type="eauaschccarsisabb:emissione_convogliata_ripetibile_ctype" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="emissione_convogliata_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="punto_emissione_riferimento" type="eauapunemirifenu:punto_emissione_riferimento_enum" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="note" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+</xsd:schema>

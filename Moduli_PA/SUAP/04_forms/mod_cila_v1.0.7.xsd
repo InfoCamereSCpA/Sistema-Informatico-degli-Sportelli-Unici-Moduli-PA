@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mcila="../04_forms/cila"
+            xmlns:sanasue="../03_sections/anagrafica_sue"
+            xmlns:scomcila="../03_sections/comunicazioni_cila"
+            xmlns:sdiccila="../03_sections/dichiarazioni_cila"
+            xmlns:sdicprocila="../03_sections/dichiarazioni_progettista_cila"
+            xmlns:sallegatisue="../03_sections/allegati_sue"
+
+            targetNamespace="../04_forms/cila" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/anagrafica_sue" schemaLocation="../03_sections/sec_anagrafica_sue_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/dichiarazioni_cila" schemaLocation="../03_sections/sec_dichiarazioni_cila_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/comunicazioni_cila" schemaLocation="../03_sections/sec_comunicazioni_cila_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/dichiarazioni_progettista_cila" schemaLocation="../03_sections/sec_dichiarazioni_progettista_cila_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/allegati_sue" schemaLocation="../03_sections/sec_allegati_sue_v1.0.7.xsd"/>
+
+    <xsd:complexType name="modulo_cila_ctype">
+        <xsd:sequence>
+            <!-- SOGGETTI -->
+            <xsd:element name="scheda_anagrafica" type="sanasue:sezione_anagrafica_sue_ctype" minOccurs="0" />
+
+            <!-- DICHIARAZIONI -->
+            <xsd:element name="dichiarazioni" type="sdiccila:sezione_dichiarazioni_cila_ctype" minOccurs="0" />
+
+            <!-- COMUNICAZIONI -->
+            <xsd:element name="comunicazioni" type="scomcila:sezione_comunicazioni_cila_ctype" minOccurs="0" />
+
+            <!-- DICHIARAZIONI DEL PROGETTISTA -->
+            <xsd:element name="dichiarazioni_progettista" type="sdicprocila:sezione_dichiarazioni_progettista_cila_ctype" minOccurs="0" />
+
+            <!-- ALLEGATI  -->
+            <xsd:element name="tabella_allegati" type="sallegatisue:allegati_sue_ctype" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_cila" type="mcila:modulo_cila_ctype"/>
+
+</xsd:schema>

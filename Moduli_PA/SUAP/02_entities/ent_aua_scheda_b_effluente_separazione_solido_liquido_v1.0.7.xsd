@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschbeffsepsolliq="../02_entities/aua_scheda_b_effluente_separazione_solido_liquido"
+            targetNamespace="../02_entities/aua_scheda_b_effluente_separazione_solido_liquido"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!--    SCHEDA B1-3(4-bis)  -->
+    <xsd:complexType name="scheda_b_effluente_separazione_solido_liquido_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_b_effluente_separazione_solido_liquido_blocco" type="eauaschbeffsepsolliq:scheda_b_effluente_separazione_solido_liquido_ripetibile_ctype" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Tipo concreto ripetibile -->
+    <xsd:complexType name="scheda_b_effluente_separazione_solido_liquido_ripetibile_ctype">
+        <xsd:sequence>
+            <!-- Effluente avviato al trattamento (m³/anno) -->
+            <xsd:element name="effluente_avviato_trattamento_m3_anno" type="xsd:string"/>
+            <!-- Azoto contenuto (kg/anno) -->
+            <xsd:element name="azoto_contenuto_kg_anno" type="xsd:string"/>
+            <!-- Macchina trattamento -->
+            <xsd:element name="macchina_trattamento" type="xsd:string"/>
+            <!-- Efficienza (%) -->
+            <xsd:element name="efficienza_percentuale" type="xsd:string"/>
+            <!-- Palabile post trattamento (%) -->
+            <xsd:element name="palabile_post_trattamento_percentuale" type="xsd:string"/>
+            <!-- Chiarificato (%) -->
+            <xsd:element name="chiarificato_percentuale" type="xsd:string"/>
+            <!-- Volumi m³/anno -->
+            <xsd:element name="palabile_m3_anno" type="xsd:string"/>
+            <xsd:element name="liquido_m3_anno" type="xsd:string"/>
+            <!-- Azoto -->
+            <xsd:element name="palabile_kg_anno" type="xsd:string"/>
+            <xsd:element name="liquido_kg_anno" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!-- Elemento principale -->
+    <xsd:element name="scheda_b_effluente_separazione_solido_liquido" type="eauaschbeffsepsolliq:scheda_b_effluente_separazione_solido_liquido_ctype"/>
+
+</xsd:schema>

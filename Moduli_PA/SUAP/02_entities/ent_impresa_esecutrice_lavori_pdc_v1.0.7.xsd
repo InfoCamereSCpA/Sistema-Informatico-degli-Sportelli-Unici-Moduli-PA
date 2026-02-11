@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eimpeselavpdc="../02_entities/impresa_esecutrice_lavori_pdc"
+            targetNamespace="../02_entities/impresa_esecutrice_lavori_pdc"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!-- Reference suecommon:ImpreseEsecutriciLavoriBaseType -->
+    <xsd:complexType name="imprese_esecutrici_dei_lavori_base_type" abstract="true"/>
+
+    <xsd:complexType name="imprese_esecutrici_dei_lavori_pdc_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eimpeselavpdc:imprese_esecutrici_dei_lavori_base_type">
+                <xsd:choice>
+                    <xsd:element name="da_soggetti_coinvolti" type="xsd:boolean"/>
+                    <xsd:element name="prima_inizio_lavori" type="xsd:boolean"/>
+                </xsd:choice>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="impresa_esecutrice_lavori_pdc" type="eimpeselavpdc:imprese_esecutrici_dei_lavori_pdc_ctype"/>
+</xsd:schema>

@@ -1,0 +1,144 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauapunemirifenu="../02_entities/aua_punto_emissione_riferimento_enum"
+            targetNamespace="../02_entities/aua_punto_emissione_riferimento_enum"
+            elementFormDefault="qualified">
+
+
+
+    <!-- Enumerazione punto emissione  -->
+    <xsd:simpleType name="punto_emissione_riferimento_enum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="E01"/>
+            <xsd:enumeration value="E02"/>
+            <xsd:enumeration value="E03"/>
+            <xsd:enumeration value="E04"/>
+            <xsd:enumeration value="E05"/>
+            <xsd:enumeration value="E06"/>
+            <xsd:enumeration value="E07"/>
+            <xsd:enumeration value="E08"/>
+            <xsd:enumeration value="E09"/>
+            <xsd:enumeration value="E10"/>
+            <xsd:enumeration value="E11"/>
+            <xsd:enumeration value="E12"/>
+            <xsd:enumeration value="E13"/>
+            <xsd:enumeration value="E14"/>
+            <xsd:enumeration value="E15"/>
+            <xsd:enumeration value="E16"/>
+            <xsd:enumeration value="E17"/>
+            <xsd:enumeration value="E18"/>
+            <xsd:enumeration value="E19"/>
+            <xsd:enumeration value="E20"/>
+            <xsd:enumeration value="E21"/>
+            <xsd:enumeration value="E22"/>
+            <xsd:enumeration value="E23"/>
+            <xsd:enumeration value="E24"/>
+            <xsd:enumeration value="E25"/>
+            <xsd:enumeration value="E26"/>
+            <xsd:enumeration value="E27"/>
+            <xsd:enumeration value="E28"/>
+            <xsd:enumeration value="E29"/>
+            <xsd:enumeration value="E30"/>
+            <xsd:enumeration value="E31"/>
+            <xsd:enumeration value="E32"/>
+            <xsd:enumeration value="E33"/>
+            <xsd:enumeration value="E34"/>
+            <xsd:enumeration value="E35"/>
+            <xsd:enumeration value="E36"/>
+            <xsd:enumeration value="E37"/>
+            <xsd:enumeration value="E38"/>
+            <xsd:enumeration value="E39"/>
+            <xsd:enumeration value="E40"/>
+            <xsd:enumeration value="E41"/>
+            <xsd:enumeration value="E42"/>
+            <xsd:enumeration value="E43"/>
+            <xsd:enumeration value="E44"/>
+            <xsd:enumeration value="E45"/>
+            <xsd:enumeration value="E46"/>
+            <xsd:enumeration value="E47"/>
+            <xsd:enumeration value="E48"/>
+            <xsd:enumeration value="E49"/>
+            <xsd:enumeration value="E50"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+    <!-- Enumerazione punto emissione diffusa -->
+    <xsd:simpleType name="punto_emissione_diffusa_enum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ED01"/>
+            <xsd:enumeration value="ED02"/>
+            <xsd:enumeration value="ED03"/>
+            <xsd:enumeration value="ED04"/>
+            <xsd:enumeration value="ED05"/>
+            <xsd:enumeration value="ED06"/>
+            <xsd:enumeration value="ED07"/>
+            <xsd:enumeration value="ED08"/>
+            <xsd:enumeration value="ED09"/>
+            <xsd:enumeration value="ED10"/>
+            <xsd:enumeration value="ED11"/>
+            <xsd:enumeration value="ED12"/>
+            <xsd:enumeration value="ED13"/>
+            <xsd:enumeration value="ED14"/>
+            <xsd:enumeration value="ED15"/>
+            <xsd:enumeration value="ED16"/>
+            <xsd:enumeration value="ED17"/>
+            <xsd:enumeration value="ED18"/>
+            <xsd:enumeration value="ED19"/>
+            <xsd:enumeration value="ED20"/>
+            <xsd:enumeration value="ED21"/>
+            <xsd:enumeration value="ED22"/>
+            <xsd:enumeration value="ED23"/>
+            <xsd:enumeration value="ED24"/>
+            <xsd:enumeration value="ED25"/>
+            <xsd:enumeration value="ED26"/>
+            <xsd:enumeration value="ED27"/>
+            <xsd:enumeration value="ED28"/>
+            <xsd:enumeration value="ED29"/>
+            <xsd:enumeration value="ED30"/>
+            <xsd:enumeration value="ED31"/>
+            <xsd:enumeration value="ED32"/>
+            <xsd:enumeration value="ED33"/>
+            <xsd:enumeration value="ED34"/>
+            <xsd:enumeration value="ED35"/>
+            <xsd:enumeration value="ED36"/>
+            <xsd:enumeration value="ED37"/>
+            <xsd:enumeration value="ED38"/>
+            <xsd:enumeration value="ED39"/>
+            <xsd:enumeration value="ED40"/>
+            <xsd:enumeration value="ED41"/>
+            <xsd:enumeration value="ED42"/>
+            <xsd:enumeration value="ED43"/>
+            <xsd:enumeration value="ED44"/>
+            <xsd:enumeration value="ED45"/>
+            <xsd:enumeration value="ED46"/>
+            <xsd:enumeration value="ED47"/>
+            <xsd:enumeration value="ED48"/>
+            <xsd:enumeration value="ED49"/>
+            <xsd:enumeration value="ED50"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+    <!-- Enumerazione identificativo_punto_emissione -->
+    <xsd:simpleType name="identificativo_punto_emissione_riferimento_enum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="E01"/>
+            <xsd:enumeration value="E02"/>
+            <xsd:enumeration value="E03"/>
+            <xsd:enumeration value="E04"/>
+            <xsd:enumeration value="E05"/>
+            <xsd:enumeration value="E06"/>
+            <xsd:enumeration value="E07"/>
+            <xsd:enumeration value="E08"/>
+            <xsd:enumeration value="E09"/>
+            <xsd:enumeration value="E10"/>
+            <xsd:enumeration value="E11"/>
+            <xsd:enumeration value="E12"/>
+            <xsd:enumeration value="E13"/>
+            <xsd:enumeration value="E14"/>
+            <xsd:enumeration value="E15"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+</xsd:schema>

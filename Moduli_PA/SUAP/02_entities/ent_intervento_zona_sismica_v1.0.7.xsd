@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eintzonsis="../02_entities/intervento_zona_sismica"
+            xmlns:eprosta="../02_entities/protocollo_standard"
+            targetNamespace="../02_entities/intervento_zona_sismica"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+    <xsd:import namespace="../02_entities/protocollo_standard"
+                schemaLocation="../02_entities/ent_protocollo_standard_v1.0.7.xsd"/>
+
+    <!-- Reference eintzonsis:InterventoZonaSismicaType -->
+    <xsd:complexType name="intervento_zona_sismica_base_type" abstract="true"/>
+
+    <xsd:complexType name="intervento_zona_sismica_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eintzonsis:intervento_zona_sismica_base_type">
+                <xsd:sequence>
+                    <xsd:choice>
+                        <xsd:element name="non_previste_opere" type="xsd:boolean"/>
+                        <xsd:element name="previste_opere">
+                            <xsd:annotation>
+                                <xsd:documentation>prevede la realizzazione di opere di conglomerato cementizio armato,
+                                    normale e precompresso ed a
+                                    struttura metallica
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="previste_opere_allega_denuncia" type="xsd:boolean" minOccurs="0">
+                                    <xsd:annotation>
+                                        <xsd:documentation>si allega la denuncia di cui all’articolo 65 del d.P.R. n. 380/2001
+                                        </xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:complexType>
+
+
+                        </xsd:element>
+                    </xsd:choice>
+                    <xsd:choice>
+                        <xsd:element name="non_previste_opere_normativa_regionale" type="xsd:boolean"/>
+                        <xsd:element name="variante_sostanziale">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="progetto_esecutivo" minOccurs="0"
+                                                 type="eprosta:protocollo_standard_ctype"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="previste_opere_normativa_regionale">
+                            <xsd:annotation>
+                                <xsd:documentation>prevede opere in zona sismica da denunciare ai sensi dell’articolo 93
+                                    del d.P.R. n. 380/2001
+                                    o della corrispondente normativa regionale
+                                </xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="previste_opere_normativa_regionale_allegato_denuncia"
+                                                 type="xsd:boolean">
+                                        <xsd:annotation>
+                                            <xsd:documentation>si allega la denuncia di cui all’articolo 65 del d.P.R.
+                                                n.
+                                                380/2001
+                                            </xsd:documentation>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                </xsd:sequence>
+                            </xsd:complexType>
+
+                        </xsd:element>
+                        <xsd:element name="previste_opere_strutturali">
+                            <xsd:annotation>
+                                <xsd:documentation>prevede opere strutturali soggette ad autorizzazione sismica ai sensi
+                                    dell’articolo 94 del
+                                    d.P.R. n. 380/2001 o della corrispondente normativa regional
+                                </xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element
+                                            name="previste_opere_strutturali_allegato_documentazione_autorizzazione"
+                                            type="xsd:boolean" minOccurs="0">
+                                        <xsd:annotation>
+                                            <xsd:documentation>si allega la documentazione necessaria per il rilascio
+                                                dell’autorizzazione sismica
+                                            </xsd:documentation>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                </xsd:sequence>
+                            </xsd:complexType>
+
+                        </xsd:element>
+                    </xsd:choice>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:element name="intervento_zona_sismica" type="eintzonsis:intervento_zona_sismica_ctype"/>
+</xsd:schema>

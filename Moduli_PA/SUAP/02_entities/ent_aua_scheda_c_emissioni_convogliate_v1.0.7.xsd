@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschcemicon="../02_entities/aua_scheda_c_emissioni_convogliate"
+            xmlns:eauapunemirifenu="../02_entities/aua_punto_emissione_riferimento_enum"
+            targetNamespace="../02_entities/aua_scheda_c_emissioni_convogliate"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!--    SCHEDA C2-1  -->
+
+    <xsd:import namespace="../02_entities/aua_punto_emissione_riferimento_enum" schemaLocation="../02_entities/ent_aua_punto_emissione_riferimento_enum_v1.0.7.xsd"/>
+
+    <xsd:complexType name="materiale_costruzione_camino_base_type" abstract="true"/>
+    <xsd:complexType name="coordinate_punto_emissione_base_type" abstract="true"/>
+
+    <xsd:complexType name="materiale_costruzione_camino_ctype">
+    <xsd:complexContent>
+        <xsd:extension base="eauaschcemicon:materiale_costruzione_camino_base_type">
+            <xsd:sequence>
+                <xsd:element name="descrizione" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            </xsd:sequence>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+    <xsd:complexType name="coordinate_punto_emissione_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschcemicon:coordinate_punto_emissione_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valore_coordinate" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="emissioni_convogliate" type="eauaschcemicon:emissioni_convogliate_ctype"/>
+
+    <xsd:complexType name="emissioni_convogliate_ctype">
+        <xsd:sequence>
+            <xsd:element name="emissione_convogliata_blocco" type="eauaschcemicon:emissione_convogliata_ripetibile_ctype" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="emissione_convogliata_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="punto_emissione_riferimento" type="eauapunemirifenu:punto_emissione_riferimento_enum" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="provenienza" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="impianti_macchine_interessate" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="portata_aeriforme" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="durata_emissione" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="frequenza_emissione_24h" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="tipo_emissione" type="eauaschcemicon:tipo_emissione_ctype" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="temperatura" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="inquinanti_presenti" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="concentrazione_inquinanti" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="flusso_massa_inquinanti" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="altezza_geometrica_emissione" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="dimensioni_camino" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="materiale_costruzione_camino" type="eauaschcemicon:materiale_costruzione_camino_base_type" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="tipo_impianto_abbattimento" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="coordinate_punto_emissione" type="eauaschcemicon:coordinate_punto_emissione_base_type" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="note" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="tenore_ossigeno" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="riepilogo_impianto_macchina_provenienza" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="riepilogo_sigla" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="riepilogo_portata" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipo_emissione_ctype">
+        <xsd:choice>
+            <xsd:element name="costante" type="xsd:boolean"/>
+            <xsd:element name="discontinua" type="xsd:boolean"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+</xsd:schema>

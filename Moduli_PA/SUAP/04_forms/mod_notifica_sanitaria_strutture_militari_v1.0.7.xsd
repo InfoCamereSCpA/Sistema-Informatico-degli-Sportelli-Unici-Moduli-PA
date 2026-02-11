@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:mnotsanstrmil="../04_forms/notifica_sanitaria_strutture_militari"
+            xmlns:snotsanstrmilavvatt="../03_sections/notifica_sanitaria_strutture_militari_avvio_attivita"
+            xmlns:snssubingresso="../03_sections/notifica_sanitaria_subingresso"
+            xmlns:snotsanstrmilmod="../03_sections/notifica_sanitaria_strutture_militari_modifiche"
+            xmlns:enscessazione="../02_entities/notifica_sanitaria_cessazione_sospensione"
+
+            targetNamespace="../04_forms/notifica_sanitaria_strutture_militari" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/notifica_sanitaria_strutture_militari_avvio_attivita" schemaLocation="../03_sections/sec_notifica_sanitaria_strutture_militari_avvio_attivita_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/notifica_sanitaria_subingresso" schemaLocation="../03_sections/sec_notifica_sanitaria_subingresso_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/notifica_sanitaria_strutture_militari_modifiche" schemaLocation="../03_sections/sec_notifica_sanitaria_strutture_militari_modifiche_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/notifica_sanitaria_cessazione_sospensione" schemaLocation="../02_entities/ent_notifica_sanitaria_cessazione_sospensione_v1.0.7.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/informativa_privacy" schemaLocation="../02_entities/ent_informativa_privacy_v1.0.7.xsd"/>
+
+    <xsd:complexType name="modulo_notifica_sanitaria_strutture_militari_ctype">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="avvio_attivita" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="subingresso" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="modifica_attivita" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="cessazione_sospensione_attivita" type="xsd:boolean" default="false" minOccurs="0" maxOccurs="1"/>
+            </xsd:choice>
+            <xsd:element name="avvio_attivita_section" type="snotsanstrmilavvatt:sezione_notifica_sanitaria_strutture_militari_avvio_attivita_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="subingresso_section" type="snssubingresso:sezione_notifica_sanitaria_subingresso_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="modifiche_section" type="snotsanstrmilmod:sezione_notifica_sanitaria_modifiche_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="cessazione_sospensione" type="enscessazione:notifica_sanitaria_cessazione_ctype" minOccurs="0" maxOccurs="1"/>
+
+            <!-- Note-->
+            <xsd:element name="note" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <!-- informativa privacy-->
+            <xsd:element name="informativa_privacy" type="xsd:boolean"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_notifica_sanitaria_strutture_militari" type="mnotsanstrmil:modulo_notifica_sanitaria_strutture_militari_ctype"/>
+</xsd:schema>

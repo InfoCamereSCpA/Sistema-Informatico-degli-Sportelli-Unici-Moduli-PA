@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eregurbscia="../02_entities/regolarita_urbanistica_scia"
+            targetNamespace="../02_entities/regolarita_urbanistica_scia"
+            xmlns:ctipi="../commons/tipi"
+
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="../02_entities/ent_protocollo_v1.0.7.xsd"/>
+
+
+    <!-- Reference eregurbscia:NewRegolaritaUrbanisticaBaseType -->
+    <xsd:complexType name="regolarita_urbanistica_scia_base_type" abstract="true"/>
+
+    <xsd:complexType name="regolarita_urbanistica_scia_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eregurbscia:regolarita_urbanistica_scia_base_type">
+                <xsd:sequence>
+                    <xsd:choice>
+                        <xsd:element name="oggetto_titolo_pratiche_edilizie"
+                                     type="eregurbscia:oggetto_pratiche_edilizie_ctype"/>
+                        <xsd:element name="immobile_non_obbligatorio" type="eregurbscia:copia_documenti_ctype"/>
+                        <xsd:element name="non_disponibile_titolo" type="eregurbscia:copia_documenti_ctype"/>
+                        <xsd:element name="sanzioni_pecuniarie" type="eregurbscia:sanzioni_pecuniarie_ctype"/>
+                        <xsd:element name="tolleranza_costruttiva" type="eregurbscia:dati_tolleranza_ctype"/>
+                    </xsd:choice>
+                    <xsd:choice>
+                        <xsd:element name="pienamente_conforme" type="xsd:boolean"/>
+                        <xsd:element name="conforme_documentazione" type="xsd:boolean"/>
+                    </xsd:choice>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="oggetto_pratiche_edilizie_ctype">
+        <xsd:sequence>
+            <xsd:element name="titolo_unico" minOccurs="0" type="eregurbscia:atto_base_ctype"/>
+            <xsd:element name="permesso_licenza_conc" minOccurs="0" type="eregurbscia:atto_base_ctype"/>
+            <xsd:element name="autorizzazione_edilizia" minOccurs="0" type="eregurbscia:atto_base_ctype"/>
+            <xsd:element name="comunicazione_edilizia" minOccurs="0" type="eregurbscia:atto_base_ctype"/>
+            <xsd:element name="denuncia_inizio_attivita" minOccurs="0" type="eregurbscia:atto_base_ctype"/>
+            <xsd:element name="DIA_SCIA_Alternativa" minOccurs="0" type="eregurbscia:atto_base_ctype"/>
+            <xsd:element name="certificazione_inizio_attivita" minOccurs="0" type="eregurbscia:atto_base_ctype"/>
+            <xsd:element name="comunicazione_edilizia_libera" minOccurs="0" type="eregurbscia:atto_base_ctype"/>
+            <xsd:element name="titolo_edilizio_sanatoria" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="condono_edilizio" minOccurs="0" type="eregurbscia:atto_base_ctype"/>
+                        <xsd:element name="permesso_costruire_sanatoria" minOccurs="0"
+                                     type="eregurbscia:atto_base_ctype"/>
+                        <xsd:element name="scia_sanatoria" minOccurs="0" type="eregurbscia:atto_base_ctype"/>
+                        <xsd:element name="scia_sanatoria_variante" minOccurs="0" type="eregurbscia:atto_base_ctype"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="altro_titolo_gruppo" minOccurs="0" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="altro_descrizione" type="xsd:string"/>
+                        <xsd:element name="estremi" type="eregurbscia:atto_base_ctype"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="copia_documenti_ctype">
+        <xsd:sequence>
+            <xsd:element name="copia_accatastamento" type="eregurbscia:atto_base_ctype" minOccurs="0"/>
+            <xsd:element name="documenti_probanti" type="xsd:boolean" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="sanzioni_pecuniarie_ctype">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="allega_ricevuta" type="xsd:boolean"/>
+                <xsd:element name="estremi_pagamenti" type="eregurbscia:estremi_pagamenti_ctype"/>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="estremi_pagamenti_ctype">
+        <xsd:sequence>
+            <xsd:element name="euro" type="xsd:string"/>
+            <xsd:element name="irrogata_in_data" type="ctipi:ggmmaaaa_stype"/>
+            <xsd:element name="numero" type="xsd:string"/>
+            <xsd:element name="data" type="ctipi:ggmmaaaa_stype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="dati_tolleranza_ctype">
+        <xsd:sequence>
+            <xsd:element name="tolleranze_pratica_edilizia" type="eregurbscia:atto_base_ctype"/>
+            <xsd:element name="tolleranze_atti_vari" type="eregurbscia:atto_base_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="atto_base_ctype">
+        <xsd:sequence>
+            <xsd:element name="numero" type="xsd:string"/>
+            <xsd:element name="data" type="ctipi:ggmmaaaa_stype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="regolarita_urbanistica_scia" type="eregurbscia:regolarita_urbanistica_scia_ctype"/>
+</xsd:schema>

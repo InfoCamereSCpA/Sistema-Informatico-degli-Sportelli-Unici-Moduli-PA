@@ -1,0 +1,123 @@
+<!-- ent_aua_scheda_a_sistema_depurazione_acque_reflue_v1.0.7.xsd -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschasisdepacqref="../02_entities/aua_scheda_a_sistema_depurazione_acque_reflue"
+            xmlns:eauacodscaenu="../02_entities/aua_codice_scarico_enum"
+            targetNamespace="../02_entities/aua_scheda_a_sistema_depurazione_acque_reflue"
+            elementFormDefault="qualified">
+    <xsd:import namespace="../02_entities/aua_codice_scarico_enum" schemaLocation="../02_entities/ent_aua_codice_scarico_enum_v1.0.7.xsd"/>
+
+    <!--    SCHEDA A7 -->
+
+
+
+
+    <!-- Tipo concreto -->
+    <xsd:complexType name="scheda_a_sistema_depurazione_ripetibile_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschasisdepacqref:scheda_a_sistema_depurazione_base_type">
+                <xsd:sequence>
+                    <xsd:element name="sistema_depurazione_blocco"
+                                 type="eauaschasisdepacqref:scheda_a_sistema_depurazione_blocco_ctype"
+                                 maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <!-- Tipo concreto -->
+    <xsd:complexType name="scheda_a_sistema_depurazione_blocco_ctype">
+        <xsd:sequence>
+            <!-- Codice scarico -->
+            <xsd:element name="codice" type="eauacodscaenu:codice_scarico_enum"/>
+            <!-- Gestore impianto -->
+            <xsd:element name="gestore_impianto" type="xsd:string"/>
+            <!-- Tipo trattamento impianto -->
+            <xsd:element name="trattamento_fisico" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="trattamento_chimico" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="trattamento_biologico" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="trattamento_altro" type="xsd:boolean" minOccurs="0"/>
+            <!-- Potenzialità nominale di progetto -->
+            <xsd:element name="potenzialita_nominale_progetto"
+                         type="eauaschasisdepacqref:potenzialita_nominale_progetto_ctype"/>
+            <!-- Caratteristiche impianto di depurazione -->
+            <xsd:element name="n_linee_acque" type="eauaschasisdepacqref:n_linee_acque_ctype"/>
+            <xsd:element name="n_linee_fanghi" type="eauaschasisdepacqref:n_linee_fanghi_ctype"/>
+            <!-- Dati fanghi prodotti -->
+            <xsd:element name="fanghi_prodotti_mc_anno" type="xsd:string"/>
+            <xsd:element name="fanghi_prodotti_mc_giorno" type="xsd:string"/>
+            <xsd:element name="fanghi_prodotti_perc_secco" type="xsd:string"/>
+            <xsd:element name="eventuali_modalita_stoccaggio_fanghi" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="smaltimento_finale" type="xsd:string"/>
+            <xsd:element name="perc_discarica" type="xsd:string"/>
+            <xsd:element name="perc_agricoltura" type="xsd:string"/>
+            <!-- Strumenti e modalità di controllo -->
+            <xsd:element name="pozzetto_controllo_ingresso" type="xsd:boolean"/>
+            <xsd:element name="pozzetto_controllo_uscita" type="xsd:boolean"/>
+            <xsd:element name="sistemi_controllo_automatico" type="xsd:boolean"/>
+            <xsd:element name="presenza_contatori_ingresso_uscita" type="xsd:boolean"/>
+            <!-- Descrizione -->
+            <xsd:element name="descrizione" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Potenzialità nominale di progetto: choice tra boolean e stringa -->
+    <xsd:complexType name="potenzialita_nominale_progetto_ctype">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="abitanti_equivalenti" type="xsd:boolean"/>
+                <xsd:element name="mc_h" type="xsd:boolean"/>
+            </xsd:choice>
+            <xsd:element name="indicare" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- n_linee_acque -->
+    <xsd:complexType name="n_linee_acque_ctype">
+        <xsd:sequence>
+            <xsd:element name="numero" type="xsd:string"/>
+            <xsd:element name="vasche_accumulo" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="grigliatura_grossolana" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="grigliatura_fine" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="dissabbiatura" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="disoleatura" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="sedimentazione_primaria" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="ossidazione_biomassa_adesa" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="ossidazione_biomassa_sospesa" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="sedimentazione_secondaria" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="nitrificazione" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="denitrificazione" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="filtrazione" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="defosfatazione" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="disinfezione_finale" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="altro" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="altro_specificare" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- n_linee_fanghi -->
+    <xsd:complexType name="n_linee_fanghi_ctype">
+        <xsd:sequence>
+            <xsd:element name="numero" type="xsd:string"/>
+            <xsd:element name="preispessitore" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="ispessimento_dinamico" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="digestione_anaerobica" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="digestione_aerobica" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="disidratazione_centrifuga" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="disidratazione_nastro_pressa" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="disidratazione_filtropressa" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="essiccamento_termico" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="incenerimento" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="postispessitore" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="compostaggio" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="letti_essiccamento" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="cogenerazione" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="altro" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="altro_specificare" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Tipo astratto principale -->
+    <xsd:complexType name="scheda_a_sistema_depurazione_base_type" abstract="true"/>
+
+</xsd:schema>

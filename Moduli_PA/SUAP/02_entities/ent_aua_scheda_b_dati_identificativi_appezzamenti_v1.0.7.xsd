@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschbdatideapp="../02_entities/aua_scheda_b_dati_identificativi_appezzamenti"
+            xmlns:eauacodterenu="../02_entities/aua_codice_terreno_enum"
+
+            targetNamespace="../02_entities/aua_scheda_b_dati_identificativi_appezzamenti"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+    <!--    SCHEDA B1(6-2) -->
+
+    <!-- Import enum terreni utilizzabili -->
+    <xsd:import namespace="../02_entities/aua_codice_terreno_enum"
+                schemaLocation="../02_entities/ent_aua_codice_terreno_enum_v1.0.7.xsd"/>
+
+
+    <xsd:complexType name="scheda_b_dati_identificativi_appezzamenti_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschbdatideapp:scheda_b_dati_identificativi_appezzamenti_base_type">
+                <xsd:sequence>
+                    <xsd:element name="scheda_b_dati_identificativi_appezzamenti_blocco"
+                                 type="eauaschbdatideapp:scheda_b_dati_identificativi_appezzamenti_ripetibile_ctype"
+                                 maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Tipo ripetibile per ogni record -->
+    <xsd:complexType name="scheda_b_dati_identificativi_appezzamenti_ripetibile_ctype">
+        <xsd:sequence>
+            <!-- Terreni utilizzabili da allevamento/impianto -->
+            <xsd:element name="dati_identificativi_appezzamenti" type="eauacodterenu:codice_terreno_enum"/>
+            <!-- fabbricati/terreni (booleano per ciascuno) -->
+            <xsd:choice>
+                <xsd:element name="fabbricati" type="xsd:boolean"/>
+                <xsd:element name="terreni" type="xsd:boolean"/>
+            </xsd:choice>
+            <!-- Comune catastale -->
+            <xsd:element name="comune_catastale" type="xsd:string"/>
+            <!-- Sezione -->
+            <xsd:element name="sezione" type="xsd:string"/>
+            <!-- Foglio n° -->
+            <xsd:element name="foglio_numero" type="xsd:string"/>
+            <!-- Particella -->
+            <xsd:element name="particella" type="xsd:string"/>
+            <xsd:element name="superficie_catastale_disponibile_ha" type="xsd:string"/>
+            <xsd:element name="tipologia_suolo" type="xsd:string"/>
+            <xsd:element name="pratica_agronomica_precedente" type="xsd:string"/>
+            <xsd:element name="morfologia" type="xsd:string"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Elemento astratto principale -->
+    <xsd:complexType name="scheda_b_dati_identificativi_appezzamenti_base_type" abstract="true"/>
+
+
+    <!-- Elemento principale ripetibile -->
+    <xsd:element name="scheda_b_dati_identificativi_appezzamenti" type="eauaschbdatideapp:scheda_b_dati_identificativi_appezzamenti_base_type"/>
+
+</xsd:schema>

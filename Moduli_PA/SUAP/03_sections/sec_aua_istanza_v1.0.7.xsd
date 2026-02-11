@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sauaist="../03_sections/aua_istanza"
+            xmlns:eauaist="../02_entities/aua_istanza"
+
+            targetNamespace="../03_sections/aua_istanza" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/aua_istanza" schemaLocation="../02_entities/ent_aua_istanza_v1.0.7.xsd"/>
+
+
+    <xsd:complexType name="sezione_aua_istanza_ctype">
+        <xsd:sequence>
+            <xsd:element name="istanza" type="eauaist:aua_istanza_ctype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_aua_istanza" type="sauaist:sezione_aua_istanza_ctype"/>
+</xsd:schema>

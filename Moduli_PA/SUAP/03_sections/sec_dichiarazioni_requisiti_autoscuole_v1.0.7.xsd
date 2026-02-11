@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:sdicreqaut="../03_sections/dichiarazioni_requisiti_autoscuole"
+    xmlns:edicreqaut="../02_entities/dichiarazioni_requisiti_autoscuole" targetNamespace="../03_sections/dichiarazioni_requisiti_autoscuole" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/dichiarazioni_requisiti_autoscuole" schemaLocation="../02_entities/ent_dichiarazioni_requisiti_autoscuole_v1.0.7.xsd"/>
+
+    <xsd:complexType name="sezione_dichiarazioni_requisiti_autoscuole_ctype">
+        <xsd:sequence>
+            <xsd:element name="requisiti" type="edicreqaut:dichiarazioni_requisiti_autoscuole_ctype" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_dichiarazioni_requisiti_autoscuole" type="edicreqaut:dichiarazioni_requisiti_autoscuole_ctype"/>
+</xsd:schema>

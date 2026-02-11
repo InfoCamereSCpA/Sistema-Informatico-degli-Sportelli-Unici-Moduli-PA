@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sauadic="../03_sections/aua_dichiarazioni"
+            xmlns:eauatitabi="../02_entities/aua_titoli_abilitativi"
+            xmlns:eauacerambvol="../02_entities/aua_certificazioni_ambientali_volontarie"
+            xmlns:eauaultdic="../02_entities/aua_ulteriori_dichiarazioni"
+            targetNamespace="../03_sections/aua_dichiarazioni" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/aua_titoli_abilitativi" schemaLocation="../02_entities/ent_aua_titoli_abilitativi_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_certificazioni_ambientali_volontarie" schemaLocation="../02_entities/ent_aua_certificazioni_ambientali_volontarie_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_ulteriori_dichiarazioni" schemaLocation="../02_entities/ent_aua_ulteriori_dichiarazioni_v1.0.7.xsd"/>
+
+    <xsd:complexType name="sezione_aua_dichiarazioni_ctype">
+        <xsd:sequence>
+            <xsd:element name="titoli_abilitativi_ambientali" type="eauatitabi:titoli_abilitativi_ambientali_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="certificazioni_ambientali_volontarie" type="eauacerambvol:certificazioni_ambientali_volontarie_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="ulteriori_dichiarazioni" type="eauaultdic:ulteriori_dichiarazioni_ctype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_aua_dichiarazioni" type="sauadic:sezione_aua_dichiarazioni_ctype"/>
+</xsd:schema>

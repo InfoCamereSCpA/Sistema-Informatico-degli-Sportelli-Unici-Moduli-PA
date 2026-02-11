@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sauadatimp="../03_sections/aua_dati_impianto"
+            xmlns:eauadatimp="../02_entities/aua_dati_impianto"
+            targetNamespace="../03_sections/aua_dati_impianto" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+ 
+    <xsd:import namespace="../02_entities/aua_dati_impianto" schemaLocation="../02_entities/ent_aua_dati_impianto_v1.0.7.xsd"/>
+
+    <xsd:complexType name="sezione_aua_dati_impianto_ctype">
+        <xsd:sequence>
+            <xsd:element name="dati_impianto" type="eauadatimp:dati_impianto_ctype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_aua_dati_impianto" type="sauadatimp:sezione_aua_dati_impianto_ctype"/>
+</xsd:schema>

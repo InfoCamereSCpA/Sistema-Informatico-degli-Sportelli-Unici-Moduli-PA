@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sauaana="../03_sections/aua_anagrafica"
+            xmlns:eauadatref="../02_entities/aua_dati_referente"
+            xmlns:eauadatges="../02_entities/aua_dati_gestore"
+            xmlns:eauadatditta="../02_entities/aua_dati_ditta"
+            targetNamespace="../03_sections/aua_anagrafica" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/aua_dati_gestore" schemaLocation="../02_entities/ent_aua_dati_gestore_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_dati_referente" schemaLocation="../02_entities/ent_aua_dati_referente_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_dati_ditta" schemaLocation="../02_entities/ent_aua_dati_ditta_v1.0.7.xsd"/>
+
+    <xsd:complexType name="sezione_aua_anagrafica_ctype">
+        <xsd:sequence>
+            <xsd:element name="dati_gestore" type="eauadatges:dati_gestore_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dati_referente_aua" type="eauadatref:dati_referente_aua_ctype" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="dati_ditta" type="eauadatditta:dati_ditta_ctype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_aua_anagrafica" type="sauaana:sezione_aua_anagrafica_ctype"/>
+</xsd:schema>

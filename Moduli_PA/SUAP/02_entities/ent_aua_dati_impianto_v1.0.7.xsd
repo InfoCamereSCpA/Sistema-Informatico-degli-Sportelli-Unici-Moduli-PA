@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauadatimp="../02_entities/aua_dati_impianto"
+            xmlns:ccodelist="../commons/codelist"
+            xmlns:ctipi="../commons/tipi"
+            xmlns:edaca="../02_entities/dati_catastali"
+            xmlns:canncl="../commons/xsdAnnotations"
+            xmlns:edacaloc="../02_entities/dati_catastali_locazioni"
+            targetNamespace="../02_entities/aua_dati_impianto"
+            elementFormDefault="qualified"
+            attributeFormDefault="qualified"
+            version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+    <xsd:import namespace="../02_entities/dati_catastali" schemaLocation="../02_entities/ent_dati_catastali_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/dati_catastali_locazioni"
+                schemaLocation="../02_entities/ent_dati_catastali_locazioni_v1.0.7.xsd"/>
+
+    <!-- 4.1 Dati generali (NO ASTRAZIONE) -->
+    <xsd:complexType name="dati_generali_ctype">
+        <xsd:sequence>
+            <xsd:element name="denominazione_impianto" type="xsd:string"/>
+            <xsd:element name="comune_impianto" type="ccodelist:CodeType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ComuniItaliani</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="provincia_impianto" type="ccodelist:CodeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ProvinceItaliane</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="descrizione_attivita_principale" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- 4.2 Inquadramento territoriale (*) -->
+    <xsd:complexType name="inquadramento_territoriale_base_type" abstract="true"/>
+    <xsd:complexType name="inquadramento_territoriale_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauadatimp:inquadramento_territoriale_base_type">
+                <xsd:sequence>
+                    <xsd:element name="latitudine" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="longitudine" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="utm" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="catasto" type="edaca:dati_catastali_ctype" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <!-- 4.3 Attività svolte (NO ASTRAZIONE) -->
+    <xsd:complexType name="attivita_svolte_ctype">
+        <xsd:sequence>
+            <xsd:element name="descrizione_ciclo_produttivo" type="xsd:string"/>
+            <xsd:element name="attivita_principale" type="eauadatimp:attivita_ateco_ctype"/>
+            <xsd:element name="attivita_secondaria" type="eauadatimp:attivita_ateco_ctype" minOccurs="0"
+                         maxOccurs="unbounded"/>
+            <xsd:element name="produzioni" type="eauadatimp:produzioni_base_type" minOccurs="0"/>
+            <xsd:element name="materie_prime" type="eauadatimp:materie_prime_base_type" minOccurs="0"/>
+            <xsd:element name="schede_sicurezza_allegate" type="xsd:boolean" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="attivita_ateco_ctype">
+        <xsd:sequence>
+            <xsd:element name="descrizione" type="xsd:string"/>
+            <xsd:element name="codice_ateco" type="edacaloc:codice_ateco_aua_stype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- 4.3.1 Produzioni (*) -->
+    <xsd:complexType name="produzioni_base_type" abstract="true"/>
+    <xsd:complexType name="produzioni_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauadatimp:produzioni_base_type">
+                <xsd:sequence>
+                    <xsd:element name="produzione" type="eauadatimp:produzione_ctype" maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="produzione_ctype">
+        <xsd:sequence>
+            <xsd:element name="attivita" type="edacaloc:codice_ateco_aua_stype"/>
+            <xsd:element name="id_prodotto" type="xsd:string"/>
+            <xsd:element name="tipologia_prodotti" type="xsd:string"/>
+            <xsd:element name="quantita" type="xsd:string" minOccurs="0"/>
+            <!-- TODO: probabilmente nella validazione xsd non va inserito -->
+            <xsd:element name="unita_misura" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- 4.3.2 Materie prime -->
+    <xsd:complexType name="materie_prime_base_type" abstract="true"/>
+
+    <xsd:complexType name="materie_prime_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauadatimp:materie_prime_base_type">
+                <xsd:sequence>
+                    <xsd:element name="materia_prima" type="eauadatimp:materia_prima_ctype" maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="materia_prima_ctype">
+        <xsd:sequence>
+            <xsd:element name="id_prodotto" type="xsd:string"/>
+            <xsd:element name="tipologia_materie" type="xsd:string"/>
+            <xsd:element name="quantita_annua" type="xsd:string" minOccurs="0"/>
+            <!-- TODO: probabilmente nella validazione xsd non va inserito -->
+            <xsd:element name="unita_misura" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="modalita_stoccaggio" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!-- 4.4 Caratteristiche occupazionali (*) -->
+    <xsd:complexType name="caratteristiche_occupazionali_base_type" abstract="true"/>
+    <xsd:complexType name="caratteristiche_occupazionali_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauadatimp:caratteristiche_occupazionali_base_type">
+                <xsd:sequence>
+                    <xsd:element name="numero_totale_addetti" type="eauadatimp:totale_addetti_base_type"/>
+                    <xsd:element name="numero_addetti_stagionali" type="eauadatimp:addetti_stagionali_base_type"
+                                 minOccurs="0"/>
+                    <xsd:element name="periodo_attivita_ore_giorno" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="periodo_attivita_giorni_anno" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="periodo_attivita_mesi_anno" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="periodo_attivita_giorni_settimana" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="totale_addetti_base_type" abstract="true"/>
+
+    <xsd:complexType name="totale_addetti_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauadatimp:totale_addetti_base_type">
+                <xsd:sequence>
+                    <xsd:element name="numero_addetti" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="addetti_stagionali_base_type" abstract="true"/>
+
+    <xsd:complexType name="addetti_stagionali_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauadatimp:addetti_stagionali_base_type">
+                <xsd:sequence>
+                    <xsd:element name="numero_addetti" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <!-- Tipo principale -->
+    <xsd:complexType name="dati_impianto_ctype">
+        <xsd:sequence>
+            <xsd:element name="dati_generali" type="eauadatimp:dati_generali_ctype"/>
+            <xsd:element name="inquadramento_territoriale" type="eauadatimp:inquadramento_territoriale_base_type"/>
+            <xsd:element name="attivita_svolte" type="eauadatimp:attivita_svolte_ctype"/>
+            <xsd:element name="caratteristiche_occupazionali"
+                         type="eauadatimp:caratteristiche_occupazionali_base_type"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="aua_dati_impianto" type="eauadatimp:dati_impianto_ctype"/>
+</xsd:schema>

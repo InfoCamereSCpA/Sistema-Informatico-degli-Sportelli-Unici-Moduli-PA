@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:etipintopepdc="../02_entities/tipologia_intervento_opere_pdc"
+            targetNamespace="../02_entities/tipologia_intervento_opere_pdc"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!-- Reference etipintopepdc:TipoInterventiOpereBaseType -->
+    <xsd:complexType name="tipo_interventi_opere_base_type" abstract="true"/>
+
+    <xsd:complexType name="tipo_interventi_opere_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="etipintopepdc:tipo_interventi_opere_base_type">
+                <xsd:sequence>
+                    <xsd:element name="nuova_costruzione" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="manufatti_edilizi" type="xsd:boolean" minOccurs="0"/>
+                                <xsd:element name="urbanizzazione" type="xsd:boolean" minOccurs="0"/>
+                                <xsd:element name="impianti" type="xsd:boolean" minOccurs="0"/>
+                                <xsd:element name="tralicci" type="xsd:boolean" minOccurs="0"/>
+                                <xsd:element name="manufatti_leggeri" type="xsd:boolean" minOccurs="0"/>
+                                <xsd:element name="nuova_costruzione_pregio_ambientale" type="xsd:boolean" minOccurs="0"/>
+                                <xsd:element name="depositi" type="xsd:boolean" minOccurs="0"/>
+                                <xsd:element name="trasformazione_urbanistica" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ristrutturazione_urbanistica" minOccurs="0" type="xsd:boolean"/>
+                    <xsd:element name="ristrutturazione_edilizia" minOccurs="0" type="xsd:boolean"/>
+                    <xsd:element name="assoggettati_scia" minOccurs="0" type="xsd:string"/>
+                    <xsd:element name="varianti_essenziali" minOccurs="0" type="xsd:boolean"/>
+                    <xsd:element name="varianti_centro_storico" minOccurs="0" type="xsd:boolean"/>
+
+                    <!-- v2 -->
+                    <xsd:element name="opere_in_progetto" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:choice>
+                                <xsd:sequence>
+                                    <!-- v2.1 -->
+                                    <xsd:element name="no_mutamento_destinazione_uso" minOccurs="0" type="xsd:boolean"/>
+                                    <!-- v2.2 -->
+                                    <xsd:element name="si_mutamento_destinazione_uso_stessa_categoria" minOccurs="0" type="xsd:boolean"/>
+                                    <!-- v2.3 -->
+                                    <xsd:element name="si_mutamento_destinazione_uso_tra_categorie" minOccurs="0" type="xsd:boolean"/>
+                                    <!-- v2.4 -->
+                                    <xsd:element name="si_mutamento_destinazione_uso_intero_immobile_stessa_categoria" minOccurs="0" type="xsd:boolean"/>
+                                </xsd:sequence>
+                            </xsd:choice>
+                        </xsd:complexType>
+                    </xsd:element>
+
+                    <!-- v3 -->
+                    <xsd:element name="permesso_di_costruire_in_sanatoria" minOccurs="0" type="xsd:boolean"/>
+
+                    <xsd:element name="dettagli_opere" minOccurs="0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:element name="tipologia_intervento_opere_pdc" type="etipintopepdc:tipo_interventi_opere_ctype"/>
+</xsd:schema>

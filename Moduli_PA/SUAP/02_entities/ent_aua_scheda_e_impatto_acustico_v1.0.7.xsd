@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauascheimpacu="../02_entities/aua_scheda_e_impatto_acustico"
+            xmlns:ctipi="../commons/tipi"
+            xmlns:eproto="../02_entities/protocollo"
+            targetNamespace="../02_entities/aua_scheda_e_impatto_acustico"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/protocollo" schemaLocation="../02_entities/ent_protocollo_v1.0.7.xsd"/>
+
+    <!-- SCHEDA E1-2-3 -->
+
+    <xsd:complexType name="ciclo_produttivo_continuo_choice_type">
+        <xsd:choice>
+            <xsd:element name="rientra_categoria" type="xsd:boolean"/>
+            <xsd:element name="non_rientra_categoria" type="xsd:boolean"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:complexType name="estremi_documentazione_acustica_ctype">
+        <xsd:sequence>
+            <xsd:element name="selezionato" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="a" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="numero_protocollo" type="eproto:numero_registrazione_stype" minOccurs="0"/>
+            <xsd:element name="data" type="ctipi:ggmmaaaa_stype" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="scheda_e_impatto_acustico_ctype">
+        <xsd:sequence>
+            <xsd:element name="ciclo_produttivo" type="eauascheimpacu:ciclo_produttivo_continuo_choice_type" minOccurs="0"/>
+            <xsd:element name="verificata_compatibilita" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="presentata_documentazione" type="eauascheimpacu:estremi_documentazione_acustica_ctype" minOccurs="0"/>
+            <xsd:element name="allega_documentazione_tecnico" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="allega_dichiarazione_sostitutiva" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="predisposto_piano_risanamento" type="eauascheimpacu:estremi_documentazione_acustica_ctype" minOccurs="0"/>
+            <xsd:element name="corso_realizzazione_piano" type="eauascheimpacu:estremi_documentazione_acustica_ctype" minOccurs="0"/>
+            <xsd:element name="attivita_bassa_rumorosita" type="xsd:boolean" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="scheda_e_impatto_acustico" type="eauascheimpacu:scheda_e_impatto_acustico_ctype"/>
+
+</xsd:schema>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:msegceragi="../04_forms/segnalazione_certificata_agibilita"
+            xmlns:sanasue="../03_sections/anagrafica_sue"
+            xmlns:sideimm="../03_sections/identificativo_catastale"
+            xmlns:sdicsezasca="../03_sections/dichiarazioni_sezione_a_sca"
+            xmlns:sdicsezbsca="../03_sections/dichiarazioni_sezione_b_sca"
+            xmlns:sdicsezcsca="../03_sections/dichiarazioni_sezione_c_sca"
+            xmlns:sallegatisue="../03_sections/allegati_sue"
+            targetNamespace="../04_forms/segnalazione_certificata_agibilita" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../03_sections/anagrafica_sue" schemaLocation="../03_sections/sec_anagrafica_sue_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/identificativo_catastale" schemaLocation="../03_sections/sec_identificativo_catastale_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/dichiarazioni_sezione_a_sca" schemaLocation="../03_sections/sec_dichiarazioni_sezione_a_sca_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/dichiarazioni_sezione_b_sca" schemaLocation="../03_sections/sec_dichiarazioni_sezione_b_sca_v1.0.7.xsd"/>
+    <xsd:import namespace="../03_sections/dichiarazioni_sezione_c_sca" schemaLocation="../03_sections/sec_dichiarazioni_sezione_c_sca_v1.0.7.xsd"/>
+
+
+    <xsd:import namespace="../03_sections/allegati_sue" schemaLocation="../03_sections/sec_allegati_sue_v1.0.7.xsd"/>
+
+    <xsd:complexType name="modulo_segnalazione_certificata_agibilita_ctype">
+        <xsd:sequence>
+            <!-- SOGGETTI -->
+            <xsd:element name="scheda_anagrafica" type="sanasue:sezione_anagrafica_sue_ctype" minOccurs="0" />
+
+            <!-- CATASTALI -->
+            <xsd:element name="identificativi_immobile" type="sideimm:sezione_identificativo_catastale_ctype" minOccurs="0" />
+
+            <!-- DICHIARAZIONI -->
+            <xsd:element name="dichiarazioni_sezione_a" type="sdicsezasca:sezione_dichiarazioni_sezione_a_sca_ctype" minOccurs="0" />
+
+            <xsd:element name="dichiarazioni_sezione_b" type="sdicsezbsca:sezione_dichiarazioni_sezione_b_sca_ctype" minOccurs="0" />
+
+            <xsd:element name="dichiarazioni_sezione_c" type="sdicsezcsca:sezione_dichiarazioni_sezione_c_sca_ctype" minOccurs="0" />
+
+            <!-- ALLEGATI  -->
+            <xsd:element name="tabella_allegati" type="sallegatisue:allegati_sue_ctype" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="modulo_segnalazione_certificata_agibilita" type="msegceragi:modulo_segnalazione_certificata_agibilita_ctype"/>
+
+</xsd:schema>

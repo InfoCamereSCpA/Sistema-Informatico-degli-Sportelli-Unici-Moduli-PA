@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sdicsezbsca="../03_sections/dichiarazioni_sezione_b_sca"
+            xmlns:eschtecsca="../02_entities/scheda_tecnico_sca"
+            xmlns:easssca="../02_entities/assevera_sca"
+            xmlns:ereqadasca="../02_entities/requisiti_adattabilita_sca"
+            xmlns:esicimpsca="../02_entities/sicurezza_impianti_sca"
+            xmlns:esicstasissca="../02_entities/sicurezza_statica_sismica_sca"
+            xmlns:epreenesca="../02_entities/prestazione_energetica_sca"
+            xmlns:ebararcsca="../02_entities/barriere_architettoniche_sca"
+            xmlns:edoccatsca="../02_entities/documentazione_catastale_sca"
+            xmlns:etopsca="../02_entities/toponomastica_sca"
+            xmlns:epreincsca="../02_entities/prevenzione_incendi_sca"
+            xmlns:emonsca="../02_entities/montacarichi_sca"
+            xmlns:einfoprisue="../02_entities/informativa_privacy_sue"
+            targetNamespace="../03_sections/dichiarazioni_sezione_b_sca" elementFormDefault="qualified"
+            attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+    <xsd:import namespace="../02_entities/scheda_tecnico_sca" schemaLocation="../02_entities/ent_scheda_tecnico_sca_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/assevera_sca" schemaLocation="../02_entities/ent_assevera_sca_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/requisiti_adattabilita_sca" schemaLocation="../02_entities/ent_requisiti_adattabilita_sca_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/sicurezza_impianti_sca" schemaLocation="../02_entities/ent_sicurezza_impianti_sca_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/sicurezza_statica_sismica_sca" schemaLocation="../02_entities/ent_sicurezza_statica_sismica_sca_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/prestazione_energetica_sca" schemaLocation="../02_entities/ent_prestazione_energetica_sca_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/barriere_architettoniche_sca" schemaLocation="../02_entities/ent_barriere_architettoniche_sca_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/documentazione_catastale_sca" schemaLocation="../02_entities/ent_documentazione_catastale_sca_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/toponomastica_sca" schemaLocation="../02_entities/ent_toponomastica_sca_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/prevenzione_incendi_sca" schemaLocation="../02_entities/ent_prevenzione_incendi_sca_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/montacarichi_sca" schemaLocation="../02_entities/ent_montacarichi_sca_v1.0.7.xsd"/>
+
+
+
+
+
+    <xsd:import namespace="../02_entities/informativa_privacy_sue" schemaLocation="../02_entities/ent_informativa_privacy_sue_v1.0.7.xsd"/>
+
+        <!--Riferimento As-is:AllegatoAttestazioneDirettoreLavoriProfessionistaAbilitatoType -->
+    <xsd:complexType name="sezione_dichiarazioni_sezione_b_sca_ctype">
+        <xsd:sequence>
+
+            <xsd:element name="scheda_tecnico" type="eschtecsca:professionista_anagrafica_direttore_ctype" minOccurs="0"/>
+            <xsd:element name="assevera" type="easssca:assevera_ctype" minOccurs="0"/>
+            <xsd:element name="requisitiAdattabilita" type="ereqadasca:requisiti_adattabilita_ctype" minOccurs="0"/>
+            <xsd:element name="sicurezza_impianti" type="esicimpsca:sicurezza_impianti_ctype" minOccurs="0"/>
+            <xsd:element name="sicurezza_statica_sismica" type="esicstasissca:sicurezza_statica_sismica_base_type" minOccurs="0"/>
+            <xsd:element name="prestazione_energetica" type="epreenesca:prestazione_energetica_base_type" minOccurs="0"/>
+            <xsd:element name="barriere_architettoniche" type="ebararcsca:barriere_architettoniche_ctype" minOccurs="0"/>
+            <xsd:element name="documentazione_catastale" type="edoccatsca:documentazione_catastale_ctype" minOccurs="0"/>
+            <xsd:element name="toponomastica" type="etopsca:toponomastica_ctype" minOccurs="0"/>
+            <xsd:element name="prevenzione_incendi" type="epreincsca:prevenzione_incendi_base_type" minOccurs="0"/>
+            <xsd:element name="montacarichi" type="emonsca:montacarichi_base_type" minOccurs="0"/>
+            <xsd:element name="dichiarazione_presa_visione_informativa_privacy" type="einfoprisue:informativa_privacy_ctype" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_dichiarazioni_sezione_b_sca" type="sdicsezbsca:sezione_dichiarazioni_sezione_b_sca_ctype"/>
+
+</xsd:schema>

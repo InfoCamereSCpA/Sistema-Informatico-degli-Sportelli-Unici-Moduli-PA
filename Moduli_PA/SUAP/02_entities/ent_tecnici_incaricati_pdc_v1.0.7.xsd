@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:etecincpdc="../02_entities/tecnici_incaricati_pdc"
+            targetNamespace="../02_entities/tecnici_incaricati_pdc"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:complexType name="tecnici_incaricati_dei_lavori_pdc_ctype">
+        <xsd:sequence>
+            <xsd:element name="altri_tecnici_da_soggetti_coinvolti" minOccurs="0" type="xsd:boolean"/>
+            <xsd:element name="altri_tecnici_individuati_prima_inizio_lavori" minOccurs="0"  type="xsd:boolean"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="tecnici_incaricati_pdc" type="etecincpdc:tecnici_incaricati_dei_lavori_pdc_ctype"/>
+</xsd:schema>

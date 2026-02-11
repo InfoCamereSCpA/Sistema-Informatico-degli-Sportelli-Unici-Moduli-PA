@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:etipintopesciaalt="../02_entities/tipologia_intervento_opere_scia_alternativa"
+            targetNamespace="../02_entities/tipologia_intervento_opere_scia_alternativa"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+    <!-- Reference etipintopesciaalt:TipoInterventiOpereBaseType -->
+    <xsd:complexType name="tipo_interventi_opere_base_type" abstract="true"/>
+
+    <xsd:complexType name="tipo_interventi_opere_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="etipintopesciaalt:tipo_interventi_opere_base_type">
+                <xsd:sequence>
+                    <xsd:element name="ristrutturazione_edilizia" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:choice>
+                                <xsd:sequence>
+                                    <xsd:element name="no_mutamento_destinazione_uso_ristrutturazione_edilizia" minOccurs="0" type="xsd:boolean"/>
+                                    <xsd:element name="si_mutamento_destinazione_uso_ristrutturazione_edilizia" minOccurs="0" type="xsd:boolean"/>
+                                </xsd:sequence>
+                            </xsd:choice>
+                        </xsd:complexType>
+                    </xsd:element>
+
+                    <xsd:element name="nuova_costruzione_ristrutturazione_urbanistica" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:choice>
+                                <xsd:sequence>
+                                    <xsd:element name="no_mutamento_destinazione_uso_ristrutturazione_urbanistica" minOccurs="0" type="xsd:boolean"/>
+                                    <xsd:element name="si_mutamento_destinazione_uso_ristrutturazione_urbanistica" minOccurs="0" type="xsd:boolean"/>
+                                </xsd:sequence>
+                            </xsd:choice>
+                        </xsd:complexType>
+                    </xsd:element>
+
+                    <xsd:element name="nuovacostruzione" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:choice>
+                                <xsd:sequence>
+                                    <xsd:element name="no_mutamento_destinazione_uso_nuova_costruzione" minOccurs="0" type="xsd:boolean"/>
+                                    <xsd:element name="si_mutamento_destinazione_uso_nuova_costruzione" minOccurs="0" type="xsd:boolean"/>
+                                </xsd:sequence>
+                            </xsd:choice>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="specifica_altri_interventi" minOccurs="0" type="xsd:string"/>
+                    <xsd:element name="altri_interventi" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:choice>
+                                <xsd:sequence>
+                                    <xsd:element name="no_mutamento_destinazione_uso_altri_interventi" minOccurs="0" type="xsd:boolean"/>
+                                    <xsd:element name="si_mutamento_destinazione_uso_altri_interventi" minOccurs="0" type="xsd:boolean"/>
+                                </xsd:sequence>
+                            </xsd:choice>
+                        </xsd:complexType>
+                    </xsd:element>
+
+                    <xsd:element name="dettagli_opere" minOccurs="0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="tipologia_intervento_opere_scia_alternativa" type="etipintopesciaalt:tipo_interventi_opere_ctype"/>
+</xsd:schema>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:eauaschbliqdatria="../02_entities/aua_scheda_b_liquame_dati_riassuntivi"
+        xmlns:ctipi="../commons/tipi"
+        targetNamespace="../02_entities/aua_scheda_b_liquame_dati_riassuntivi"
+        elementFormDefault="qualified"
+        attributeFormDefault="qualified"
+        version="1.0.7"
+        xml:lang="it">
+
+    <!-- Scheda B1-5(a) -->
+
+    <!-- Import tipi comuni -->
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <xsd:complexType name="scheda_b_liquame_dati_riassuntivi_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_b_liquame_dati_riassuntivi_blocco" type="eauaschbliqdatria:scheda_b_liquame_dati_riassuntivi_ctype" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+
+    <!-- Tipo concreto -->
+    <xsd:complexType name="scheda_b_liquame_dati_riassuntivi_ctype">
+                <xsd:sequence>
+                    <!-- Liquame -->
+                    <xsd:element name="liquame" type="eauaschbliqdatria:liquame_ripetibile_ctype"/>
+                    <!-- Totale liquami -->
+                    <xsd:element name="totale_liquami" type="eauaschbliqdatria:totale_liquami_ripetibile_ctype"/>
+                </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!-- Liquame (ripetibile) -->
+    <xsd:complexType name="liquame_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="liquame_tal_quale" type="xsd:boolean"/>
+            <xsd:element name="volume_m3_anno" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="azoto_kg_anno" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="titolo_n_kg_m3" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="azoto_zootecnico_percentuale" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="capacita_stoccaggio_giorni" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="capacita_stoccaggio_m3" type="xsd:string" minOccurs="0"/>
+            <!-- Liquame dopo trattamento -->
+            <xsd:element name="liquame_dopo_trattamento" type="xsd:boolean"/>
+            <xsd:element name="volume_dopo_trattamento_m3_anno" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="azoto_dopo_trattamento_kg_anno" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="titolo_n_dopo_trattamento_kg_m3" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="azoto_zootecnico_dopo_trattamento_percentuale" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="capacita_stoccaggio_dopo_trattamento_giorni" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="capacita_stoccaggio_dopo_trattamento_m3" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Totale liquami (ripetibile) -->
+    <xsd:complexType name="totale_liquami_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="volume_m3_anno" type="xsd:string"/>
+            <xsd:element name="azoto_kg_anno" type="xsd:string"/>
+            <xsd:element name="titolo_n_kg_m3" type="xsd:string"/>
+            <xsd:element name="azoto_zootecnico_percentuale" type="xsd:string"/>
+            <xsd:element name="capacita_stoccaggio_giorni" type="xsd:string"/>
+            <xsd:element name="capacita_stoccaggio_m3" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Elemento principale -->
+    <xsd:element name="scheda_b_liquame_dati_riassuntivi" type="eauaschbliqdatria:scheda_b_liquame_dati_riassuntivi_ripetibile_ctype"/>
+</xsd:schema>

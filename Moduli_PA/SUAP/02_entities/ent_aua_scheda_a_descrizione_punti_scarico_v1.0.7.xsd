@@ -1,0 +1,163 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschadespunsca="../02_entities/aua_scheda_a_descrizione_punti_scarico"
+            xmlns:eauacodscaenu="../02_entities/aua_codice_scarico_enum"
+            targetNamespace="../02_entities/aua_scheda_a_descrizione_punti_scarico"
+            elementFormDefault="qualified">
+
+    <!-- Import tipi comuni -->
+    <xsd:import namespace="../02_entities/aua_codice_scarico_enum" schemaLocation="../02_entities/ent_aua_codice_scarico_enum_v1.0.7.xsd"/>
+
+    <!--    SCHEDA A-A.4.1-2-3-4  -->
+
+    <xsd:complexType name="punto_scarico_ctype">
+        <xsd:sequence>
+            <xsd:element name="punto_scarico" type="eauaschadespunsca:punto_scarico_ripetibile_ctype"
+                         maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+
+
+    <!-- Enumerazione per sistema di riferimento -->
+    <xsd:simpleType name="sistema_riferimento_enum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="UTM 32"/>
+            <xsd:enumeration value="WGS84"/>
+            <xsd:enumeration value="ED50"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- Enumerazione per destinazione scarico -->
+    <xsd:complexType name="destinazione_tipologie_scarico_ctype">
+        <xsd:choice>
+            <xsd:element name="acque_superficiali" type="xsd:boolean"/>
+            <xsd:element name="fognatura" type="xsd:boolean"/>
+            <xsd:element name="suolo" type="xsd:boolean"/>
+            <xsd:element name="strati_superficiali_sottosuolo" type="xsd:boolean"/>
+            <xsd:element name="acque_sotteranee" type="xsd:boolean"/>
+            <xsd:element name="altro" type="eauaschadespunsca:altro_base_type"/>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <!-- Enumerazione per modalità scarico -->
+    <xsd:simpleType name="modalita_scarico_enum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="CONTINUO"/>
+            <xsd:enumeration value="SALTUARIO"/>
+            <xsd:enumeration value="PERIODICO"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- Enumerazione per periodicità -->
+    <xsd:simpleType name="periodicita_enum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="HH/GIORNO"/>
+            <xsd:enumeration value="GG/SETTIMANA"/>
+            <xsd:enumeration value="MM/ANNO"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- Tipo astratto per coordinate_geografiche -->
+    <xsd:complexType name="coordinate_geografiche_base_type" abstract="true"/>
+
+    <xsd:complexType name="coordinate_geografiche_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschadespunsca:coordinate_geografiche_base_type">
+                <xsd:sequence>
+                    <xsd:element name="x" type="xsd:string"/>
+                    <xsd:element name="y" type="xsd:string"/>
+                    <xsd:element name="sistema_riferimento" type="eauaschadespunsca:sistema_riferimento_enum"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Tipi astratti per altro, portata_media, portata_massima, volume_massimo -->
+    <xsd:complexType name="altro_base_type" abstract="true"/>
+    <xsd:complexType name="portata_media_base_type" abstract="true"/>
+    <xsd:complexType name="portata_massima_base_type" abstract="true"/>
+    <xsd:complexType name="volume_massimo_base_type" abstract="true"/>
+
+    <!-- Tipi concreti per altro, portata_media, portata_massima, volume_massimo -->
+    <xsd:complexType name="altro_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschadespunsca:altro_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valore" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="portata_media_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschadespunsca:portata_media_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valore" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="portata_massima_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschadespunsca:portata_massima_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valore" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="volume_massimo_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschadespunsca:volume_massimo_base_type">
+                <xsd:sequence>
+                    <xsd:element name="valore" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Tipo per periodicità (solo se modalita_scarico = Periodico) -->
+    <xsd:complexType name="periodicita_ctype">
+        <xsd:sequence>
+            <xsd:element name="tipo" type="eauaschadespunsca:periodicita_enum"/>
+            <xsd:element name="valore" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Tipo per destinazione_scarico con specificare -->
+    <xsd:complexType name="destinazione_scarico_ctype">
+        <xsd:sequence>
+            <xsd:element name="destinazione" type="eauaschadespunsca:destinazione_tipologie_scarico_ctype"/>
+            <xsd:element name="denominazione" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Tipo per modalita_scarico con periodicità -->
+    <xsd:complexType name="modalita_scarico_ctype">
+        <xsd:sequence>
+            <xsd:element name="modalita" type="eauaschadespunsca:modalita_scarico_enum"/>
+            <xsd:element name="periodicita" type="eauaschadespunsca:periodicita_ctype" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Tipo principale per un punto di scarico -->
+    <xsd:complexType name="punto_scarico_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="codice" type="eauacodscaenu:codice_scarico_enum"/>
+            <xsd:element name="coordinate_geografiche" type="eauaschadespunsca:coordinate_geografiche_base_type"/>
+            <xsd:element name="destinazione_scarico" type="eauaschadespunsca:destinazione_scarico_ctype"/>
+            <xsd:element name="modalita_scarico" type="eauaschadespunsca:modalita_scarico_ctype"/>
+            <xsd:element name="portata_media" type="eauaschadespunsca:portata_media_base_type"/>
+            <xsd:element name="portata_massima" type="eauaschadespunsca:portata_massima_base_type"/>
+            <xsd:element name="volume_massimo" type="eauaschadespunsca:volume_massimo_base_type"/>
+            <xsd:element name="misuratore_portata" type="xsd:boolean"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!-- Elemento principale -->
+    <xsd:element name="aua_scheda_a_descrizione_punti_scarico" type="eauaschadespunsca:punto_scarico_ctype"/>
+</xsd:schema>

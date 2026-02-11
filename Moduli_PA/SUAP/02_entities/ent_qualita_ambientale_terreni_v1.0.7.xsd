@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:equaambter="../02_entities/qualita_ambientale_terreni"
+            xmlns:ctipi="../commons/tipi"
+            targetNamespace="../02_entities/qualita_ambientale_terreni"
+
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <!-- Reference equaambter:QualitaAmbientaleTerreniType -->
+    <xsd:complexType name="qualita_ambientale_terreni_base_type" abstract="true"/>
+
+    <xsd:complexType name="qualita_ambientale_terreni_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="equaambter:qualita_ambientale_terreni_base_type">
+                <xsd:choice>
+                    <xsd:element name="non_richiede_indagini" type="xsd:boolean"/>
+                    <xsd:element name="non_necessita_bonifica" type="xsd:boolean"/>
+                    <xsd:element name="avvenuta_bonifica" type="equaambter:atto_base_ctype"/>
+                </xsd:choice>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="atto_base_ctype">
+        <xsd:sequence>
+            <xsd:element name="numero" type="xsd:string"/>
+            <xsd:element name="data" type="ctipi:ggmmaaaa_stype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    
+    <xsd:element name="qualita_ambientale_terreni" type="equaambter:qualita_ambientale_terreni_ctype"/>
+</xsd:schema>

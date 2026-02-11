@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eschditsue="../02_entities/scheda_ditta_sue"
+            xmlns:eallimpana="../02_entities/allegato_impresa_anagrafica"
+            targetNamespace="../02_entities/scheda_ditta_sue" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/allegato_impresa_anagrafica" schemaLocation="../02_entities/ent_allegato_impresa_anagrafica_v1.0.7.xsd"/>
+
+    <xsd:complexType name="scheda_ditta_sue_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eallimpana:allegato_impresa_anagrafica_ctype">
+                <xsd:sequence>
+                    <xsd:element name="InQualitaDi" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="scheda_ditta_sue" type="eschditsue:scheda_ditta_sue_ctype" />
+
+</xsd:schema>

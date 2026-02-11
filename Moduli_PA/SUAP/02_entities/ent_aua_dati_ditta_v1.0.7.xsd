@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauadatditta="../02_entities/aua_dati_ditta"
+            xmlns:ccodelist="../commons/codelist"
+            xmlns:ctipi="../commons/tipi"
+            xmlns:eallimpana="../02_entities/allegato_impresa_anagrafica"
+            xmlns:canncl="../commons/xsdAnnotations"
+            targetNamespace="../02_entities/aua_dati_ditta"
+            elementFormDefault="qualified"
+            attributeFormDefault="qualified"
+            version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../commons/codelist" schemaLocation="../commons-codelist.xsd"/>
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/allegato_impresa_anagrafica" schemaLocation="../02_entities/ent_allegato_impresa_anagrafica_v1.0.7.xsd"/>
+    <xsd:import namespace="../commons/xsdAnnotations" schemaLocation="../commons-xsd-annotations.xsd"/>
+
+    <!-- Dati anagrafici ditta -->
+    <xsd:complexType name="dati_ditta_ctype">
+        <xsd:sequence>
+            <xsd:element name="ragione_sociale" type="xsd:string"/>
+            <xsd:element name="codice_fiscale" type="ctipi:codice_fiscale_stype" minOccurs="0"/>
+            <xsd:element name="partita_iva" type="ctipi:partita_iva_stype" minOccurs="0"/>
+            <xsd:element name="iscritta_cciaa" type="eallimpana:CCIAAType" minOccurs="0"/>
+            <xsd:element name="sede_legale" type="eauadatditta:sede_legale_ctype"/>
+            <xsd:element name="indirizzo" type="xsd:string"/>
+            <xsd:element name="numero_civico" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="cap" type="ctipi:cap_stype"/>
+            <xsd:element name="recapiti" type="eauadatditta:recapiti_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!-- Sede legale -->
+    <xsd:complexType name="sede_legale_ctype">
+        <xsd:sequence>
+            <xsd:element name="comune_ditta" type="ccodelist:CodeType" minOccurs="0" maxOccurs="1" >
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ComuniItaliani</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="provincia_ditta" type="ccodelist:CodeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:ProvinceItaliane</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="stato_ditta" type="ccodelist:CodeType">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <canncl:codeListReference>
+                            <canncl:ShortName>IT:SUAP:CL:StatiEsteri</canncl:ShortName>
+                        </canncl:codeListReference>
+                    </xsd:appinfo>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="localita" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Recapiti -->
+    <xsd:complexType name="recapiti_ctype">
+        <xsd:sequence>
+            <xsd:element name="telefono" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="fax" type="ctipi:fax_stype" minOccurs="0"/>
+            <xsd:element name="pec" type="ctipi:email_stype" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="aua_dati_ditta" type="eauadatditta:dati_ditta_ctype"/>
+</xsd:schema>

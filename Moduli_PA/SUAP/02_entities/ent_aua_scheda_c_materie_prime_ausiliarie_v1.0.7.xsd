@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschcmatpriaus="../02_entities/aua_scheda_c_materie_prime_ausiliarie"
+            targetNamespace="../02_entities/aua_scheda_c_materie_prime_ausiliarie"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!--TODO: Non presente sul FO. compilazione alternativa alla tabella 4.3.2 della parte generale -->
+
+    <!--    SCHEDA C1-2(b)  -->
+    <xsd:complexType name="scheda_c_materie_prime_ausiliarie_ctype">
+        <xsd:sequence>
+            <xsd:element name="scheda_c_materie_prime_ausiliarie_blocco" type="eauaschcmatpriaus:scheda_c_materie_prime_ausiliarie_ripetibile_ctype" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Tipo concreto ripetibile -->
+    <xsd:complexType name="scheda_c_materie_prime_ausiliarie_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="lavorazione" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="tipologia_prodotti" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="quantita_annua" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="unita_misura" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="modalita_stoccaggio" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <!-- Elemento principale -->
+    <xsd:element name="scheda_c_materie_prime_ausiliarie" type="eauaschcmatpriaus:scheda_c_materie_prime_ausiliarie_ctype"/>
+
+</xsd:schema>

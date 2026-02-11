@@ -1,0 +1,65 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauacodterenu="../02_entities/aua_codice_terreno_enum"
+            targetNamespace="../02_entities/aua_codice_terreno_enum"
+            elementFormDefault="qualified">
+
+
+
+    <!-- Enumerazione codice scarico -->
+    <xsd:simpleType name="codice_terreno_enum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="SS01"/>
+            <xsd:enumeration value="SS02"/>
+            <xsd:enumeration value="SS03"/>
+            <xsd:enumeration value="SS04"/>
+            <xsd:enumeration value="SS05"/>
+            <xsd:enumeration value="SS06"/>
+            <xsd:enumeration value="SS07"/>
+            <xsd:enumeration value="SS08"/>
+            <xsd:enumeration value="SS09"/>
+            <xsd:enumeration value="SS10"/>
+            <xsd:enumeration value="SS11"/>
+            <xsd:enumeration value="SS12"/>
+            <xsd:enumeration value="SS13"/>
+            <xsd:enumeration value="SS14"/>
+            <xsd:enumeration value="SS15"/>
+            <xsd:enumeration value="SS16"/>
+            <xsd:enumeration value="SS17"/>
+            <xsd:enumeration value="SS18"/>
+            <xsd:enumeration value="SS19"/>
+            <xsd:enumeration value="SS20"/>
+            <xsd:enumeration value="SS21"/>
+            <xsd:enumeration value="SS22"/>
+            <xsd:enumeration value="SS23"/>
+            <xsd:enumeration value="SS24"/>
+            <xsd:enumeration value="SS25"/>
+            <xsd:enumeration value="SS26"/>
+            <xsd:enumeration value="SS27"/>
+            <xsd:enumeration value="SS28"/>
+            <xsd:enumeration value="SS29"/>
+            <xsd:enumeration value="SS30"/>
+            <xsd:enumeration value="SS31"/>
+            <xsd:enumeration value="SS32"/>
+            <xsd:enumeration value="SS33"/>
+            <xsd:enumeration value="SS34"/>
+            <xsd:enumeration value="SS35"/>
+            <xsd:enumeration value="SS36"/>
+            <xsd:enumeration value="SS37"/>
+            <xsd:enumeration value="SS38"/>
+            <xsd:enumeration value="SS39"/>
+            <xsd:enumeration value="SS40"/>
+            <xsd:enumeration value="SS41"/>
+            <xsd:enumeration value="SS42"/>
+            <xsd:enumeration value="SS43"/>
+            <xsd:enumeration value="SS44"/>
+            <xsd:enumeration value="SS45"/>
+            <xsd:enumeration value="SS46"/>
+            <xsd:enumeration value="SS47"/>
+            <xsd:enumeration value="SS48"/>
+            <xsd:enumeration value="SS49"/>
+            <xsd:enumeration value="SS50"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+
+</xsd:schema>

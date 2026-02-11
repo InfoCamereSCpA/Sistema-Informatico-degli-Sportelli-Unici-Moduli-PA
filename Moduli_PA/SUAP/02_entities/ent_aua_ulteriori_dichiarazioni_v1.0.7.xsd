@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaultdic="../02_entities/aua_ulteriori_dichiarazioni"
+            xmlns:ctipi="../commons/tipi"
+            targetNamespace="../02_entities/aua_ulteriori_dichiarazioni"
+            elementFormDefault="qualified">
+
+  <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+  <!-- ComplexType per autorità competente non assoggettabilità -->
+  <xsd:complexType name="autorita_competente_non_assoggettabilita_ctype">
+    <xsd:sequence>
+      <xsd:element name="autorita_competente" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="numero_provvedimento" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="data_provvedimento" type="ctipi:ggmmaaaa_stype" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ulteriori_dichiarazioni_ctype">
+    <xsd:sequence>
+      <xsd:element name="attivita_non_assoggettata_via" type="xsd:boolean"/>
+      <xsd:element name="autorita_competente_non_assoggettabilita" type="eauaultdic:autorita_competente_non_assoggettabilita_ctype" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="aua_ulteriori_dichiarazioni" type="eauaultdic:ulteriori_dichiarazioni_ctype"/>
+
+</xsd:schema>

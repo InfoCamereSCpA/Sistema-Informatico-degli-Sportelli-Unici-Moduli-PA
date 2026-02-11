@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:edatgeoimm="../02_entities/dati_geometrici_immobile"
+            targetNamespace="../02_entities/dati_geometrici_immobile"
+
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+
+    <xsd:complexType name="dati_geometrici_base_type" abstract="true"/>
+
+    <xsd:complexType name="dati_geometrici_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="edatgeoimm:dati_geometrici_base_type">
+                <xsd:sequence>
+                    <xsd:element name="superficie_mq" minOccurs="0" type="xsd:decimal"/>
+                    <xsd:element name="volumetria_mc" minOccurs="0" type="xsd:decimal"/>
+                    <xsd:element name="numero_piani_n" minOccurs="0" type="xsd:decimal"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+
+    <xsd:element name="dati_geometrici" type="edatgeoimm:dati_geometrici_ctype"/>
+</xsd:schema>

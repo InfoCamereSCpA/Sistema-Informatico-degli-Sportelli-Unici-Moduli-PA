@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschbmoddis="../02_entities/aua_scheda_b_modalita_distribuzione"
+            targetNamespace="../02_entities/aua_scheda_b_modalita_distribuzione"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+    <!--    SCHEDA B1(6-3) -->
+
+
+    <xsd:complexType name="scheda_b_modalita_distribuzione_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschbmoddis:scheda_b_modalita_distribuzione_base_type">
+                <xsd:sequence>
+                    <xsd:element name="scheda_b_modalita_distribuzione_blocco"
+                                 type="eauaschbmoddis:scheda_b_modalita_distribuzione_ripetibile_ctype"
+                                 maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Tipo ripetibile per ogni record -->
+    <xsd:complexType name="scheda_b_modalita_distribuzione_ripetibile_ctype">
+        <xsd:sequence>
+            <xsd:element name="tecnica_distribuzione" type="xsd:string"/>
+            <xsd:element name="macchine_attrezzature" type="xsd:string"/>
+            <xsd:choice>
+                <xsd:element name="proprieta" type="xsd:boolean"/>
+                <xsd:element name="conto_terzi" type="xsd:boolean"/>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Elemento astratto principale -->
+    <xsd:complexType name="scheda_b_modalita_distribuzione_base_type" abstract="true"/>
+
+
+    <!-- Elemento principale ripetibile -->
+    <xsd:element name="scheda_b_modalita_distribuzione" type="eauaschbmoddis:scheda_b_modalita_distribuzione_base_type"/>
+
+</xsd:schema>

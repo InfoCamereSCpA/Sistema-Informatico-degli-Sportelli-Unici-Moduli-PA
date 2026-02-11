@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:epreinilavsca="../02_entities/presentazione_inizio_lavori_sca"
+            targetNamespace="../02_entities/presentazione_inizio_lavori_sca"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+
+    <xsd:complexType name="presentazione_inizio_lavori_ctype">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="scia_agibilita_immobile"  type="xsd:boolean"/>
+                <xsd:element name="scia_agibilita_parziale_edifici" type="xsd:boolean"/>
+                <xsd:element name="scia_agibilita_parziale_singoli_immobili"  type="xsd:boolean"/>
+                <xsd:element name="scia_unica_agibilita_immobile"  type="xsd:boolean"/>
+                <xsd:element name="scia_unica_agibilita_parziale_edifici"  type="xsd:boolean" />
+                <xsd:element name="scia_unica_agibilita_parziale_singoli_immobili"  type="xsd:boolean"/>
+            </xsd:choice>
+            <xsd:element name="allega_attestazione_professionista"  type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="allega_comunicazioni" type="xsd:boolean" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="presentazione_inizio_lavori_sca" type="epreinilavsca:presentazione_inizio_lavori_ctype"/>
+</xsd:schema>

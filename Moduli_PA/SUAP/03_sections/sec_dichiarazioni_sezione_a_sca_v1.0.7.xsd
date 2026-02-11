@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sdicsezasca="../03_sections/dichiarazioni_sezione_a_sca"
+            xmlns:ecomintlegsca="../02_entities/comunicazione_intervento_legittimato_sca"
+            xmlns:ecomfinlavsca="../02_entities/comunicazione_fine_lavori_sca"
+            xmlns:epreinilavsca="../02_entities/presentazione_inizio_lavori_sca"
+            xmlns:einfoprisue="../02_entities/informativa_privacy_sue"
+            targetNamespace="../03_sections/dichiarazioni_sezione_a_sca" elementFormDefault="qualified"
+            attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/comunicazione_intervento_legittimato_sca" schemaLocation="../02_entities/ent_comunicazione_intervento_legittimato_sca_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/comunicazione_fine_lavori_sca" schemaLocation="../02_entities/ent_comunicazione_fine_lavori_sca_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/presentazione_inizio_lavori_sca" schemaLocation="../02_entities/ent_presentazione_inizio_lavori_sca_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/informativa_privacy_sue" schemaLocation="../02_entities/ent_informativa_privacy_sue_v1.0.7.xsd"/>
+
+    <xsd:complexType name="sezione_dichiarazioni_sezione_a_sca_ctype">
+        <xsd:sequence>
+            <xsd:element name="comunicazione_intervento_legittimato" type="ecomintlegsca:comunicazione_intervento_legittimato_base_type" minOccurs="0"/>
+            <xsd:element name="comunicazione_fine_lavori" type="ecomfinlavsca:comunicazione_fine_lavori_base_type" minOccurs="0"/>
+            <xsd:element name="presentazione_inizio_lavori" type="epreinilavsca:presentazione_inizio_lavori_ctype" minOccurs="0"/>
+            <xsd:element name="dichiarazione_presa_visione_informativa_privacy" type="einfoprisue:informativa_privacy_ctype" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_dichiarazioni_sezione_a_sca" type="sdicsezasca:sezione_dichiarazioni_sezione_a_sca_ctype"/>
+
+</xsd:schema>

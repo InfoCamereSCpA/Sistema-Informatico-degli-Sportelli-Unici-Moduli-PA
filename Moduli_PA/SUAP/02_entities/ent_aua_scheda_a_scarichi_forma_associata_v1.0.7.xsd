@@ -1,0 +1,99 @@
+<!-- ent_aua_scheda_a_scarichi_forma_associata_v1.0.7.xsd -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschascaass="../02_entities/aua_scheda_a_scarichi_forma_associata"
+            xmlns:edacaloc="../02_entities/dati_catastali_locazioni"
+            xmlns:eauacodscaenu="../02_entities/aua_codice_scarico_enum"
+            targetNamespace="../02_entities/aua_scheda_a_scarichi_forma_associata"
+            elementFormDefault="qualified">
+
+  <!-- Import tipi comuni -->
+    <xsd:import namespace="../02_entities/dati_catastali_locazioni" schemaLocation="../02_entities/ent_dati_catastali_locazioni_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_codice_scarico_enum" schemaLocation="../02_entities/ent_aua_codice_scarico_enum_v1.0.7.xsd"/>
+
+    <!--    SCHEDA A4-A.5  -->
+
+
+  <xsd:complexType name="scarico_forma_associata_ctype">
+    <xsd:sequence>
+      <xsd:element name="carico_forma_associata" type="eauaschascaass:scarico_forma_associata_ripetibile_ctype" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+
+
+  <!-- Tipi astratti -->
+  <xsd:complexType name="codice_ateco_base_type" abstract="true"/>
+  <xsd:complexType name="tipologia_acque_reflue_base_type" abstract="true"/>
+  <xsd:complexType name="altro_base_type" abstract="true"/>
+  <xsd:complexType name="sistema_pretrattamento_base_type" abstract="true"/>
+
+  <!-- Tipi concreti -->
+  <xsd:complexType name="codice_ateco_ctype">
+    <xsd:complexContent>
+      <xsd:extension base="eauaschascaass:codice_ateco_base_type">
+        <xsd:sequence>
+          <xsd:element name="codice" type="edacaloc:codice_ateco_aua_stype"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="tipologia_acque_reflue_ctype">
+    <xsd:complexContent>
+      <xsd:extension base="eauaschascaass:tipologia_acque_reflue_base_type">
+        <xsd:sequence>
+          <xsd:element name="domestico" type="xsd:boolean" minOccurs="0"/>
+          <xsd:element name="assimilabile_domestico" type="xsd:boolean" minOccurs="0"/>
+          <xsd:element name="industriale" type="xsd:boolean" minOccurs="0"/>
+          <xsd:element name="altro" type="eauaschascaass:altro_base_type" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="altro_ctype">
+    <xsd:complexContent>
+      <xsd:extension base="eauaschascaass:altro_base_type">
+        <xsd:sequence>
+          <xsd:element name="altro" type="xsd:boolean"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="sistema_pretrattamento_ctype">
+    <xsd:complexContent>
+      <xsd:extension base="eauaschascaass:sistema_pretrattamento_base_type">
+        <xsd:sequence>
+          <xsd:element name="nessuno" type="xsd:boolean" minOccurs="0"/>
+          <xsd:element name="fisico" type="xsd:boolean" minOccurs="0"/>
+          <xsd:element name="chimico" type="xsd:boolean" minOccurs="0"/>
+          <xsd:element name="biologico" type="xsd:boolean" minOccurs="0"/>
+          <xsd:element name="altro_check" type="xsd:boolean" minOccurs="0"/>
+          <xsd:element name="altro_specificare" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- Tipo principale ripetibile -->
+  <xsd:complexType name="scarico_forma_associata_ripetibile_ctype">
+    <xsd:sequence>
+      <xsd:element name="codice" type="eauacodscaenu:codice_scarico_enum"/>
+      <xsd:element name="ragione_sociale" type="xsd:string"/>
+      <xsd:element name="partita_iva" type="xsd:string"/>
+      <xsd:element name="indirizzo" type="xsd:string"/>
+      <xsd:element name="codice_ateco" type="eauaschascaass:codice_ateco_ctype"/>
+      <xsd:element name="tipologia_acque_reflue" type="eauaschascaass:tipologia_acque_reflue_ctype"/>
+      <xsd:element name="portata_media_giornaliera" type="xsd:decimal"/>
+      <xsd:element name="volume_annuo" type="xsd:decimal"/>
+      <xsd:element name="sistema_pretrattamento" type="eauaschascaass:sistema_pretrattamento_ctype"/>
+      <xsd:element name="presenza_pozzetto_ispezione" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!-- Elemento radice ripetibile -->
+  <xsd:element name="scarichi_forma_associata" type="eauaschascaass:scarico_forma_associata_ctype"/>
+
+</xsd:schema>

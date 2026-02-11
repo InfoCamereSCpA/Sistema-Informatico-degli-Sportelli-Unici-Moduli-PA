@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ecomintlegsca="../02_entities/comunicazione_intervento_legittimato_sca"
+            xmlns:eprosta="../02_entities/protocollo_standard"
+
+            targetNamespace="../02_entities/comunicazione_intervento_legittimato_sca"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/protocollo_standard" schemaLocation="../02_entities/ent_protocollo_standard_v1.0.7.xsd"/>
+
+    <!-- che il titolo e/o la comunicazione che ha legittimato l’intervento è il seguente (*) -->
+    <xsd:complexType name="comunicazione_intervento_legittimato_base_type" abstract="true"/>
+
+    <xsd:complexType name="comunicazione_intervento_legittimato_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="ecomintlegsca:comunicazione_intervento_legittimato_base_type">
+                <xsd:sequence>
+                    <xsd:element name="intervento" type="xsd:string"/>
+                    <xsd:element name="protocollo" type="eprosta:protocollo_standard_ctype"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:element name="intervento_legittimato_sca" type="ecomintlegsca:comunicazione_intervento_legittimato_ctype"/>
+</xsd:schema>

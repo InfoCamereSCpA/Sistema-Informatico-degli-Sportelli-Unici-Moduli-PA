@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ecomfinlavsca="../02_entities/comunicazione_fine_lavori_sca"
+            xmlns:eprosta="../02_entities/protocollo_standard"
+            xmlns:ctipi="../commons/tipi"
+
+            targetNamespace="../02_entities/comunicazione_fine_lavori_sca"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+    <xsd:import namespace="../02_entities/protocollo_standard" schemaLocation="../02_entities/ent_protocollo_standard_v1.0.7.xsd"/>
+
+
+
+    <xsd:complexType name="comunicazione_fine_lavori_base_type" abstract="true"/>
+
+    <xsd:complexType name="comunicazione_fine_lavori_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="ecomfinlavsca:comunicazione_fine_lavori_base_type">
+                <xsd:sequence>
+                    <xsd:choice>
+                        <xsd:element name="protocollo_comunicazione_fine_lavori" type="eprosta:protocollo_standard_ctype" />
+                        <xsd:sequence>
+                            <xsd:element name="data_fine_lavori" type="ctipi:ggmmaaaa_stype" minOccurs="0"/>
+                            <xsd:choice>
+                                <xsd:element name="stato_lavori_completati" type="xsd:boolean"/>
+                                <xsd:element name="stato_lavori_parziale"  type="xsd:boolean"/>
+                            </xsd:choice>
+                        </xsd:sequence>
+                    </xsd:choice>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+
+    <xsd:element name="comunicazione_fine_lavori_sca" type="ecomfinlavsca:comunicazione_fine_lavori_ctype"/>
+</xsd:schema>

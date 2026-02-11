@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschcinfges="../02_entities/aua_scheda_c_informazioni_gestionali"
+            xmlns:ctipi="../commons/tipi"
+            targetNamespace="../02_entities/aua_scheda_c_informazioni_gestionali"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <!--    SCHEDA C4  -->
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+
+    <xsd:complexType name="informazioni_gestionali_ctype">
+        <xsd:sequence>
+            <xsd:element name="data_prevista" type="ctipi:ggmmaaaa_stype" minOccurs="0"/>
+            <xsd:element name="tempo_previsto" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="informazioni_gestionali" type="eauaschcinfges:informazioni_gestionali_ctype"/>
+
+
+    <!--    SCHEDA C5  -->
+    <xsd:element name="progetto_adeguamento" type="eauaschcinfges:progetto_adeguamento_ctype"/>
+
+    <xsd:complexType name="progetto_adeguamento_ctype">
+        <xsd:sequence>
+            <xsd:element name="richiesta_rinnovo_autorizzazione" type="xsd:boolean" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    
+</xsd:schema>

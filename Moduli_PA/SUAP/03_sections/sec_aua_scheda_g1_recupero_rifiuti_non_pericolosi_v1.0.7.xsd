@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sauaschg1recrifnonper="../03_sections/aua_scheda_g1_recupero_rifiuti_non_pericolosi"
+            xmlns:eauaschg1dicsogist="../02_entities/aua_scheda_g1_dichiarazioni_soggetto_istanza"
+            xmlns:eauaschg1reqsog="../02_entities/aua_scheda_g1_requisiti_soggettivi"
+            xmlns:eauaschg1infrifrec="../02_entities/aua_scheda_g1_informazioni_rifiuti_recuperati"
+            targetNamespace="../03_sections/aua_scheda_g1_recupero_rifiuti_non_pericolosi" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/aua_scheda_g1_dichiarazioni_soggetto_istanza" schemaLocation="../02_entities/ent_aua_scheda_g1_dichiarazioni_soggetto_istanza_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_g1_requisiti_soggettivi" schemaLocation="../02_entities/ent_aua_scheda_g1_requisiti_soggettivi_v1.0.7.xsd"/>
+    <xsd:import namespace="../02_entities/aua_scheda_g1_informazioni_rifiuti_recuperati" schemaLocation="../02_entities/ent_aua_scheda_g1_informazioni_rifiuti_recuperati_v1.0.7.xsd"/>
+
+
+
+    <xsd:complexType name="sezione_aua_scheda_g1_recupero_rifiuti_non_pericolosi_ctype">
+        <xsd:sequence>
+            <!-- SCHEDA G1-1 -->
+            <xsd:element name="dichiarazioni_impegni_soggetto_propone_istanza" type="eauaschg1dicsogist:scheda_g1_dichiarazioni_soggetto_istanza_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA G1-2 -->
+            <xsd:element name="requisiti_soggettivi" type="eauaschg1reqsog:scheda_g1_requisiti_soggettivi_ctype" minOccurs="0" maxOccurs="1"/>
+            <!-- SCHEDA G1-3 -->
+            <xsd:element name="informazioni_tipologie_rifiuti_recuperati" type="eauaschg1infrifrec:scheda_g1_informazioni_rifiuti_recuperati_ctype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_aua_scheda_g1_recupero_rifiuti_non_pericolosi" type="sauaschg1recrifnonper:sezione_aua_scheda_g1_recupero_rifiuti_non_pericolosi_ctype"/>
+</xsd:schema>

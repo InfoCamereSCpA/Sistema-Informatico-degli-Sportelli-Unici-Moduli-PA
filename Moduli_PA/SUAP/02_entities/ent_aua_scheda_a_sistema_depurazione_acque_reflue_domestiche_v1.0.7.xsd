@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eauaschasisdepacqrefdom="../02_entities/aua_scheda_a_sistema_depurazione_acque_reflue_domestiche"
+            xmlns:eauacodscaenu="../02_entities/aua_codice_scarico_enum"
+            targetNamespace="../02_entities/aua_scheda_a_sistema_depurazione_acque_reflue_domestiche"
+            elementFormDefault="qualified">
+
+
+    <xsd:import namespace="../02_entities/aua_codice_scarico_enum" schemaLocation="../02_entities/ent_aua_codice_scarico_enum_v1.0.7.xsd"/>
+
+    <!--    SCHEDA A8 -->
+
+
+
+    <!-- Blocco ripetibile astratto -->
+    <xsd:complexType name="scheda_a_sistema_depurazione_domestica_base_type" abstract="true"/>
+
+    <xsd:complexType name="scheda_a_sistema_depurazione_domestica_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eauaschasisdepacqrefdom:scheda_a_sistema_depurazione_domestica_base_type">
+                <xsd:sequence>
+                    <xsd:element name="sistema_depurazione_domestica_blocco"
+                                 type="eauaschasisdepacqrefdom:scheda_a_sistema_depurazione_domestica_blocco_ctype"
+                                 maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- Blocco concreto -->
+    <xsd:complexType name="scheda_a_sistema_depurazione_domestica_blocco_ctype">
+        <xsd:sequence>
+            <xsd:element name="codice" type="eauacodscaenu:codice_scarico_enum"/>
+            <xsd:element name="trattamento_acque_nere" type="eauaschasisdepacqrefdom:trattamento_acque_nere_ctype"/>
+            <xsd:element name="trattamento_acque_grigie" type="eauaschasisdepacqrefdom:trattamento_acque_grigie_ctype"/>
+            <xsd:element name="trattamento_acque_assimilabili" type="eauaschasisdepacqrefdom:trattamento_acque_assimilabili_ctype"/>
+            <xsd:element name="strumenti_modalita_controllo" type="eauaschasisdepacqrefdom:strumenti_modalita_controllo_ctype"/>
+            <xsd:element name="produzione_fanghi" type="eauaschasisdepacqrefdom:produzione_fanghi_ctype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- 1. Trattamento acque nere -->
+    <xsd:complexType name="trattamento_acque_nere_ctype">
+        <xsd:sequence>
+            <xsd:choice>
+                <xsd:element name="fossa_imhoff" type="xsd:boolean"/>
+                <xsd:element name="altro" type="xsd:boolean"/>
+            </xsd:choice>
+            <xsd:choice>
+                <xsd:sequence>
+                    <xsd:element name="comparto_sedimentazione_m3" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="comparto_digestione_m3" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="capacita_totale_m3" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="distanza_fabbricati_m" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="distanza_pozzi_condotte_serbatoi_potabile_m" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- 2. Trattamento acque grigie -->
+    <xsd:complexType name="trattamento_acque_grigie_ctype">
+        <xsd:sequence>
+            <xsd:element name="descrizione_tipo_trattamento" type="xsd:string"/>
+            <xsd:element name="dimensioni_manufatto" type="xsd:string"/>
+            <xsd:element name="distanza_fabbricati_m" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- 3. Trattamento acque assimilabili alle domestiche -->
+    <xsd:complexType name="trattamento_acque_assimilabili_ctype">
+        <xsd:sequence>
+            <xsd:element name="descrizione_tipo_trattamento" type="xsd:string"/>
+            <xsd:element name="dimensioni_manufatto" type="xsd:string"/>
+            <xsd:element name="distanza_fabbricati_m" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- 4. Strumenti e modalità di controllo -->
+    <xsd:complexType name="strumenti_modalita_controllo_ctype">
+        <xsd:sequence>
+            <xsd:element name="pozzetto_controllo_ingresso" type="xsd:boolean"/>
+            <xsd:element name="pozzetto_controllo_uscita" type="xsd:boolean"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- 5. Produzione fanghi -->
+    <xsd:complexType name="produzione_fanghi_ctype">
+        <xsd:sequence>
+            <xsd:element name="fanghi_prodotti_mc_anno" type="xsd:string"/>
+            <xsd:element name="fanghi_prodotti_perc_secco" type="xsd:string"/>
+            <xsd:element name="perc_discarica" type="xsd:string"/>
+            <xsd:element name="perc_agricoltura" type="xsd:string"/>
+            <xsd:element name="perc_altro" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

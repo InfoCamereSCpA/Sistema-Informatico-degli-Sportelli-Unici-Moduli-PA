@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sauascheimpacu="../03_sections/aua_scheda_e_impatto_acustico"
+            xmlns:eauaschdemiatmimp="../02_entities/aua_scheda_e_impatto_acustico"
+
+            targetNamespace="../03_sections/aua_scheda_e_impatto_acustico" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../02_entities/aua_scheda_e_impatto_acustico" schemaLocation="../02_entities/ent_aua_scheda_e_impatto_acustico_v1.0.7.xsd"/>
+
+
+    <xsd:complexType name="sezione_aua_scheda_e_impatto_acustico_ctype">
+        <xsd:sequence>
+            <!-- SCHEDA E1-2-3 -->
+            <xsd:element name="emissioni_atmosfera_impianti" type="eauaschdemiatmimp:scheda_e_impatto_acustico_ctype" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sezione_aua_scheda_e_impatto_acustico" type="sauascheimpacu:sezione_aua_scheda_e_impatto_acustico_ctype"/>
+</xsd:schema>

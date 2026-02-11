@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:esancorpdc="../02_entities/sanatoria_in_corso_pdc"
+            targetNamespace="../02_entities/sanatoria_in_corso_pdc"
+            xmlns:ctipi="../commons/tipi"
+
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+    <xsd:import namespace="../commons/tipi" schemaLocation="../commons-tipi.xsd"/>
+
+    <!-- Reference AS-IS: SanatoriaInCorsoBaseType -->
+    <xsd:complexType name="sanatoria_in_corso_base_type" abstract="true"/>
+
+    <xsd:complexType name="sanatoria_in_corso_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="esancorpdc:sanatoria_in_corso_base_type">
+                <xsd:sequence>
+
+                    <!-- X.1 -->
+                    <xsd:element name="sanatoria_soggetto">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="intervento_data" type="ctipi:ggmmaaaa_stype" />
+                                <xsd:element name="rilascio_permesso_costruire" type="xsd:boolean"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+
+                    <!-- X.2 -->
+                    <xsd:element name="intervento_permesso_sanatoria">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="intervento_data" type="ctipi:ggmmaaaa_stype" />
+                                <!-- X.2.1 -->
+                                <xsd:element name="conformita_presentazione_realizzazione">
+                                    <xsd:complexType>
+                                        <xsd:sequence>
+                                            <!-- X.2.1.x -->
+                                            <xsd:choice>
+                                                <xsd:element name="oblazione_doppio_contributo_parziale" type="xsd:boolean"/>
+                                                <xsd:element name="condizione_sicurezza_rimozione" type="xsd:boolean"/>
+                                            </xsd:choice>
+                                        </xsd:sequence>
+                                    </xsd:complexType>
+                                </xsd:element>
+                                <!-- X.2.2 -->
+                                <xsd:element name="conformita_urbanistica_edilizia_presentazione_realizzazione">
+                                    <xsd:complexType>
+                                        <xsd:sequence>
+                                            <!-- X.2.2.x -->
+                                            <xsd:choice>
+                                                <xsd:element name="oblazione_doppio_contributo_totale" type="xsd:boolean"/>
+                                                <xsd:element name="condizione_sicurezza_rimozione_doppia" type="xsd:boolean"/>
+                                            </xsd:choice>
+                                        </xsd:sequence>
+                                    </xsd:complexType>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="atto_base_type">
+        <xsd:sequence>
+            <xsd:element name="numero" type="xsd:string"/>
+            <xsd:element name="data" type="ctipi:ggmmaaaa_stype"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sanatoria_in_corso_pdc" type="esancorpdc:sanatoria_in_corso_ctype"/>
+</xsd:schema>

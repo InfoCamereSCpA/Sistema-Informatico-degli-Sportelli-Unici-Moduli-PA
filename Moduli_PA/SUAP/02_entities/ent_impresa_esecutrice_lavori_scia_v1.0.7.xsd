@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:eimpeselavscia="../02_entities/impresa_esecutrice_lavori_scia"
+            targetNamespace="../02_entities/impresa_esecutrice_lavori_scia"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+
+    <xsd:complexType name="imprese_esecutrici_dei_lavori_base_type" abstract="true"/>
+
+    <xsd:complexType name="scia_imprese_esecutrici_dei_lavori_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eimpeselavscia:imprese_esecutrici_dei_lavori_base_type">
+                <xsd:choice>
+                    <xsd:element name="da_soggetti_coinvolti" type="xsd:boolean"/>
+                    <xsd:element name="no_privati_ditte_esterne"
+                                 type="eimpeselavscia:no_privati_ditte_esterne_base_type"/>
+                    <xsd:element name="prima_inizio_lavori" type="eimpeselavscia:prima_inizio_lavori_base_type"/>
+                </xsd:choice>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="no_privati_ditte_esterne_base_type" abstract="true"/>
+
+    <xsd:complexType name="no_privati_ditte_esterne_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eimpeselavscia:no_privati_ditte_esterne_base_type">
+                <xsd:sequence>
+                    <xsd:element name="no_privati_ditte_esterne" type="xsd:boolean"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="prima_inizio_lavori_base_type" abstract="true"/>
+
+    <xsd:complexType name="prima_inizio_lavori_base_ctype">
+        <xsd:complexContent>
+            <xsd:extension base="eimpeselavscia:prima_inizio_lavori_base_type">
+                <xsd:sequence>
+                    <xsd:element name="prima_inizio_lavori_base" type="xsd:boolean"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:element name="impresa_esecutrice_lavori_scia" type="eimpeselavscia:scia_imprese_esecutrici_dei_lavori_ctype"/>
+</xsd:schema>

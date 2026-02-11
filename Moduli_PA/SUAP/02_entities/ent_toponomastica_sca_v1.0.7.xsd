@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:etopsca="../02_entities/toponomastica_sca"
+            xmlns:eprosta="../02_entities/protocollo_standard"
+            targetNamespace="../02_entities/toponomastica_sca"
+            elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0.7" xml:lang="it">
+
+
+    <xsd:import namespace="../02_entities/protocollo_standard" schemaLocation="../02_entities/ent_protocollo_standard_v1.0.7.xsd"/>
+
+
+    <!-- Sicurezza Statica Sismica -->
+
+    <xsd:complexType name="toponomastica_ctype">
+        <xsd:choice>
+            <xsd:element name="non_comporta_variazione_civici"  type="xsd:boolean"/>
+            <xsd:element name="comporta_variazione_civici">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="allega_richiesta_numerazione" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xsd:element name="protocollo_variazione_numerazione" type="eprosta:protocollo_standard_ctype" minOccurs="0" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+    </xsd:complexType>
+
+
+    <xsd:element name="toponomastica_sca" type="etopsca:toponomastica_ctype"/>
+</xsd:schema>
